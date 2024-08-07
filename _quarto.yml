@@ -2,12 +2,12 @@ project:
   type: website
 
 website:
-  title: "Vicente González"
-  # navbar:
-  #   left:
-  #     - href: index.qmd
-  #       text: Home
-  #     - about.qmd
+  title: "Página personal"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Inicio
+      - courses/index.qmd
 
 format:
   html:

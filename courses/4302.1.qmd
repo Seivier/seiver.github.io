@@ -13,12 +13,12 @@ format:
 _Auxiliar de la palabra auxilio_
 
 ## Su auxiliar {auto-animate=true}
-![](a.jpg){fig-align="center"}
+![](res/me.jpg){fig-align="center"}
 
 ## Su auxiliar {.smaller auto-animate=true}
 :::: {.columns}
 ::: {.column width="40%"}
-![](a.jpg)
+![](res/me.jpg)
 :::
 ::: {.column .incremental width="60%"}
 - Vicente González

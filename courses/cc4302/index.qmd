@@ -1,6 +1,0 @@
----
-title: "Sistemas Operativos"
----
-
-## Clases
-- [Introducción a Pthreads](1/main)

@@ -1,6 +1,7 @@
 ---
-title: "Vicente González"
+title: "Inicio"
+from: markdown+emoji
 ---
 
-## Cursos
-- [CC4302](courses/cc4302/index)
+Bienvenido :smiley:
+
