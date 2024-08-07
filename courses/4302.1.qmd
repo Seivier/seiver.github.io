@@ -364,3 +364,13 @@ uint buscarFactor(ulonglong x, uint i, uint j){
 ::: {.fragment style="font-size:60%"}
 _Hint: Quizás una variable global ayudaría_
 :::
+
+## 
+::: {.r-stack}
+Fin
+:::
+
+::: {.absolute bottom="1em" right="1em"}
+[Volver](index.qmd)
+:::
+

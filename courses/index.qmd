@@ -3,7 +3,7 @@ title: Cursos
 ---
 ## Sistemas operativos
 
-Auxiliares
+### Auxiliares
 
 1. [Introducción a Pthreads](4302.1)
 
