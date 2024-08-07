@@ -1,5 +1,54 @@
 [
   {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Cursos",
+    "section": "",
+    "text": "Aquí esta el material de cursos que he dictado",
+    "crumbs": [
+      "Cursos",
+      "2024"
+    ]
+  },
+  {
+    "objectID": "courses/4302.html",
+    "href": "courses/4302.html",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.html#auxiliares",
+    "href": "courses/4302.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
+  },
+  {
     "objectID": "courses/4302.1.html#su-auxiliar",
     "href": "courses/4302.1.html#su-auxiliar",
     "title": "Auxiliar 1",
@@ -117,54 +166,5 @@
     "title": "Auxiliar 1",
     "section": "P1 — Buscar Factor",
     "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
-  },
-  {
-    "objectID": "courses/4302.1.html#section-1",
-    "href": "courses/4302.1.html#section-1",
-    "title": "Auxiliar 1",
-    "section": "",
-    "text": "Fin\n\n\nVolver\n\n\n\n\nCC4302 — Sistemas Operativos"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Cursos",
-    "section": "",
-    "text": "Introducción a Pthreads"
-  },
-  {
-    "objectID": "courses/index.html#sistemas-operativos",
-    "href": "courses/index.html#sistemas-operativos",
-    "title": "Cursos",
-    "section": "",
-    "text": "Introducción a Pthreads"
-  },
-  {
-    "objectID": "courses/index.html#modelación-y-computación-gráfica-para-ingeniero",
-    "href": "courses/index.html#modelación-y-computación-gráfica-para-ingeniero",
-    "title": "Cursos",
-    "section": "Modelación y Computación Gráfica para Ingeniero",
-    "text": "Modelación y Computación Gráfica para Ingeniero"
-  },
-  {
-    "objectID": "courses/index.html#metodologías-de-diseño-y-programación",
-    "href": "courses/index.html#metodologías-de-diseño-y-programación",
-    "title": "Cursos",
-    "section": "Metodologías de Diseño y Programación",
-    "text": "Metodologías de Diseño y Programación"
   }
 ]
