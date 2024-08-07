@@ -7,6 +7,7 @@ from: markdown+emoji
 format:
     revealjs:
         theme: night
+        print-separate-fragments: true
 ---
 
 # Presentación
@@ -365,12 +366,8 @@ uint buscarFactor(ulonglong x, uint i, uint j){
 _Hint: Quizás una variable global ayudaría_
 :::
 
-## 
-::: {.r-stack}
-Fin
-:::
+# Fin
+[Ver otras auxiliares](index.qmd){style="font-size:60%"}
 
-::: {.absolute bottom="1em" right="1em"}
-[Volver](index.qmd)
-:::
+
 
