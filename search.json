@@ -116,7 +116,14 @@
     "href": "courses/4302.1.html#p1-buscar-factor-1",
     "title": "Auxiliar 1",
     "section": "P1 — Buscar Factor",
-    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría\n\n\n\n\nCC4302 — Sistemas Operativos"
+    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
+  },
+  {
+    "objectID": "courses/4302.1.html#section-1",
+    "href": "courses/4302.1.html#section-1",
+    "title": "Auxiliar 1",
+    "section": "",
+    "text": "Fin\n\n\nVolver\n\n\n\n\nCC4302 — Sistemas Operativos"
   },
   {
     "objectID": "index.html",
@@ -137,14 +144,14 @@
     "href": "courses/index.html",
     "title": "Cursos",
     "section": "",
-    "text": "Auxiliares\n\nIntroducción a Pthreads"
+    "text": "Introducción a Pthreads"
   },
   {
     "objectID": "courses/index.html#sistemas-operativos",
     "href": "courses/index.html#sistemas-operativos",
     "title": "Cursos",
     "section": "",
-    "text": "Auxiliares\n\nIntroducción a Pthreads"
+    "text": "Introducción a Pthreads"
   },
   {
     "objectID": "courses/index.html#modelación-y-computación-gráfica-para-ingeniero",
