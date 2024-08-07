@@ -5,8 +5,6 @@ website:
   title: "Página personal"
   navbar:
     left:
-      - href: index.qmd
-        text: Inicio
       - courses/index.qmd
 
 format:

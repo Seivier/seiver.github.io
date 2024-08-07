@@ -4,6 +4,7 @@ title: Cursos
 ## Sistemas operativos
 
 Auxiliares
+
 1. [Introducción a Pthreads](4302.1)
 
 ## Modelación y Computación Gráfica para Ingeniero
