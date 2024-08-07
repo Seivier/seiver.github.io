@@ -1,0 +1,366 @@
+---
+title: Auxiliar 1
+subtitle: Introducción a Pthreads
+author: Vicente González
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+---
+
+# Presentación
+_Auxiliar de la palabra auxilio_
+
+## Su auxiliar {auto-animate=true}
+![](a.jpg){fig-align="center"}
+
+## Su auxiliar {.smaller auto-animate=true}
+:::: {.columns}
+::: {.column width="40%"}
+![](a.jpg)
+:::
+::: {.column .incremental width="60%"}
+- Vicente González
+- Auxiliar de
+    - PSS 
+    - Computación en GPU
+    - Sistemas Operativos
+    - Metodologías de Diseño y Programación
+- Siempre disponible en persona :smiley:
+- Lento para responder correos :worried:
+- Doble titulación
+- No duden en preguntar
+:::
+::::
+
+# Contexto
+_Paralelismo en C_
+
+## 
+::::: {.columns}
+:::: {.column width="50%"}
+::: {style="text-align:center"}
+Procesos Pesados 
+:::
+::: {.incremental}
+- Fork
+- No comparten memoria
+- Costosos de instanciar
+- Seguros
+:::
+
+::::
+:::: {.column width="50%"}
+::: {style="text-align:center"}
+Procesos livianos
+:::
+::: {.incremental}
+- Pthreads
+- Comparten memoria
+- Baratos de instanciar
+- [Datarraces]{style="color:red"}
+:::
+::::
+:::::
+
+## Creación de _threads_ {auto-animate=true}
+
+```{.c}
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+::: {.fragment}
+Compuesto por:
+:::
+
+## Creación de _threads_ {auto-animate=true}
+
+```{.c code-line-numbers="1-1"}
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+Compuesto por:
+
+- La referencia al proceso
+
+## Creación de _threads_ {auto-animate=true}
+
+```{.c code-line-numbers="1-2"}
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+Compuesto por:
+
+- La referencia al proceso
+- Atributos especiales del proceso (`NULL`)
+
+## Creación de _threads_ {auto-animate=true}
+
+```{.c code-line-numbers="1-3"}
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+Compuesto por:
+
+- La referencia al proceso
+- Atributos especiales del proceso (`NULL`)
+- La rutina a ejecutar por el proceso
+
+## Creación de _threads_ {auto-animate=true}
+
+```{.c code-line-numbers="1-4"}
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+Compuesto por:
+
+- La referencia al proceso
+- Atributos especiales del proceso (`NULL`)
+- La rutina a ejecutar por el proceso
+- Los argumentos a pasar a la rutina
+
+## Creación de _threads_ {auto-animate=true}
+
+```.c 
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+
+::: {.incremental style="font-size:80%"}
+- Retorna 0 si la **creación** fue exitosa
+- El `thread` termina cuando `start_routine` termina
+- Todo `thread` creado debe ser enterrado con
+
+    ```{.c} 
+    int pthread_join(pthread_t thread, void **return_value);
+    ```
+- Los `thread` no enterrados se convierte en [zombies]{style="color:red"} y no devuelven los recursos
+- La función `pthread_join` **espera** a que el `thread` termine
+
+:::
+
+## Ejemplo {.smaller auto-animate=true}
+```{.c code-line-numbers="|4-8|10-19"} 
+#include <stdio.h>
+#include <pthread.h>
+
+void *thread(void *ptr) {
+  char* nombre = (char*) ptr; // Castear argumento
+  printf("Thread - %s\n", nombre); // Trabajo en paralelo
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  char* nombre_1 = "primero";
+  char* nombre_2 = "segundo";
+  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1
+  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+
+```
+
+::: {.fragment style="text-align:center"}
+¿Cómo puedo usar más argumentos?
+:::
+
+::: {.fragment style="text-align:center"}
+Usamos una estructura!
+:::
+
+## Ejemplo {.smaller auto-animate=true}
+```{.c } 
+#include <stdio.h>
+#include <pthread.h>
+
+typedef struct {
+  char* name;
+  int age;
+} Args;
+
+void *thread(void *ptr) {
+  char* nombre = (char*) ptr; // Castear argumento
+  printf("Thread - %s\n", nombre); // Trabajo en paralelo
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  char* nombre_1 = "primero";
+  char* nombre_2 = "segundo";
+  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1
+  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+```
+
+## Ejemplo {.smaller auto-animate=true}
+```{.c } 
+#include <stdio.h>
+#include <pthread.h>
+
+typedef struct {
+  char* name;
+  int age;
+} Args;
+
+void *thread(void *ptr) {
+  char* nombre = (char*) ptr; // Castear argumento
+  printf("Thread - %s\n", nombre); // Trabajo en paralelo
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  Args a1 = {"primero", 10} // inicializamos los args de t1
+  Args a2 = {"segundo", 20} // inicializamos los args de t2
+  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia
+  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+```
+
+## Ejemplo {.smaller auto-animate=true}
+```{.c } 
+#include <stdio.h>
+#include <pthread.h>
+
+typedef struct {
+  char* name;
+  int age;
+} Args;
+
+void *thread(void *ptr) {
+  Args* a = (Args*) ptr; // Castear a la estructura
+  printf("Thread - %s (%d)\n", a->name, a->age); // Accedemos a los miembros con ->
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  Args a1 = {"primero", 10} // inicializamos los args de t1
+  Args a2 = {"segundo", 20} // inicializamos los args de t2
+  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia
+  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+```
+
+## How to? {.smaller}
+
+### Diseño
+
+::: {.incremental}
+1. Encontrar las partes paralelizables
+2. Crear la estructura que permita ingresar los argumentos necesarios
+3. Programar la rutina
+:::
+
+::: {.incremental}
+- A veces la rutina sólo ajusta los argumentos para llamar a otra función
+- En la estructura de los argumentos podemos guardar **cualquier** cosa
+:::
+
+[*Esto es no pretende ser una receta, sino que una guía general*]{.absolute bottom="1em"}
+
+
+## How to? {.smaller}
+### Lógica
+
+::: {.incremental}
+1. Lanzar los `threads` con sus argumentos correspondientes
+2. Si aplica, realizar trabajo en el `thread` principal
+3. Esperar a que el trabajo paralelizado termine
+4. Enterrar los resultados y recolectar los resultados
+:::
+
+::: {.incremental}
+- Antes del `join` no existe garantía de que el trabajo se haya terminado
+- Asegúrese de que exista paralelismo entre el `create` y el `join`
+:::
+
+[*Esto es no pretende ser una receta, sino que una guía general*]{.absolute bottom="1em"}
+
+
+# Problema
+_Sólo uno realmente_
+
+## P1 --- Buscar Factor {auto-animate=true}
+
+::: {.fragment}
+Paralelicemos esta función que busca *cualquier* factor de un número para acelerarla utilizando $P$ cores
+:::
+
+::: {.fragment}
+```{.c} 
+#include <pthread.h>
+
+typedef unsigned long long ulonglong;
+typedef unsigned int uint;
+
+// busca un factor del número entero x en el rango [i, j]
+uint buscarFactor(ulonglong x, uint i, uint j){
+    for (uint k = i; k <= j; k++){
+        if (x % k == 0)
+            return k;
+    }
+    return 0;
+}
+```
+:::
+
+::: {.fragment style="font-size:60%"}
+_Desafío: Lanzar $P-1$ procesos y utilizar el principal en la búsqueda_
+:::
+
+
+## P1 --- Buscar Factor {auto-animate=true}
+
+### Propuesto
+¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?
+
+```{.c} 
+#include <pthread.h>
+
+typedef unsigned long long ulonglong;
+typedef unsigned int uint;
+
+// busca un factor del número entero x en el rango [i, j]
+uint buscarFactor(ulonglong x, uint i, uint j){
+    for (uint k = i; k <= j; k++){
+        if (x % k == 0)
+            return k;
+    }
+    return 0;
+}
+```
+::: {.fragment style="font-size:60%"}
+_Hint: Quizás una variable global ayudaría_
+:::
