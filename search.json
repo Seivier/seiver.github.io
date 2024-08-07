@@ -1,31 +1,129 @@
 [
   {
-    "objectID": "courses/cc4302/index.html",
-    "href": "courses/cc4302/index.html",
-    "title": "Sistemas Operativos",
-    "section": "",
-    "text": "Introducción a Pthreads"
+    "objectID": "courses/4302.1.html#su-auxiliar",
+    "href": "courses/4302.1.html#su-auxiliar",
+    "title": "Auxiliar 1",
+    "section": "Su auxiliar",
+    "text": "Su auxiliar"
   },
   {
-    "objectID": "courses/cc4302/index.html#clases",
-    "href": "courses/cc4302/index.html#clases",
-    "title": "Sistemas Operativos",
+    "objectID": "courses/4302.1.html#su-auxiliar-1",
+    "href": "courses/4302.1.html#su-auxiliar-1",
+    "title": "Auxiliar 1",
+    "section": "Su auxiliar",
+    "text": "Su auxiliar\n\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
+  },
+  {
+    "objectID": "courses/4302.1.html#section",
+    "href": "courses/4302.1.html#section",
+    "title": "Auxiliar 1",
     "section": "",
-    "text": "Introducción a Pthreads"
+    "text": "Procesos Pesados\n\n\n\nFork\nNo comparten memoria\nCostosos de instanciar\nSeguros\n\n\n\n\nProcesos livianos\n\n\n\nPthreads\nComparten memoria\nBaratos de instanciar\nDatarraces"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads",
+    "href": "courses/4302.1.html#creación-de-threads",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\nCompuesto por:"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads-1",
+    "href": "courses/4302.1.html#creación-de-threads-1",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads-2",
+    "href": "courses/4302.1.html#creación-de-threads-2",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads-3",
+    "href": "courses/4302.1.html#creación-de-threads-3",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads-4",
+    "href": "courses/4302.1.html#creación-de-threads-4",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso\nLos argumentos a pasar a la rutina"
+  },
+  {
+    "objectID": "courses/4302.1.html#creación-de-threads-5",
+    "href": "courses/4302.1.html#creación-de-threads-5",
+    "title": "Auxiliar 1",
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nRetorna 0 si la creación fue exitosa\nEl thread termina cuando start_routine termina\nTodo thread creado debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\nLos thread no enterrados se convierte en zombies y no devuelven los recursos\nLa función pthread_join espera a que el thread termine"
+  },
+  {
+    "objectID": "courses/4302.1.html#ejemplo",
+    "href": "courses/4302.1.html#ejemplo",
+    "title": "Auxiliar 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}\n\n¿Cómo puedo usar más argumentos?\n\n\nUsamos una estructura!"
+  },
+  {
+    "objectID": "courses/4302.1.html#ejemplo-1",
+    "href": "courses/4302.1.html#ejemplo-1",
+    "title": "Auxiliar 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.1.html#ejemplo-2",
+    "href": "courses/4302.1.html#ejemplo-2",
+    "title": "Auxiliar 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.1.html#ejemplo-3",
+    "href": "courses/4302.1.html#ejemplo-3",
+    "title": "Auxiliar 1",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.1.html#how-to",
+    "href": "courses/4302.1.html#how-to",
+    "title": "Auxiliar 1",
+    "section": "How to?",
+    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.1.html#how-to-1",
+    "href": "courses/4302.1.html#how-to-1",
+    "title": "Auxiliar 1",
+    "section": "How to?",
+    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.1.html#p1-buscar-factor",
+    "href": "courses/4302.1.html#p1-buscar-factor",
+    "title": "Auxiliar 1",
+    "section": "P1 — Buscar Factor",
+    "text": "P1 — Buscar Factor\n\nParalelicemos esta función que busca cualquier factor de un número para acelerarla utilizando \\(P\\) cores\n\n\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\n\nDesafío: Lanzar \\(P-1\\) procesos y utilizar el principal en la búsqueda"
+  },
+  {
+    "objectID": "courses/4302.1.html#p1-buscar-factor-1",
+    "href": "courses/4302.1.html#p1-buscar-factor-1",
+    "title": "Auxiliar 1",
+    "section": "P1 — Buscar Factor",
+    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría\n\n\n\n\nCC4302 — Sistemas Operativos"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Vicente González",
+    "title": "Inicio",
     "section": "",
-    "text": "CC4302"
-  },
-  {
-    "objectID": "index.html#cursos",
-    "href": "index.html#cursos",
-    "title": "Vicente González",
-    "section": "",
-    "text": "CC4302"
+    "text": "Bienvenido 😃"
   },
   {
     "objectID": "about.html",
@@ -35,122 +133,31 @@
     "text": "About this site"
   },
   {
-    "objectID": "courses/cc4302/1/main.html#su-auxiliar",
-    "href": "courses/cc4302/1/main.html#su-auxiliar",
-    "title": "Auxiliar 1",
-    "section": "Su auxiliar",
-    "text": "Su auxiliar"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#su-auxiliar-1",
-    "href": "courses/cc4302/1/main.html#su-auxiliar-1",
-    "title": "Auxiliar 1",
-    "section": "Su auxiliar",
-    "text": "Su auxiliar\n\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#section",
-    "href": "courses/cc4302/1/main.html#section",
-    "title": "Auxiliar 1",
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Cursos",
     "section": "",
-    "text": "Procesos Pesados\n\n\n\nFork\nNo comparten memoria\nCostosos de instanciar\nSeguros\n\n\n\n\nProcesos livianos\n\n\n\nPthreads\nComparten memoria\nBaratos de instanciar\nDatarraces"
+    "text": "Auxiliares 1. Introducción a Pthreads"
   },
   {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads",
-    "href": "courses/cc4302/1/main.html#creación-de-threads",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\nCompuesto por:"
+    "objectID": "courses/index.html#sistemas-operativos",
+    "href": "courses/index.html#sistemas-operativos",
+    "title": "Cursos",
+    "section": "",
+    "text": "Auxiliares 1. Introducción a Pthreads"
   },
   {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads-1",
-    "href": "courses/cc4302/1/main.html#creación-de-threads-1",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso"
+    "objectID": "courses/index.html#modelación-y-computación-gráfica-para-ingeniero",
+    "href": "courses/index.html#modelación-y-computación-gráfica-para-ingeniero",
+    "title": "Cursos",
+    "section": "Modelación y Computación Gráfica para Ingeniero",
+    "text": "Modelación y Computación Gráfica para Ingeniero"
   },
   {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads-2",
-    "href": "courses/cc4302/1/main.html#creación-de-threads-2",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads-3",
-    "href": "courses/cc4302/1/main.html#creación-de-threads-3",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads-4",
-    "href": "courses/cc4302/1/main.html#creación-de-threads-4",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso\nLos argumentos a pasar a la rutina"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#creación-de-threads-5",
-    "href": "courses/cc4302/1/main.html#creación-de-threads-5",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nRetorna 0 si la creación fue exitosa\nEl thread termina cuando start_routine termina\nTodo thread creado debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\nLos thread no enterrados se convierte en zombies y no devuelven los recursos\nLa función pthread_join espera a que el thread termine"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#ejemplo",
-    "href": "courses/cc4302/1/main.html#ejemplo",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}\n\n¿Cómo puedo usar más argumentos?\n\n\nUsamos una estructura!"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#ejemplo-1",
-    "href": "courses/cc4302/1/main.html#ejemplo-1",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#ejemplo-2",
-    "href": "courses/cc4302/1/main.html#ejemplo-2",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#ejemplo-3",
-    "href": "courses/cc4302/1/main.html#ejemplo-3",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#how-to",
-    "href": "courses/cc4302/1/main.html#how-to",
-    "title": "Auxiliar 1",
-    "section": "How to?",
-    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\nEsto es no pretende ser una receta, sino que una guía general"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#how-to-1",
-    "href": "courses/cc4302/1/main.html#how-to-1",
-    "title": "Auxiliar 1",
-    "section": "How to?",
-    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\nEsto es no pretende ser una receta, sino que una guía general"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#p1-buscar-factor",
-    "href": "courses/cc4302/1/main.html#p1-buscar-factor",
-    "title": "Auxiliar 1",
-    "section": "P1 — Buscar Factor",
-    "text": "P1 — Buscar Factor\n\nParalelicemos esta función que busca cualquier factor de un número para acelerarla utilizando \\(P\\) cores\n\n\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\n\nDesafío: Lanzar \\(P-1\\) procesos y utilizar el principal en la búsqueda"
-  },
-  {
-    "objectID": "courses/cc4302/1/main.html#p1-buscar-factor-1",
-    "href": "courses/cc4302/1/main.html#p1-buscar-factor-1",
-    "title": "Auxiliar 1",
-    "section": "P1 — Buscar Factor",
-    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría\n\n\n\n\nCC4302 — Sistemas Operativos"
+    "objectID": "courses/index.html#metodologías-de-diseño-y-programación",
+    "href": "courses/index.html#metodologías-de-diseño-y-programación",
+    "title": "Cursos",
+    "section": "Metodologías de Diseño y Programación",
+    "text": "Metodologías de Diseño y Programación"
   }
 ]
