@@ -3,4 +3,4 @@ title: "Vicente González"
 ---
 
 ## Cursos
-- CC4302
+- [CC4302](courses/cc4302/index)
