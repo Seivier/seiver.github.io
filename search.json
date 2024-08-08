@@ -1,14 +1,156 @@
 [
   {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Cursos",
+    "objectID": "courses/3501.0.html",
+    "href": "courses/3501.0.html",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
     "section": "",
-    "text": "Aquí esta el material de cursos que he dictado",
+    "text": "Instalación de Herramientas",
     "crumbs": [
       "Cursos",
-      "2024"
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
     ]
+  },
+  {
+    "objectID": "courses/3501.0.html#auxiliares",
+    "href": "courses/3501.0.html#auxiliares",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "section": "",
+    "text": "Instalación de Herramientas",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html",
+    "href": "courses/4302.0.html",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html#auxiliares",
+    "href": "courses/4302.0.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "courses/3501.1.html#su-auxiliar",
+    "href": "courses/3501.1.html#su-auxiliar",
+    "title": "Auxiliar 1",
+    "section": "Su auxiliar",
+    "text": "Su auxiliar\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
+  },
+  {
+    "objectID": "courses/3501.1.html#terminal",
+    "href": "courses/3501.1.html#terminal",
+    "title": "Auxiliar 1",
+    "section": "Terminal",
+    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
+  },
+  {
+    "objectID": "courses/3501.1.html#python",
+    "href": "courses/3501.1.html#python",
+    "title": "Auxiliar 1",
+    "section": "Python",
+    "text": "Python"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip",
+    "href": "courses/3501.1.html#pip",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip-1",
+    "href": "courses/3501.1.html#pip-1",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv .venv\nPara activarlo\n./.venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda",
+    "href": "courses/3501.1.html#conda",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda-1",
+    "href": "courses/3501.1.html#conda-1",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\nconda install -f &lt;archivo&gt;\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#editor",
+    "href": "courses/3501.1.html#editor",
+    "title": "Auxiliar 1",
+    "section": "Editor",
+    "text": "Editor"
+  },
+  {
+    "objectID": "courses/3501.1.html#vscode",
+    "href": "courses/3501.1.html#vscode",
+    "title": "Auxiliar 1",
+    "section": "VSCode",
+    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#pycharm",
+    "href": "courses/3501.1.html#pycharm",
+    "title": "Auxiliar 1",
+    "section": "PyCharm",
+    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
+  },
+  {
+    "objectID": "courses/3501.1.html#vim",
+    "href": "courses/3501.1.html#vim",
+    "title": "Auxiliar 1",
+    "section": "Vim",
+    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#git",
+    "href": "courses/3501.1.html#git",
+    "title": "Auxiliar 1",
+    "section": "Git",
+    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#hello-world",
+    "href": "courses/3501.1.html#hello-world",
+    "title": "Auxiliar 1",
+    "section": "Hello world!",
+    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
   },
   {
     "objectID": "courses/4302.1.html#su-auxiliar",
@@ -130,156 +272,14 @@
     "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
   },
   {
-    "objectID": "courses/3501.1.html#su-auxiliar",
-    "href": "courses/3501.1.html#su-auxiliar",
-    "title": "Auxiliar 1",
-    "section": "Su auxiliar",
-    "text": "Su auxiliar\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
-  },
-  {
-    "objectID": "courses/3501.1.html#terminal",
-    "href": "courses/3501.1.html#terminal",
-    "title": "Auxiliar 1",
-    "section": "Terminal",
-    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
-  },
-  {
-    "objectID": "courses/3501.1.html#python",
-    "href": "courses/3501.1.html#python",
-    "title": "Auxiliar 1",
-    "section": "Python",
-    "text": "Python"
-  },
-  {
-    "objectID": "courses/3501.1.html#pip",
-    "href": "courses/3501.1.html#pip",
-    "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#pip-1",
-    "href": "courses/3501.1.html#pip-1",
-    "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv .venv\nPara activarlo\n./.venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#conda",
-    "href": "courses/3501.1.html#conda",
-    "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
-  },
-  {
-    "objectID": "courses/3501.1.html#conda-1",
-    "href": "courses/3501.1.html#conda-1",
-    "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\nconda install -f &lt;archivo&gt;\n\n\n\n\nDudas con la instalación por correo"
-  },
-  {
-    "objectID": "courses/3501.1.html#editor",
-    "href": "courses/3501.1.html#editor",
-    "title": "Auxiliar 1",
-    "section": "Editor",
-    "text": "Editor"
-  },
-  {
-    "objectID": "courses/3501.1.html#vscode",
-    "href": "courses/3501.1.html#vscode",
-    "title": "Auxiliar 1",
-    "section": "VSCode",
-    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
-  },
-  {
-    "objectID": "courses/3501.1.html#pycharm",
-    "href": "courses/3501.1.html#pycharm",
-    "title": "Auxiliar 1",
-    "section": "PyCharm",
-    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
-  },
-  {
-    "objectID": "courses/3501.1.html#vim",
-    "href": "courses/3501.1.html#vim",
-    "title": "Auxiliar 1",
-    "section": "Vim",
-    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
-  },
-  {
-    "objectID": "courses/3501.1.html#git",
-    "href": "courses/3501.1.html#git",
-    "title": "Auxiliar 1",
-    "section": "Git",
-    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#hello-world",
-    "href": "courses/3501.1.html#hello-world",
-    "title": "Auxiliar 1",
-    "section": "Hello world!",
-    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Cursos",
     "section": "",
-    "text": "Bienvenido 😃"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "courses/4302.0.html",
-    "href": "courses/4302.0.html",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads",
+    "text": "Aquí esta el material de cursos que he dictado",
     "crumbs": [
       "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/4302.0.html#auxiliares",
-    "href": "courses/4302.0.html#auxiliares",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/3501.0.html",
-    "href": "courses/3501.0.html",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
-    "section": "",
-    "text": "Instalación de Herramientas",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
-    ]
-  },
-  {
-    "objectID": "courses/3501.0.html#auxiliares",
-    "href": "courses/3501.0.html#auxiliares",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
-    "section": "",
-    "text": "Instalación de Herramientas",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
+      "2024"
     ]
   }
 ]
