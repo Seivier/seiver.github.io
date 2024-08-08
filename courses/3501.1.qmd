@@ -14,6 +14,8 @@ format:
 # Presentación
 
 ## Su auxiliar {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width="60%"}
 ::: {.incremental}
 - Vicente González
 - Auxiliar de
@@ -25,6 +27,11 @@ format:
 - Lento para responder correos :worried:
 - Doble titulación
 - No duden en preguntar
+:::
+:::
+::: {.column width="40%"}
+![](res/Kuyen.jpg){fig-align="center"}
+:::
 :::
 
 # Herramientas
