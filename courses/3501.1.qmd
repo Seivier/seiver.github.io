@@ -1,0 +1,210 @@
+---
+title: Auxiliar 1
+subtitle: Instalación de Herramientas
+author: Vicente González
+footer: CC3501 --- Modelación y Computación Gráfica para Ingenieros
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        print-separate-fragments: true
+        transition: fade
+---
+
+# Presentación
+
+## Su auxiliar {.smaller auto-animate=true}
+::: {.incremental}
+- Vicente González
+- Auxiliar de
+    - PSS 
+    - Computación en GPU
+    - Sistemas Operativos
+    - Metodologías de Diseño y Programación
+- Siempre disponible en persona :smiley:
+- Lento para responder correos :worried:
+- Doble titulación
+- No duden en preguntar
+:::
+
+# Herramientas
+## Terminal {.smaller}
+Algunas cosas para manejarse mejor
+
+| Comando | Descripción |
+|---------|-------------|
+| `cd <ruta>` | Cambia al directorio `<ruta>` | 
+| `ls/dir` | Lista los archivos y directorios en el directorio actual | 
+| `mdkir <nombre>` | Crea un directorio nuevo llamado `<nombre>` | 
+| `mv <desde> <hacia>` | Mueve un archivo/directorio `<desde>` a una ruta `<hacia>` | 
+| `rm <nombre>`^[Pueden agregar la _flag_ `-rf` para borrar carpetas enteras] | Elimina/borra el archivo `<nombre>` | 
+
+::: {.aside}
+Pueden abusar del `Tab` para que les autocomplete y agregar `--help` para que les explique
+:::
+## Python {auto-animate=true}
+::: {.columns}
+::: {.column width="50%"}
+::: {.r-stack}
+![](res/Python.png){width="10em"}
+:::
+:::
+::: {.column width=""}
+::: {.r-stack}
+![](res/Anaconda.png){width="10em"}
+:::
+:::
+:::
+
+## PIP
+::: {.incremental}
+- Gestor de paquetes de Python
+- Viene instalado con su versión de Python
+- Paquetes como `venv` permiten gestionar ambientes
+:::
+
+::: {.aside}
+Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+:::
+## PIP
+::: {.incremental}
+- Para crear ambientes (se crea en la carpeta `.venv`)
+  ```{bash} 
+  python -m venv .venv
+  ```
+  
+- Para activarlo
+  ```{bash} 
+  ./.venv/bin/activate
+  ```
+  
+- Instalar paquetes
+  ```{bash} 
+  pip install <paquete>
+  ```
+  ```{bash} 
+  pip install -r <archivo>
+  ```
+:::
+
+::: {.aside}
+Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+:::
+## Conda 
+::: {.incremental}
+- Alternativa a PIP
+- Gestor de paquetes del sistemas
+- Incorpora ambientes
+- Recomiendo [Miniconda](https://docs.anaconda.com/miniconda/)
+:::
+
+::: {.aside}
+Dudas con la instalación por correo
+:::
+## Conda
+::: {.incremental}
+- Para crear ambientes
+  ```{bash} 
+  conda env create -n <nombre> 
+  ```
+  
+- Para activarlo
+  ```{bash} 
+  conda activate <nombre>
+  ```
+  
+- Instalar paquetes
+  ```{bash} 
+  conda install <paquete>
+  ```
+  ```{bash} 
+  conda install -f <archivo>
+  ```
+:::
+
+::: {.aside}
+Dudas con la instalación por correo
+:::
+
+## Editor
+::: {layout="[[-1], [10, -5, 10, -5, 10], [-1]]"}
+![](res/VSCode.png)
+
+![](res/PyCharm.png)
+
+![](res/Neovim.png)
+:::
+
+## VSCode
+::: {.incremental}
+- Sencillo y liviano
+- Usa extensiones
+- Microsoft :nauseated_face:
+- Gratis :money_mouth_face:
+:::
+
+::: {.fragment}
+[Descargar](https://code.visualstudio.com/)
+:::
+
+## PyCharm
+::: {.incremental}
+- Completo
+- Usa plugins
+- JetBrains :nauseated_face:
+- Gratis (Community) y de Pago^[Se puede obtener gratis con una [licencia educacional](https://www.jetbrains.com/community/education/#students)] (Professional)
+:::
+
+::: {.fragment}
+[Descargar](https://www.jetbrains.com/pycharm/)
+:::
+
+## Vim
+::: {.incremental}
+- Ultra liviano pero ultra extensible
+- Open Source
+- Lo usa el admin (yo 😎)
+- Muy difícil, no recomendado
+:::
+
+::: {.fragment}
+[Descargar](https://neovim.io/)
+:::
+
+# Repositorio
+
+## Git 
+::: {.columns}
+::: {.column width="60%"}
+::: {.incremental}
+- Para clonar repositorios
+  ```{sh} 
+  git clone <url> <nombre_carpeta>
+  ```
+
+- **NO** es necesario para el curso
+
+- [Tutorial](https://learngitbranching.js.org/)
+:::
+
+:::
+::: {.column width="40%"}
+![](res/Github.png){fig-align="center"}
+:::
+:::
+::: {.aside}
+Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+:::
+
+# How to?
+
+## Hello world!
+
+![](res/HelloWorld.png){fig-align="center" height="10em"}
+
+::: {.fragment style="text-align:center"}
+¿Cambiemos el color?
+:::
+
+# Fin
+[Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}

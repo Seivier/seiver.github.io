@@ -14,9 +14,9 @@ website:
       - section: "2024"
         href: courses/index.qmd
         contents:
-          - courses/4302.qmd
-          - courses/3002.qmd
-          - courses/3501.qmd
+          - courses/4302.0.qmd
+          - courses/3002.0.qmd
+          - courses/3501.0.qmd
 
 format:
   html:

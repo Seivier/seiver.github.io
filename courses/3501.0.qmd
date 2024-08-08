@@ -2,3 +2,4 @@
 title: Modelación y Computación Gráfica para Ingeniero
 ---
 ## Auxiliares
+1. [Instalación de Herramientas](3501.1.qmd)
