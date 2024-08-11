@@ -71,18 +71,18 @@ Pueden abusar del `Tab` para que les autocomplete y agregar `--help` para que le
 :::
 
 ::: {.aside}
-Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+Detalles de la instalación [aqui](https://github.com/ivansipiran/CC3501/blob/main/setup/espa%C3%B1ol/README.md)
 :::
 ## PIP
 ::: {.incremental}
 - Para crear ambientes (se crea en la carpeta `.venv`)
   ```{bash} 
-  python -m venv .venv
+  python -m venv venv
   ```
   
 - Para activarlo
   ```{bash} 
-  ./.venv/bin/activate
+  source ./venv/bin/activate
   ```
   
 - Instalar paquetes
@@ -95,7 +95,7 @@ Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/S
 :::
 
 ::: {.aside}
-Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+Detalles de la instalación [aqui](https://github.com/ivansipiran/CC3501/blob/main/setup/espa%C3%B1ol/README.md)
 :::
 ## Conda 
 ::: {.incremental}
@@ -123,9 +123,6 @@ Dudas con la instalación por correo
 - Instalar paquetes
   ```{bash} 
   conda install <paquete>
-  ```
-  ```{bash} 
-  conda install -f <archivo>
   ```
 :::
 
@@ -200,7 +197,7 @@ Dudas con la instalación por correo
 :::
 :::
 ::: {.aside}
-Detalles de la instalación [aqui](https://github.com/asouris/CC3501/blob/main/Setup.md)
+Detalles de la instalación [aqui](https://github.com/ivansipiran/CC3501/blob/main/setup/espa%C3%B1ol/README.md)
 :::
 
 # How to?
