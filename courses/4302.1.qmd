@@ -155,7 +155,6 @@ int pthread_create(pthread_t *thread,
     ```
 - Los `thread` no enterrados se convierte en [zombies]{style="color:red"} y no devuelven los recursos
 - La función `pthread_join` **espera** a que el `thread` termine
-
 :::
 
 ## Ejemplo {.smaller auto-animate=true}

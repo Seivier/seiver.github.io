@@ -1,0 +1,499 @@
+---
+title: Auxiliar 2
+subtitle: Sincronización de Threads
+author: 
+    - Vicente González
+    - Pablo Jaramillo
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        print-separate-fragments: true
+        transition: fade
+---
+# Threads
+*Resumen de la clase pasada*
+
+## Creación de un thread 
+```{.c} 
+int pthread_create(pthread_t *thread, 
+                   const pthread_attr_t *attr, 
+                   void *(*start_routine)(void *), 
+                   void *arg);
+```
+::: {.incremental}
+- Lanza un nuevo `thread` que ejecuta `start_routine`.
+- `start_routine` recibe `arg` como argumento.
+- El `thread` se puede crear con atributos `attr` especiales (`NULL`).
+- El "ID" del proceso se guarda en `thread`
+- Retorna 0 si la creación del proceso fue exitosa
+:::
+
+## Término de un thread 
+::: {.fragment}
+Un `thread` termina si:
+:::
+::: {.incremental}
+- Retorna `start_routine`.
+- Llamando a `pthread_exit` (no recomendado).
+
+    ```{.c} 
+    int pthread_exit(void *return_value);
+    
+    ```
+:::
+
+::: {.fragment}
+Todo `thread` cread debe ser **enterrado** con
+
+```{.c} 
+int pthread_join(pthread_t thread, void **return_value);
+```
+:::
+::: {.fragment}
+- `pthread_join` **espera** a que el `thread` termine.
+:::
+
+::: {.fragment style="color:red; font-size: 70%"}
+Los thread no enterrados se convierte en zombies y no devuelven los recursos
+:::
+
+## Ejemplo {.smaller auto-animate=true}
+```{.c code-line-numbers="|4-8|10-19"} 
+#include <stdio.h>
+#include <pthread.h>
+
+void *thread(void *ptr) {
+  char* nombre = (char*) ptr; // Castear argumento
+  printf("Thread - %s\n", nombre); // Trabajo en paralelo
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  char* nombre_1 = "primero";
+  char* nombre_2 = "segundo";
+  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1
+  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+
+```
+
+## Ejemplo (múltiples `args`) {.smaller auto-animate=true}
+```{.c code-line-numbers="4-7|10-11|17-18|19-20"} 
+#include <stdio.h>
+#include <pthread.h>
+
+typedef struct {
+  char* name;
+  int age;
+} Args;
+
+void *thread(void *ptr) {
+  Args* a = (Args*) ptr; // Castear a la estructura
+  printf("Thread - %s (%d)\n", a->name, a->age); // Accedemos a los miembros con ->
+  return NULL; // Retorno
+}
+
+int main() {
+  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados
+  Args a1 = {"primero", 10} // inicializamos los args de t1
+  Args a2 = {"segundo", 20} // inicializamos los args de t2
+  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia
+  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia
+  pthread_join(pid_1, NULL); // esperar thread 1
+  pthread_join(pid_2, NULL); // esperar thread 2
+  return 0;
+}
+```
+
+## How to? {.smaller}
+### Diseño
+
+::: {.incremental}
+1. Encontrar las partes paralelizables
+2. Crear la estructura que permita ingresar los argumentos necesarios
+3. Programar la rutina
+:::
+
+::: {.incremental}
+- A veces la rutina sólo ajusta los argumentos para llamar a otra función
+- En la estructura de los argumentos podemos guardar **cualquier** cosa
+:::
+
+::: {.aside}
+*Esto es no pretende ser una receta, sino que una guía general*
+:::
+## How to? {.smaller}
+### Lógica
+::: {.incremental}
+1. Lanzar los `threads` con sus argumentos correspondientes
+2. Si aplica, realizar trabajo en el `thread` principal
+3. Esperar a que el trabajo paralelizado termine
+4. Enterrar los resultados y recolectar los resultados
+:::
+
+::: {.incremental}
+- Antes del `join` no existe garantía de que el trabajo se haya terminado
+- Asegúrese de que exista paralelismo entre el `create` y el `join`
+:::
+
+::: {.aside}
+*Esto es no pretende ser una receta, sino que una guía general*
+:::
+## P1 --- Quicksort paralelo {.smaller}
+La siguiente función es una implementación simple de quicksort:
+```{.c} 
+#include <pthread.h>
+
+void quicksort_seq(int a[], int i, int j) {
+    if (i < j) {
+        int h = particionar(a, i, j);
+        quicksort_seq(a, i, h - 1);
+        quicksort_seq(a. h + 1, j);
+    }
+}
+```
+::: {.r-stack}
+::: {.fragment .fade-in-then-out}
+Considere `particionar` como la función que selecciona el pivote y
+reordena el arreglo.
+
+Los valores menores al pivote quedan a la izquierda y los mayores a la derecha.
+
+Se le pide paralelizar la función tal que haga uso de $N$ cores:
+
+```{.c} 
+void quicksort(int a[], int i, int j, int n);
+```
+:::
+::: {.fragment}
+### Idea
+Invocaciones secuenciales independientes son directamente paralelizables
+:::
+:::
+
+# Sincronización
+*Lo nuevo*
+
+## La nueva pesadilla
+::: {.fragment}
+Cuando se trabaja en paralelo, nacen nuevos [enemigos]{style="color:red"}.
+:::
+::: {.fragment}
+Al acceder a recursos compartidos desde varios procesos se pueden generar problemas como:
+:::
+
+::: {.incremental}
+- **Dataraces**
+
+    Variables se sobreescriben
+
+- **Race conditions**
+
+    Orden incorrecto de ejecución
+
+- **Hambruna y Deadlocks**
+
+    Un procesos no obtiene tiempo de ejecución
+:::
+
+##
+![](./res/Superman.jpeg){fig-align="center"}
+
+## La solución
+::: {.fragment}
+### Mutex
+:::
+::: {.r-stack}
+::: {.fragment .fade-in-then-out}
+MUTual EXclusión
+:::
+::: {.fragment}
+Garantiza la exclusión mutua, bloqueando el acceso a "zonas críticas",
+las cuales son zonas del código donde se manipulan los recursos compartidos.
+:::
+:::
+::: {.fragment}
+### Condiciones
+:::
+::: {.fragment}
+Hacen esperar a los procesos de manera eficiente hasta que se cumpla la condición
+para continuar la ejecución.
+:::
+# Mutex
+
+## Manejo {.smaller}
+### Inicialización
+::: {.columns}
+::: {.column width="60%"}
+Usando macros
+```{.c} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+```
+:::
+::: {.column width="40%"}
+
+Dentro de una función
+```{.c} 
+pthread_mutex_t mutex;
+// ...
+pthread_mutex_init(&mutex, NULL);
+```
+:::
+:::
+
+### Uso
+Para solicitar el mutex:
+```{.c} 
+int pthread_mutex_lock(pthread_mutex_t *mutex); 
+```
+[*La función retorna solo para el primer proceso que pida el mutex, el resto queda esperando*]{style="font-size:80%"}
+
+Para liberar el mutex:
+
+```{.c} 
+int pthread_mutex_unlock(pthread_mutex_t *mutex); 
+```
+[*Al liberar el mutex, [todos]{style="color:orange"} los procesos se despiertan a la vez, 
+[no]{style="color:orange"} esta garantizado el orden de adquisición*]{style="font-size:80%"}
+
+
+## Comportamiento
+::: {.incremental}
+- Un mutex garantiza que sólo un proceso pueda entrar a una su "zona crítica" de código.
+- Debe ser solicitado para ingresar y liberado al salir.
+- Dos estados posibles:
+
+::: {.columns .fragment}
+::: {.column width="50%"}
+#### Abierto
+[ Ningún proceso ha solicitado el mutex ]{style="font-size:80%"}
+:::
+::: {.column width="50%"}
+#### Cerrado
+[ Algún proceso ha solicitado el mutex y no ha sido liberado ]{style="font-size:80%"}
+:::
+:::
+
+- Si un proceso intenta solicitar un mutex cerrado, este será suspendido hasta que el mutex sea liberado.
+:::
+
+## Ejemplo {.center auto-animate=true}
+```{.c} 
+int contador = 0;
+void aumentar_cont() {
+  contador++;
+}
+```
+::: {.fragment}
+Mala implementación 🤢
+:::
+
+::: {.r-stack}
+::: {.fragment .fade-in-then-out}
+¿Dónde esta el error?
+:::
+
+::: {.fragment}
+Hagamos un diagrama
+:::
+:::
+
+
+## Ejemplo {.center auto-animate=true}
+```{.c} 
+pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+int contador = 0;
+void aumentar_cont() {
+  pthread_mutex_lock(&m);
+  contador++;
+  pthread_mutex_unlock(&m);
+}
+```
+::: {.fragment}
+Buena implementación 🤠
+:::
+::: {.r-stack}
+::: {.fragment}
+Repitamos el diagrama
+:::
+:::
+
+
+# Condiciones
+## Motivación
+::: {.fragment}
+Una forma de esperar podría ser:
+```{.c} 
+while (ocupado) {
+    ; // wait
+}
+```
+:::
+
+::: {.fragment}
+Esto es [mala idea]{style="color:red"} porque mantiene ocupado al *core*
+:::
+
+::: {.fragment}
+Es mejor "dormir" el proceso para desocupar el *core*
+:::
+
+## Manejo {.smaller}
+### Inicialización
+::: {.columns}
+::: {.column width="60%"}
+Usando macros
+```{.c} 
+pthread_cond_t mutex = PTHREAD_COND_INITIALIZER;
+```
+:::
+::: {.column width="40%"}
+
+Dentro de una función
+```{.c} 
+pthread_cond_t cond;
+// ...
+pthread_cond_init(&cond, NULL);
+```
+:::
+:::
+
+### Uso
+Para hacer esperar a un proceso:
+```{.c} 
+int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); 
+```
+[*Al entrar en espera, el proceso liberará el mutex*]{style="font-size:80%"}
+
+[*Al salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga*]{style="font-size:80%"}
+
+Para despertar procesos:
+
+```{.c} 
+int pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos
+int pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)
+```
+
+## Comportamiento
+::: {.incremental}
+- La espera es [eficiente]{style="color:orange"}, dejando disponible el *core*.
+- La función `wait` se hace cargo de liberar y pedir el mutex asociado.
+- La función `broadcast` despierta a todos los procesos en espera.
+- La función `signal` despierta a solo sin orden garantizado.
+- Un proceso que esperaba por una condición puede quedar en espera por un mutex.
+:::
+
+## Ejemplo {auto-animate=true}
+
+```{.c} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    while(contador < 10) {;}
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0;
+}
+```
+::: {.fragment}
+Mala implementación 🤢
+:::
+
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="6"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    while(contador < 10) {;}
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0;
+}
+```
+Busy waiting
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="4,7"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    while(contador < 10) {;}
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0;
+}
+```
+Hambruna
+
+::: {.incremental}
+- Toma el mutex y no lo libera antes de esperar
+- No es Deadlock porque el primer proceso está despierto
+:::
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="|2,8|10-12|5,13"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    if(contador == 10){
+        pthread_cond_broadcast(&cond);
+    }
+    while(contador < 10){
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0; 
+}
+```
+::: {.fragment}
+Buena implementación 🤠
+:::
+
+## P2 --- Colecta {.smaller}
+
+Se necesita crear un sistemas para juntar exactamente una cantidad $X$ de dinero:
+
+::: {.incremental}
+a. Definir el tipo de datos `Colecta`.
+b. Programar la función 
+
+    ```{.c} 
+    Colecta *nuevaColecta(double meta);
+    ```
+
+    Que crea y retorna una colecta para juntar `meta` pesos.
+c. Programar la función 
+    
+    ```{.c} 
+    double aportar(Colecta *c, double monto);
+    ```
+
+    Que es invocada desde múltiples procesos para contribuir `monto` pesos.
+    El valor de retorno de la función es el mínimo entre `monto` y lo que falta
+    para llegar a la meta. 
+
+    **La función retornar una vez que la meta se cumpla**
+:::
+
+# Fin
+*[Ver otras auxiliares](4302.0.qmd)*

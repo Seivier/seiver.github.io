@@ -5,3 +5,4 @@ title: Sistemas operativos
 
 ## Auxiliares
 1. [Introducción a Pthreads](4302.1.html)
+2. [Sincronización de Threads](4302.2.html)

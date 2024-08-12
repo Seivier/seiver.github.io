@@ -1,0 +1,12 @@
+{
+  "hash": "e0d181faf2eb52e033eea9e0be744094",
+  "result": {
+    "engine": "jupyter",
+    "markdown": "---\ntitle: Auxiliar 2\nsubtitle: Sincronización de Threads\nauthor: \n    - Vicente González\n    - Pablo Jaramillo\nfooter: CC4302 --- Sistemas Operativos\nfrom: markdown+emoji\nformat:\n    revealjs:\n        theme: night\n        print-separate-fragments: true\n        transition: fade\n---\n\n# Threads\n## Creación de un thread {.smaller}\n\n```{c} \nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n```\n\n\n- Retorna 0 si la **creación** fue exitosa\n- El `thread` termina cuando `start_routine` termina\n- Todo `thread` creado debe ser enterrado con\n\n    ```{.c} \n    int pthread_join(pthread_t thread, void **return_value);\n    ```\n- Los `thread` no enterrados se convierte en [zombies]{style=\"color:red\"} y no devuelven los recursos\n- La función `pthread_join` **espera** a que el `thread` termine\n\n## Término de un thread {.smaller}\n## P1 --- Quicksort paralelo\n# Sincronización\n# Fin\n[Ver otras auxiliares](4302.0.qmd){style=\"font-size:60%\"}\n\n",
+    "supporting": [
+      "4302.2_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
