@@ -199,7 +199,7 @@ Al acceder a recursos compartidos desde varios procesos se pueden generar proble
 
 - **Hambruna y Deadlocks**
 
-    Un procesos no obtiene tiempo de ejecución
+    Un proceso no obtiene tiempo de ejecución
 :::
 
 ##
@@ -404,7 +404,7 @@ int pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)
 - La espera es [eficiente]{style="color:orange"}, dejando disponible el *core*.
 - La función `wait` se hace cargo de liberar y pedir el mutex asociado.
 - La función `broadcast` despierta a todos los procesos en espera.
-- La función `signal` despierta a solo sin orden garantizado.
+- La función `signal` despierta a un solo proceso sin orden garantizado.
 - Un proceso que esperaba por una condición puede quedar en espera por un mutex.
 :::
 
