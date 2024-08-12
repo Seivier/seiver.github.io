@@ -325,7 +325,7 @@
     "href": "courses/4302.2.html#la-nueva-pesadilla",
     "title": "Auxiliar 2",
     "section": "La nueva pesadilla",
-    "text": "La nueva pesadilla\n\nCuando se trabaja en paralelo, nacen nuevos enemigos.\n\n\nAl acceder a recursos compartidos desde varios procesos se pueden generar problemas como:\n\n\n\nDataraces\nVariables se sobreescriben\nRace conditions\nOrden incorrecto de ejecución\nHambruna y Deadlocks\nUn procesos no obtiene tiempo de ejecución"
+    "text": "La nueva pesadilla\n\nCuando se trabaja en paralelo, nacen nuevos enemigos.\n\n\nAl acceder a recursos compartidos desde varios procesos se pueden generar problemas como:\n\n\n\nDataraces\nVariables se sobreescriben\nRace conditions\nOrden incorrecto de ejecución\nHambruna y Deadlocks\nUn proceso no obtiene tiempo de ejecución"
   },
   {
     "objectID": "courses/4302.2.html#la-solución",
@@ -381,7 +381,7 @@
     "href": "courses/4302.2.html#comportamiento-1",
     "title": "Auxiliar 2",
     "section": "Comportamiento",
-    "text": "Comportamiento\n\n\nLa espera es eficiente, dejando disponible el core.\nLa función wait se hace cargo de liberar y pedir el mutex asociado.\nLa función broadcast despierta a todos los procesos en espera.\nLa función signal despierta a solo sin orden garantizado.\nUn proceso que esperaba por una condición puede quedar en espera por un mutex."
+    "text": "Comportamiento\n\n\nLa espera es eficiente, dejando disponible el core.\nLa función wait se hace cargo de liberar y pedir el mutex asociado.\nLa función broadcast despierta a todos los procesos en espera.\nLa función signal despierta a un solo proceso sin orden garantizado.\nUn proceso que esperaba por una condición puede quedar en espera por un mutex."
   },
   {
     "objectID": "courses/4302.2.html#ejemplo-3",

@@ -591,7 +591,7 @@ Pablo Jaramillo
 <li class="fragment"><p><strong>Race conditions</strong></p>
 <p>Orden incorrecto de ejecución</p></li>
 <li class="fragment"><p><strong>Hambruna y Deadlocks</strong></p>
-<p>Un procesos no obtiene tiempo de ejecución</p></li>
+<p>Un proceso no obtiene tiempo de ejecución</p></li>
 </ul>
 </div>
 </section>
@@ -777,7 +777,7 @@ Pablo Jaramillo
 <li class="fragment">La espera es <span style="color:orange">eficiente</span>, dejando disponible el <em>core</em>.</li>
 <li class="fragment">La función <code>wait</code> se hace cargo de liberar y pedir el mutex asociado.</li>
 <li class="fragment">La función <code>broadcast</code> despierta a todos los procesos en espera.</li>
-<li class="fragment">La función <code>signal</code> despierta a solo sin orden garantizado.</li>
+<li class="fragment">La función <code>signal</code> despierta a un solo proceso sin orden garantizado.</li>
 <li class="fragment">Un proceso que esperaba por una condición puede quedar en espera por un mutex.</li>
 </ul>
 </div>
