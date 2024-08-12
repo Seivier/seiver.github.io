@@ -24,135 +24,6 @@
     ]
   },
   {
-    "objectID": "courses/4302.0.html",
-    "href": "courses/4302.0.html",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/4302.0.html#auxiliares",
-    "href": "courses/4302.0.html#auxiliares",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "courses/3501.1.html#su-auxiliar",
-    "href": "courses/3501.1.html#su-auxiliar",
-    "title": "Auxiliar 1",
-    "section": "Su auxiliar",
-    "text": "Su auxiliar\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
-  },
-  {
-    "objectID": "courses/3501.1.html#terminal",
-    "href": "courses/3501.1.html#terminal",
-    "title": "Auxiliar 1",
-    "section": "Terminal",
-    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
-  },
-  {
-    "objectID": "courses/3501.1.html#python",
-    "href": "courses/3501.1.html#python",
-    "title": "Auxiliar 1",
-    "section": "Python",
-    "text": "Python"
-  },
-  {
-    "objectID": "courses/3501.1.html#pip",
-    "href": "courses/3501.1.html#pip",
-    "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#pip-1",
-    "href": "courses/3501.1.html#pip-1",
-    "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv .venv\nPara activarlo\n./.venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#conda",
-    "href": "courses/3501.1.html#conda",
-    "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
-  },
-  {
-    "objectID": "courses/3501.1.html#conda-1",
-    "href": "courses/3501.1.html#conda-1",
-    "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\nconda install -f &lt;archivo&gt;\n\n\n\n\nDudas con la instalación por correo"
-  },
-  {
-    "objectID": "courses/3501.1.html#editor",
-    "href": "courses/3501.1.html#editor",
-    "title": "Auxiliar 1",
-    "section": "Editor",
-    "text": "Editor"
-  },
-  {
-    "objectID": "courses/3501.1.html#vscode",
-    "href": "courses/3501.1.html#vscode",
-    "title": "Auxiliar 1",
-    "section": "VSCode",
-    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
-  },
-  {
-    "objectID": "courses/3501.1.html#pycharm",
-    "href": "courses/3501.1.html#pycharm",
-    "title": "Auxiliar 1",
-    "section": "PyCharm",
-    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
-  },
-  {
-    "objectID": "courses/3501.1.html#vim",
-    "href": "courses/3501.1.html#vim",
-    "title": "Auxiliar 1",
-    "section": "Vim",
-    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
-  },
-  {
-    "objectID": "courses/3501.1.html#git",
-    "href": "courses/3501.1.html#git",
-    "title": "Auxiliar 1",
-    "section": "Git",
-    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
-  },
-  {
-    "objectID": "courses/3501.1.html#hello-world",
-    "href": "courses/3501.1.html#hello-world",
-    "title": "Auxiliar 1",
-    "section": "Hello world!",
-    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
-  },
-  {
     "objectID": "courses/4302.1.html#su-auxiliar",
     "href": "courses/4302.1.html#su-auxiliar",
     "title": "Auxiliar 1",
@@ -270,6 +141,282 @@
     "title": "Auxiliar 1",
     "section": "P1 — Buscar Factor",
     "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
+  },
+  {
+    "objectID": "courses/3501.1.html#su-auxiliar",
+    "href": "courses/3501.1.html#su-auxiliar",
+    "title": "Auxiliar 1",
+    "section": "Su auxiliar",
+    "text": "Su auxiliar\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
+  },
+  {
+    "objectID": "courses/3501.1.html#terminal",
+    "href": "courses/3501.1.html#terminal",
+    "title": "Auxiliar 1",
+    "section": "Terminal",
+    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
+  },
+  {
+    "objectID": "courses/3501.1.html#python",
+    "href": "courses/3501.1.html#python",
+    "title": "Auxiliar 1",
+    "section": "Python",
+    "text": "Python"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip",
+    "href": "courses/3501.1.html#pip",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip-1",
+    "href": "courses/3501.1.html#pip-1",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv venv\nPara activarlo\nsource ./venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda",
+    "href": "courses/3501.1.html#conda",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda-1",
+    "href": "courses/3501.1.html#conda-1",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#editor",
+    "href": "courses/3501.1.html#editor",
+    "title": "Auxiliar 1",
+    "section": "Editor",
+    "text": "Editor"
+  },
+  {
+    "objectID": "courses/3501.1.html#vscode",
+    "href": "courses/3501.1.html#vscode",
+    "title": "Auxiliar 1",
+    "section": "VSCode",
+    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#pycharm",
+    "href": "courses/3501.1.html#pycharm",
+    "title": "Auxiliar 1",
+    "section": "PyCharm",
+    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
+  },
+  {
+    "objectID": "courses/3501.1.html#vim",
+    "href": "courses/3501.1.html#vim",
+    "title": "Auxiliar 1",
+    "section": "Vim",
+    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#git",
+    "href": "courses/3501.1.html#git",
+    "title": "Auxiliar 1",
+    "section": "Git",
+    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#hello-world",
+    "href": "courses/3501.1.html#hello-world",
+    "title": "Auxiliar 1",
+    "section": "Hello world!",
+    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
+  },
+  {
+    "objectID": "courses/4302.0.html",
+    "href": "courses/4302.0.html",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html#auxiliares",
+    "href": "courses/4302.0.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.2.html#creación-de-un-thread",
+    "href": "courses/4302.2.html#creación-de-un-thread",
+    "title": "Auxiliar 2",
+    "section": "Creación de un thread",
+    "text": "Creación de un thread\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nLanza un nuevo thread que ejecuta start_routine.\nstart_routine recibe arg como argumento.\nEl thread se puede crear con atributos attr especiales (NULL).\nEl “ID” del proceso se guarda en thread\nRetorna 0 si la creación del proceso fue exitosa"
+  },
+  {
+    "objectID": "courses/4302.2.html#término-de-un-thread",
+    "href": "courses/4302.2.html#término-de-un-thread",
+    "title": "Auxiliar 2",
+    "section": "Término de un thread",
+    "text": "Término de un thread\n\nUn thread termina si:\n\n\n\nRetorna start_routine.\nLlamando a pthread_exit (no recomendado).\nint pthread_exit(void *return_value);\n\n\n\nTodo thread cread debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\n\n\n\npthread_join espera a que el thread termine.\n\n\n\nLos thread no enterrados se convierte en zombies y no devuelven los recursos"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo",
+    "href": "courses/4302.2.html#ejemplo",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-múltiples-args",
+    "href": "courses/4302.2.html#ejemplo-múltiples-args",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo (múltiples args)",
+    "text": "Ejemplo (múltiples args)\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.2.html#how-to",
+    "href": "courses/4302.2.html#how-to",
+    "title": "Auxiliar 2",
+    "section": "How to?",
+    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.2.html#how-to-1",
+    "href": "courses/4302.2.html#how-to-1",
+    "title": "Auxiliar 2",
+    "section": "How to?",
+    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.2.html#p1-quicksort-paralelo",
+    "href": "courses/4302.2.html#p1-quicksort-paralelo",
+    "title": "Auxiliar 2",
+    "section": "P1 — Quicksort paralelo",
+    "text": "P1 — Quicksort paralelo\nLa siguiente función es una implementación simple de quicksort:\n#include &lt;pthread.h&gt;\n\nvoid quicksort_seq(int a[], int i, int j) {\n    if (i &lt; j) {\n        int h = particionar(a, i, j);\n        quicksort_seq(a, i, h - 1);\n        quicksort_seq(a. h + 1, j);\n    }\n}\n\n\nConsidere particionar como la función que selecciona el pivote y reordena el arreglo.\nLos valores menores al pivote quedan a la izquierda y los mayores a la derecha.\nSe le pide paralelizar la función tal que haga uso de \\(N\\) cores:\nvoid quicksort(int a[], int i, int j, int n);\n\n\n\nIdea\nInvocaciones secuenciales independientes son directamente paralelizables"
+  },
+  {
+    "objectID": "courses/4302.2.html#la-nueva-pesadilla",
+    "href": "courses/4302.2.html#la-nueva-pesadilla",
+    "title": "Auxiliar 2",
+    "section": "La nueva pesadilla",
+    "text": "La nueva pesadilla\n\nCuando se trabaja en paralelo, nacen nuevos enemigos.\n\n\nAl acceder a recursos compartidos desde varios procesos se pueden generar problemas como:\n\n\n\nDataraces\nVariables se sobreescriben\nRace conditions\nOrden incorrecto de ejecución\nHambruna y Deadlocks\nUn procesos no obtiene tiempo de ejecución"
+  },
+  {
+    "objectID": "courses/4302.2.html#la-solución",
+    "href": "courses/4302.2.html#la-solución",
+    "title": "Auxiliar 2",
+    "section": "La solución",
+    "text": "La solución\n\n\nMutex\n\n\n\nMUTual EXclusión\n\n\nGarantiza la exclusión mutua, bloqueando el acceso a “zonas críticas”, las cuales son zonas del código donde se manipulan los recursos compartidos.\n\n\n\n\nCondiciones\n\n\nHacen esperar a los procesos de manera eficiente hasta que se cumpla la condición para continuar la ejecución."
+  },
+  {
+    "objectID": "courses/4302.2.html#manejo",
+    "href": "courses/4302.2.html#manejo",
+    "title": "Auxiliar 2",
+    "section": "Manejo",
+    "text": "Manejo\nInicialización\n\n\nUsando macros\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\n\nDentro de una función\npthread_mutex_t mutex;\n// ...\npthread_mutex_init(&mutex, NULL);\n\nUso\nPara solicitar el mutex:\nint pthread_mutex_lock(pthread_mutex_t *mutex); \nLa función retorna solo para el primer proceso que pida el mutex, el resto queda esperando\nPara liberar el mutex:\nint pthread_mutex_unlock(pthread_mutex_t *mutex); \nAl liberar el mutex, todos los procesos se despiertan a la vez, no esta garantizado el orden de adquisición"
+  },
+  {
+    "objectID": "courses/4302.2.html#comportamiento",
+    "href": "courses/4302.2.html#comportamiento",
+    "title": "Auxiliar 2",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\n\nUn mutex garantiza que sólo un proceso pueda entrar a una su “zona crítica” de código.\nDebe ser solicitado para ingresar y liberado al salir.\nDos estados posibles:\n\n\n\nAbierto\nNingún proceso ha solicitado el mutex\n\nCerrado\nAlgún proceso ha solicitado el mutex y no ha sido liberado\n\n\nSi un proceso intenta solicitar un mutex cerrado, este será suspendido hasta que el mutex sea liberado."
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-1",
+    "href": "courses/4302.2.html#ejemplo-1",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nint contador = 0;\nvoid aumentar_cont() {\n  contador++;\n}\n\nMala implementación 🤢\n\n\n\n¿Dónde esta el error?\n\n\nHagamos un diagrama"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-2",
+    "href": "courses/4302.2.html#ejemplo-2",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nvoid aumentar_cont() {\n  pthread_mutex_lock(&m);\n  contador++;\n  pthread_mutex_unlock(&m);\n}\n\nBuena implementación 🤠\n\n\n\nRepitamos el diagrama"
+  },
+  {
+    "objectID": "courses/4302.2.html#motivación",
+    "href": "courses/4302.2.html#motivación",
+    "title": "Auxiliar 2",
+    "section": "Motivación",
+    "text": "Motivación\n\nUna forma de esperar podría ser:\nwhile (ocupado) {\n    ; // wait\n}\n\n\nEsto es mala idea porque mantiene ocupado al core\n\n\nEs mejor “dormir” el proceso para desocupar el core"
+  },
+  {
+    "objectID": "courses/4302.2.html#manejo-1",
+    "href": "courses/4302.2.html#manejo-1",
+    "title": "Auxiliar 2",
+    "section": "Manejo",
+    "text": "Manejo\nInicialización\n\n\nUsando macros\npthread_cond_t mutex = PTHREAD_COND_INITIALIZER;\n\nDentro de una función\npthread_cond_t cond;\n// ...\npthread_cond_init(&cond, NULL);\n\nUso\nPara hacer esperar a un proceso:\nint pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); \nAl entrar en espera, el proceso liberará el mutex\nAl salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga\nPara despertar procesos:\nint pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos\nint pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)"
+  },
+  {
+    "objectID": "courses/4302.2.html#comportamiento-1",
+    "href": "courses/4302.2.html#comportamiento-1",
+    "title": "Auxiliar 2",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\n\nLa espera es eficiente, dejando disponible el core.\nLa función wait se hace cargo de liberar y pedir el mutex asociado.\nLa función broadcast despierta a todos los procesos en espera.\nLa función signal despierta a solo sin orden garantizado.\nUn proceso que esperaba por una condición puede quedar en espera por un mutex."
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-3",
+    "href": "courses/4302.2.html#ejemplo-3",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\n\nMala implementación 🤢"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-4",
+    "href": "courses/4302.2.html#ejemplo-4",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nBusy waiting"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-5",
+    "href": "courses/4302.2.html#ejemplo-5",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nHambruna\n\n\nToma el mutex y no lo libera antes de esperar\nNo es Deadlock porque el primer proceso está despierto"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-6",
+    "href": "courses/4302.2.html#ejemplo-6",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\n\nBuena implementación 🤠"
+  },
+  {
+    "objectID": "courses/4302.2.html#p2-colecta",
+    "href": "courses/4302.2.html#p2-colecta",
+    "title": "Auxiliar 2",
+    "section": "P2 — Colecta",
+    "text": "P2 — Colecta\nSe necesita crear un sistemas para juntar exactamente una cantidad \\(X\\) de dinero:\n\n\nDefinir el tipo de datos Colecta.\nProgramar la función\nColecta *nuevaColecta(double meta);\nQue crea y retorna una colecta para juntar meta pesos.\nProgramar la función\ndouble aportar(Colecta *c, double monto);\nQue es invocada desde múltiples procesos para contribuir monto pesos. El valor de retorno de la función es el mínimo entre monto y lo que falta para llegar a la meta.\nLa función retornar una vez que la meta se cumpla"
   },
   {
     "objectID": "courses/index.html",
