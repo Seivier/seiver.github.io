@@ -339,7 +339,7 @@
     "href": "courses/4302.2.html#manejo",
     "title": "Auxiliar 2",
     "section": "Manejo",
-    "text": "Manejo\nInicialización\n\n\nUsando macros\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\n\nDentro de una función\npthread_mutex_t mutex;\n// ...\npthread_mutex_init(&mutex, NULL);\n\nUso\nPara solicitar el mutex:\nint pthread_mutex_lock(pthread_mutex_t *mutex); \nLa función retorna solo para el primer proceso que pida el mutex, el resto queda esperando\nPara liberar el mutex:\nint pthread_mutex_unlock(pthread_mutex_t *mutex); \nAl liberar el mutex, todos los procesos se despiertan a la vez, no esta garantizado el orden de adquisición"
+    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\n\nDentro de una función\npthread_mutex_t mutex;\n// ...\npthread_mutex_init(&mutex, NULL);\n\n\n\n\nUso\n\n\nPara solicitar el mutex:\nint pthread_mutex_lock(pthread_mutex_t *mutex); \nLa función retorna solo para el primer proceso que pida el mutex, el resto queda esperando\n\n\nPara liberar el mutex:\nint pthread_mutex_unlock(pthread_mutex_t *mutex); \nAl liberar el mutex, todos los procesos se despiertan a la vez, no esta garantizado el orden de adquisición"
   },
   {
     "objectID": "courses/4302.2.html#comportamiento",
@@ -374,7 +374,7 @@
     "href": "courses/4302.2.html#manejo-1",
     "title": "Auxiliar 2",
     "section": "Manejo",
-    "text": "Manejo\nInicialización\n\n\nUsando macros\npthread_cond_t mutex = PTHREAD_COND_INITIALIZER;\n\nDentro de una función\npthread_cond_t cond;\n// ...\npthread_cond_init(&cond, NULL);\n\nUso\nPara hacer esperar a un proceso:\nint pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); \nAl entrar en espera, el proceso liberará el mutex\nAl salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga\nPara despertar procesos:\nint pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos\nint pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)"
+    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_cond_t mutex = PTHREAD_COND_INITIALIZER;\n\nDentro de una función\npthread_cond_t cond;\n// ...\npthread_cond_init(&cond, NULL);\n\n\n\n\nUso\n\n\nPara hacer esperar a un proceso:\nint pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); \nAl entrar en espera, el proceso liberará el mutex\nAl salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga\n\n\nPara despertar procesos:\nint pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos\nint pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)"
   },
   {
     "objectID": "courses/4302.2.html#comportamiento-1",
@@ -409,7 +409,35 @@
     "href": "courses/4302.2.html#ejemplo-6",
     "title": "Auxiliar 2",
     "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\n\nBuena implementación 🤠"
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-7",
+    "href": "courses/4302.2.html#ejemplo-7",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nCondiciones añadidas"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-8",
+    "href": "courses/4302.2.html#ejemplo-8",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nEspera eficiente"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-9",
+    "href": "courses/4302.2.html#ejemplo-9",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nZona crítica respetada"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-10",
+    "href": "courses/4302.2.html#ejemplo-10",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nBuena implementación 🤠"
   },
   {
     "objectID": "courses/4302.2.html#p2-colecta",

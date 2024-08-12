@@ -628,7 +628,11 @@ Pablo Jaramillo
 </section>
 <section id="manejo" class="slide level2 smaller">
 <h2>Manejo</h2>
+<div class="fragment">
+<!-- -->
 <h3 id="inicialización">Inicialización</h3>
+</div>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>Usando macros</p>
@@ -639,13 +643,21 @@ Pablo Jaramillo
 <span id="cb9-2"><a></a><span class="co">// ...</span></span>
 <span id="cb9-3"><a></a>pthread_mutex_init<span class="op">(&amp;</span>mutex<span class="op">,</span> NULL<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+</div>
+<div class="fragment">
+<!-- -->
 <h3 id="uso">Uso</h3>
+</div>
+<div class="fragment">
 <p>Para solicitar el mutex:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb10-1"><a></a><span class="dt">int</span> pthread_mutex_lock<span class="op">(</span>pthread_mutex_t <span class="op">*</span>mutex<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><span style="font-size:80%"><em>La función retorna solo para el primer proceso que pida el mutex, el resto queda esperando</em></span></p>
+</div>
+<div class="fragment">
 <p>Para liberar el mutex:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb11-1"><a></a><span class="dt">int</span> pthread_mutex_unlock<span class="op">(</span>pthread_mutex_t <span class="op">*</span>mutex<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><span style="font-size:80%"><em>Al liberar el mutex, <span style="color:orange">todos</span> los procesos se despiertan a la vez, <span style="color:orange">no</span> esta garantizado el orden de adquisición</em></span></p>
+</div>
 </section>
 <section id="comportamiento" class="slide level2">
 <h2>Comportamiento</h2>
@@ -726,7 +738,11 @@ Pablo Jaramillo
 </section>
 <section id="manejo-1" class="slide level2 smaller">
 <h2>Manejo</h2>
+<div class="fragment">
+<!-- -->
 <h3 id="inicialización-1">Inicialización</h3>
+</div>
+<div class="fragment">
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>Usando macros</p>
@@ -737,14 +753,22 @@ Pablo Jaramillo
 <span id="cb16-2"><a></a><span class="co">// ...</span></span>
 <span id="cb16-3"><a></a>pthread_cond_init<span class="op">(&amp;</span>cond<span class="op">,</span> NULL<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
+</div>
+<div class="fragment">
+<!-- -->
 <h3 id="uso-1">Uso</h3>
+</div>
+<div class="fragment">
 <p>Para hacer esperar a un proceso:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb17-1"><a></a><span class="dt">int</span> pthread_cond_wait<span class="op">(</span>pthread_cond_t <span class="op">*</span>cond<span class="op">,</span> pthread_mutex_t <span class="op">*</span>mutex<span class="op">);</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><span style="font-size:80%"><em>Al entrar en espera, el proceso liberará el mutex</em></span></p>
 <p><span style="font-size:80%"><em>Al salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga</em></span></p>
+</div>
+<div class="fragment">
 <p>Para despertar procesos:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb18-1"><a></a><span class="dt">int</span> pthread_cond_broadcast<span class="op">(</span>pthread_cond_t <span class="op">*</span>cond<span class="op">);</span> <span class="co">// despertar a todos</span></span>
 <span id="cb18-2"><a></a><span class="dt">int</span> pthread_cond_signal<span class="op">(</span>pthread_cond_t <span class="op">*</span>cond<span class="op">);</span> <span class="co">// despertar uno (cualquiera)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="comportamiento-1" class="slide level2">
 <h2>Comportamiento</h2>
@@ -810,7 +834,7 @@ Pablo Jaramillo
 </section>
 <section id="ejemplo-6" class="slide level2" data-auto-animate="true">
 <h2 data-id="quarto-animate-title">Ejemplo</h2>
-<div class="sourceCode" id="cb22" data-code-line-numbers="|2,8|10-12|5,13"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb22-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb22-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
 <span id="cb22-2" class="hljs-ln-code"><a></a>pthread_cond_t cond <span class="op">=</span> PTHREAD_COND_INITIALIZER<span class="op">;</span></span>
 <span id="cb22-3" class="hljs-ln-code"><a></a><span class="dt">int</span> contador <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
 <span id="cb22-4" class="hljs-ln-code"><a></a><span class="dt">int</span> aumentar_contador_y_esperar_10<span class="op">(){</span></span>
@@ -826,9 +850,86 @@ Pablo Jaramillo
 <span id="cb22-14" class="hljs-ln-code"><a></a>    printf<span class="op">(</span><span class="st">"Contador llegó a 10"</span><span class="op">);</span></span>
 <span id="cb22-15" class="hljs-ln-code"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
 <span id="cb22-16" class="hljs-ln-code"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="fragment">
+</section>
+<section id="ejemplo-7" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Ejemplo</h2>
+<div class="sourceCode" id="cb23" data-code-line-numbers="2,8"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb23-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
+<span id="cb23-2" class="hljs-ln-code"><a></a>pthread_cond_t cond <span class="op">=</span> PTHREAD_COND_INITIALIZER<span class="op">;</span></span>
+<span id="cb23-3" class="hljs-ln-code"><a></a><span class="dt">int</span> contador <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb23-4" class="hljs-ln-code"><a></a><span class="dt">int</span> aumentar_contador_y_esperar_10<span class="op">(){</span></span>
+<span id="cb23-5" class="hljs-ln-code"><a></a>    pthread_mutex_lock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb23-6" class="hljs-ln-code"><a></a>    contador<span class="op">++;</span></span>
+<span id="cb23-7" class="hljs-ln-code"><a></a>    <span class="cf">if</span><span class="op">(</span>contador <span class="op">==</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb23-8" class="hljs-ln-code"><a></a>        pthread_cond_broadcast<span class="op">(&amp;</span>cond<span class="op">);</span></span>
+<span id="cb23-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb23-10" class="hljs-ln-code"><a></a>    <span class="cf">while</span><span class="op">(</span>contador <span class="op">&lt;</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb23-11" class="hljs-ln-code"><a></a>        pthread_cond_wait<span class="op">(&amp;</span>cond<span class="op">,</span> <span class="op">&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb23-12" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb23-13" class="hljs-ln-code"><a></a>    pthread_mutex_unlock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb23-14" class="hljs-ln-code"><a></a>    printf<span class="op">(</span><span class="st">"Contador llegó a 10"</span><span class="op">);</span></span>
+<span id="cb23-15" class="hljs-ln-code"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb23-16" class="hljs-ln-code"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Condiciones añadidas</p>
+</section>
+<section id="ejemplo-8" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Ejemplo</h2>
+<div class="sourceCode" id="cb24" data-code-line-numbers="10-12"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb24-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
+<span id="cb24-2" class="hljs-ln-code"><a></a>pthread_cond_t cond <span class="op">=</span> PTHREAD_COND_INITIALIZER<span class="op">;</span></span>
+<span id="cb24-3" class="hljs-ln-code"><a></a><span class="dt">int</span> contador <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb24-4" class="hljs-ln-code"><a></a><span class="dt">int</span> aumentar_contador_y_esperar_10<span class="op">(){</span></span>
+<span id="cb24-5" class="hljs-ln-code"><a></a>    pthread_mutex_lock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb24-6" class="hljs-ln-code"><a></a>    contador<span class="op">++;</span></span>
+<span id="cb24-7" class="hljs-ln-code"><a></a>    <span class="cf">if</span><span class="op">(</span>contador <span class="op">==</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb24-8" class="hljs-ln-code"><a></a>        pthread_cond_broadcast<span class="op">(&amp;</span>cond<span class="op">);</span></span>
+<span id="cb24-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb24-10" class="hljs-ln-code"><a></a>    <span class="cf">while</span><span class="op">(</span>contador <span class="op">&lt;</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb24-11" class="hljs-ln-code"><a></a>        pthread_cond_wait<span class="op">(&amp;</span>cond<span class="op">,</span> <span class="op">&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb24-12" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb24-13" class="hljs-ln-code"><a></a>    pthread_mutex_unlock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb24-14" class="hljs-ln-code"><a></a>    printf<span class="op">(</span><span class="st">"Contador llegó a 10"</span><span class="op">);</span></span>
+<span id="cb24-15" class="hljs-ln-code"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb24-16" class="hljs-ln-code"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Espera eficiente</p>
+</section>
+<section id="ejemplo-9" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Ejemplo</h2>
+<div class="sourceCode" id="cb25" data-code-line-numbers="5,13"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb25-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
+<span id="cb25-2" class="hljs-ln-code"><a></a>pthread_cond_t cond <span class="op">=</span> PTHREAD_COND_INITIALIZER<span class="op">;</span></span>
+<span id="cb25-3" class="hljs-ln-code"><a></a><span class="dt">int</span> contador <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb25-4" class="hljs-ln-code"><a></a><span class="dt">int</span> aumentar_contador_y_esperar_10<span class="op">(){</span></span>
+<span id="cb25-5" class="hljs-ln-code"><a></a>    pthread_mutex_lock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb25-6" class="hljs-ln-code"><a></a>    contador<span class="op">++;</span></span>
+<span id="cb25-7" class="hljs-ln-code"><a></a>    <span class="cf">if</span><span class="op">(</span>contador <span class="op">==</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb25-8" class="hljs-ln-code"><a></a>        pthread_cond_broadcast<span class="op">(&amp;</span>cond<span class="op">);</span></span>
+<span id="cb25-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb25-10" class="hljs-ln-code"><a></a>    <span class="cf">while</span><span class="op">(</span>contador <span class="op">&lt;</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb25-11" class="hljs-ln-code"><a></a>        pthread_cond_wait<span class="op">(&amp;</span>cond<span class="op">,</span> <span class="op">&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb25-12" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb25-13" class="hljs-ln-code"><a></a>    pthread_mutex_unlock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb25-14" class="hljs-ln-code"><a></a>    printf<span class="op">(</span><span class="st">"Contador llegó a 10"</span><span class="op">);</span></span>
+<span id="cb25-15" class="hljs-ln-code"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb25-16" class="hljs-ln-code"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Zona crítica respetada</p>
+</section>
+<section id="ejemplo-10" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Ejemplo</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode numberSource c number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode c hljs"><span id="cb26-1" class="hljs-ln-code"><a></a>pthread_mutex_t mutex <span class="op">=</span> PTHREAD_MUTEX_INITIALIZER<span class="op">;</span></span>
+<span id="cb26-2" class="hljs-ln-code"><a></a>pthread_cond_t cond <span class="op">=</span> PTHREAD_COND_INITIALIZER<span class="op">;</span></span>
+<span id="cb26-3" class="hljs-ln-code"><a></a><span class="dt">int</span> contador <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb26-4" class="hljs-ln-code"><a></a><span class="dt">int</span> aumentar_contador_y_esperar_10<span class="op">(){</span></span>
+<span id="cb26-5" class="hljs-ln-code"><a></a>    pthread_mutex_lock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb26-6" class="hljs-ln-code"><a></a>    contador<span class="op">++;</span></span>
+<span id="cb26-7" class="hljs-ln-code"><a></a>    <span class="cf">if</span><span class="op">(</span>contador <span class="op">==</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb26-8" class="hljs-ln-code"><a></a>        pthread_cond_broadcast<span class="op">(&amp;</span>cond<span class="op">);</span></span>
+<span id="cb26-9" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb26-10" class="hljs-ln-code"><a></a>    <span class="cf">while</span><span class="op">(</span>contador <span class="op">&lt;</span> <span class="dv">10</span><span class="op">){</span></span>
+<span id="cb26-11" class="hljs-ln-code"><a></a>        pthread_cond_wait<span class="op">(&amp;</span>cond<span class="op">,</span> <span class="op">&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb26-12" class="hljs-ln-code"><a></a>    <span class="op">}</span></span>
+<span id="cb26-13" class="hljs-ln-code"><a></a>    pthread_mutex_unlock<span class="op">(&amp;</span>mutex<span class="op">);</span></span>
+<span id="cb26-14" class="hljs-ln-code"><a></a>    printf<span class="op">(</span><span class="st">"Contador llegó a 10"</span><span class="op">);</span></span>
+<span id="cb26-15" class="hljs-ln-code"><a></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span> </span>
+<span id="cb26-16" class="hljs-ln-code"><a></a><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Buena implementación 🤠</p>
-</div>
 </section>
 <section id="p2-colecta" class="slide level2 smaller">
 <h2>P2 — Colecta</h2>
@@ -837,10 +938,10 @@ Pablo Jaramillo
 <ol type="a">
 <li class="fragment"><p>Definir el tipo de datos <code>Colecta</code>.</p></li>
 <li class="fragment"><p>Programar la función</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb23-1"><a></a>Colecta <span class="op">*</span>nuevaColecta<span class="op">(</span><span class="dt">double</span> meta<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb27-1"><a></a>Colecta <span class="op">*</span>nuevaColecta<span class="op">(</span><span class="dt">double</span> meta<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Que crea y retorna una colecta para juntar <code>meta</code> pesos.</p></li>
 <li class="fragment"><p>Programar la función</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb24-1"><a></a><span class="dt">double</span> aportar<span class="op">(</span>Colecta <span class="op">*</span>c<span class="op">,</span> <span class="dt">double</span> monto<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb28-1"><a></a><span class="dt">double</span> aportar<span class="op">(</span>Colecta <span class="op">*</span>c<span class="op">,</span> <span class="dt">double</span> monto<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Que es invocada desde múltiples procesos para contribuir <code>monto</code> pesos. El valor de retorno de la función es el mínimo entre <code>monto</code> y lo que falta para llegar a la meta.</p>
 <p><strong>La función retornar una vez que la meta se cumpla</strong></p></li>
 </ol>
