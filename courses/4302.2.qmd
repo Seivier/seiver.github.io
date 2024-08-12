@@ -228,7 +228,10 @@ para continuar la ejecución.
 # Mutex
 
 ## Manejo {.smaller}
+::: {.fragment}
 ### Inicialización
+:::
+::: {.fragment}
 ::: {.columns}
 ::: {.column width="60%"}
 Usando macros
@@ -246,14 +249,20 @@ pthread_mutex_init(&mutex, NULL);
 ```
 :::
 :::
+:::
 
+::: {.fragment}
 ### Uso
+:::
+::: {.fragment}
 Para solicitar el mutex:
 ```{.c} 
 int pthread_mutex_lock(pthread_mutex_t *mutex); 
 ```
 [*La función retorna solo para el primer proceso que pida el mutex, el resto queda esperando*]{style="font-size:80%"}
+:::
 
+::: {.fragment}
 Para liberar el mutex:
 
 ```{.c} 
@@ -261,6 +270,7 @@ int pthread_mutex_unlock(pthread_mutex_t *mutex);
 ```
 [*Al liberar el mutex, [todos]{style="color:orange"} los procesos se despiertan a la vez, 
 [no]{style="color:orange"} esta garantizado el orden de adquisición*]{style="font-size:80%"}
+:::
 
 
 ## Comportamiento
@@ -345,7 +355,10 @@ Es mejor "dormir" el proceso para desocupar el *core*
 :::
 
 ## Manejo {.smaller}
+::: {.fragment}
 ### Inicialización
+:::
+::: {.fragment}
 ::: {.columns}
 ::: {.column width="60%"}
 Usando macros
@@ -363,8 +376,12 @@ pthread_cond_init(&cond, NULL);
 ```
 :::
 :::
+:::
 
+::: {.fragment}
 ### Uso
+:::
+::: {.fragment}
 Para hacer esperar a un proceso:
 ```{.c} 
 int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); 
@@ -372,13 +389,15 @@ int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex);
 [*Al entrar en espera, el proceso liberará el mutex*]{style="font-size:80%"}
 
 [*Al salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga*]{style="font-size:80%"}
-
+:::
+::: {.fragment}
 Para despertar procesos:
 
 ```{.c} 
 int pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos
 int pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)
 ```
+:::
 
 ## Comportamiento
 ::: {.incremental}
@@ -444,10 +463,8 @@ Hambruna
 - Toma el mutex y no lo libera antes de esperar
 - No es Deadlock porque el primer proceso está despierto
 :::
-
 ## Ejemplo {auto-animate=true}
-
-```{.c code-line-numbers="|2,8|10-12|5,13"} 
+```{.c } 
 pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
 int contador = 0;
@@ -465,9 +482,94 @@ int aumentar_contador_y_esperar_10(){
     return 0; 
 }
 ```
-::: {.fragment}
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="2,8"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    if(contador == 10){
+        pthread_cond_broadcast(&cond);
+    }
+    while(contador < 10){
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0; 
+}
+```
+Condiciones añadidas
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="10-12"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    if(contador == 10){
+        pthread_cond_broadcast(&cond);
+    }
+    while(contador < 10){
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0; 
+}
+```
+Espera eficiente
+
+## Ejemplo {auto-animate=true}
+
+```{.c code-line-numbers="5,13"} 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    if(contador == 10){
+        pthread_cond_broadcast(&cond);
+    }
+    while(contador < 10){
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0; 
+}
+```
+Zona crítica respetada
+
+## Ejemplo {auto-animate=true}
+
+```{.c } 
+pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t cond = PTHREAD_COND_INITIALIZER;
+int contador = 0;
+int aumentar_contador_y_esperar_10(){
+    pthread_mutex_lock(&mutex);
+    contador++;
+    if(contador == 10){
+        pthread_cond_broadcast(&cond);
+    }
+    while(contador < 10){
+        pthread_cond_wait(&cond, &mutex);
+    }
+    pthread_mutex_unlock(&mutex);
+    printf("Contador llegó a 10");
+    return 0; 
+}
+```
 Buena implementación 🤠
-:::
 
 ## P2 --- Colecta {.smaller}
 
