@@ -58,10 +58,10 @@ format:
 - Una serie de pasos para obtener la imagen
 - Proceso complejo que involucra muchos cálculos
 - Se puede alterar en ciertas etapas
-    - [Vertex Shader]{.fragment .highlight-red}
+    - [Vertex Shader]{style="color:orange"}
     - Tesellation
     - Geometry Shader
-    - [Fragment Shader]{.fragment .highlight-red}
+    - [Fragment Shader]{style="color:orange"}
 :::
 ::: {.column width="25%"}
 ![](./res/Rendering Pipeline.png){fig-align="center"}
