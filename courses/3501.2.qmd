@@ -1,0 +1,150 @@
+---
+title: Auxiliar 2
+subtitle: Introducción a OpenGL
+author: 
+  - Vicente González
+  - Julieta Coloma
+footer: CC3501 --- Modelación y Computación Gráfica para Ingenieros
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        print-separate-fragments: true
+        transition: fade
+---
+# Contexto
+*Pasen contexto*
+
+## La escena {.smaller}
+::: {.incremental}
+- Objetos
+    - Son los actores de la escena
+    - Manejar geometría, transformaciones, texturas, material y física
+
+- Cámara
+    - Son los ojos por los que se ve la escena
+    - Manejar posición y perspectiva
+
+- Luces
+    - Son lo que le da color a la escena
+    - Manejar posición, tipo de fuente, intensidad, sombras
+:::
+
+## La escena
+
+![](./res/Cornell Box 3 Material Balls.jpg){fig-align="center"}
+
+## Pipeline {auto-animate=true}
+::: {.columns}
+::: {.column width="75%"}
+::: {.incremental}
+- Una serie de pasos para obtener la imagen
+- Proceso complejo que involucra muchos cálculos
+- Se puede alterar en ciertas etapas
+    - Vertex Shader
+    - Tesellation
+    - Geometry Shader
+    - Fragment Shader
+:::
+:::
+::: {.column width="25%"}
+![](./res/Rendering Pipeline.png){fig-align="center"}
+:::
+:::
+
+## Pipeline {auto-animate=true}
+::: {.columns}
+::: {.column width="75%"}
+- Una serie de pasos para obtener la imagen
+- Proceso complejo que involucra muchos cálculos
+- Se puede alterar en ciertas etapas
+    - [Vertex Shader]{.fragment .highlight-red}
+    - Tesellation
+    - Geometry Shader
+    - [Fragment Shader]{.fragment .highlight-red}
+:::
+::: {.column width="25%"}
+![](./res/Rendering Pipeline.png){fig-align="center"}
+:::
+:::
+
+## Pipeline 
+Se resume a lo siguiente:
+
+::: {.incremental}
+1. *Vertex shading*: Colorear cada vértice
+2. *Projection*: Proyectar los vértices en la escena
+3. *Clipping*: Ajustar la geometría según lo que se ve en realidad
+4. *Screen Mapping*: Pasar de coordenadas uniformes a las coordenadas de la pantalla
+5. *Rasterization*: Discretizar la imagen
+6. *Pixel processing*: Colorear / procesar cada píxel
+:::
+
+## Shaders {auto-animate=true}
+### Vertex Shader
+::: {.incremental}
+- Se encarga de definir los vértices desde la memoria
+- Actúa simultáneamente en cada vértice
+- Recibe como input los datos a utilizar
+- Debe definir la posición del vértice
+- Puede pasarle información a los siguientes pasos
+:::
+## Shaders {auto-animate=true}
+### Fragment Shader
+::: {.incremental}
+- Se encarga de definir el color de los píxeles
+- Actúa simultáneamente en cada píxel
+- Debe definir el color final del píxel
+- Puede recibir información a desde los pasos anteriores
+:::
+
+# Problemas
+Dibujemos un círculo!
+
+## P1 --- Generar un círculo
+Cree la siguiente función:
+```{.python} 
+def create_circle(x, y, radius) 
+```
+La cual toma:
+
+- La posición del centro del círculo
+- El radio del círculo
+
+Y retorna un arreglo con las posiciones de cada vértice para formar el círculo
+
+## P2 --- Añadir color
+Ahora que tiene su círculo cambie la función anterior para incluir color:
+
+```{.python} 
+def create_circle(x, y, r, g, b, radius) 
+```
+Donde $(r, g, b)$ son las componentes de color del círculo y tienen un valor de 0 a 1.
+
+Ahora la función debe incluir el color de cada vértice para formar el círculo
+
+::: {.aside}
+*Propuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores*
+:::
+
+## P3 --- Agregar indices
+Su función actual hace uso de mucha memoria de manera innecesaria, usé
+la función de Pyglet `shader.vertex_list_indexed` la cual recibe adicionalmente
+una lista de índices los cuales indican que vértices forman un triángulo.
+
+Para crear esa lista programe la función:
+```{.python} 
+def create_circle_indices()
+```
+
+
+## P4 --- Un poquito de movimiento
+Ahora que tiene todo listo y bonito, pruebe añadir las siguientes
+animaciones:
+
+a. Una en la cual el círculo crece y luego se empequeñece 
+b. Una en la cual el se mueve de izquierda a derecha
+c. Una en la cual hay 2 círculos bailando (*use su imaginación*)
+
+# Fin
+[Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}
