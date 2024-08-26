@@ -4,7 +4,7 @@
     "href": "courses/3501.0.html",
     "title": "Modelación y Computación Gráfica para Ingeniero",
     "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input",
     "crumbs": [
       "Cursos",
       "2024",
@@ -16,7 +16,7 @@
     "href": "courses/3501.0.html#auxiliares",
     "title": "Modelación y Computación Gráfica para Ingeniero",
     "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input",
     "crumbs": [
       "Cursos",
       "2024",
@@ -101,42 +101,109 @@
     "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
   },
   {
-    "objectID": "courses/4302.0.html",
-    "href": "courses/4302.0.html",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
+    "objectID": "courses/4302.4.html#semáforos",
+    "href": "courses/4302.4.html#semáforos",
+    "title": "Auxiliar 4",
+    "section": "Semáforos",
+    "text": "Semáforos\n\n\nOtra herramienta de sincronización\nMás simple que mutex con condiciones\nIgual de potente\nFunciona como un sistema de tickets o fichas\nLos procesos puede solicitar fichas o depositarlas\n\n\n\nSi no hay fichas, los procesos que soliciten deben esperar a que se deposite"
   },
   {
-    "objectID": "courses/4302.0.html#auxiliares",
-    "href": "courses/4302.0.html#auxiliares",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
+    "objectID": "courses/4302.4.html#manejo",
+    "href": "courses/4302.4.html#manejo",
+    "title": "Auxiliar 4",
+    "section": "Manejo",
+    "text": "Manejo\nInicialización\n\nPara crear\nvoid sem_init(sem_t *sem, int pshared, unsigned int val);\n\n\nsem: Puntero al semáforo a inicializar.\npshared: Flag para indicar si el semáforo será compartido entre threads (0) o entre procesos (1).\nval: Cantidad de fichas iniciales\n\n\n\n\nPara destruir\nvoid sem_destroy(sem_t *sem);\n\n\nsem: Puntero al semáforo a destruir."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
+    "objectID": "courses/4302.4.html#manejo-1",
+    "href": "courses/4302.4.html#manejo-1",
+    "title": "Auxiliar 4",
+    "section": "Manejo",
+    "text": "Manejo\nUso\n\nPara depositar una ficha:\nvoid sem_wait(sem_t *sem); \n\n\nPara extraer una ficha:\nvoid sem_post(sem_t *sem); \nAl igual que con los mutex, no esta garantizado el orden de adquisición"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "courses/4302.4.html#comportamiento",
+    "href": "courses/4302.4.html#comportamiento",
+    "title": "Auxiliar 4",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\nLos semáforos se pueden usar como mutex o condiciones.\n\n\n\n\nMutex\nCon una única ficha\nsem_t sem;\nsem_init(&sem, 0, 1);\nPara entrar a la zona crítica un thread solicita la ficha y al salir lo deposita\n\n\nCondiciones\nSin fichas\nsem_t sem;\nsem_init(&sem, 0, 0);\nAl llamar sem_wait el proceso debe esperar a un sem_post"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo",
+    "href": "courses/4302.4.html#ejemplo",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\n\n\nsem actúa como mutex\nwait actúa como condición"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-1",
+    "href": "courses/4302.4.html#ejemplo-1",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nPedir el mutex al entrar y salir de la zona crítica"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-2",
+    "href": "courses/4302.4.html#ejemplo-2",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nEsperar a que la condición se cumpla (sin while)"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-3",
+    "href": "courses/4302.4.html#ejemplo-3",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nOJO\nHay que liberar el mutex antes de esperar y pedirlo después"
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido",
+    "href": "courses/4302.4.html#p1-baño-compartido",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\n\nUn estadio posee un único baño que debe ser compartido por hinchas rojos y azules. El baño es amplio y admite un número ilimitado de personas. El problema consiste en evitar que los hinchas rojos se encuentren con los hinchas azules dentro del baño.\n\n\nLos hinchas rojos solicitan entrar al baño invocando entrar(ROJO) y notifican su salida con salir(ROJO), mientras que los hinchas azules invocan entrar(AZUL) y salir(AZUL)."
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido-1",
+    "href": "courses/4302.4.html#p1-baño-compartido-1",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\nParte A\nSe plantea la siguiente solución incorrecta para el problema:\n\n\nenum { ROJO = 0, AZUL =  1};\n\nint cantidad[2] = {0, 0};\n\n// Este mutex representa \n// el acceso al baño, el\n// equipo que lo tiene \n// es el que está adentro\nint mutex = 0; \n\nvoid entrar(int color) {\n  if (cantidad[color] == 0) {\n    while(mutex)\n      ;\n    mutex = 1;\n  }\n  cantidad[color]++;\n}\n\nvoid salir(int color) {\n  cantidad[color]--;\n  if (cantidad[color] == 0) {\n    mutex = 0;\n  }\n}\n\nMuestre mediante un diagrama de threads que un hincha rojo puede entrar al baño cuando hay hinchas azules presentes"
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido-2",
+    "href": "courses/4302.4.html#p1-baño-compartido-2",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\nParte B\nEscriba una solución correcta y eficiente para este problema utilizando 3 semáforos. No importa si en su solución algunos procesos sufren “hambruna”\n\n\nCorrecta\n\nNo hay datarraces\n\nEficiente\n\nNo hay busy waiting\n\n\n\n\n\nHint: Utilice la estructura de la solución incorrecta"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\n\nConsidere ahora una solución en la que no se produzca hambruna. Para lograr esto es necesario que ningún hincha entre al baño mientras haya hinchas del otro equipo esperando. Luego, cuando sale el último hincha del baño, entran todos los hinchas del equipo contrario que estaban esperando. Por ejemplo, si hay dos hinchas del equipo rojo en el baño y un hincha azul en espera, el siguiente hincha rojo en llegar no podrá entrar hasta que haya entrado (y salido) el azul.\n\n\n\nParte A\nSe incluye una implementación incorrecta de esta solución. Demuestra que esta solución es incorrecta confeccionando un diagrama de threads donde la exclusión mutua no se cumple.\n\n\n\nEsta parte fue adaptada de la tarea 1 del semestre 2021-1"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-1",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-1",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte A\n\n\n// Un semáforo controla el acceso\n// a la zona crítica.\nsem_t mutex; \n// Un semáforo para la \n// espera cada tipo de hincha. \nsem_t sem[2]; \nint esperan[2] = {0, 0}; \nint adentro[2] = {0, 0};\n\nvoid entrar(int color){\n  // el oponente del equipo AZUL \n  // es el equipo ROJO y viceversa.\n  int oponente = !color ;\n  sem_wait(&mutex);\n    // Si hay hinchas del otro equipo \n    // en el baño o en la cola \n    // se debe esperar.\n    if (adentro[oponente] &gt; 0 ||\n        esperan[oponente] &gt; 0){ \n      esperan[color]++;\n      sem_post(&mutex);\n      // se pone el thread en espera \n      sem_wait(&sem[color]); \n      sem_wait(&mutex);\n    }\n    adentro[color]++; // entramos al baño\n    sem_post(&mutex); \n}\n\nvoid salir(int color) {\n  int oponente = !color; \n  sem_wait(&mutex);\n  adentro[color]--; // salimos del baño\n\n  if (adentro[color] == 0) {\n    // Despertar a los oponentes poniendo \n    // tantos tickets como son \n    // threads hay en espera\n    for (int i = 0; i &lt; esperan[oponente]; i++) {\n      sem_post(&sem[oponente ]); \n    }\n    esperan[oponente] = 0;\n  }\n  sem_wait(&mutex );\n}"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-2",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-2",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte A\n\n\nLa mayoría de estos dataraces ocurren en el momento de despertar los threads en espera, en ese instante un thread extra se puede escabullir en la zona crítica (si se cumplen las condiciones para que entre y se roba el mutex). Este thread puede cambiar las variables compartidas y alterar la correctitud del programa.\nDebemos garantizar la correctitud del programa sin importar que un thread extra se robe el mutex, o debemos garantizar que nunca un thread extra pueda escabullirse.\nEn general esto se soluciona cambiando todas las variables compartidas en el thread que despierta a los demás, los thread en espera se despiertan y solo deben retornar."
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-3",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-3",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte B\nReprograme la solución anterior de modo que siempre funcione correctamente. Utilice la siguiente metodología:\n\nUtilice 2 colas FIFO globales, una para cada equipo.\nCuando un hincha deba esperar para entrar al baño, cree un semáforo con 0 tickets y póngalo en la cola correspondiente. Luego, suspenda el thread solicitando un ticket a este semáforo.\nCuando salga el ultimo hincha de un equipo y haya hinchas del otro en espera, extraiga todos los semáforos de esa cola y deposite en cada uno de ellos un ticket para permitirle a los hinchas en espera entrar al baño.\nUtilice un semáforo para garantizar exclusión mutua en el acceso a las variables globales."
   },
   {
     "objectID": "courses/3501.1.html#su-auxiliar",
@@ -228,6 +295,93 @@
     "title": "Auxiliar 1",
     "section": "Hello world!",
     "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "courses/3501.4.html#escenas-3d",
+    "href": "courses/3501.4.html#escenas-3d",
+    "title": "Auxiliar 4",
+    "section": "Escenas 3D",
+    "text": "Escenas 3D\n\n\n\n\n\nsequenceDiagram\n  participant Alice\n  participant Bob\n  Alice-&gt;&gt;John: Hello John, how are you?\n  loop Healthcheck\n    John-&gt;&gt;John: Fight against hypochondria\n  end\n  Note right of John: Rational thoughts &lt;br/&gt;prevail!\n  John--&gt;&gt;Alice: Great!\n  John-&gt;&gt;Bob: How about you?\n  Bob--&gt;&gt;John: Jolly good!"
+  },
+  {
+    "objectID": "courses/3501.4.html#matriz-mvp",
+    "href": "courses/3501.4.html#matriz-mvp",
+    "title": "Auxiliar 4",
+    "section": "Matriz MVP",
+    "text": "Matriz MVP"
+  },
+  {
+    "objectID": "courses/3501.4.html#modelo",
+    "href": "courses/3501.4.html#modelo",
+    "title": "Auxiliar 4",
+    "section": "Modelo",
+    "text": "Modelo"
+  },
+  {
+    "objectID": "courses/3501.4.html#vista",
+    "href": "courses/3501.4.html#vista",
+    "title": "Auxiliar 4",
+    "section": "Vista",
+    "text": "Vista"
+  },
+  {
+    "objectID": "courses/3501.4.html#proyección",
+    "href": "courses/3501.4.html#proyección",
+    "title": "Auxiliar 4",
+    "section": "Proyección",
+    "text": "Proyección"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-resolviendo-con-clase",
+    "href": "courses/3501.4.html#p1-resolviendo-con-clase",
+    "title": "Auxiliar 4",
+    "section": "P1 — Resolviendo con clase",
+    "text": "P1 — Resolviendo con clase"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagamos-un-fps",
+    "href": "courses/3501.4.html#p2-hagamos-un-fps",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagamos un FPS",
+    "text": "P2 – Hagamos un FPS\nParte A\nMirar\nParte B\nMoverse\nParte A\nApuntar"
+  },
+  {
+    "objectID": "courses/4302.0.html",
+    "href": "courses/4302.0.html",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html#auxiliares",
+    "href": "courses/4302.0.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
   },
   {
     "objectID": "courses/4302.1.html#su-auxiliar",
