@@ -1,0 +1,57 @@
+---
+title: Auxiliar 4
+subtitle: Cámara e Input
+author: 
+  - Vicente González
+  - Julieta Coloma
+footer: CC3501 --- Modelación y Computación Gráfica para Ingenieros
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        print-separate-fragments: true
+        transition: fade
+---
+# Contexto
+
+## Escenas 3D
+```{mermaid}
+sequenceDiagram
+  participant Alice
+  participant Bob
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+    John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts <br/>prevail!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
+```
+
+## Matriz MVP
+
+## Modelo
+
+## Vista
+
+## Proyección
+
+# Problemas
+
+## P1 --- Resolviendo con clase
+
+## P2 -- Hagamos un FPS
+### Parte A
+Mirar
+
+### Parte B
+Moverse
+
+### Parte A
+Apuntar
+
+
+
+# Fin
+[Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}

@@ -1,0 +1,353 @@
+---
+title: Auxiliar 4
+subtitle: Semáforos
+author: 
+    - Vicente González
+    - Pablo Jaramillo
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        print-separate-fragments: true
+        transition: fade
+---
+# Contexto
+## Semáforos
+::: {.incremental}
+- Otra herramienta de sincronización
+- Más simple que mutex con condiciones
+- Igual de potente 
+- Funciona como un sistema de tickets o fichas
+- Los procesos puede solicitar fichas o depositarlas
+:::
+
+::: {.fragment}
+Si no hay fichas, los procesos que soliciten deben esperar a que se deposite
+:::
+
+## Manejo {.smaller}
+### Inicialización
+::: {.fragment}
+Para crear
+```{.c} 
+void sem_init(sem_t *sem, int pshared, unsigned int val);
+```
+::: {.incremental}
+- `sem`: Puntero al semáforo a inicializar.
+- `pshared`: Flag para indicar si el semáforo será compartido entre threads (0) o entre procesos (1).
+- `val`: Cantidad de fichas iniciales
+:::
+:::
+::: {.fragment}
+Para destruir
+```{.c} 
+void sem_destroy(sem_t *sem);
+```
+::: {.incremental}
+- `sem`: Puntero al semáforo a destruir. 
+:::
+:::
+
+## Manejo 
+### Uso
+::: {.fragment}
+Para depositar una ficha:
+```{.c} 
+void sem_wait(sem_t *sem); 
+```
+:::
+
+::: {.fragment}
+Para extraer una ficha:
+
+```{.c} 
+void sem_post(sem_t *sem); 
+```
+[*Al igual que con los mutex, [no]{style="color:orange"} esta garantizado el orden de adquisición*]{style="font-size:80%"}
+:::
+
+
+## Comportamiento
+::: {.fragment}
+Los semáforos se pueden usar como mutex o condiciones.
+:::
+
+::: {.columns }
+::: {.column .fragment width="50%"}
+#### Mutex
+Con una única ficha
+```{.c} 
+sem_t sem;
+sem_init(&sem, 0, 1);
+```
+Para entrar a la zona crítica un thread solicita la ficha y al salir lo deposita
+:::
+::: {.column .fragment width="50%"}
+#### Condiciones
+Sin fichas
+```{.c} 
+sem_t sem;
+sem_init(&sem, 0, 0);
+```
+Al llamar `sem_wait` el proceso debe esperar a un
+`sem_post`
+:::
+:::
+
+## Ejemplo {auto-animate=true}
+```{.c } 
+...
+sem_wait(&sem); 
+if (se_debe_esperar) {
+    sem_post(&sem); 
+    sem_wait(&wait); 
+    sem_wait(&sem); 
+}
+sem_post(&sem); 
+...
+```
+::: {.incremental}
+- `sem` actúa como mutex
+- `wait` actúa como condición
+:::
+
+## Ejemplo {auto-animate=true}
+```{.c code-line-numbers="2,8"} 
+...
+sem_wait(&sem); 
+if (se_debe_esperar) {
+    sem_post(&sem); 
+    sem_wait(&wait); 
+    sem_wait(&sem); 
+}
+sem_post(&sem); 
+...
+```
+Pedir el mutex al entrar y salir de la zona crítica
+
+## Ejemplo {auto-animate=true}
+```{.c code-line-numbers="3,5"} 
+...
+sem_wait(&sem); 
+if (se_debe_esperar) {
+    sem_post(&sem); 
+    sem_wait(&wait); 
+    sem_wait(&sem); 
+}
+sem_post(&sem); 
+...
+```
+Esperar a que la condición se cumpla (sin `while`)
+
+## Ejemplo {auto-animate=true}
+```{.c code-line-numbers="4,6"} 
+...
+sem_wait(&sem); 
+if (se_debe_esperar) {
+    sem_post(&sem); 
+    sem_wait(&wait); 
+    sem_wait(&sem); 
+}
+sem_post(&sem); 
+...
+```
+[OJO]{style="color:orange"} 
+
+Hay que liberar el mutex antes de esperar y pedirlo después
+
+# Problemas
+
+## P1 -- Baño compartido {.smaller}
+::: {.fragment}
+Un estadio posee un único baño que debe ser compartido por hinchas rojos y azules. 
+El baño es amplio y admite un número ilimitado de personas. 
+El problema consiste en evitar que los hinchas rojos se encuentren con los hinchas azules dentro del baño.
+:::
+
+::: {.fragment}
+Los hinchas rojos solicitan entrar al baño invocando `entrar(ROJO)` y notifican su salida con `salir(ROJO)`, 
+mientras que los hinchas azules invocan `entrar(AZUL)` y `salir(AZUL)`.
+:::
+
+::: {.columns .fragment}
+::: {.column width="50%"}
+
+![](res/bart-colo.jpg){fig-align="center" height=2in}
+:::
+::: {.column width="50%"}
+![](res/homero-bulla.jpg){fig-align="center" height=2in}
+:::
+:::
+
+## P1 -- Baño compartido {.smaller}
+### Parte A
+Se plantea la siguiente solución incorrecta para el problema:
+
+::: {.columns}
+::: {.column width="50%"}
+```{.c}
+enum { ROJO = 0, AZUL =  1};
+
+int cantidad[2] = {0, 0};
+
+// Este mutex representa 
+// el acceso al baño, el
+// equipo que lo tiene 
+// es el que está adentro
+int mutex = 0; 
+```
+:::
+::: {.column width="50%"}
+```{.c}
+void entrar(int color) {
+  if (cantidad[color] == 0) {
+    while(mutex)
+      ;
+    mutex = 1;
+  }
+  cantidad[color]++;
+}
+
+void salir(int color) {
+  cantidad[color]--;
+  if (cantidad[color] == 0) {
+    mutex = 0;
+  }
+}
+```
+:::
+:::
+
+Muestre mediante un [diagrama de threads]{style="color:orange"} que un hincha rojo
+puede entrar al baño cuando hay hinchas azules presentes
+
+## 
+![](./res/estadio.png){fig-align="center"}
+
+## P1 -- Baño compartido
+### Parte B
+Escriba una solución correcta y eficiente para este problema utilizando
+3 semáforos. No importa si en su solución algunos procesos sufren "hambruna"
+
+
+::: {.fragment}
+Correcta
+: No hay datarraces
+
+Eficiente
+: No hay busy waiting
+:::
+
+::: {.aside}
+*[Hint:]{style="color:orange"} Utilice la estructura de la solución incorrecta*
+:::
+
+
+
+## P2 -- Baño sin hambruna {.smaller}
+::: {.fragment}
+Considere ahora una solución en la que no se produzca hambruna. 
+Para lograr esto es necesario que ningún hincha entre al baño mientras haya hinchas del otro equipo esperando. 
+Luego, cuando sale el último hincha del baño, entran todos los hinchas del equipo contrario que estaban esperando. 
+Por ejemplo, si hay dos hinchas del equipo rojo en el baño y un hincha azul en espera, 
+el siguiente hincha rojo en llegar no podrá entrar hasta que haya entrado (y salido) el azul.
+:::
+
+::: {.fragment}
+### Parte A
+Se incluye una implementación incorrecta de esta solución.
+Demuestra que esta solución es incorrecta confeccionando un diagrama de threads donde la exclusión mutua no se cumple.
+:::
+
+::: {.aside}
+Esta parte fue adaptada de la tarea 1 del semestre 2021-1
+:::
+
+
+## P2 -- Baño sin hambruna {.smaller}
+### Parte A
+::: {.columns style="font-size:80%"}
+::: {.column width="50%"}
+```{.c} 
+// Un semáforo controla el acceso
+// a la zona crítica.
+sem_t mutex; 
+// Un semáforo para la 
+// espera cada tipo de hincha. 
+sem_t sem[2]; 
+int esperan[2] = {0, 0}; 
+int adentro[2] = {0, 0};
+
+void entrar(int color){
+  // el oponente del equipo AZUL 
+  // es el equipo ROJO y viceversa.
+  int oponente = !color ;
+  sem_wait(&mutex);
+    // Si hay hinchas del otro equipo 
+    // en el baño o en la cola 
+    // se debe esperar.
+    if (adentro[oponente] > 0 ||
+        esperan[oponente] > 0){ 
+      esperan[color]++;
+      sem_post(&mutex);
+      // se pone el thread en espera 
+      sem_wait(&sem[color]); 
+      sem_wait(&mutex);
+    }
+    adentro[color]++; // entramos al baño
+    sem_post(&mutex); 
+}
+
+```
+:::
+::: {.column width="50%"}
+```{.c} 
+void salir(int color) {
+  int oponente = !color; 
+  sem_wait(&mutex);
+  adentro[color]--; // salimos del baño
+
+  if (adentro[color] == 0) {
+    // Despertar a los oponentes poniendo 
+    // tantos tickets como son 
+    // threads hay en espera
+    for (int i = 0; i < esperan[oponente]; i++) {
+      sem_post(&sem[oponente ]); 
+    }
+    esperan[oponente] = 0;
+  }
+  sem_wait(&mutex );
+}
+```
+:::
+:::
+
+## 
+![](./res/estadio.png){fig-align="center"}
+
+## P2 -- Baño sin hambruna {.smaller}
+### Parte A
+::: {.incremental}
+- La mayoría de estos dataraces ocurren en el momento de despertar los threads en espera, 
+  en ese instante un thread extra se puede escabullir en la zona crítica (si se cumplen las condiciones para que entre y se roba el mutex). 
+  Este thread puede cambiar las variables compartidas y alterar la correctitud del programa.
+
+- Debemos garantizar la correctitud del programa sin importar que un thread extra se robe el mutex, 
+  o debemos garantizar que nunca un thread extra pueda escabullirse. 
+
+- [En general]{style="color:orange"} esto se soluciona cambiando todas las variables compartidas en el thread que despierta a los demás, 
+  los thread en espera se despiertan y solo deben retornar.
+:::
+
+## P2 -- Baño sin hambruna {.smaller}
+### Parte B
+Reprograme la solución anterior de modo que siempre funcione correctamente. Utilice la siguiente metodología:
+
+- Utilice 2 colas FIFO globales, una para cada equipo.
+- Cuando un hincha deba esperar para entrar al baño, cree un semáforo con 0 tickets y póngalo en la cola correspondiente. Luego, suspenda el thread solicitando un ticket a este semáforo.
+- Cuando salga el ultimo hincha de un equipo y haya hinchas del otro en espera, extraiga todos los semáforos de esa cola y deposite en cada uno de ellos un ticket para permitirle a los hinchas en espera entrar al baño.
+- Utilice un semáforo para garantizar exclusión mutua en el acceso a las variables globales.
+
+# Fin
+*[Ver otras auxiliares](4302.0.qmd)*
