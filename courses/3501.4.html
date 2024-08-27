@@ -30,6 +30,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #f8f8f2;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #f8f8f2; } /* Normal */
+    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
+    code span.an { color: #d4d0ab; } /* Annotation */
+    code span.at { color: #00e0e0; } /* Attribute */
+    code span.bn { color: #d4d0ab; } /* BaseN */
+    code span.bu { color: #abe338; } /* BuiltIn */
+    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #abe338; } /* Char */
+    code span.cn { color: #ffd700; } /* Constant */
+    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
+    code span.cv { color: #ffd700; } /* CommentVar */
+    code span.do { color: #f8f8f2; } /* Documentation */
+    code span.dt { color: #ffa07a; } /* DataType */
+    code span.dv { color: #d4d0ab; } /* DecVal */
+    code span.er { color: #f07178; text-decoration: underline; } /* Error */
+    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
+    code span.fl { color: #d4d0ab; } /* Float */
+    code span.fu { color: #ffa07a; } /* Function */
+    code span.im { color: #abe338; } /* Import */
+    code span.in { color: #d4d0ab; } /* Information */
+    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
+    code span.op { color: #ffa07a; } /* Operator */
+    code span.ot { color: #00e0e0; } /* Other */
+    code span.pp { color: #dcc6e0; } /* Preprocessor */
+    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
+    code span.sc { color: #abe338; } /* SpecialChar */
+    code span.ss { color: #abe338; } /* SpecialString */
+    code span.st { color: #abe338; } /* String */
+    code span.va { color: #00e0e0; } /* Variable */
+    code span.vs { color: #abe338; } /* VerbatimString */
+    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -321,9 +386,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-dark">
   <div class="reveal">
@@ -352,59 +414,210 @@ Julieta Coloma
 <h1>Contexto</h1>
 
 </section>
-<section id="escenas-3d" class="slide level2">
-<h2>Escenas 3D</h2>
-<div class="cell" data-reveal="true" data-layout-align="default">
-<div class="cell-output-display">
+<section id="espacios-3d" class="slide level2 smaller">
+<h2>Espacios 3D</h2>
+<div class="fragment">
+<p>Para trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:</p>
+</div>
 <div>
-<p></p><figure class=""><p></p>
-<div>
-<pre class="mermaid mermaid-js">sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice-&gt;&gt;John: Hello John, how are you?
-  loop Healthcheck
-    John-&gt;&gt;John: Fight against hypochondria
-  end
-  Note right of John: Rational thoughts &lt;br/&gt;prevail!
-  John--&gt;&gt;Alice: Great!
-  John-&gt;&gt;Bob: How about you?
-  Bob--&gt;&gt;John: Jolly good!
-</pre>
-</div>
-<p></p></figure><p></p>
-</div>
-</div>
+<ul>
+<li class="fragment"><p>Local space</p>
+<p>Se corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.</p></li>
+<li class="fragment"><p>World space</p>
+<p>Corresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.</p></li>
+<li class="fragment"><p>View space</p>
+<p>Es el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena</p></li>
+<li class="fragment"><p>Clip space</p>
+<p>Es espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta</p></li>
+</ul>
 </div>
 </section>
-<section id="matriz-mvp" class="slide level2">
-<h2>Matriz MVP</h2>
+<section id="espacios-3d-1" class="slide level2">
+<h2>Espacios 3D</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="res/coordinate_systems.png" class="quarto-figure quarto-figure-center" style="background-color:white; border-radius: .1in;height:100.0%"></p>
+</figure>
+</div>
+
+<aside><div>
+<p>Fuente: <a href="https://learnopengl.com/Getting-started/Coordinate-Systems">LearnOpenGL</a></p>
+</div></aside></section>
+<section id="espacios-3d-2" class="slide level2">
+<h2>Espacios 3D</h2>
+<h3 id="matriz-mvp">Matriz MVP</h3>
+<div class="fragment">
+<p><span class="math display">\[
+M_{projection} \cdot M_{view} \cdot M_{model} \cdot v_{local} = v_{clipped}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Sirve para moverse desde el espacio local al espacio homogéneo de OpenGL</p>
+</div>
 </section>
 <section id="modelo" class="slide level2">
 <h2>Modelo</h2>
+<div class="fragment">
+<p>Para pasar de coordenadas locales a las de mundo usamos la <span style="color:orange">matriz de modelo</span>.</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+M_{model}  = M_{translation} \cdot M_{rotation} \cdot M_{scale}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Es la que usamos la clase pasada para mover los modelos!</p>
+</div>
 </section>
-<section id="vista" class="slide level2">
+<section id="vista" class="slide level2 smaller">
 <h2>Vista</h2>
+<div class="fragment">
+<p>Para pasar de coordenadas de mundo a las de vista o de <em>cámara</em>, usamos la <span style="color:orange">matriz de vista</span>. Con un poco de magia de álgebra lineal tenemos que:</p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[
+M_{view} = M_{lookat} =
+\begin{pmatrix}
+r_x &amp; r_y &amp; r_z &amp; 0\\
+u_x &amp; u_y &amp; u_z &amp; 0\\
+d_x &amp; d_y &amp; d_z &amp; 0\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 &amp; 0 &amp; 0 &amp; -p_x\\
+0 &amp; 1 &amp; 0 &amp; -p_y\\
+0 &amp; 0 &amp; 1 &amp; -p_z\\
+0 &amp; 0 &amp; 0 &amp; 1\\
+\end{pmatrix}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Donde</p>
+<ul>
+<li><span class="math inline">\(R\)</span> es el vector que apunta a la derecha de la cámara</li>
+<li><span class="math inline">\(U\)</span> es el vector que apunta hacia arriba de la cámara</li>
+<li><span class="math inline">\(D\)</span> es el vector a donde apunta a la cámara</li>
+<li><span class="math inline">\(P\)</span> es la posición de la cámara</li>
+</ul>
+</div>
 </section>
-<section id="proyección" class="slide level2">
+<section id="proyección" class="slide level2 smaller">
 <h2>Proyección</h2>
+<div class="fragment">
+<p>Finalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la <span style="color:orange">matriz de proyección</span>, que viene en dos sabores:</p>
+</div>
+<div class="columns">
+<div class="column fragment" style="width:52%;">
+<!-- -->
+<h3 id="ortográfica">Ortográfica</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="res/orthographic_frustum.png" class="quarto-figure quarto-figure-center" style="background-color:white; border-radius: .1in;height:3in"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="kw">def</span> ortho(left, right, bottom, top, near, far)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column fragment" style="width:48%;">
+<!-- -->
+<h3 id="perspectiva">Perspectiva</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="res/perspective_frustum.png" class="quarto-figure quarto-figure-center" style="background-color:white; border-radius: .1in;height:3in"></p>
+</figure>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="kw">def</span> perspective(fovy, aspect, near, far):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+
+<aside><div>
+<p>Fuente: <a href="https://learnopengl.com/Getting-started/Coordinate-Systems">LearnOpenGL</a></p>
+</div></aside></section>
+<section id="manejo-de-input" class="slide level2 smaller">
+<h2>Manejo de input</h2>
+<div class="fragment">
+<p>Para manejar input podemos utilizar <a href="https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html">Pyglet</a> la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a <code>on_draw</code>:</p>
+</div>
+<div>
+<ul>
+<li class="fragment"><code>on_key_press(symbol, modifiers)</code>: función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en <code>symbol</code>.</li>
+<li class="fragment"><code>on_key_release(symbol, modifiers)</code>: función que se llama cuando se libera una tecla y se guarda el valor de la tecla en <code>symbol</code>.</li>
+<li class="fragment"><code>on_mouse_motion(x, y, dx, dy)</code>: función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (<code>x</code> e <code>y</code>), así como el cambio de este (<code>dx</code> y <code>dy</code>).</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Existen más que pueden ver en la documentación de la librería</p>
+</div>
 </section></section>
 <section>
 <section id="problemas" class="title-slide slide level1 center">
 <h1>Problemas</h1>
 
 </section>
-<section id="p1-resolviendo-con-clase" class="slide level2">
-<h2>P1 — Resolviendo con clase</h2>
+<section id="p1-hacerlo-con-clase" class="slide level2 smaller">
+<h2>P1 — Hacerlo con clase</h2>
+<div class="fragment">
+<p>El auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una <span style="color:orange">clase</span>.</p>
+</div>
+<div class="fragment">
+<p>Una clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.</p>
+</div>
+<div class="fragment">
+<p>Cree la clase <code>GameModel</code>, que contenga lo siguiente:</p>
+<ul>
+<li>Información de posición, rotación y escalado</li>
+<li>Color del objeto y buffer de la GPU</li>
+<li>Una función que sea capaz de entregar la matriz de modelo del objeto correspondiente</li>
+<li>Una función que sea capaz de dibujar el objeto en pantalla</li>
+</ul>
+</div>
 </section>
-<section id="p2-hagamos-un-fps" class="slide level2">
-<h2>P2 – Hagamos un FPS</h2>
+<section id="p1-hacerlo-con-clase-1" class="slide level2 smaller">
+<h2>P1 — Hacerlo con clase</h2>
+<p>Use esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:</p>
+
+<img data-src="res/cow-scene.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<section id="p2-hagámoslo-fps" class="slide level2 smaller">
+<h2>P2 – Hagámoslo FPS</h2>
+<div class="fragment">
+<!-- -->
 <h3 id="parte-a">Parte A</h3>
-<p>Mirar</p>
+<p>Muy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.</p>
+</div>
+<div class="fragment">
+<p>Cree la clase <code>Camara</code> que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando <code>on_key_press</code> y <code>on_key_release</code></p>
+</div>
+</section>
+<section id="p2-hagámoslo-fps-1" class="slide level2 smaller">
+<h2>P2 – Hagámoslo FPS</h2>
+<div class="fragment">
+<!-- -->
 <h3 id="parte-b">Parte B</h3>
-<p>Moverse</p>
-<h3 id="parte-a-1">Parte A</h3>
-<p>Apuntar</p>
+<p>Añada los valores de <code>pitch</code> y <code>yaw</code> que permitan mover la cámara, use la función <code>on_mouse_motion</code> para vincular el ángulo de vista con el movimiento del mouse</p>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="res/camera_pitch_yaw_roll.png" class="quarto-figure quarto-figure-center" style="background-color: white; border-radius: .1in"></p>
+</figure>
+</div>
+</div>
+</section>
+<section id="p2-hagámoslo-fps-2" class="slide level2 smaller">
+<h2>P2 – Hagámoslo FPS</h2>
+<div class="fragment">
+<!-- -->
+<h3 id="parte-c">Parte C</h3>
+<p>Corrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara</p>
+</div>
+<div class="fragment">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="res/360noscope.gif" class="quarto-figure quarto-figure-center" style="width:6in"></p>
+</figure>
+</div>
+</div>
+<div class="r-stack fragment">
+<p>Felicidades! Ahora puedes hacer un 360 no scope 🤠</p>
+</div>
 </section></section>
 <section id="fin" class="title-slide slide level1 center">
 <h1>Fin</h1>

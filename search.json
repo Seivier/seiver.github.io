@@ -311,53 +311,88 @@
     "text": "About this site"
   },
   {
-    "objectID": "courses/3501.4.html#escenas-3d",
-    "href": "courses/3501.4.html#escenas-3d",
+    "objectID": "courses/3501.4.html#espacios-3d",
+    "href": "courses/3501.4.html#espacios-3d",
     "title": "Auxiliar 4",
-    "section": "Escenas 3D",
-    "text": "Escenas 3D\n\n\n\n\n\nsequenceDiagram\n  participant Alice\n  participant Bob\n  Alice-&gt;&gt;John: Hello John, how are you?\n  loop Healthcheck\n    John-&gt;&gt;John: Fight against hypochondria\n  end\n  Note right of John: Rational thoughts &lt;br/&gt;prevail!\n  John--&gt;&gt;Alice: Great!\n  John-&gt;&gt;Bob: How about you?\n  Bob--&gt;&gt;John: Jolly good!"
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\nPara trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:\n\n\n\nLocal space\nSe corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.\nWorld space\nCorresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.\nView space\nEs el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena\nClip space\nEs espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta"
   },
   {
-    "objectID": "courses/3501.4.html#matriz-mvp",
-    "href": "courses/3501.4.html#matriz-mvp",
+    "objectID": "courses/3501.4.html#espacios-3d-1",
+    "href": "courses/3501.4.html#espacios-3d-1",
     "title": "Auxiliar 4",
-    "section": "Matriz MVP",
-    "text": "Matriz MVP"
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\n\n\n\n\n\n\nFuente: LearnOpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d-2",
+    "href": "courses/3501.4.html#espacios-3d-2",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\nMatriz MVP\n\n\\[\nM_{projection} \\cdot M_{view} \\cdot M_{model} \\cdot v_{local} = v_{clipped}\n\\]\n\n\nSirve para moverse desde el espacio local al espacio homogéneo de OpenGL"
   },
   {
     "objectID": "courses/3501.4.html#modelo",
     "href": "courses/3501.4.html#modelo",
     "title": "Auxiliar 4",
     "section": "Modelo",
-    "text": "Modelo"
+    "text": "Modelo\n\nPara pasar de coordenadas locales a las de mundo usamos la matriz de modelo.\n\n\n\\[\nM_{model}  = M_{translation} \\cdot M_{rotation} \\cdot M_{scale}\n\\]\n\n\nEs la que usamos la clase pasada para mover los modelos!"
   },
   {
     "objectID": "courses/3501.4.html#vista",
     "href": "courses/3501.4.html#vista",
     "title": "Auxiliar 4",
     "section": "Vista",
-    "text": "Vista"
+    "text": "Vista\n\nPara pasar de coordenadas de mundo a las de vista o de cámara, usamos la matriz de vista. Con un poco de magia de álgebra lineal tenemos que:\n\n\n\\[\nM_{view} = M_{lookat} =\n\\begin{pmatrix}\nr_x & r_y & r_z & 0\\\\\nu_x & u_y & u_z & 0\\\\\nd_x & d_y & d_z & 0\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\cdot\n\\begin{pmatrix}\n1 & 0 & 0 & -p_x\\\\\n0 & 1 & 0 & -p_y\\\\\n0 & 0 & 1 & -p_z\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\]\n\n\nDonde\n\n\\(R\\) es el vector que apunta a la derecha de la cámara\n\\(U\\) es el vector que apunta hacia arriba de la cámara\n\\(D\\) es el vector a donde apunta a la cámara\n\\(P\\) es la posición de la cámara"
   },
   {
     "objectID": "courses/3501.4.html#proyección",
     "href": "courses/3501.4.html#proyección",
     "title": "Auxiliar 4",
     "section": "Proyección",
-    "text": "Proyección"
+    "text": "Proyección\n\nFinalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la matriz de proyección, que viene en dos sabores:\n\n\n\n\nOrtográfica\n\n\n\n\n\ndef ortho(left, right, bottom, top, near, far)\n\n\nPerspectiva\n\n\n\n\n\ndef perspective(fovy, aspect, near, far):\n\n\n\nFuente: LearnOpenGL"
   },
   {
-    "objectID": "courses/3501.4.html#p1-resolviendo-con-clase",
-    "href": "courses/3501.4.html#p1-resolviendo-con-clase",
+    "objectID": "courses/3501.4.html#manejo-de-input",
+    "href": "courses/3501.4.html#manejo-de-input",
     "title": "Auxiliar 4",
-    "section": "P1 — Resolviendo con clase",
-    "text": "P1 — Resolviendo con clase"
+    "section": "Manejo de input",
+    "text": "Manejo de input\n\nPara manejar input podemos utilizar Pyglet la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a on_draw:\n\n\n\non_key_press(symbol, modifiers): función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en symbol.\non_key_release(symbol, modifiers): función que se llama cuando se libera una tecla y se guarda el valor de la tecla en symbol.\non_mouse_motion(x, y, dx, dy): función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (x e y), así como el cambio de este (dx y dy).\n\n\n\nExisten más que pueden ver en la documentación de la librería"
   },
   {
-    "objectID": "courses/3501.4.html#p2-hagamos-un-fps",
-    "href": "courses/3501.4.html#p2-hagamos-un-fps",
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase",
     "title": "Auxiliar 4",
-    "section": "P2 – Hagamos un FPS",
-    "text": "P2 – Hagamos un FPS\nParte A\nMirar\nParte B\nMoverse\nParte A\nApuntar"
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\n\nEl auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una clase.\n\n\nUna clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.\n\n\nCree la clase GameModel, que contenga lo siguiente:\n\nInformación de posición, rotación y escalado\nColor del objeto y buffer de la GPU\nUna función que sea capaz de entregar la matriz de modelo del objeto correspondiente\nUna función que sea capaz de dibujar el objeto en pantalla"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "title": "Auxiliar 4",
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\nUse esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte A\nMuy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.\n\n\nCree la clase Camara que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando on_key_press y on_key_release"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte B\nAñada los valores de pitch y yaw que permitan mover la cámara, use la función on_mouse_motion para vincular el ángulo de vista con el movimiento del mouse"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
   },
   {
     "objectID": "courses/4302.0.html",
