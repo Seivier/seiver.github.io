@@ -14,44 +14,211 @@ format:
 ---
 # Contexto
 
-## Escenas 3D
-```{mermaid}
-sequenceDiagram
-  participant Alice
-  participant Bob
-  Alice->>John: Hello John, how are you?
-  loop Healthcheck
-    John->>John: Fight against hypochondria
-  end
-  Note right of John: Rational thoughts <br/>prevail!
-  John-->>Alice: Great!
-  John->>Bob: How about you?
-  Bob-->>John: Jolly good!
-```
+## Espacios 3D {.smaller}
+::: {.fragment}
+Para trabajar en tres dimensiones tenemos que tener en cuenta 
+los espacios de nuestros objetos:
+:::
 
-## Matriz MVP
+::: {.incremental}
+- Local space
+    
+    Se corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.
+
+- World space
+
+    Corresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.
+
+- View space
+
+    Es el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena
+
+- Clip space
+
+    Es espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta
+:::
+
+
+## Espacios 3D
+![](res/coordinate_systems.png){fig-align="center" height="100%" style="background-color:white; border-radius: .1in"}
+
+::: {.aside}
+Fuente: [LearnOpenGL](https://learnopengl.com/Getting-started/Coordinate-Systems)
+:::
+## Espacios 3D
+### Matriz MVP
+::: {.fragment}
+$$
+M_{projection} \cdot M_{view} \cdot M_{model} \cdot v_{local} = v_{clipped}
+$$
+:::
+
+::: {.fragment}
+Sirve para moverse desde el espacio local al espacio homogéneo de OpenGL
+:::
+
 
 ## Modelo
+::: {.fragment}
+Para pasar de coordenadas locales a las de mundo usamos la 
+[matriz de modelo]{style="color:orange"}.
+:::
 
-## Vista
+::: {.fragment}
+$$
+M_{model}  = M_{translation} \cdot M_{rotation} \cdot M_{scale}
+$$
+:::
 
-## Proyección
+::: {.fragment}
+Es la que usamos la clase pasada para mover los modelos!
+:::
+
+
+## Vista {.smaller}
+::: {.fragment}
+Para pasar de coordenadas de mundo a las de vista o de *cámara*, 
+usamos la [matriz de vista]{style="color:orange"}. Con un poco de magia de álgebra lineal tenemos que:
+:::
+
+::: {.fragment}
+$$
+M_{view} = M_{lookat} = 
+\begin{pmatrix}
+r_x & r_y & r_z & 0\\
+u_x & u_y & u_z & 0\\
+d_x & d_y & d_z & 0\\
+0 & 0 & 0 & 1\\
+\end{pmatrix} 
+\cdot 
+\begin{pmatrix}
+1 & 0 & 0 & -p_x\\
+0 & 1 & 0 & -p_y\\
+0 & 0 & 1 & -p_z\\
+0 & 0 & 0 & 1\\
+\end{pmatrix} 
+$$
+:::
+
+::: {.fragment}
+Donde
+
+- $R$ es el vector que apunta a la derecha de la cámara
+- $U$ es el vector que apunta hacia arriba de la cámara
+- $D$ es el vector a donde apunta a la cámara
+- $P$ es la posición de la cámara
+:::
+
+## Proyección {.smaller}
+::: {.fragment}
+Finalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la
+[matriz de proyección]{style="color:orange"}, que viene en dos sabores:
+:::
+
+::: {.columns}
+::: {.column .fragment width="52%"}
+### Ortográfica
+![](res/orthographic_frustum.png){fig-align="center" height="3in" style="background-color:white; border-radius: .1in"}
+
+```{.python} 
+def ortho(left, right, bottom, top, near, far)
+```
+
+:::
+::: {.column .fragment width="48%"}
+### Perspectiva
+![](res/perspective_frustum.png){fig-align="center" height="3in" style="background-color:white; border-radius: .1in"}
+
+```{.python} 
+def perspective(fovy, aspect, near, far):
+```
+:::
+:::
+
+::: {.aside}
+Fuente: [LearnOpenGL](https://learnopengl.com/Getting-started/Coordinate-Systems)
+:::
+
+## Manejo de input {.smaller}
+::: {.fragment}
+Para manejar input podemos utilizar [Pyglet](https://pyglet.readthedocs.io/en/latest/programming_guide/keyboard.html)
+la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a `on_draw`:
+:::
+
+::: {.incremental}
+- `on_key_press(symbol, modifiers)`: función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en `symbol`.
+- `on_key_release(symbol, modifiers)`: función que se llama cuando se libera una tecla y se guarda el valor de la tecla en `symbol`.
+- `on_mouse_motion(x, y, dx, dy)`: función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (`x` e `y`), así como el cambio de este (`dx` y `dy`).
+:::
+
+::: {.fragment}
+Existen más que pueden ver en la documentación de la librería
+:::
 
 # Problemas
 
-## P1 --- Resolviendo con clase
+## P1 --- Hacerlo con clase {.smaller}
+::: {.fragment}
+El auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos,
+ahora veremos como abstraer el concepto de modelo en una [clase]{style="color:orange"}.
+:::
 
-## P2 -- Hagamos un FPS
+::: {.fragment}
+Una clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente
+algo.
+:::
+
+::: {.fragment}
+Cree la clase `GameModel`, que contenga lo siguiente:
+
+- Información de posición, rotación y escalado
+- Color del objeto y buffer de la GPU
+- Una función que sea capaz de entregar la matriz de modelo del objeto correspondiente
+- Una función que sea capaz de dibujar el objeto en pantalla
+:::
+
+## P1 --- Hacerlo con clase {.smaller}
+Use esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:
+
+![](res/cow-scene.png){fig-align="center"}
+
+
+## P2 -- Hagámoslo FPS {.smaller}
+::: {.fragment}
 ### Parte A
-Mirar
+Muy bonita su escena pero hay elementos que no se ven completamente, como usted
+conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.
+:::
 
+::: {.fragment}
+Cree la clase `Camara` que contenga información de la posición de la cámara y su velocidad
+y use el teclado para moverse en la escena usando `on_key_press` y `on_key_release`
+:::
+
+## P2 -- Hagámoslo FPS {.smaller}
+::: {.fragment}
 ### Parte B
-Moverse
+Añada los valores de `pitch` y `yaw` que permitan mover la cámara, use la función
+`on_mouse_motion` para vincular el ángulo de vista con el movimiento del mouse
+:::
+::: {.fragment}
+![](res/camera_pitch_yaw_roll.png){fig-align="center" style="background-color: white; border-radius: .1in"}
+:::
 
-### Parte A
-Apuntar
+## P2 -- Hagámoslo FPS {.smaller}
+::: {.fragment}
+### Parte C
+Corrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara
+:::
 
+::: {.fragment}
+![](res/360noscope.gif){fig-align="center" width="6in" }
+:::
 
+::: {.r-stack .fragment}
+Felicidades! Ahora puedes hacer un 360 no scope 🤠
+:::
 
 # Fin
 [Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}
+
