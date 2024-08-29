@@ -52,14 +52,14 @@ void sem_destroy(sem_t *sem);
 ## Manejo 
 ### Uso
 ::: {.fragment}
-Para depositar una ficha:
+Para extraer una ficha:
 ```{.c} 
 void sem_wait(sem_t *sem); 
 ```
 :::
 
 ::: {.fragment}
-Para extraer una ficha:
+Para depositar una ficha:
 
 ```{.c} 
 void sem_post(sem_t *sem); 
