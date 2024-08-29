@@ -119,7 +119,7 @@
     "href": "courses/4302.4.html#manejo-1",
     "title": "Auxiliar 4",
     "section": "Manejo",
-    "text": "Manejo\nUso\n\nPara depositar una ficha:\nvoid sem_wait(sem_t *sem); \n\n\nPara extraer una ficha:\nvoid sem_post(sem_t *sem); \nAl igual que con los mutex, no esta garantizado el orden de adquisición"
+    "text": "Manejo\nUso\n\nPara extraer una ficha:\nvoid sem_wait(sem_t *sem); \n\n\nPara depositar una ficha:\nvoid sem_post(sem_t *sem); \nAl igual que con los mutex, no esta garantizado el orden de adquisición"
   },
   {
     "objectID": "courses/4302.4.html#comportamiento",
