@@ -1,104 +1,10 @@
 [
   {
-    "objectID": "courses/3501.0.html",
-    "href": "courses/3501.0.html",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
-    ]
-  },
-  {
-    "objectID": "courses/3501.0.html#auxiliares",
-    "href": "courses/3501.0.html#auxiliares",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
-    "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
-    ]
-  },
-  {
-    "objectID": "courses/3501.2.html#la-escena",
-    "href": "courses/3501.2.html#la-escena",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
-  },
-  {
-    "objectID": "courses/3501.2.html#la-escena-1",
-    "href": "courses/3501.2.html#la-escena-1",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline",
-    "href": "courses/3501.2.html#pipeline",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline-1",
-    "href": "courses/3501.2.html#pipeline-1",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline-2",
-    "href": "courses/3501.2.html#pipeline-2",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
-  },
-  {
-    "objectID": "courses/3501.2.html#shaders",
-    "href": "courses/3501.2.html#shaders",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
-  },
-  {
-    "objectID": "courses/3501.2.html#shaders-1",
-    "href": "courses/3501.2.html#shaders-1",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
-  },
-  {
-    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
-    "href": "courses/3501.2.html#p1-generar-un-círculo",
-    "title": "Auxiliar 2",
-    "section": "P1 — Generar un círculo",
-    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
-  },
-  {
-    "objectID": "courses/3501.2.html#p2-añadir-color",
-    "href": "courses/3501.2.html#p2-añadir-color",
-    "title": "Auxiliar 2",
-    "section": "P2 — Añadir color",
-    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
-  },
-  {
-    "objectID": "courses/3501.2.html#p3-agregar-indices",
-    "href": "courses/3501.2.html#p3-agregar-indices",
-    "title": "Auxiliar 2",
-    "section": "P3 — Agregar indices",
-    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
-  },
-  {
-    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "title": "Auxiliar 2",
-    "section": "P4 — Un poquito de movimiento",
-    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
+    "text": "About this site"
   },
   {
     "objectID": "courses/4302.4.html#semáforos",
@@ -297,18 +203,136 @@
     "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
+    "objectID": "courses/3501.6.html#texturas",
+    "href": "courses/3501.6.html#texturas",
+    "title": "Auxiliar 6",
+    "section": "Texturas",
+    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "courses/3501.6.html#mapping",
+    "href": "courses/3501.6.html#mapping",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
+  },
+  {
+    "objectID": "courses/3501.6.html#mapping-1",
+    "href": "courses/3501.6.html#mapping-1",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-opengl",
+    "href": "courses/3501.6.html#en-opengl",
+    "title": "Auxiliar 6",
+    "section": "En OpenGL",
+    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-el-curso",
+    "href": "courses/3501.6.html#en-el-curso",
+    "title": "Auxiliar 6",
+    "section": "En el curso",
+    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
+  },
+  {
+    "objectID": "courses/3501.6.html#otros-usos",
+    "href": "courses/3501.6.html#otros-usos",
+    "title": "Auxiliar 6",
+    "section": "Otros usos",
+    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
+  },
+  {
+    "objectID": "courses/3501.6.html#iluminación",
+    "href": "courses/3501.6.html#iluminación",
+    "title": "Auxiliar 6",
+    "section": "Iluminación",
+    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading",
+    "href": "courses/3501.6.html#shading",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading-1",
+    "href": "courses/3501.6.html#shading-1",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas",
+    "href": "courses/3501.6.html#p1-texturas",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas-1",
+    "href": "courses/3501.6.html#p1-texturas-1",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
+  },
+  {
+    "objectID": "courses/3501.6.html#p2-iluminación",
+    "href": "courses/3501.6.html#p2-iluminación",
+    "title": "Auxiliar 6",
+    "section": "P2 — Iluminación",
+    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
+  },
+  {
+    "objectID": "courses/4302.0.html",
+    "href": "courses/4302.0.html",
+    "title": "Sistemas operativos",
     "section": "",
-    "text": "About this site"
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html#auxiliares",
+    "href": "courses/4302.0.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/3501.0.html",
+    "href": "courses/3501.0.html",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "section": "",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
+    ]
+  },
+  {
+    "objectID": "courses/3501.0.html#auxiliares",
+    "href": "courses/3501.0.html#auxiliares",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "section": "",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
+    ]
   },
   {
     "objectID": "courses/3501.4.html#espacios-3d",
@@ -393,30 +417,6 @@
     "title": "Auxiliar 4",
     "section": "P2 – Hagámoslo FPS",
     "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
-  },
-  {
-    "objectID": "courses/4302.0.html",
-    "href": "courses/4302.0.html",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/4302.0.html#auxiliares",
-    "href": "courses/4302.0.html#auxiliares",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
   },
   {
     "objectID": "courses/4302.1.html#su-auxiliar",
@@ -536,6 +536,94 @@
     "title": "Auxiliar 1",
     "section": "P1 — Buscar Factor",
     "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
+  },
+  {
+    "objectID": "courses/3501.2.html#la-escena",
+    "href": "courses/3501.2.html#la-escena",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
+  },
+  {
+    "objectID": "courses/3501.2.html#la-escena-1",
+    "href": "courses/3501.2.html#la-escena-1",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline",
+    "href": "courses/3501.2.html#pipeline",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline-1",
+    "href": "courses/3501.2.html#pipeline-1",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline-2",
+    "href": "courses/3501.2.html#pipeline-2",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
+  },
+  {
+    "objectID": "courses/3501.2.html#shaders",
+    "href": "courses/3501.2.html#shaders",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
+  },
+  {
+    "objectID": "courses/3501.2.html#shaders-1",
+    "href": "courses/3501.2.html#shaders-1",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
+  },
+  {
+    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
+    "href": "courses/3501.2.html#p1-generar-un-círculo",
+    "title": "Auxiliar 2",
+    "section": "P1 — Generar un círculo",
+    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
+  },
+  {
+    "objectID": "courses/3501.2.html#p2-añadir-color",
+    "href": "courses/3501.2.html#p2-añadir-color",
+    "title": "Auxiliar 2",
+    "section": "P2 — Añadir color",
+    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
+  },
+  {
+    "objectID": "courses/3501.2.html#p3-agregar-indices",
+    "href": "courses/3501.2.html#p3-agregar-indices",
+    "title": "Auxiliar 2",
+    "section": "P3 — Agregar indices",
+    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
+  },
+  {
+    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "title": "Auxiliar 2",
+    "section": "P4 — Un poquito de movimiento",
+    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
+  },
+  {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Cursos",
+    "section": "",
+    "text": "Aquí esta el material de cursos que he dictado",
+    "crumbs": [
+      "Cursos",
+      "2024"
+    ]
   },
   {
     "objectID": "courses/4302.2.html#creación-de-un-thread",
@@ -713,14 +801,10 @@
     "text": "P2 — Colecta\nSe necesita crear un sistemas para juntar exactamente una cantidad \\(X\\) de dinero:\n\n\nDefinir el tipo de datos Colecta.\nProgramar la función\nColecta *nuevaColecta(double meta);\nQue crea y retorna una colecta para juntar meta pesos.\nProgramar la función\ndouble aportar(Colecta *c, double monto);\nQue es invocada desde múltiples procesos para contribuir monto pesos. El valor de retorno de la función es el mínimo entre monto y lo que falta para llegar a la meta.\nLa función retornar una vez que la meta se cumpla"
   },
   {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Cursos",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
     "section": "",
-    "text": "Aquí esta el material de cursos que he dictado",
-    "crumbs": [
-      "Cursos",
-      "2024"
-    ]
+    "text": "Bienvenido 😃"
   }
 ]
