@@ -5,3 +5,4 @@ title: Modelación y Computación Gráfica para Ingeniero
 1. [Instalación de Herramientas](3501.1.qmd)
 2. [Introducción a OpenGL](3501.2.qmd)
 4. [Cámara e Input](3501.4.qmd)
+6. [Texturas e Iluminación](3501.6.qmd)
