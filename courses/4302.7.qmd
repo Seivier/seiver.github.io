@@ -1,0 +1,1817 @@
+---
+title: Auxiliar 7
+subtitle: Timeouts y Prioridades
+author: 
+    - Vicente González
+    - Pablo Jaramillo
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        pdf-separate-fragments: true
+        transition: slide
+        chalkboard: true
+---
+# Contexto
+## Mensajes
+
+::: {.columns}
+::: {.column width="50%"}
+
+::: {.fragment}
+![`nSend(th, *msg);`](./res/cc4302.insane.1.png){height="500"}
+:::
+
+
+:::
+::: {.column width="50%"}
+
+::: {.fragment}
+![`nReceive(*pth, timeout_ms);`](./res/cc4302.insane.2.png){height="500"}
+:::
+:::
+:::
+
+## *How to?* {.smaller}
+::: {.columns}
+::: {.column width=""}
+::: {.fragment}
+```{.c style="font-size: 150%" code-line-numbers="false"}
+int nSend(nThread th, void *msg);
+```
+::: {.incremental}
+- Envía un mensaje `msg` al thread `th`. 
+- Suspende al thread hasta que se reciba una respuesta desde `th`.
+- Retorna el valor recibido.
+:::
+:::
+
+
+::: {.fragment}
+```{.c style="font-size: 150%" code-line-numbers="false"}
+int nReply(nThread th, int rc);
+```
+::: {.incremental}
+- Envía una respuesta con `rc` a un mensaje recibido de `th`.
+- No suspende al thread.
+:::
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+```{.c style="font-size: 110%" code-line-numbers="false"}
+void* nReceive(nThread *pth, int timeout_ms);
+```
+::: {.incremental}
+- Suspende al thread hasta recibir un mensaje.
+- El emisor del mensaje se guarda en `pth`.
+- Retorna el mensaje recibido.
+- La suspensión dura `timeout_ms`.
+- Si no se recibe mensaje se retorna de todas formas.
+- Si `timeout_ms` $< 0$ entonces la suspensión es infinita.
+:::
+:::
+:::
+:::
+
+
+# Problemas
+## Impresora compartida {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="50%"}
+Patron Request
+
+```{.c} 
+void obtenerImpresora(){
+  pthread_mutex_lock(&m);
+  Request req = {FALSE, 
+                 PTHREAD_COND_INITIALIZER};
+  put(q, &req);
+  pthread_cond_signal(&obtener);
+  while (!req.ready){
+    pthread_cond_wait(&req.w, &m);
+  }
+  pthread_mutex_unlock(&m);
+}
+
+void devolverImpresora(){
+  pthread_mutex_lock(&m);
+  ocupada = FALSE;
+  pthread_cond_signal(&devolver);
+  pthread_mutex_unlock(&m);
+}
+```
+
+:::
+::: {.column width="50%"}
+✨Mensajes✨ 
+
+```{.c} 
+enum Mensaje {OBTENER, DEVOLVER};
+
+void obtenerImpresora(){
+  int msg = OBTENER;
+  // Bloquear thread hasta recibir respuesta
+  nSend(impresora, &msg);
+}
+void devolverImpresora(){
+  int msg = DEVOLVER;
+  nSend(impresora, &msg);
+}
+```
+:::
+:::
+
+## Impresora compartida {.smaller auto-animate=true}
+Patron Request
+
+```{.c style="font-size:70%"} 
+void ImpresoraServer() {
+  while(TRUE) {
+    pthread_mutex_lock(&m);
+    if(emptyQueue(q)) {
+      struct timespec ts;
+      clock_gettime(CLOCK_REALTIME, &ts);
+      ts.tv_sec += 60*5;
+      while(emptyQueue(q) && pthread_cond_timed_wait(&obtener, &m, &ts) != ETIMEDOUT) {
+        ;//wait por 5 mins
+      }
+
+      if(emptyQueue(q)) {
+        modoBajoConsumo();
+        while (emptyQueue(q)) {
+          pthread_cond_wait(&obtener, &m);
+        }
+        modoUsoNormal();
+      }
+    }
+
+    if(!emptyQueue(q)) {
+      Request *req = get(q);
+      req -> ready = TRUE;
+      ocupada = TRUE;
+      pthread_cond_signal(&req->w);
+    }
+
+    while(ocupada){
+      pthread_cond_wait(&devolver, &m);
+    }
+    pthread_mutex_unlock(&m);
+  }
+}
+```
+
+## Impresora compartida {.smaller auto-animate=true}
+✨Mensajes✨ 
+
+```{.c style="font-size:60%"} 
+int ImpresoraServer() {
+  Queue *q = makeQueue();
+  int ocupado = FALSE;
+  nThread t;
+  int *msg;
+  while (TRUE) {
+    // Si no esta ocupada, esperar
+    if (!ocupado) {
+      // esperar 5 minutos (5min * 60s * 1000ms)
+      msg = (int *) nReceive(&t, 60 * 5 * 1000);
+      if (t == NULL) {
+        modoBajoConsumo();
+        msg = (int*) nRecieve(&t,
+        -1); // esperar
+        modoUsoNormal();
+      }
+    } else { // Esperar a que se desocupe impresora
+      msg = (int*) nReceive(&t, -1); // esperar
+      if (*msg == OBTENER) {
+        // Encolar si esta ocupada,
+        if (ocupado)
+          put(q,t);
+        else { // responder si esta disponible
+          ocupado = TRUE;
+          nReply(t,0);
+        }
+      } else if (*msg == DEVOLVER) {
+        nReply(t, 0); // “ok, la devolviste”
+        if (EmptyFifoQueue(q)) {
+          ocupado = FALSE;
+        } else {
+          // Entregar impresora a siguiente thread
+          nThread *t2 = (nThread*) get(q);
+          nReply(t2, 0);
+        }
+      }
+    }
+  }
+}
+
+```
+
+## *So far so good* {.center}
+
+## P1 -- Timeouts
+Implemente:
+
+```{.c } 
+int nSend(nThread th, void *msg)
+
+void *nReceive(nThread *pth, int timeout_ms)
+
+void nReply(nThread th, int rc)
+```
+Esta vez con timeouts!!
+
+## P2 -- Scheduler de prioridades {auto-animate=true}
+
+Un *scheduler* debe:
+
+- Activar procesos suspendidos
+- Suspender procesos activos
+- Saber cual es el siguiente proceso que debe activarse
+
+Lo llamamos cuando usamos `setReady()`, `suspend()` o `schedule()`.
+
+Veamos como se implementan con prioridades
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%" code-line-numbers="3"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+- Manejaremos la prioridad con un arreglo de colas FIFO
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%" code-line-numbers="5-12"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+- Manejaremos la prioridad con un arreglo de colas FIFO
+- Guardamos la prioridad en el descriptor del `thread`
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%" code-line-numbers="9"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+- Manejaremos la prioridad con un arreglo de colas FIFO
+- Guardamos la prioridad en el descriptor del `thread`
+- Al cambiar la prioridad puede resultar en que el `thread` actual ya no sea de mejor prioridad
+:::
+:::
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%" code-line-numbers="14-23"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+- Manejaremos la prioridad con un arreglo de colas FIFO
+- Guardamos la prioridad en el descriptor del `thread`
+- Al cambiar la prioridad puede resultar en que el `thread` actual ya no sea de mejor prioridad
+- Cuando un `thread` este listo, entonces lo guardamos en su cola respectiva.
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:75%" code-line-numbers="25-33"} 
+#include "nthread-impl.h"
+
+static NthQueue *nth_pri1ReadyQueue[MAXPRI];
+
+void nSetPriority(nThread th, int pri) {
+  START_CRITICAL
+  
+  th->pri= pri;
+  schedule(); 
+  
+  END_CRITICAL
+}
+
+static void nth_pri1SetReady(nThread th) {
+  CHECK_CRITICAL("nth_fcfsSetReady")
+  
+  if (th->status==READY || th->status==RUN)
+    nFatalError("nth_fcfsReady",
+                "The thread was already in READY status\n");
+
+  th->status= READY;
+  nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+}
+
+static void nth_pri1Suspend(State waitState) {
+  CHECK_CRITICAL("nth_fcfsSuspend")
+  
+  nThread th= nSelf();
+  if (th->status!=RUN && th->status!=READY)
+    nFatalError("nth_fcfsSuspend", 
+                "Thread was not ready or run\n");
+  th->status= waitState;
+}
+```
+:::
+::: {.column style="font-size:80%"}
+- Manejaremos la prioridad con un arreglo de colas FIFO
+- Guardamos la prioridad en el descriptor del `thread`
+- Al cambiar la prioridad puede resultar en que el `thread` actual ya no sea de mejor prioridad
+- Cuando un `thread` este listo, entonces lo guardamos en su cola respectiva.
+- Cuando se tenga que suspender, solo hay que cambiar el estado a `WAIT` (u otro que sea necesario)
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" } 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" } 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="5-8"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="10"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="12-16"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+- Buscamos la cola con mejor prioridad.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="17-20"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+- Buscamos la cola con mejor prioridad.
+- Si encontramos dicha cola, obtenemos el primer `thread` en esta.
+:::
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="21-27"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+- Buscamos la cola con mejor prioridad.
+- Si encontramos dicha cola, obtenemos el primer `thread` en esta.
+- Si no, tenemos que suspender el `thread`.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="21-27"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+- Buscamos la cola con mejor prioridad.
+- Si encontramos dicha cola, obtenemos el primer `thread` en esta.
+- Si no, tenemos que suspender el `thread`.
+  - Esto significa que no existe otro `thread` que este listo para ejecutar.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="22-23"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Al llamar a `schedule()` buscamos suspender el `thread` para darle el core al que tenga mejor prioridad.
+- Si el `thread` no esta suspendido (`WAIT`) se reincorpora a las colas de prioridades.
+- Se debe mantener `schedule()` hasta obtener el siguiente `thread`.
+- Buscamos la cola con mejor prioridad.
+- Si encontramos dicha cola, obtenemos el primer `thread` en esta.
+- Si no, tenemos que suspender el `thread`.
+  - Esto significa que no existe otro `thread` que este listo para ejecutar.
+  - Se tiene que marcar entonces que el sistema entero (o el core) como *idle*.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="29"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="29"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+:::
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="29"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+- Después de un rato, el `thread` vuelve a recibir un `core`
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="29"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+- Después de un rato, el `thread` vuelve a recibir un `core`
+- Este `core` puede que sea distinto al que tenia al principio
+:::
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="31"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+- Después de un rato, el `thread` vuelve a recibir un `core`
+- Este `core` puede que sea distinto al que tenia al principio
+- Hay que reconfigurar el `thread`.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="31"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+- Después de un rato, el `thread` vuelve a recibir un `core`
+- Este `core` puede que sea distinto al que tenia al principio
+- Hay que reconfigurar el `thread`.
+- Después de esto, `nSelf()` retorna correctamente el `thread` actual.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width="55%"}
+```{.c style="font-size:70%" code-line-numbers="33"} 
+static void nth_pri1Schedule(void) {
+  CHECK_CRITICAL("nth_fcfsSchedule")
+  
+  nThread thisTh= nSelf();
+  if (thisTh!=NULL && (thisTh->status==READY || thisTh->status==RUN)) {
+    thisTh->status= READY;
+    nth_putBack(nth_pri1ReadyQueue[thisTh->pri], thisTh);
+  }
+  nThread nextTh= NULL;
+  while (nextTh==NULL) {
+    int i=0;
+    while (i<MAXPRI) {
+      if (!nth_emptyQueue(nth_pri1ReadyQueue[i]))
+        break;
+      i++;
+    }
+    if (i<MAXPRI) {
+      nextTh= nth_getFront(nth_pri1ReadyQueue[i]);
+      break;
+    }
+    else {
+      nth_coreIsIdle[0]= 1; // To prevent a signal handler to call
+                                       // recursively this scheduler
+      sigsuspend(&nth_sigsetApp);
+      nth_coreIsIdle[0]= 0;
+    }
+  }
+  
+  nth_changeContext(thisTh, nextTh);
+
+  nth_setSelf(thisTh); 
+  
+  thisTh->status= RUN;
+}
+```
+
+:::
+::: {.column width="45%"}
+::: {style="font-size: 70%"}
+- Cuando obtenemos el `thread` le pasamos el `core` correspondiente.
+- Esto hace que se suspenda la ejecución de la función
+- Después de un rato, el `thread` vuelve a recibir un `core`
+- Este `core` puede que sea distinto al que tenia al principio
+- Hay que reconfigurar el `thread`.
+- Después de esto, `nSelf()` retorna correctamente el `thread` actual.
+- Se cambia el estado del `thread`.
+:::
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="8-11"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="13-35"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+:::
+:::
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="22-23"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="24"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="25-32"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+  - Iterar por los `threads` y colocarlos en la cola adecuada
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="1-6"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+  - Iterar por los `threads` y colocarlos en la cola adecuada
+- Para terminar el *scheduler*:
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="4-5"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+  - Iterar por los `threads` y colocarlos en la cola adecuada
+- Para terminar el *scheduler*:
+  - Hay que destruir las colas de prioridad
+:::
+:::
+
+
+## P2 -- Scheduler de prioridades {.smaller auto-animate=true}
+
+::: {.columns}
+::: {.column width=""}
+```{.c style="font-size:65%" code-line-numbers="37-39"} 
+static void nth_pri1Stop(void) {
+  CHECK_CRITICAL("nth_fcfsStop")
+  
+  for (int i= 0; i<MAXPRI; i++)
+    nth_destroyQueue(nth_pri1ReadyQueue[i]);
+}
+
+Scheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,
+                               .setReady = nth_pri1SetReady,
+                               .suspend = nth_pri1Suspend,
+                               .stop = nth_pri1Stop };
+
+void setPri1Scheduling() {
+  START_CRITICAL
+
+  if (nth_verbose)
+    printf("Info: setting single-core priority scheduling\n");
+  
+  if (nth_totalCores!=1)
+    nFatalError("setPri1Scheduling",
+                "This priority scheduler only accepts a single core\n");
+  for (int i= 0; i<MAXPRI; i++)
+    nth_pri1ReadyQueue[i]= nth_makeQueue();
+  nth_setScheduler(nth_pri1Scheduler);
+  MapIterator *iter= getMapIterator(nth_threadSet);
+  void *ptr;
+  while (mapNext(iter, &ptr, &ptr)) {
+    nThread th= ptr;
+    if (th->status==READY)
+      nth_putBack(nth_pri1ReadyQueue[th->pri], th);
+  }
+  destroyMapIterator(iter);
+  
+  END_CRITICAL
+}
+
+int isPri1Scheduling(void) {
+  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;
+}
+```
+:::
+::: {.column width=""}
+- El *scheduler* se maneja como una estructura con punteros a las funciones adecuadas.
+- Para inicializar el *scheduler*:
+  - Hay que crear las colas de prioridad
+  - Iterar por los `threads` y colocarlos en la cola adecuada
+- Para terminar el *scheduler*:
+  - Hay que destruir las colas de prioridad
+:::
+:::
+
+# Fin
+*[Ver otras auxiliares](4302.0.qmd)*
