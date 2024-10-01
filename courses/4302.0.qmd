@@ -7,3 +7,4 @@ title: Sistemas operativos
 1. [Introducción a Pthreads](4302.1.html)
 2. [Sincronización de Threads](4302.2.html)
 4. [Semáforos](4302.4.qmd)
+7. [Timeouts y Prioridades](4302.7.qmd)
