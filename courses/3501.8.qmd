@@ -1,0 +1,235 @@
+---
+title: Auxiliar 8
+subtitle: Luces y Materiales
+author: 
+  - Vicente González
+  - Julieta Coloma
+footer: CC3501 --- Modelación y Computación Gráfica para Ingenieros
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        pdf-separate-fragments: true
+        transition: slide
+        chalkboard: true
+---
+# Contexto
+
+## Texturas {.smaller}
+::: {.fragment}
+Usualmente un model necesita más de un color, para manejar cómodamente esto se usan
+**texturas**. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo.
+:::
+
+::: {.fragment}
+![](res/joker.png){fig-align="center"}
+:::
+
+## Mapping
+::: {.fragment}
+Al trabajar con texturas se debe considerar el *mapping* de estas al modelo. Para ello se 
+hace uso de una la función:
+:::
+
+::: {.fragment}
+$$ f(x,y,z) \rightarrow (u,v) $$
+:::
+
+::: {.incremental}
+- No suele ser sencillo tener un $f$ definido.
+- Es más conveniente escribir las coordenadas de texturas $(u,v)$ en cada vértice.
+- Luego el valor se interpola antes de llegar al `fragment shader`.
+:::
+
+## Mapping
+
+::: {.columns}
+::: {.column width="60%" }
+![](res/steve_skin.jpg){fig-align="center" style="background-color:white; border-radius: 10px"}
+:::
+::: {.column width="30%"}
+![](res/steve.png){fig-align="center"}
+:::
+:::
+
+## En OpenGL {.smaller}
+Para crear texturas hacemos lo siguiente:
+
+::: {.fragment}
+```{.c} 
+glGenTextures(1, &texture);
+glBindTexture(GL_TEXTURE_2D, texture); 
+// que pasa si las coordenadas son mayores a 1
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+// como colorear o samplear si la imagen es más grande o más pequeña que la original
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+// cargar la imagen a la textura
+unsigned char *data = image_load(...);
+if (data) {
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+}
+image_free(data);
+```
+:::
+
+::: {.fragment}
+Cada vez que queramos usarla debemos vincularla:
+```{.c} 
+// indice de la textura (se pueden usar más de una a la vez)
+glActiveTexture(GL_TEXTURE0);
+glBindTexture(GL_TEXTURE_2D, texture);  
+```
+:::
+
+
+## En el curso {.smaller}
+Para el curso tenemos la librería `grafica` o `utils` que contiene la clase `Texture` dentro de `drawables.py`:
+
+::: {.fragment}
+```{.python} 
+class Texture():
+    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, 
+                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, 
+                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):
+        ...
+
+        texture = glGenTextures(1)
+        glBindTexture(GL_TEXTURE_2D, texture)
+
+        # texture wrapping params
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)
+
+        # texture filtering params
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)
+
+        # loading image
+        ...
+
+        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],
+                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)
+
+```
+:::
+
+::: {.fragment}
+Esta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla.
+:::
+
+
+## Otros usos
+::: {.fragment}
+No es necesario guardar solamente los colores en las texturas, se pueden guardar:
+:::
+
+::: {.incremental}
+- Normales
+- Desplazamiento
+- Altura
+- Literalmente cualquier cosa
+:::
+
+::: {.fragment}
+También se puede escribir a una textura, esto permite hacerle *post-procesado* a cada
+frame, las sombras se crean de esta forma.
+:::
+
+## Iluminación {.smaller}
+::: {.fragment}
+La clave de una escena realista reside en la iluminación. Para modelarla existe la
+ecuación de *rendering*:
+:::
+::: {.fragment}
+$$ L_{\text{o}}(\mathbf x, \omega_{\text{o}}, \lambda, t) = L_{\text{e}}(\mathbf x, \omega_{\text{o}}, \lambda, t) + L_{\text{r}}(\mathbf x, \omega_{\text{o}}, \lambda, t)$$
+:::
+::: {.fragment}
+$$L_{\text{r}}(\mathbf x, \omega_{\text{o}}, \lambda, t) = \int_\Omega f_{\text{r}}(\mathbf x, \omega_{\text{i}}, \omega_{\text{o}}, \lambda, t) L_{\text{i}}(\mathbf x, \omega_{\text{i}}, \lambda, t) (\omega_{\text{i}}\cdot\mathbf n) \operatorname d \omega_{\text{i}}$$
+:::
+::: {.fragment}
+![](https://upload.wikimedia.org/wikipedia/commons/d/d1/Rendering_eq.png){fig-align="center"}
+:::
+
+## Shading 
+::: {.fragment}
+Como es muy complejo resolver la ecuación, se usan *aproximaciones*:
+:::
+
+::: {.incremental}
+- Flat shading
+- Gourat shading
+- Phong shading
+- Deferred shading
+:::
+
+## Shading 
+
+::: {layout-ncol=3}
+
+![](https://upload.wikimedia.org/wikipedia/commons/3/3c/Flatshading01.png){style="border-radius:10px"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/7/75/Gouraudshading01.png){style="border-radius:10px"}
+
+![](https://upload.wikimedia.org/wikipedia/commons/e/ec/Phongshading01.png){style="border-radius:10px"}
+
+:::
+
+::: {.fragment}
+En otra ocasión veremos en detalle el modelo de Phong
+:::
+
+# Problemas
+
+## P1 --- Texturas
+::: {.fragment}
+### Parte A
+Cargue a su escena un modelo externo que contenga multiples partes y texturas
+:::
+
+::: {.fragment}
+### Parte B
+Añadamos un **Billboard**, para ello agregue a la escena un *quad* que le permita cargar cualquier textura. 
+Luego aplique adecuadamente transformaciones para que el *quad* quede siempre mirando a la cámara. 
+:::
+
+## P1 --- Texturas {.smaller}
+### Parte C
+::: {.fragment}
+Subamos el nivel con el uso de texturas, revise el archivo `atlas.png`, encuentre una forma de añadir a su escena
+un cubo capaz de cargar cualquier textura disponible en el atlas. 
+:::
+
+::: {.fragment}
+![](res/atlas.png){width="60%" fig-align="center"}
+:::
+
+::: {.fragment}
+Para ello cree la función `get_atalas_uv(x,y)`, que le retorne las coordenadas de texturas correspondiente al `quad` con coordenadas $(x,y)$ en el atlas.
+:::
+
+## P2 --- Iluminación {.smaller}
+::: {.fragment}
+### Parte A
+Añada iluminación realista a su escena, para ello modifique su `shader` para que soporte luces. Para un efecto
+adecuado, debe incluir las normales de sus modelos.
+:::
+
+::: {.fragment}
+### Parte B
+Cree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir
+manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.
+:::
+
+::: {.fragment}
+### Parte C
+Vincule la posición de la luz con la cámara y añada `uniforms` a su shader de iluminación para que
+pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación
+de la luz.
+:::
+
+# Fin
+[Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}
+
