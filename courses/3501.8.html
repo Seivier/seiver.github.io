@@ -30,71 +30,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-      }
-    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-    div.sourceCode
-      { color: #f8f8f2;  }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #f8f8f2; } /* Normal */
-    code span.al { color: #f07178; background-color: #2a0f15; font-weight: bold; } /* Alert */
-    code span.an { color: #d4d0ab; } /* Annotation */
-    code span.at { color: #00e0e0; } /* Attribute */
-    code span.bn { color: #d4d0ab; } /* BaseN */
-    code span.bu { color: #abe338; } /* BuiltIn */
-    code span.cf { color: #ffa07a; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #abe338; } /* Char */
-    code span.cn { color: #ffd700; } /* Constant */
-    code span.co { color: #f8f8f2; font-style: italic; } /* Comment */
-    code span.cv { color: #ffd700; } /* CommentVar */
-    code span.do { color: #f8f8f2; } /* Documentation */
-    code span.dt { color: #ffa07a; } /* DataType */
-    code span.dv { color: #d4d0ab; } /* DecVal */
-    code span.er { color: #f07178; text-decoration: underline; } /* Error */
-    code span.ex { color: #00e0e0; font-weight: bold; } /* Extension */
-    code span.fl { color: #d4d0ab; } /* Float */
-    code span.fu { color: #ffa07a; } /* Function */
-    code span.im { color: #abe338; } /* Import */
-    code span.in { color: #d4d0ab; } /* Information */
-    code span.kw { color: #ffa07a; font-weight: bold; } /* Keyword */
-    code span.op { color: #ffa07a; } /* Operator */
-    code span.ot { color: #00e0e0; } /* Other */
-    code span.pp { color: #dcc6e0; } /* Preprocessor */
-    code span.re { color: #00e0e0; background-color: #f8f8f2; } /* RegionMarker */
-    code span.sc { color: #abe338; } /* SpecialChar */
-    code span.ss { color: #abe338; } /* SpecialString */
-    code span.st { color: #abe338; } /* String */
-    code span.va { color: #00e0e0; } /* Variable */
-    code span.vs { color: #abe338; } /* VerbatimString */
-    code span.wa { color: #dcc6e0; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -416,180 +351,148 @@ Julieta Coloma
 <h1>Contexto</h1>
 
 </section>
-<section id="texturas" class="slide level2 smaller">
-<h2>Texturas</h2>
-<div class="fragment">
-<p>Usualmente un model necesita más de un color, para manejar cómodamente esto se usan <strong>texturas</strong>. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo.</p>
-</div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="res/joker.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</section>
-<section id="mapping" class="slide level2">
-<h2>Mapping</h2>
-<div class="fragment">
-<p>Al trabajar con texturas se debe considerar el <em>mapping</em> de estas al modelo. Para ello se hace uso de una la función:</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[ f(x,y,z) \rightarrow (u,v) \]</span></p>
-</div>
+<section id="modelo-de-phong" class="slide level2">
+<h2>Modelo de Phong</h2>
 <div>
 <ul>
-<li class="fragment">No suele ser sencillo tener un <span class="math inline">\(f\)</span> definido.</li>
-<li class="fragment">Es más conveniente escribir las coordenadas de texturas <span class="math inline">\((u,v)\)</span> en cada vértice.</li>
-<li class="fragment">Luego el valor se interpola antes de llegar al <code>fragment shader</code>.</li>
-</ul>
-</div>
-</section>
-<section id="mapping-1" class="slide level2">
-<h2>Mapping</h2>
-<div class="columns">
-<div class="column" style="width:60%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="res/steve_skin.jpg" class="quarto-figure quarto-figure-center" style="background-color:white; border-radius: 10px"></p>
-</figure>
-</div>
-</div><div class="column" style="width:30%;">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="res/steve.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div></div>
-</section>
-<section id="en-opengl" class="slide level2 smaller">
-<h2>En OpenGL</h2>
-<p>Para crear texturas hacemos lo siguiente:</p>
-<div class="fragment">
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb1-1"><a></a>glGenTextures<span class="op">(</span><span class="dv">1</span><span class="op">,</span> <span class="op">&amp;</span>texture<span class="op">);</span></span>
-<span id="cb1-2"><a></a>glBindTexture<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> texture<span class="op">);</span> </span>
-<span id="cb1-3"><a></a><span class="co">// que pasa si las coordenadas son mayores a 1</span></span>
-<span id="cb1-4"><a></a>glTexParameteri<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> GL_TEXTURE_WRAP_S<span class="op">,</span> GL_REPEAT<span class="op">);</span>   </span>
-<span id="cb1-5"><a></a>glTexParameteri<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> GL_TEXTURE_WRAP_T<span class="op">,</span> GL_REPEAT<span class="op">);</span></span>
-<span id="cb1-6"><a></a><span class="co">// como colorear o samplear si la imagen es más grande o más pequeña que la original</span></span>
-<span id="cb1-7"><a></a>glTexParameteri<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> GL_TEXTURE_MIN_FILTER<span class="op">,</span> GL_LINEAR<span class="op">);</span></span>
-<span id="cb1-8"><a></a>glTexParameteri<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> GL_TEXTURE_MAG_FILTER<span class="op">,</span> GL_LINEAR<span class="op">);</span></span>
-<span id="cb1-9"><a></a><span class="co">// cargar la imagen a la textura</span></span>
-<span id="cb1-10"><a></a><span class="dt">unsigned</span> <span class="dt">char</span> <span class="op">*</span>data <span class="op">=</span> image_load<span class="op">(...);</span></span>
-<span id="cb1-11"><a></a><span class="cf">if</span> <span class="op">(</span>data<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-12"><a></a>    glTexImage2D<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> GL_RGB<span class="op">,</span> width<span class="op">,</span> height<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> GL_RGB<span class="op">,</span> GL_UNSIGNED_BYTE<span class="op">,</span> data<span class="op">);</span></span>
-<span id="cb1-13"><a></a>    glGenerateMipmap<span class="op">(</span>GL_TEXTURE_2D<span class="op">);</span></span>
-<span id="cb1-14"><a></a><span class="op">}</span></span>
-<span id="cb1-15"><a></a>image_free<span class="op">(</span>data<span class="op">);</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Cada vez que queramos usarla debemos vincularla:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource c number-lines code-with-copy"><code class="sourceCode c"><span id="cb2-1"><a></a><span class="co">// indice de la textura (se pueden usar más de una a la vez)</span></span>
-<span id="cb2-2"><a></a>glActiveTexture<span class="op">(</span>GL_TEXTURE0<span class="op">);</span></span>
-<span id="cb2-3"><a></a>glBindTexture<span class="op">(</span>GL_TEXTURE_2D<span class="op">,</span> texture<span class="op">);</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="en-el-curso" class="slide level2 smaller">
-<h2>En el curso</h2>
-<p>Para el curso tenemos la librería <code>grafica</code> o <code>utils</code> que contiene la clase <code>Texture</code> dentro de <code>drawables.py</code>:</p>
-<div class="fragment">
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="kw">class</span> Texture():</span>
-<span id="cb3-2"><a></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, path<span class="op">=</span><span class="va">None</span>, image<span class="op">=</span><span class="va">None</span>, sWrapMode<span class="op">=</span>GL_CLAMP_TO_EDGE, </span>
-<span id="cb3-3"><a></a>                 tWrapMode<span class="op">=</span>GL_CLAMP_TO_EDGE, minFilterMode<span class="op">=</span>GL_LINEAR, </span>
-<span id="cb3-4"><a></a>                 maxFilterMode<span class="op">=</span>GL_LINEAR, flip_top_bottom<span class="op">=</span><span class="va">True</span>):</span>
-<span id="cb3-5"><a></a>        ...</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a>        texture <span class="op">=</span> glGenTextures(<span class="dv">1</span>)</span>
-<span id="cb3-8"><a></a>        glBindTexture(GL_TEXTURE_2D, texture)</span>
-<span id="cb3-9"><a></a></span>
-<span id="cb3-10"><a></a>        <span class="co"># texture wrapping params</span></span>
-<span id="cb3-11"><a></a>        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)</span>
-<span id="cb3-12"><a></a>        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)</span>
-<span id="cb3-13"><a></a></span>
-<span id="cb3-14"><a></a>        <span class="co"># texture filtering params</span></span>
-<span id="cb3-15"><a></a>        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)</span>
-<span id="cb3-16"><a></a>        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)</span>
-<span id="cb3-17"><a></a></span>
-<span id="cb3-18"><a></a>        <span class="co"># loading image</span></span>
-<span id="cb3-19"><a></a>        ...</span>
-<span id="cb3-20"><a></a></span>
-<span id="cb3-21"><a></a>        glTexImage2D(GL_TEXTURE_2D, <span class="dv">0</span>, internalFormat, image.size[<span class="dv">0</span>],</span>
-<span id="cb3-22"><a></a>                     image.size[<span class="dv">1</span>], <span class="dv">0</span>, <span class="bu">format</span>, GL_UNSIGNED_BYTE, img_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Esta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla.</p>
-</div>
-</section>
-<section id="otros-usos" class="slide level2">
-<h2>Otros usos</h2>
-<div class="fragment">
-<p>No es necesario guardar solamente los colores en las texturas, se pueden guardar:</p>
-</div>
-<div>
-<ul>
-<li class="fragment">Normales</li>
-<li class="fragment">Desplazamiento</li>
-<li class="fragment">Altura</li>
-<li class="fragment">Literalmente cualquier cosa</li>
+<li class="fragment">Es un modelo de iluminación local.</li>
+<li class="fragment">No es costoso y es muy paralelizable.</li>
+<li class="fragment">Usa los conceptos de <em>Materiales</em> y <em>Luces</em>.</li>
 </ul>
 </div>
 <div class="fragment">
-<p>También se puede escribir a una textura, esto permite hacerle <em>post-procesado</em> a cada frame, las sombras se crean de esta forma.</p>
+<p><img data-src="./res/phong.png"></p>
 </div>
 </section>
-<section id="iluminación" class="slide level2 smaller">
-<h2>Iluminación</h2>
+<section id="materiales" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Materiales</h2>
 <div class="fragment">
-<p>La clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de <em>rendering</em>:</p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[ L_{\text{o}}(\mathbf x, \omega_{\text{o}}, \lambda, t) = L_{\text{e}}(\mathbf x, \omega_{\text{o}}, \lambda, t) + L_{\text{r}}(\mathbf x, \omega_{\text{o}}, \lambda, t)\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[L_{\text{r}}(\mathbf x, \omega_{\text{o}}, \lambda, t) = \int_\Omega f_{\text{r}}(\mathbf x, \omega_{\text{i}}, \omega_{\text{o}}, \lambda, t) L_{\text{i}}(\mathbf x, \omega_{\text{i}}, \lambda, t) (\omega_{\text{i}}\cdot\mathbf n) \operatorname d \omega_{\text{i}}\]</span></p>
-</div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/d/d1/Rendering_eq.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-</div>
-</section>
-<section id="shading" class="slide level2">
-<h2>Shading</h2>
-<div class="fragment">
-<p>Como es muy complejo resolver la ecuación, se usan <em>aproximaciones</em>:</p>
+<p>Definimos un material como:</p>
+<p><span class="math display">\[(\mathcal{K}_a, \mathcal{K}_d, \mathcal{K}_s, \alpha)\]</span></p>
 </div>
 <div>
 <ul>
-<li class="fragment">Flat shading</li>
-<li class="fragment">Gourat shading</li>
-<li class="fragment">Phong shading</li>
-<li class="fragment">Deferred shading</li>
+<li class="fragment"><span class="math inline">\(\mathcal{K}_a\)</span> - color ambiental del modelo (sin luz).</li>
+<li class="fragment"><span class="math inline">\(\mathcal{K}_d\)</span> - color difuso del modelo (con luz).</li>
+<li class="fragment"><span class="math inline">\(\mathcal{K}_s\)</span> - color especular del modelo (con reflejos).</li>
+<li class="fragment"><span class="math inline">\(\alpha\)</span> - brillo o <em>shininess</em> del modelo (forma de los reflejos).</li>
 </ul>
 </div>
 </section>
-<section id="shading-1" class="slide level2">
-<h2>Shading</h2>
+<section id="materiales-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Materiales</h2>
+<div class="fragment">
+<!-- -->
+<h3 id="texturas">Texturas</h3>
+</div>
+<div class="fragment">
+<p>Con texturas se suele tener texturas adicionales que guardan los valores difusos y especulares</p>
+</div>
+<div class="fragment">
 <div>
 
 </div>
-<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="r-stack quarto-layout-panel" data-layout="[[ 1,1 ]]">
 <div class="quarto-layout-row">
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Flatshading01.png" style="border-radius:10px"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/7/75/Gouraudshading01.png" style="border-radius:10px"></p>
-</div>
-<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: center;">
-<p><img data-src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Phongshading01.png" style="border-radius:10px"></p>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./res/container2.png" style="height:8cm"></p>
+<figcaption>Difuso</figcaption>
+</figure>
 </div>
 </div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="./res/container2_specular.png" style="height:8cm"></p>
+<figcaption>Especular</figcaption>
+</figure>
 </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="luces" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Luces</h2>
 <div class="fragment">
-<p>En otra ocasión veremos en detalle el modelo de Phong</p>
+<p><span class="math display">\[
+\mathcal{I} = \frac{\mathcal{K}_a \mathcal{L}_a + \mathcal{K}_d \mathcal{L}_d (l \cdot n) + \mathcal{K}_s \mathcal{L}_s (v \cdot r)^{\alpha} }{k_c + k_l d + k_q d^2}
+\]</span></p>
+</div>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\((\mathcal{K}_a, \mathcal{K}_d, \mathcal{K}_s, \alpha)\)</span> — parámetros del material</li>
+<li class="fragment"><span class="math inline">\((\mathcal{L}_a, \mathcal{L}_d, \mathcal{L}_s)\)</span> — parámetros del color de la luz</li>
+<li class="fragment"><span class="math inline">\((k_c, k_l, k_q)\)</span> — parámetros del atenuación de la luz</li>
+<li class="fragment"><span class="math inline">\(n\)</span> — normal de la superficie</li>
+<li class="fragment"><span class="math inline">\(l\)</span> — dirección hacia la fuente de luz</li>
+<li class="fragment"><span class="math inline">\(v\)</span> — dirección hacia la cámara</li>
+<li class="fragment"><span class="math inline">\(r\)</span> — reflexión sobre la superficie</li>
+<li class="fragment"><span class="math inline">\(d\)</span> — distancia a la fuente de luz</li>
+</ul>
+</div>
+</section>
+<section id="luces-1" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Luces</h2>
+<h3 id="direccional">Direccional</h3>
+<div class="columns">
+<div class="column" style="width:;">
+<div>
+<ul>
+<li class="fragment">Representa una luz lejana</li>
+<li class="fragment">Mantiene la misma dirección</li>
+</ul>
+</div>
+</div><div class="column" style="width:;">
+<div class="fragment">
+<p><span class="math display">\[(\mathcal{L}_a, \mathcal{L}_d, \mathcal{L}_s, l)\]</span></p>
+</div>
+</div></div>
+<div class="r-stack">
+<p><img data-src="./res/moonknight.gif" height="200"></p>
+</div>
+</section>
+<section id="luces-2" class="slide level2" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Luces</h2>
+<h3 id="luz-puntual">Luz puntual</h3>
+<div class="columns">
+<div class="column" style="width:;">
+<div>
+<ul>
+<li class="fragment">La luz básica</li>
+<li class="fragment">Se atenúa con la distancia</li>
+</ul>
+</div>
+</div><div class="column" style="width:;">
+<div class="fragment">
+<p><span class="math display">\[(\mathcal{L}_a, \mathcal{L}_d, \mathcal{L}_s, k_c, k_l, k_q)\]</span></p>
+</div>
+</div></div>
+<div class="r-stack">
+<p><img data-src="./res/light-human.gif" height="200"></p>
+</div>
+</section>
+<section id="luces-3" class="slide level2 smaller" data-auto-animate="true">
+<h2 data-id="quarto-animate-title">Luces</h2>
+<h3 id="spotlight">Spotlight</h3>
+<div class="columns">
+<div class="column" style="width:;">
+<div>
+<ul>
+<li class="fragment">Es como una linterna</li>
+<li class="fragment">Tiene un foco principal</li>
+<li class="fragment">Determinado por un <span class="math inline">\(\theta\)</span> y <span class="math inline">\(\theta_{outer}\)</span></li>
+</ul>
+</div>
+</div><div class="column" style="width:;">
+<div class="fragment">
+<p><span class="math display">\[(\mathcal{L}_a, \mathcal{L}_d, \mathcal{L}_s, k_c, k_l, k_q, l, \theta, \theta_{outer})\]</span></p>
+</div>
+</div></div>
+<div class="r-stack">
+<p><img data-src="./res/pixar.gif" height="200"></p>
 </div>
 </section></section>
 <section>
@@ -597,52 +500,42 @@ Julieta Coloma
 <h1>Problemas</h1>
 
 </section>
-<section id="p1-texturas" class="slide level2">
-<h2>P1 — Texturas</h2>
+<section id="p2-shading" class="slide level2 smaller">
+<h2>P2 – Shading</h2>
 <div class="fragment">
 <!-- -->
 <h3 id="parte-a">Parte A</h3>
-<p>Cargue a su escena un modelo externo que contenga multiples partes y texturas</p>
+<p>Cree un nuevo shader donde incluya luces y materiales, para ello puede utilizar</p>
 </div>
 <div class="fragment">
 <!-- -->
 <h3 id="parte-b">Parte B</h3>
-<p>Añadamos un <strong>Billboard</strong>, para ello agregue a la escena un <em>quad</em> que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el <em>quad</em> quede siempre mirando a la cámara.</p>
+<p>Cree 3 funciones para calcular el color según cada tipo de fuente de luz.</p>
 </div>
-</section>
-<section id="p1-texturas-1" class="slide level2 smaller">
-<h2>P1 — Texturas</h2>
+<div class="fragment">
+<!-- -->
 <h3 id="parte-c">Parte C</h3>
-<div class="fragment">
-<p>Subamos el nivel con el uso de texturas, revise el archivo <code>atlas.png</code>, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.</p>
-</div>
-<div class="fragment">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="res/atlas.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
-</figure>
-</div>
-</div>
-<div class="fragment">
-<p>Para ello cree la función <code>get_atalas_uv(x,y)</code>, que le retorne las coordenadas de texturas correspondiente al <code>quad</code> con coordenadas <span class="math inline">\((x,y)\)</span> en el atlas.</p>
+<p>Añada al shader una función que calcule el color final del pixel según la iluminación de la escena.</p>
 </div>
 </section>
-<section id="p2-iluminación" class="slide level2 smaller">
-<h2>P2 — Iluminación</h2>
+<section id="p1-en-escena" class="slide level2 smaller">
+<h2>P1 — En escena</h2>
+<p>Usando la escena de clase pasada y sus nuevos shaders</p>
 <div class="fragment">
 <!-- -->
 <h3 id="parte-a-1">Parte A</h3>
-<p>Añada iluminación realista a su escena, para ello modifique su <code>shader</code> para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.</p>
+<p>Cree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).</p>
 </div>
 <div class="fragment">
 <!-- -->
 <h3 id="parte-b-1">Parte B</h3>
-<p>Cree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.</p>
+<p>Cree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.</p>
 </div>
 <div class="fragment">
 <!-- -->
 <h3 id="parte-c-1">Parte C</h3>
-<p>Vincule la posición de la luz con la cámara y añada <code>uniforms</code> a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz.</p>
+<p>Haga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz <em>spotlight</em> para la noche.</p>
+<p>Utilice diversos pipelines para corregir los errores de iluminación.</p>
 </div>
 </section></section>
 <section id="fin" class="title-slide slide level1 center">

@@ -7,88 +7,67 @@
     "text": "About this site"
   },
   {
-    "objectID": "courses/3501.8.html#texturas",
-    "href": "courses/3501.8.html#texturas",
+    "objectID": "courses/3501.8.html#modelo-de-phong",
+    "href": "courses/3501.8.html#modelo-de-phong",
     "title": "Auxiliar 8",
-    "section": "Texturas",
-    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
+    "section": "Modelo de Phong",
+    "text": "Modelo de Phong\n\n\nEs un modelo de iluminación local.\nNo es costoso y es muy paralelizable.\nUsa los conceptos de Materiales y Luces."
   },
   {
-    "objectID": "courses/3501.8.html#mapping",
-    "href": "courses/3501.8.html#mapping",
+    "objectID": "courses/3501.8.html#materiales",
+    "href": "courses/3501.8.html#materiales",
     "title": "Auxiliar 8",
-    "section": "Mapping",
-    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
+    "section": "Materiales",
+    "text": "Materiales\n\nDefinimos un material como:\n\\[(\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\]\n\n\n\n\\(\\mathcal{K}_a\\) - color ambiental del modelo (sin luz).\n\\(\\mathcal{K}_d\\) - color difuso del modelo (con luz).\n\\(\\mathcal{K}_s\\) - color especular del modelo (con reflejos).\n\\(\\alpha\\) - brillo o shininess del modelo (forma de los reflejos)."
   },
   {
-    "objectID": "courses/3501.8.html#mapping-1",
-    "href": "courses/3501.8.html#mapping-1",
+    "objectID": "courses/3501.8.html#materiales-1",
+    "href": "courses/3501.8.html#materiales-1",
     "title": "Auxiliar 8",
-    "section": "Mapping",
-    "text": "Mapping"
+    "section": "Materiales",
+    "text": "Materiales\n\n\nTexturas\n\n\nCon texturas se suele tener texturas adicionales que guardan los valores difusos y especulares\n\n\n\n\n\n\n\n\n\n\n\nDifuso\n\n\n\n\n\n\n\nEspecular"
   },
   {
-    "objectID": "courses/3501.8.html#en-opengl",
-    "href": "courses/3501.8.html#en-opengl",
+    "objectID": "courses/3501.8.html#luces",
+    "href": "courses/3501.8.html#luces",
     "title": "Auxiliar 8",
-    "section": "En OpenGL",
-    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
+    "section": "Luces",
+    "text": "Luces\n\n\\[\n\\mathcal{I} = \\frac{\\mathcal{K}_a \\mathcal{L}_a + \\mathcal{K}_d \\mathcal{L}_d (l \\cdot n) + \\mathcal{K}_s \\mathcal{L}_s (v \\cdot r)^{\\alpha} }{k_c + k_l d + k_q d^2}\n\\]\n\n\n\n\\((\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\) — parámetros del material\n\\((\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s)\\) — parámetros del color de la luz\n\\((k_c, k_l, k_q)\\) — parámetros del atenuación de la luz\n\\(n\\) — normal de la superficie\n\\(l\\) — dirección hacia la fuente de luz\n\\(v\\) — dirección hacia la cámara\n\\(r\\) — reflexión sobre la superficie\n\\(d\\) — distancia a la fuente de luz"
   },
   {
-    "objectID": "courses/3501.8.html#en-el-curso",
-    "href": "courses/3501.8.html#en-el-curso",
+    "objectID": "courses/3501.8.html#luces-1",
+    "href": "courses/3501.8.html#luces-1",
     "title": "Auxiliar 8",
-    "section": "En el curso",
-    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
+    "section": "Luces",
+    "text": "Luces\nDireccional\n\n\n\n\nRepresenta una luz lejana\nMantiene la misma dirección\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, l)\\]"
   },
   {
-    "objectID": "courses/3501.8.html#otros-usos",
-    "href": "courses/3501.8.html#otros-usos",
+    "objectID": "courses/3501.8.html#luces-2",
+    "href": "courses/3501.8.html#luces-2",
     "title": "Auxiliar 8",
-    "section": "Otros usos",
-    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
+    "section": "Luces",
+    "text": "Luces\nLuz puntual\n\n\n\n\nLa luz básica\nSe atenúa con la distancia\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q)\\]"
   },
   {
-    "objectID": "courses/3501.8.html#iluminación",
-    "href": "courses/3501.8.html#iluminación",
+    "objectID": "courses/3501.8.html#luces-3",
+    "href": "courses/3501.8.html#luces-3",
     "title": "Auxiliar 8",
-    "section": "Iluminación",
-    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
+    "section": "Luces",
+    "text": "Luces\nSpotlight\n\n\n\n\nEs como una linterna\nTiene un foco principal\nDeterminado por un \\(\\theta\\) y \\(\\theta_{outer}\\)\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q, l, \\theta, \\theta_{outer})\\]"
   },
   {
-    "objectID": "courses/3501.8.html#shading",
-    "href": "courses/3501.8.html#shading",
+    "objectID": "courses/3501.8.html#p2-shading",
+    "href": "courses/3501.8.html#p2-shading",
     "title": "Auxiliar 8",
-    "section": "Shading",
-    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
+    "section": "P2 – Shading",
+    "text": "P2 – Shading\n\n\nParte A\nCree un nuevo shader donde incluya luces y materiales, para ello puede utilizar\n\n\n\nParte B\nCree 3 funciones para calcular el color según cada tipo de fuente de luz.\n\n\n\nParte C\nAñada al shader una función que calcule el color final del pixel según la iluminación de la escena."
   },
   {
-    "objectID": "courses/3501.8.html#shading-1",
-    "href": "courses/3501.8.html#shading-1",
+    "objectID": "courses/3501.8.html#p1-en-escena",
+    "href": "courses/3501.8.html#p1-en-escena",
     "title": "Auxiliar 8",
-    "section": "Shading",
-    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
-  },
-  {
-    "objectID": "courses/3501.8.html#p1-texturas",
-    "href": "courses/3501.8.html#p1-texturas",
-    "title": "Auxiliar 8",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
-  },
-  {
-    "objectID": "courses/3501.8.html#p1-texturas-1",
-    "href": "courses/3501.8.html#p1-texturas-1",
-    "title": "Auxiliar 8",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
-  },
-  {
-    "objectID": "courses/3501.8.html#p2-iluminación",
-    "href": "courses/3501.8.html#p2-iluminación",
-    "title": "Auxiliar 8",
-    "section": "P2 — Iluminación",
-    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
+    "section": "P1 — En escena",
+    "text": "P1 — En escena\nUsando la escena de clase pasada y sus nuevos shaders\n\n\nParte A\nCree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).\n\n\n\nParte B\nCree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.\n\n\n\nParte C\nHaga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz spotlight para la noche.\nUtilice diversos pipelines para corregir los errores de iluminación."
   },
   {
     "objectID": "courses/4302.2.html#creación-de-un-thread",
