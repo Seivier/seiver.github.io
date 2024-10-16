@@ -1,0 +1,243 @@
+---
+title: Auxiliar 8
+subtitle: Spinlocks
+author: 
+    - Vicente González
+    - Pablo Jaramillo
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        pdf-separate-fragments: true
+        transition: slide
+        chalkboard: true
+---
+# Contexto
+## Spinlocks
+
+::: {.incremental}
+- Herramienta de sincronización *primitiva*
+
+- No depende de un sistema operativo
+
+- Igual de potente que el resto!
+:::
+
+
+::: {.fragment}
+#### Creación
+
+```{.c} 
+int sl = OPEN; // o CLOSED
+```
+:::
+
+::: {.fragment}
+#### Bloqueo
+```{.c} 
+spinLock(&sl); 
+```
+:::
+
+::: {.fragment}
+#### Desbloqueo
+```{.c} 
+spinUnlock(&sl);
+```
+:::
+
+
+## *How to?* 
+
+::: {.columns}
+::: {.column width="45%"}
+::: {.fragment}
+### Mutex
+
+```{.c} 
+int sl = OPEN; // global
+
+// ...
+
+void fun() {
+  spinLock(&sl);
+
+  // sección crítica
+
+  spinUnlock(&sl);
+}
+```
+:::
+:::
+::: {.column width="55%"}
+::: {.fragment}
+### Condición
+```{.c} 
+int *psl; // global
+
+// ...
+
+void f() {
+  // thread que espera
+  int sl = CLOSED;
+  psl = &sl;
+
+  spinLock(&sl); // espera
+  // ...
+}
+
+void g() {
+  // thread que despierta
+  spinUnlock(psl); // despierta
+}
+```
+:::
+:::
+:::
+
+
+## Implementación
+```{.c} 
+void spinLock(volatile int *psl) {
+  do {
+    while (*psl == CLOSED)
+      ;
+  } while (swap(psl, CLOSED) != OPEN);
+}
+```
+
+
+# Problemas
+
+## P1 --- Lector/escritor {.smaller}
+::: {.fragment}
+#### Parte A
+La siguiente implementación es incorrecta. Haga un diagrama de threads que 
+muestre que un lector puede entrar junto con un escritor.
+
+::: {.columns}
+::: {.column width=""}
+
+```{.c} 
+void enterRead() {
+  if (readers == 0)
+    spinLock(&write_lck);
+  spinLock(&mutex_lck);
+  readers++;
+  spinUnlock(&mutex_lck);
+}
+
+void enterWrite() {
+  spinLock(&write_lck);
+}
+```
+
+:::
+::: {.column width=""}
+```{.c} 
+void exitRead() {
+  spinLock(&mutex_lck);
+  readers--;
+  spinUnlock(&mutex_lck);
+
+  if (readers == 0)
+    spinUnlock(&write_lck);
+}
+
+void exitWrite() {
+  spinUnlock(&write_lck);
+}
+```
+:::
+:::
+:::
+
+::: {.fragment}
+#### Parte B
+Modifique la solución anterior para que funcione correctamente.
+:::
+
+## P2 --- Función team {.smaller auto-animate=true}
+Considere una máquina _multicore_ en la que no existe un núcleo de sistema operativo
+y por lo tanto no hay un _scheduler_ de procesos.
+
+Se necesita formar múltiple equipos de 5 _cores_ cada uno. Para ello, los _cores_ invocan
+la función `team` indicando su nombre como argumento. Esta función espera hasta que
+5 _cores_ hayan invocado `team`, retornando un arreglo de 5 `strings` con los nombres del
+equipo completo.
+
+Este es un ejemplo del uso de la función `team`:
+
+```{.c} 
+int player(char *name) {
+  for (;;) {
+    char **mTeam = team(name);
+    play(mTeam);
+    sleep();
+  }
+}
+```
+
+
+## P2 --- Función team {.smaller auto-animate=true}
+Se debe programar la función `team` con el siguiente encabezado:
+```{.c} 
+char **team(char *name);
+```
+
+Se dispone de `spin-locks` y la función `coreId()`. Necesitará usar variables globales
+y `malloc`.
+
+Restricción: Dado que no hay un núcleo de sistema operativo, la única forma válida
+de esperar a que se forme el equipo es utilizando un `spin-lock`. Otras formas de 
+_busy-waiting_ no están permitidas. No hay `Queues` FIFO.
+
+
+## P3 -- Propuesto {.smaller auto-animate=true}
+
+::: {style="font-size: 70%"}
+Considere una máquina con 8 _cores_ físicos que comparten la memoria, sin un núcleo de sistema
+operativo y por lo tanto no hay _scheduler_ de procesos. A cada _core_ se le asignan inicialmente 100
+euros. 
+
+Un _core_ puede robar `cantidad` euros del _core_ número `desde` invocando la función:
+
+```{.c} 
+void robar(int desde, int cantidad);
+```
+
+En tal caso se le resta `cantidad` euros a la tarea `desde` y se le suman al _core_ que invocó robar. 
+El parámetro `cantidad` es siempre mayor que cero.
+
+Un primer invariante es que un _core_ no puede almacenar una cantidad negativa de euros. 
+Si el _core_ `desde` no posee suficiente dinero para robarle `cantidad` entonces robar debe 
+esperar hasta que el _core_ `desde` sí posea al menos la cantidad requerida. 
+
+
+El segundo invariante es que en un instante dado el _core_ $T$ no puede estar esperando 
+robarle $c$ euros al _core_ $U$ si $U$ tiene al menos $c$ euros.
+Observe que cuando el _core_ $T$ lograr robar dinero, varios otros _cores_ pueden estar 
+esperando poder robarle dinero a $T$.
+No está especificado en qué orden deben robarle el dinero a $T$.
+
+#### Ayuda
+Use una matriz `m` de 8 por 8 punteros a spin-locks. Si `m[i][j]` no es nulo quiere decir que
+`m[i][j]` es la dirección de un spin-lock en el que el _core_ `i` espera para robarle al _core_ `j`.
+:::
+
+::: {.aside}
+Sacado del C2 de Otoño 2017
+:::
+
+## P3 -- Propuesto {.smaller auto-animate=true}
+El siguiente diagrama muestra una situación con 5 _threads_:
+
+![](./res/cc4302.propuesto.png){style="background-color: white; border-radius: 10px; padding: 10px"}
+
+::: {.aside}
+Sacado del C2 de Otoño 2017
+:::
+
+# Fin
+*[Ver otras auxiliares](4302.0.qmd)*
