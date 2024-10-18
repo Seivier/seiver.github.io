@@ -1,0 +1,182 @@
+---
+title: Auxiliar 10
+subtitle: Colisiones 
+author: 
+  - Vicente González
+  - Julieta Coloma
+footer: CC3501 --- Modelación y Computación Gráfica para Ingenieros
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        pdf-separate-fragments: true
+        transition: slide
+        chalkboard: true
+---
+# Contexto
+## Colisiones {.smaller}
+::: {.incremental}
+- Toda simulación física o interactiva necesita una forma de interacción entre los cuerpos en escena.
+- Para simular correctamente la interacción entre dos cuerpos se necesita *detectar* y *resolver* la colisión.
+- Las colisiones pueden llegar a ser muy costosas si se busca realismos.
+- Existen un montón de casos bordes que se tienen que tener en cuenta.
+- No sólo sirven para colisiones o juegos, también tienen aplicaciones a interfaces gráficas
+:::
+
+## Detección {.smaller}
+::: {.fragment}
+Existen 2 tipos a _priori_ y a _posteriori_.
+:::
+
+::: {.columns}
+::: {.column width=""}
+::: {.fragment}
+#### Priori
+- Se busca predecir las colisiones antes de que ocurran.
+- Se toman en cuenta todas las dinámicas involucradas.
+- Complejo de calcular para cuerpos que se deforman.
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+#### Posteriori
+- Se buscar detectar la colisión después de que ocurra.
+- Una vez que ocurre, se corrigen las posiciones de ser necesario.
+- Es (relativamente) simple de calcular, pero genera muchos casos bordes.
+:::
+:::
+:::
+
+::: {.fragment}
+En el curso nos centraremos en calcularlo a _posteriori_.
+:::
+
+## Detección
+::: {.fragment}
+También existen distintas formas de identificar la colisión basándonos en las primitivas que
+forman la escena, por ejemplo:
+
+- Cajas
+- Esferas
+- Triángulos
+- Poliedros
+:::
+
+## Axis aligned bounding boxes {.smaller}
+::: {.columns}
+::: {.column width=""}
+::: {.incremental}
+- Consiste en una caja alineada a los ejes $XYZ$
+- Se puede definir por dos puntos: el $min$ y el $max$
+- Colisión fácil de computar y manejar
+- Se usa los intervalos definidos por $min$ y $max$ en cada eje para calcular la colisión
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+![](./res/aabb.png)
+:::
+:::
+:::
+
+## Sphere {.smaller}
+
+::: {.columns}
+::: {.column width=""}
+::: {.incremental}
+- Consiste en una esfera definida por el centro y su radio
+- También es fácil de computar y manejar
+- No suele adaptarse bien a todos los casos
+- Se usa la distancia al centro y el radio para calcular la colisión
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+![](./res/sphere.png)
+:::
+:::
+:::
+
+## Convex Hull {.smaller}
+
+::: {.columns}
+::: {.column width=""}
+::: {.incremental}
+- Consiste en una malla que define la envoltura convexa de un objeto
+- Cara de computar 
+- Se adapta bien a casi todos los casos
+- Se usa el mismo cálculo de colisión que el de entre triángulos
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+![](./res/convex-hull.jpg)
+:::
+:::
+:::
+
+## Triángulos {.smaller}
+
+::: {.columns}
+::: {.column width=""}
+::: {.incremental}
+- Es la forma más usada en las simulaciones realistas.
+- Se usa para conseguir una interacción precisa.
+- Se suele combinar con otras técnicas (AABB y CH) para hacerlo eficiente
+- Se usa el _Separating Axis Theorem_ para calcular la colisión
+:::
+:::
+::: {.column width=""}
+::: {.fragment}
+![](./res/sat.png)
+:::
+:::
+:::
+
+
+# Problemas
+
+## P1 --- Chunks! {.smaller}
+Su auxiliar que esta obsesionado con Minecraft, 
+necesita de su ayuda para hacer generar el mundo de bloques.
+
+De manera similar al juego, la idea es separa cada zona del mapa en
+grupos de  $16\times 16\times 16$, para ello tiene una clase `MyChunk`
+que extiende de `Model`. Pero esta incompleta.
+
+Completela creando la clase `MyBlock` que almacene el tipo de bloque, y
+dentro de la función `init_gpu_data` complete la información apropiadamente.
+
+Cree una escena con 4 chunks con 10 bloques cada uno.
+
+## P2 --- Colisiones
+Usando la librería `colliders` cree un `CollisionManager` y añada los
+bloques usando el tipo de collider `AABB`, haga lo mismo con el jugador.
+
+Haga un chequeo de colisiones para cada `update` de la simulación, donde
+imprima todas las colisiones ocurridas.
+
+## P3 --- Resolución
+Ahora que obtuvo las colisiones, resuelva las colisiones, 
+de manera _posteriori_. Para ello analice el caso 2D
+para la colisión entre dos AABB y determine que es
+lo que debería ocurrir.
+
+## P4 --- Optimización
+Aumente los bloques a 100 por chunk (o incluso 1000).
+Esto hace que la simulación corra muy mal, para arreglar esto
+puede optimizar su código de muchas maneras.
+
+Una de ellas es dividir su chequeo de colisión en 2 fases:
+la _broad phase_ y la _narrow phase_, en la primera encuentre
+los bloques que *pueden* colisionar con el jugador y en la segunda
+busque los que *realmente lo hagan*.
+
+::: {.aside}
+_Hint:_ Puede usar los chunks a su favor para ir descartando bloques.
+:::
+
+
+# Fin
+[Ver otras auxiliares](3501.0.qmd){style="font-size:60%"}
+
