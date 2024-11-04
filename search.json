@@ -1064,7 +1064,7 @@
     "href": "courses/4302.0.html",
     "title": "Sistemas operativos",
     "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
     "crumbs": [
       "Cursos",
       "2024",
@@ -1076,7 +1076,7 @@
     "href": "courses/4302.0.html#auxiliares",
     "title": "Sistemas operativos",
     "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
     "crumbs": [
       "Cursos",
       "2024",
