@@ -1,0 +1,253 @@
+---
+title: Auxiliar 10
+subtitle: Administración de Memoria
+author: 
+    - Vicente González
+    - Pablo Jaramillo
+footer: CC4302 --- Sistemas Operativos
+from: markdown+emoji
+format:
+    revealjs:
+        theme: night
+        pdf-separate-fragments: true
+        transition: slide
+        chalkboard: true
+---
+
+# Tablas de Paginamiento
+
+## P1 -- Tablas de paginamiento {auto-animate=true}
+
+El siguiente diagrama muestra la asignación de
+páginas en un sistema Unix que ejecuta los
+procesos $A$ y $B$. Las páginas son de 4 KB. El núcleo
+utiliza la estrategia _copy-on-write_ para
+implementar `fork`.
+
+En cada caso indique la página virtual, real y
+atributos de validez y escritura.
+
+## P1 -- Tablas de paginamiento {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width="40%"}
+### Parte A
+Construya la tabla de páginas del proceso $A$
+después de que invoca `sbrk` pidiendo 10 KB
+adicionales.
+:::
+::: {.column width="60%"}
+![](./res/cc4302.paginamiento.png)
+:::
+:::
+
+## P1 -- Tablas de paginamiento {.smaller auto-animate=true}
+::: {.columns}
+::: {.column width="40%"}
+### Parte B
+Considere que $B$ invocó `fork`. Construya la
+tabla del proceso hijo justo después de que este
+modifique la página 11. No construya la tabla del
+padre.
+:::
+::: {.column width="60%"}
+![](./res/cc4302.paginamiento.png)
+:::
+:::
+
+
+# Estrategia del Reloj
+
+## P2 -- Estrategia del Reloj {.smaller auto-animate=true}
+Acá pueden apreciar una serie de estados para una estrategia del reloj tras realizar 2 accesos en un
+sistema de memoria para reemplazar páginas.
+
+Continue el diagrama pasando por la siguiente secuencia de acceso a páginas de memoria:
+
+:::{.r-stack}
+
+4, 7, 5, 3, 4, 1, 5
+:::
+
+![](./res/cc4302.reloj.png){style="background-color: white; padding: 5px; border-radius:10px;"}
+
+
+
+# Working set
+
+## P3 -- Working Set {.smaller auto-animate=true}
+El siguiente es un diagrama de accesos a páginas de un proceso ejecutado en un sistema Unix
+utilizando la estrategia del Working Set. Donde:
+
+- $r$ es un acceso de lectura y $w$ es de escritura.
+- Las letras $A, B, \dots, G$ representan intervalos de tiempo en los cuales se calcularon los working sets.
+- Los números $0, 1, \dots, 6$ representan las páginas del proceso
+
+## P3 -- Working Set {.smaller auto-animate=true}
+### Parte A
+Asumiendo que el bit $D$ de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F
+podrían producir _page-faults_. Utilice coordenadas ($A$, 1, 1er. acceso)
+
+::: {.columns}
+::: {.column width="60%"}
+
+|   |     |    |     |     |     |    |   |   |   |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 6 |     | r  | rr  | ww  | r   | w  |   |   |   |
+| 5 | rw  | r  |     | rrr |     | r  | r |   |   |
+| 4 |     | r  |     |     |     |    | r |   |   |
+| 3 | r   |    | rrr |     | www | ww |   |   |   |
+| 2 | rrr | r  | rr  | rr  | wr  | ww | r |   |   |
+| 1 | rr  | rr | rw  | rw  |     |    |   |   |   |
+| 0 |     | ww |     |     | r   | w  |   |   |   |
+|   | A   | B  | C   | D   | E   | F  | G |   |   |
+
+:::
+::: {.column width="30%" }
+::: {style="font-size:80%"}
+Working sets
+
+- $A$: $1,2,3,5$
+- $B$: $0,1,2,4,5,6$
+- $C$: $0,1,2,3,6$
+- $D$: $1,2,5,6$
+- $E$: $0,2,3,6$
+- $F$: $0,2,3,4,6$
+- $G$: $2,4,5$
+:::
+:::
+:::
+
+
+## P3 -- Working Set {.smaller auto-animate=true}
+### Parte B
+Indique el valor del atributo
+_Referenced_ para todas las
+páginas al inicio y al final del
+intervalo $E$.
+
+::: {.columns}
+::: {.column width="60%"}
+
+|   |     |    |     |     |     |    |   |   |   |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 6 |     | r  | rr  | ww  | r   | w  |   |   |   |
+| 5 | rw  | r  |     | rrr |     | r  | r |   |   |
+| 4 |     | r  |     |     |     |    | r |   |   |
+| 3 | r   |    | rrr |     | www | ww |   |   |   |
+| 2 | rrr | r  | rr  | rr  | wr  | ww | r |   |   |
+| 1 | rr  | rr | rw  | rw  |     |    |   |   |   |
+| 0 |     | ww |     |     | r   | w  |   |   |   |
+|   | A   | B  | C   | D   | E   | F  | G |   |   |
+
+:::
+::: {.column width="30%" }
+::: {style="font-size:80%"}
+Working sets
+
+- $A$: $1,2,3,5$
+- $B$: $0,1,2,4,5,6$
+- $C$: $0,1,2,3,6$
+- $D$: $1,2,5,6$
+- $E$: $0,2,3,6$
+- $F$: $0,2,3,4,6$
+- $G$: $2,4,5$
+:::
+:::
+:::
+
+## P3 -- Working Set {.smaller auto-animate=true}
+### Parte C
+Suponga que al inicio del intervalo $E$ tiene el atributo _Dirty_ de la página 5 es 0. Explique si el
+acceso (D, 5, 1er acceso) produjo o no un page fault.
+
+::: {.columns}
+::: {.column width="60%"}
+
+|   |     |    |     |     |     |    |   |   |   |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 6 |     | r  | rr  | ww  | r   | w  |   |   |   |
+| 5 | rw  | r  |     | rrr |     | r  | r |   |   |
+| 4 |     | r  |     |     |     |    | r |   |   |
+| 3 | r   |    | rrr |     | www | ww |   |   |   |
+| 2 | rrr | r  | rr  | rr  | wr  | ww | r |   |   |
+| 1 | rr  | rr | rw  | rw  |     |    |   |   |   |
+| 0 |     | ww |     |     | r   | w  |   |   |   |
+|   | A   | B  | C   | D   | E   | F  | G |   |   |
+
+:::
+::: {.column width="30%" }
+::: {style="font-size:80%"}
+Working sets
+
+- $A$: $1,2,3,5$
+- $B$: $0,1,2,4,5,6$
+- $C$: $0,1,2,3,6$
+- $D$: $1,2,5,6$
+- $E$: $0,2,3,6$
+- $F$: $0,2,3,4,6$
+- $G$: $2,4,5$
+:::
+:::
+:::
+
+## P3 -- Working Set {.smaller auto-animate=true}
+### Parte D
+Compare las dos estrategias de paginamiento en demanda vistas en el curso según la tabla:
+
+|                 | Reloj | Working Set |
+| :-------------- | :---: | :---: |
+| Sobrecosto en tiempo de ejecución cuando sobra la memoria física |  |  |
+| _Page-faults_ cuando hay penuria de memoria pero hay solo 1 procesos en ejecución |  |  |
+| _Page-faults_ cuando hay penuria de memoria y hay muchos procesos en ejecución |  |  |
+
+# Translation Lookaside Buffer
+## P4 -- Translation Lookaside Buffer {.smaller}
+Considere las siguientes implementaciones de un diccionario:
+
+```{.c}
+typedef struct {
+  char key[8];
+  char data[24];
+} Entry;
+
+Entry dict[1000];
+
+Entry *dict[1000];
+```
+
+En la primera implementación toda la información se encuentra contigua en la memoria. Mientras que para la
+segunda las entradas pueden estar muy dispersas en la memoria puesto que el heap que maneja `malloc` está
+fragmentado. Considere que este diccionario funciona con búsqueda secuencial, y páginas de 4kB
+
+## P4 -- Translation Lookaside Buffer {.smaller auto-animate=true}
+```{.c}
+typedef struct {
+  char key[8];
+  char data[24];
+} Entry;
+
+Entry dict[1000];
+
+Entry *dict[1000];
+```
+### Parte A
+Estime para ambas implementaciones el peor caso del número de fallas en la TLB en una búsqueda.
+
+## P4 -- Translation Lookaside Buffer {.smaller auto-animate=true}
+```{.c}
+typedef struct {
+  char key[8];
+  char data[24];
+} Entry;
+
+Entry dict[1000];
+
+Entry *dict[1000];
+```
+### Parte B
+¿Cuántos accesos adicionales a la memoria significa cada falla en la TLB considerando un
+microprocesador Intel x86?
+
+# Fin
+*[Ver otras auxiliares](4302.0.qmd)*
+
