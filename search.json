@@ -416,382 +416,165 @@
     ]
   },
   {
-    "objectID": "courses/3501.4.html#espacios-3d",
-    "href": "courses/3501.4.html#espacios-3d",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\n\nPara trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:\n\n\n\nLocal space\nSe corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.\nWorld space\nCorresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.\nView space\nEs el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena\nClip space\nEs espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta"
-  },
-  {
-    "objectID": "courses/3501.4.html#espacios-3d-1",
-    "href": "courses/3501.4.html#espacios-3d-1",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\n\n\n\n\n\n\n\nFuente: LearnOpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#espacios-3d-2",
-    "href": "courses/3501.4.html#espacios-3d-2",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\nMatriz MVP\n\n\\[\nM_{projection} \\cdot M_{view} \\cdot M_{model} \\cdot v_{local} = v_{clipped}\n\\]\n\n\nSirve para moverse desde el espacio local al espacio homogéneo de OpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#modelo",
-    "href": "courses/3501.4.html#modelo",
-    "title": "Auxiliar 4",
-    "section": "Modelo",
-    "text": "Modelo\n\nPara pasar de coordenadas locales a las de mundo usamos la matriz de modelo.\n\n\n\\[\nM_{model}  = M_{translation} \\cdot M_{rotation} \\cdot M_{scale}\n\\]\n\n\nEs la que usamos la clase pasada para mover los modelos!"
-  },
-  {
-    "objectID": "courses/3501.4.html#vista",
-    "href": "courses/3501.4.html#vista",
-    "title": "Auxiliar 4",
-    "section": "Vista",
-    "text": "Vista\n\nPara pasar de coordenadas de mundo a las de vista o de cámara, usamos la matriz de vista. Con un poco de magia de álgebra lineal tenemos que:\n\n\n\\[\nM_{view} = M_{lookat} =\n\\begin{pmatrix}\nr_x & r_y & r_z & 0\\\\\nu_x & u_y & u_z & 0\\\\\nd_x & d_y & d_z & 0\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\cdot\n\\begin{pmatrix}\n1 & 0 & 0 & -p_x\\\\\n0 & 1 & 0 & -p_y\\\\\n0 & 0 & 1 & -p_z\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\]\n\n\nDonde\n\n\\(R\\) es el vector que apunta a la derecha de la cámara\n\\(U\\) es el vector que apunta hacia arriba de la cámara\n\\(D\\) es el vector a donde apunta a la cámara\n\\(P\\) es la posición de la cámara"
-  },
-  {
-    "objectID": "courses/3501.4.html#proyección",
-    "href": "courses/3501.4.html#proyección",
-    "title": "Auxiliar 4",
-    "section": "Proyección",
-    "text": "Proyección\n\nFinalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la matriz de proyección, que viene en dos sabores:\n\n\n\n\nOrtográfica\n\n\n\n\n\ndef ortho(left, right, bottom, top, near, far)\n\n\nPerspectiva\n\n\n\n\n\ndef perspective(fovy, aspect, near, far):\n\n\n\nFuente: LearnOpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#manejo-de-input",
-    "href": "courses/3501.4.html#manejo-de-input",
-    "title": "Auxiliar 4",
-    "section": "Manejo de input",
-    "text": "Manejo de input\n\nPara manejar input podemos utilizar Pyglet la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a on_draw:\n\n\n\non_key_press(symbol, modifiers): función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en symbol.\non_key_release(symbol, modifiers): función que se llama cuando se libera una tecla y se guarda el valor de la tecla en symbol.\non_mouse_motion(x, y, dx, dy): función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (x e y), así como el cambio de este (dx y dy).\n\n\n\nExisten más que pueden ver en la documentación de la librería"
-  },
-  {
-    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase",
-    "href": "courses/3501.4.html#p1-hacerlo-con-clase",
-    "title": "Auxiliar 4",
-    "section": "P1 — Hacerlo con clase",
-    "text": "P1 — Hacerlo con clase\n\nEl auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una clase.\n\n\nUna clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.\n\n\nCree la clase GameModel, que contenga lo siguiente:\n\nInformación de posición, rotación y escalado\nColor del objeto y buffer de la GPU\nUna función que sea capaz de entregar la matriz de modelo del objeto correspondiente\nUna función que sea capaz de dibujar el objeto en pantalla"
-  },
-  {
-    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase-1",
-    "href": "courses/3501.4.html#p1-hacerlo-con-clase-1",
-    "title": "Auxiliar 4",
-    "section": "P1 — Hacerlo con clase",
-    "text": "P1 — Hacerlo con clase\nUse esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte A\nMuy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.\n\n\nCree la clase Camara que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando on_key_press y on_key_release"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-1",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps-1",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte B\nAñada los valores de pitch y yaw que permitan mover la cámara, use la función on_mouse_motion para vincular el ángulo de vista con el movimiento del mouse"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-2",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps-2",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
-  },
-  {
-    "objectID": "courses/3501.6.html#texturas",
-    "href": "courses/3501.6.html#texturas",
-    "title": "Auxiliar 6",
-    "section": "Texturas",
-    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
-  },
-  {
-    "objectID": "courses/3501.6.html#mapping",
-    "href": "courses/3501.6.html#mapping",
-    "title": "Auxiliar 6",
-    "section": "Mapping",
-    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
-  },
-  {
-    "objectID": "courses/3501.6.html#mapping-1",
-    "href": "courses/3501.6.html#mapping-1",
-    "title": "Auxiliar 6",
-    "section": "Mapping",
-    "text": "Mapping"
-  },
-  {
-    "objectID": "courses/3501.6.html#en-opengl",
-    "href": "courses/3501.6.html#en-opengl",
-    "title": "Auxiliar 6",
-    "section": "En OpenGL",
-    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
-  },
-  {
-    "objectID": "courses/3501.6.html#en-el-curso",
-    "href": "courses/3501.6.html#en-el-curso",
-    "title": "Auxiliar 6",
-    "section": "En el curso",
-    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
-  },
-  {
-    "objectID": "courses/3501.6.html#otros-usos",
-    "href": "courses/3501.6.html#otros-usos",
-    "title": "Auxiliar 6",
-    "section": "Otros usos",
-    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
-  },
-  {
-    "objectID": "courses/3501.6.html#iluminación",
-    "href": "courses/3501.6.html#iluminación",
-    "title": "Auxiliar 6",
-    "section": "Iluminación",
-    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
-  },
-  {
-    "objectID": "courses/3501.6.html#shading",
-    "href": "courses/3501.6.html#shading",
-    "title": "Auxiliar 6",
-    "section": "Shading",
-    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
-  },
-  {
-    "objectID": "courses/3501.6.html#shading-1",
-    "href": "courses/3501.6.html#shading-1",
-    "title": "Auxiliar 6",
-    "section": "Shading",
-    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
-  },
-  {
-    "objectID": "courses/3501.6.html#p1-texturas",
-    "href": "courses/3501.6.html#p1-texturas",
-    "title": "Auxiliar 6",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
-  },
-  {
-    "objectID": "courses/3501.6.html#p1-texturas-1",
-    "href": "courses/3501.6.html#p1-texturas-1",
-    "title": "Auxiliar 6",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
-  },
-  {
-    "objectID": "courses/3501.6.html#p2-iluminación",
-    "href": "courses/3501.6.html#p2-iluminación",
-    "title": "Auxiliar 6",
-    "section": "P2 — Iluminación",
-    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
-  },
-  {
-    "objectID": "courses/3501.8.html#modelo-de-phong",
-    "href": "courses/3501.8.html#modelo-de-phong",
-    "title": "Auxiliar 8",
-    "section": "Modelo de Phong",
-    "text": "Modelo de Phong\n\n\nEs un modelo de iluminación local.\nNo es costoso y es muy paralelizable.\nUsa los conceptos de Materiales y Luces."
-  },
-  {
-    "objectID": "courses/3501.8.html#materiales",
-    "href": "courses/3501.8.html#materiales",
-    "title": "Auxiliar 8",
-    "section": "Materiales",
-    "text": "Materiales\n\nDefinimos un material como:\n\\[(\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\]\n\n\n\n\\(\\mathcal{K}_a\\) - color ambiental del modelo (sin luz).\n\\(\\mathcal{K}_d\\) - color difuso del modelo (con luz).\n\\(\\mathcal{K}_s\\) - color especular del modelo (con reflejos).\n\\(\\alpha\\) - brillo o shininess del modelo (forma de los reflejos)."
-  },
-  {
-    "objectID": "courses/3501.8.html#materiales-1",
-    "href": "courses/3501.8.html#materiales-1",
-    "title": "Auxiliar 8",
-    "section": "Materiales",
-    "text": "Materiales\n\n\nTexturas\n\n\nCon texturas se suele tener texturas adicionales que guardan los valores difusos y especulares\n\n\n\n\n\n\n\n\n\n\n\nDifuso\n\n\n\n\n\n\n\nEspecular"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces",
-    "href": "courses/3501.8.html#luces",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\n\n\\[\n\\mathcal{I} = \\frac{\\mathcal{K}_a \\mathcal{L}_a + \\mathcal{K}_d \\mathcal{L}_d (l \\cdot n) + \\mathcal{K}_s \\mathcal{L}_s (v \\cdot r)^{\\alpha} }{k_c + k_l d + k_q d^2}\n\\]\n\n\n\n\\((\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\) — parámetros del material\n\\((\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s)\\) — parámetros del color de la luz\n\\((k_c, k_l, k_q)\\) — parámetros del atenuación de la luz\n\\(n\\) — normal de la superficie\n\\(l\\) — dirección hacia la fuente de luz\n\\(v\\) — dirección hacia la cámara\n\\(r\\) — reflexión sobre la superficie\n\\(d\\) — distancia a la fuente de luz"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-1",
-    "href": "courses/3501.8.html#luces-1",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nDireccional\n\n\n\n\nRepresenta una luz lejana\nMantiene la misma dirección\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, l)\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-2",
-    "href": "courses/3501.8.html#luces-2",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nLuz puntual\n\n\n\n\nLa luz básica\nSe atenúa con la distancia\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q)\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-3",
-    "href": "courses/3501.8.html#luces-3",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nSpotlight\n\n\n\n\nEs como una linterna\nTiene un foco principal\nDeterminado por un \\(\\theta\\) y \\(\\theta_{outer}\\)\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q, l, \\theta, \\theta_{outer})\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#p2-shading",
-    "href": "courses/3501.8.html#p2-shading",
-    "title": "Auxiliar 8",
-    "section": "P2 – Shading",
-    "text": "P2 – Shading\n\n\nParte A\nCree un nuevo shader donde incluya luces y materiales, para ello puede utilizar\n\n\n\nParte B\nCree 3 funciones para calcular el color según cada tipo de fuente de luz.\n\n\n\nParte C\nAñada al shader una función que calcule el color final del pixel según la iluminación de la escena."
-  },
-  {
-    "objectID": "courses/3501.8.html#p1-en-escena",
-    "href": "courses/3501.8.html#p1-en-escena",
-    "title": "Auxiliar 8",
-    "section": "P1 — En escena",
-    "text": "P1 — En escena\nUsando la escena de clase pasada y sus nuevos shaders\n\n\nParte A\nCree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).\n\n\n\nParte B\nCree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.\n\n\n\nParte C\nHaga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz spotlight para la noche.\nUtilice diversos pipelines para corregir los errores de iluminación."
-  },
-  {
-    "objectID": "courses/3501.10.html#colisiones",
-    "href": "courses/3501.10.html#colisiones",
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento",
     "title": "Auxiliar 10",
-    "section": "Colisiones",
-    "text": "Colisiones\n\n\nToda simulación física o interactiva necesita una forma de interacción entre los cuerpos en escena.\nPara simular correctamente la interacción entre dos cuerpos se necesita detectar y resolver la colisión.\nLas colisiones pueden llegar a ser muy costosas si se busca realismos.\nExisten un montón de casos bordes que se tienen que tener en cuenta.\nNo sólo sirven para colisiones o juegos, también tienen aplicaciones a interfaces gráficas"
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\nEl siguiente diagrama muestra la asignación de páginas en un sistema Unix que ejecuta los procesos \\(A\\) y \\(B\\). Las páginas son de 4 KB. El núcleo utiliza la estrategia copy-on-write para implementar fork.\nEn cada caso indique la página virtual, real y atributos de validez y escritura."
   },
   {
-    "objectID": "courses/3501.10.html#detección",
-    "href": "courses/3501.10.html#detección",
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
     "title": "Auxiliar 10",
-    "section": "Detección",
-    "text": "Detección\n\nExisten 2 tipos a priori y a posteriori.\n\n\n\n\n\nPriori\n\nSe busca predecir las colisiones antes de que ocurran.\nSe toman en cuenta todas las dinámicas involucradas.\nComplejo de calcular para cuerpos que se deforman.\n\n\n\n\n\nPosteriori\n\nSe buscar detectar la colisión después de que ocurra.\nUna vez que ocurre, se corrigen las posiciones de ser necesario.\nEs (relativamente) simple de calcular, pero genera muchos casos bordes.\n\n\n\n\nEn el curso nos centraremos en calcularlo a posteriori."
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\n\n\nParte A\nConstruya la tabla de páginas del proceso \\(A\\) después de que invoca sbrk pidiendo 10 KB adicionales."
   },
   {
-    "objectID": "courses/3501.10.html#detección-1",
-    "href": "courses/3501.10.html#detección-1",
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
     "title": "Auxiliar 10",
-    "section": "Detección",
-    "text": "Detección\n\nTambién existen distintas formas de identificar la colisión basándonos en las primitivas que forman la escena, por ejemplo:\n\nCajas\nEsferas\nTriángulos\nPoliedros"
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\n\n\nParte B\nConsidere que \\(B\\) invocó fork. Construya la tabla del proceso hijo justo después de que este modifique la página 11. No construya la tabla del padre."
   },
   {
-    "objectID": "courses/3501.10.html#axis-aligned-bounding-boxes",
-    "href": "courses/3501.10.html#axis-aligned-bounding-boxes",
+    "objectID": "courses/4302.10.html#p2-estrategia-del-reloj",
+    "href": "courses/4302.10.html#p2-estrategia-del-reloj",
     "title": "Auxiliar 10",
-    "section": "Axis aligned bounding boxes",
-    "text": "Axis aligned bounding boxes\n\n\n\n\nConsiste en una caja alineada a los ejes \\(XYZ\\)\nSe puede definir por dos puntos: el \\(min\\) y el \\(max\\)\nColisión fácil de computar y manejar\nSe usa los intervalos definidos por \\(min\\) y \\(max\\) en cada eje para calcular la colisión"
+    "section": "P2 – Estrategia del Reloj",
+    "text": "P2 – Estrategia del Reloj\nAcá pueden apreciar una serie de estados para una estrategia del reloj tras realizar 2 accesos en un sistema de memoria para reemplazar páginas.\nContinue el diagrama pasando por la siguiente secuencia de acceso a páginas de memoria:\n\n4, 7, 5, 3, 4, 1, 5"
   },
   {
-    "objectID": "courses/3501.10.html#sphere",
-    "href": "courses/3501.10.html#sphere",
+    "objectID": "courses/4302.10.html#p3-working-set",
+    "href": "courses/4302.10.html#p3-working-set",
     "title": "Auxiliar 10",
-    "section": "Sphere",
-    "text": "Sphere\n\n\n\n\nConsiste en una esfera definida por el centro y su radio\nTambién es fácil de computar y manejar\nNo suele adaptarse bien a todos los casos\nSe usa la distancia al centro y el radio para calcular la colisión"
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nEl siguiente es un diagrama de accesos a páginas de un proceso ejecutado en un sistema Unix utilizando la estrategia del Working Set. Donde:\n\n\\(r\\) es un acceso de lectura y \\(w\\) es de escritura.\nLas letras \\(A, B, \\dots, G\\) representan intervalos de tiempo en los cuales se calcularon los working sets.\nLos números \\(0, 1, \\dots, 6\\) representan las páginas del proceso"
   },
   {
-    "objectID": "courses/3501.10.html#convex-hull",
-    "href": "courses/3501.10.html#convex-hull",
+    "objectID": "courses/4302.10.html#p3-working-set-1",
+    "href": "courses/4302.10.html#p3-working-set-1",
     "title": "Auxiliar 10",
-    "section": "Convex Hull",
-    "text": "Convex Hull\n\n\n\n\nConsiste en una malla que define la envoltura convexa de un objeto\nCara de computar\nSe adapta bien a casi todos los casos\nSe usa el mismo cálculo de colisión que el de entre triángulos"
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte A\nAsumiendo que el bit \\(D\\) de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F podrían producir page-faults. Utilice coordenadas (\\(A\\), 1, 1er. acceso)\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nrr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nrw\nrw\n\n\n\n\n\n\n\n0\n\nww\n\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
-    "objectID": "courses/3501.10.html#triángulos",
-    "href": "courses/3501.10.html#triángulos",
+    "objectID": "courses/4302.10.html#p3-working-set-2",
+    "href": "courses/4302.10.html#p3-working-set-2",
     "title": "Auxiliar 10",
-    "section": "Triángulos",
-    "text": "Triángulos\n\n\n\n\nEs la forma más usada en las simulaciones realistas.\nSe usa para conseguir una interacción precisa.\nSe suele combinar con otras técnicas (AABB y CH) para hacerlo eficiente\nSe usa el Separating Axis Theorem para calcular la colisión"
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte B\nIndique el valor del atributo Referenced para todas las páginas al inicio y al final del intervalo \\(E\\).\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nrr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nrw\nrw\n\n\n\n\n\n\n\n0\n\nww\n\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
-    "objectID": "courses/3501.10.html#p1-chunks",
-    "href": "courses/3501.10.html#p1-chunks",
+    "objectID": "courses/4302.10.html#p3-working-set-3",
+    "href": "courses/4302.10.html#p3-working-set-3",
     "title": "Auxiliar 10",
-    "section": "P1 — Chunks!",
-    "text": "P1 — Chunks!\nSu auxiliar que esta obsesionado con Minecraft, necesita de su ayuda para hacer generar el mundo de bloques.\nDe manera similar al juego, la idea es separa cada zona del mapa en grupos de \\(16\\times 16\\times 16\\), para ello tiene una clase MyChunk que extiende de Model. Pero esta incompleta.\nCompletela creando la clase MyBlock que almacene el tipo de bloque, y dentro de la función init_gpu_data complete la información apropiadamente.\nCree una escena con 4 chunks con 10 bloques cada uno."
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte C\nSuponga que al inicio del intervalo \\(E\\) tiene el atributo Dirty de la página 5 es 0. Explique si el acceso (D, 5, 1er acceso) produjo o no un page fault.\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nrr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nrw\nrw\n\n\n\n\n\n\n\n0\n\nww\n\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
-    "objectID": "courses/3501.10.html#p2-colisiones",
-    "href": "courses/3501.10.html#p2-colisiones",
+    "objectID": "courses/4302.10.html#p3-working-set-4",
+    "href": "courses/4302.10.html#p3-working-set-4",
     "title": "Auxiliar 10",
-    "section": "P2 — Colisiones",
-    "text": "P2 — Colisiones\nUsando la librería colliders cree un CollisionManager y añada los bloques usando el tipo de collider AABB, haga lo mismo con el jugador.\nHaga un chequeo de colisiones para cada update de la simulación, donde imprima todas las colisiones ocurridas."
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte D\nCompare las dos estrategias de paginamiento en demanda vistas en el curso según la tabla:\n\n\n\n\n\n\n\n\n\n Reloj\nWorking Set\n\n\n\n\nSobrecosto en tiempo de ejecución cuando sobra la memoria física\n\n\n\n\nPage-faults cuando hay penuria de memoria pero hay solo 1 procesos en ejecución\n\n\n\n\nPage-faults cuando hay penuria de memoria y hay muchos procesos en ejecución"
   },
   {
-    "objectID": "courses/3501.10.html#p3-resolución",
-    "href": "courses/3501.10.html#p3-resolución",
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer",
     "title": "Auxiliar 10",
-    "section": "P3 — Resolución",
-    "text": "P3 — Resolución\nAhora que obtuvo las colisiones, resuelva las colisiones, de manera posteriori. Para ello analice el caso 2D para la colisión entre dos AABB y determine que es lo que debería ocurrir."
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\nConsidere las siguientes implementaciones de un diccionario:\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nEn la primera implementación toda la información se encuentra contigua en la memoria. Mientras que para la segunda las entradas pueden estar muy dispersas en la memoria puesto que el heap que maneja malloc está fragmentado. Considere que este diccionario funciona con búsqueda secuencial, y páginas de 4kB"
   },
   {
-    "objectID": "courses/3501.10.html#p4-optimización",
-    "href": "courses/3501.10.html#p4-optimización",
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
     "title": "Auxiliar 10",
-    "section": "P4 — Optimización",
-    "text": "P4 — Optimización\nAumente los bloques a 100 por chunk (o incluso 1000). Esto hace que la simulación corra muy mal, para arreglar esto puede optimizar su código de muchas maneras.\nUna de ellas es dividir su chequeo de colisión en 2 fases: la broad phase y la narrow phase, en la primera encuentre los bloques que pueden colisionar con el jugador y en la segunda busque los que realmente lo hagan.\n\n\nHint: Puede usar los chunks a su favor para ir descartando bloques."
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte A\nEstime para ambas implementaciones el peor caso del número de fallas en la TLB en una búsqueda."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
+    "title": "Auxiliar 10",
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte B\n¿Cuántos accesos adicionales a la memoria significa cada falla en la TLB considerando un microprocesador Intel x86?"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
+    "objectID": "courses/3501.2.html#la-escena",
+    "href": "courses/3501.2.html#la-escena",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
   },
   {
-    "objectID": "courses/4302.8.html#spinlocks",
-    "href": "courses/4302.8.html#spinlocks",
-    "title": "Auxiliar 8",
-    "section": "Spinlocks",
-    "text": "Spinlocks\n\n\nHerramienta de sincronización primitiva\nNo depende de un sistema operativo\nIgual de potente que el resto!\n\n\n\n\nCreación\nint sl = OPEN; // o CLOSED\n\n\n\nBloqueo\nspinLock(&sl); \n\n\n\nDesbloqueo\nspinUnlock(&sl);"
+    "objectID": "courses/3501.2.html#la-escena-1",
+    "href": "courses/3501.2.html#la-escena-1",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena"
   },
   {
-    "objectID": "courses/4302.8.html#how-to",
-    "href": "courses/4302.8.html#how-to",
-    "title": "Auxiliar 8",
-    "section": "How to?",
-    "text": "How to?\n\n\n\n\nMutex\nint sl = OPEN; // global\n\n// ...\n\nvoid fun() {\n  spinLock(&sl);\n\n  // sección crítica\n\n  spinUnlock(&sl);\n}\n\n\n\n\nCondición\nint *psl; // global\n\n// ...\n\nvoid f() {\n  // thread que espera\n  int sl = CLOSED;\n  psl = &sl;\n\n  spinLock(&sl); // espera\n  // ...\n}\n\nvoid g() {\n  // thread que despierta\n  spinUnlock(psl); // despierta\n}"
+    "objectID": "courses/3501.2.html#pipeline",
+    "href": "courses/3501.2.html#pipeline",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
   },
   {
-    "objectID": "courses/4302.8.html#implementación",
-    "href": "courses/4302.8.html#implementación",
-    "title": "Auxiliar 8",
-    "section": "Implementación",
-    "text": "Implementación\nvoid spinLock(volatile int *psl) {\n  do {\n    while (*psl == CLOSED)\n      ;\n  } while (swap(psl, CLOSED) != OPEN);\n}"
+    "objectID": "courses/3501.2.html#pipeline-1",
+    "href": "courses/3501.2.html#pipeline-1",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
   },
   {
-    "objectID": "courses/4302.8.html#p1-lectorescritor",
-    "href": "courses/4302.8.html#p1-lectorescritor",
-    "title": "Auxiliar 8",
-    "section": "P1 — Lector/escritor",
-    "text": "P1 — Lector/escritor\n\n\nParte A\nLa siguiente implementación es incorrecta. Haga un diagrama de threads que muestre que un lector puede entrar junto con un escritor.\n\n\nvoid enterRead() {\n  if (readers == 0)\n    spinLock(&write_lck);\n  spinLock(&mutex_lck);\n  readers++;\n  spinUnlock(&mutex_lck);\n}\n\nvoid enterWrite() {\n  spinLock(&write_lck);\n}\n\nvoid exitRead() {\n  spinLock(&mutex_lck);\n  readers--;\n  spinUnlock(&mutex_lck);\n\n  if (readers == 0)\n    spinUnlock(&write_lck);\n}\n\nvoid exitWrite() {\n  spinUnlock(&write_lck);\n}\n\n\n\n\nParte B\nModifique la solución anterior para que funcione correctamente."
+    "objectID": "courses/3501.2.html#pipeline-2",
+    "href": "courses/3501.2.html#pipeline-2",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
   },
   {
-    "objectID": "courses/4302.8.html#p2-función-team",
-    "href": "courses/4302.8.html#p2-función-team",
-    "title": "Auxiliar 8",
-    "section": "P2 — Función team",
-    "text": "P2 — Función team\nConsidere una máquina multicore en la que no existe un núcleo de sistema operativo y por lo tanto no hay un scheduler de procesos.\nSe necesita formar múltiple equipos de 5 cores cada uno. Para ello, los cores invocan la función team indicando su nombre como argumento. Esta función espera hasta que 5 cores hayan invocado team, retornando un arreglo de 5 strings con los nombres del equipo completo.\nEste es un ejemplo del uso de la función team:\nint player(char *name) {\n  for (;;) {\n    char **mTeam = team(name);\n    play(mTeam);\n    sleep();\n  }\n}"
+    "objectID": "courses/3501.2.html#shaders",
+    "href": "courses/3501.2.html#shaders",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
   },
   {
-    "objectID": "courses/4302.8.html#p2-función-team-1",
-    "href": "courses/4302.8.html#p2-función-team-1",
-    "title": "Auxiliar 8",
-    "section": "P2 — Función team",
-    "text": "P2 — Función team\nSe debe programar la función team con el siguiente encabezado:\nchar **team(char *name);\nSe dispone de spin-locks y la función coreId(). Necesitará usar variables globales y malloc.\nRestricción: Dado que no hay un núcleo de sistema operativo, la única forma válida de esperar a que se forme el equipo es utilizando un spin-lock. Otras formas de busy-waiting no están permitidas. No hay Queues FIFO."
+    "objectID": "courses/3501.2.html#shaders-1",
+    "href": "courses/3501.2.html#shaders-1",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
   },
   {
-    "objectID": "courses/4302.8.html#p3-propuesto",
-    "href": "courses/4302.8.html#p3-propuesto",
-    "title": "Auxiliar 8",
-    "section": "P3 – Propuesto",
-    "text": "P3 – Propuesto\n\nConsidere una máquina con 8 cores físicos que comparten la memoria, sin un núcleo de sistema operativo y por lo tanto no hay scheduler de procesos. A cada core se le asignan inicialmente 100 euros.\nUn core puede robar cantidad euros del core número desde invocando la función:\nvoid robar(int desde, int cantidad);\nEn tal caso se le resta cantidad euros a la tarea desde y se le suman al core que invocó robar. El parámetro cantidad es siempre mayor que cero.\nUn primer invariante es que un core no puede almacenar una cantidad negativa de euros. Si el core desde no posee suficiente dinero para robarle cantidad entonces robar debe esperar hasta que el core desde sí posea al menos la cantidad requerida.\nEl segundo invariante es que en un instante dado el core \\(T\\) no puede estar esperando robarle \\(c\\) euros al core \\(U\\) si \\(U\\) tiene al menos \\(c\\) euros. Observe que cuando el core \\(T\\) lograr robar dinero, varios otros cores pueden estar esperando poder robarle dinero a \\(T\\). No está especificado en qué orden deben robarle el dinero a \\(T\\).\nAyuda\nUse una matriz m de 8 por 8 punteros a spin-locks. Si m[i][j] no es nulo quiere decir que m[i][j] es la dirección de un spin-lock en el que el core i espera para robarle al core j.\n\n\n\nSacado del C2 de Otoño 2017"
+    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
+    "href": "courses/3501.2.html#p1-generar-un-círculo",
+    "title": "Auxiliar 2",
+    "section": "P1 — Generar un círculo",
+    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
   },
   {
-    "objectID": "courses/4302.8.html#p3-propuesto-1",
-    "href": "courses/4302.8.html#p3-propuesto-1",
-    "title": "Auxiliar 8",
-    "section": "P3 – Propuesto",
-    "text": "P3 – Propuesto\nEl siguiente diagrama muestra una situación con 5 threads:\n\n\n\nSacado del C2 de Otoño 2017"
+    "objectID": "courses/3501.2.html#p2-añadir-color",
+    "href": "courses/3501.2.html#p2-añadir-color",
+    "title": "Auxiliar 2",
+    "section": "P2 — Añadir color",
+    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
+  },
+  {
+    "objectID": "courses/3501.2.html#p3-agregar-indices",
+    "href": "courses/3501.2.html#p3-agregar-indices",
+    "title": "Auxiliar 2",
+    "section": "P3 — Agregar indices",
+    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
+  },
+  {
+    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "title": "Auxiliar 2",
+    "section": "P4 — Un poquito de movimiento",
+    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
   },
   {
     "objectID": "courses/4302.4.html#semáforos",
@@ -899,81 +682,382 @@
     "text": "P2 – Baño sin hambruna\nParte B\nReprograme la solución anterior de modo que siempre funcione correctamente. Utilice la siguiente metodología:\n\nUtilice 2 colas FIFO globales, una para cada equipo.\nCuando un hincha deba esperar para entrar al baño, cree un semáforo con 0 tickets y póngalo en la cola correspondiente. Luego, suspenda el thread solicitando un ticket a este semáforo.\nCuando salga el ultimo hincha de un equipo y haya hinchas del otro en espera, extraiga todos los semáforos de esa cola y deposite en cada uno de ellos un ticket para permitirle a los hinchas en espera entrar al baño.\nUtilice un semáforo para garantizar exclusión mutua en el acceso a las variables globales."
   },
   {
-    "objectID": "courses/3501.2.html#la-escena",
-    "href": "courses/3501.2.html#la-escena",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
+    "objectID": "courses/4302.8.html#spinlocks",
+    "href": "courses/4302.8.html#spinlocks",
+    "title": "Auxiliar 8",
+    "section": "Spinlocks",
+    "text": "Spinlocks\n\n\nHerramienta de sincronización primitiva\nNo depende de un sistema operativo\nIgual de potente que el resto!\n\n\n\n\nCreación\nint sl = OPEN; // o CLOSED\n\n\n\nBloqueo\nspinLock(&sl); \n\n\n\nDesbloqueo\nspinUnlock(&sl);"
   },
   {
-    "objectID": "courses/3501.2.html#la-escena-1",
-    "href": "courses/3501.2.html#la-escena-1",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena"
+    "objectID": "courses/4302.8.html#how-to",
+    "href": "courses/4302.8.html#how-to",
+    "title": "Auxiliar 8",
+    "section": "How to?",
+    "text": "How to?\n\n\n\n\nMutex\nint sl = OPEN; // global\n\n// ...\n\nvoid fun() {\n  spinLock(&sl);\n\n  // sección crítica\n\n  spinUnlock(&sl);\n}\n\n\n\n\nCondición\nint *psl; // global\n\n// ...\n\nvoid f() {\n  // thread que espera\n  int sl = CLOSED;\n  psl = &sl;\n\n  spinLock(&sl); // espera\n  // ...\n}\n\nvoid g() {\n  // thread que despierta\n  spinUnlock(psl); // despierta\n}"
   },
   {
-    "objectID": "courses/3501.2.html#pipeline",
-    "href": "courses/3501.2.html#pipeline",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+    "objectID": "courses/4302.8.html#implementación",
+    "href": "courses/4302.8.html#implementación",
+    "title": "Auxiliar 8",
+    "section": "Implementación",
+    "text": "Implementación\nvoid spinLock(volatile int *psl) {\n  do {\n    while (*psl == CLOSED)\n      ;\n  } while (swap(psl, CLOSED) != OPEN);\n}"
   },
   {
-    "objectID": "courses/3501.2.html#pipeline-1",
-    "href": "courses/3501.2.html#pipeline-1",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+    "objectID": "courses/4302.8.html#p1-lectorescritor",
+    "href": "courses/4302.8.html#p1-lectorescritor",
+    "title": "Auxiliar 8",
+    "section": "P1 — Lector/escritor",
+    "text": "P1 — Lector/escritor\n\n\nParte A\nLa siguiente implementación es incorrecta. Haga un diagrama de threads que muestre que un lector puede entrar junto con un escritor.\n\n\nvoid enterRead() {\n  if (readers == 0)\n    spinLock(&write_lck);\n  spinLock(&mutex_lck);\n  readers++;\n  spinUnlock(&mutex_lck);\n}\n\nvoid enterWrite() {\n  spinLock(&write_lck);\n}\n\nvoid exitRead() {\n  spinLock(&mutex_lck);\n  readers--;\n  spinUnlock(&mutex_lck);\n\n  if (readers == 0)\n    spinUnlock(&write_lck);\n}\n\nvoid exitWrite() {\n  spinUnlock(&write_lck);\n}\n\n\n\n\nParte B\nModifique la solución anterior para que funcione correctamente."
   },
   {
-    "objectID": "courses/3501.2.html#pipeline-2",
-    "href": "courses/3501.2.html#pipeline-2",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
+    "objectID": "courses/4302.8.html#p2-función-team",
+    "href": "courses/4302.8.html#p2-función-team",
+    "title": "Auxiliar 8",
+    "section": "P2 — Función team",
+    "text": "P2 — Función team\nConsidere una máquina multicore en la que no existe un núcleo de sistema operativo y por lo tanto no hay un scheduler de procesos.\nSe necesita formar múltiple equipos de 5 cores cada uno. Para ello, los cores invocan la función team indicando su nombre como argumento. Esta función espera hasta que 5 cores hayan invocado team, retornando un arreglo de 5 strings con los nombres del equipo completo.\nEste es un ejemplo del uso de la función team:\nint player(char *name) {\n  for (;;) {\n    char **mTeam = team(name);\n    play(mTeam);\n    sleep();\n  }\n}"
   },
   {
-    "objectID": "courses/3501.2.html#shaders",
-    "href": "courses/3501.2.html#shaders",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
+    "objectID": "courses/4302.8.html#p2-función-team-1",
+    "href": "courses/4302.8.html#p2-función-team-1",
+    "title": "Auxiliar 8",
+    "section": "P2 — Función team",
+    "text": "P2 — Función team\nSe debe programar la función team con el siguiente encabezado:\nchar **team(char *name);\nSe dispone de spin-locks y la función coreId(). Necesitará usar variables globales y malloc.\nRestricción: Dado que no hay un núcleo de sistema operativo, la única forma válida de esperar a que se forme el equipo es utilizando un spin-lock. Otras formas de busy-waiting no están permitidas. No hay Queues FIFO."
   },
   {
-    "objectID": "courses/3501.2.html#shaders-1",
-    "href": "courses/3501.2.html#shaders-1",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
+    "objectID": "courses/4302.8.html#p3-propuesto",
+    "href": "courses/4302.8.html#p3-propuesto",
+    "title": "Auxiliar 8",
+    "section": "P3 – Propuesto",
+    "text": "P3 – Propuesto\n\nConsidere una máquina con 8 cores físicos que comparten la memoria, sin un núcleo de sistema operativo y por lo tanto no hay scheduler de procesos. A cada core se le asignan inicialmente 100 euros.\nUn core puede robar cantidad euros del core número desde invocando la función:\nvoid robar(int desde, int cantidad);\nEn tal caso se le resta cantidad euros a la tarea desde y se le suman al core que invocó robar. El parámetro cantidad es siempre mayor que cero.\nUn primer invariante es que un core no puede almacenar una cantidad negativa de euros. Si el core desde no posee suficiente dinero para robarle cantidad entonces robar debe esperar hasta que el core desde sí posea al menos la cantidad requerida.\nEl segundo invariante es que en un instante dado el core \\(T\\) no puede estar esperando robarle \\(c\\) euros al core \\(U\\) si \\(U\\) tiene al menos \\(c\\) euros. Observe que cuando el core \\(T\\) lograr robar dinero, varios otros cores pueden estar esperando poder robarle dinero a \\(T\\). No está especificado en qué orden deben robarle el dinero a \\(T\\).\nAyuda\nUse una matriz m de 8 por 8 punteros a spin-locks. Si m[i][j] no es nulo quiere decir que m[i][j] es la dirección de un spin-lock en el que el core i espera para robarle al core j.\n\n\n\nSacado del C2 de Otoño 2017"
   },
   {
-    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
-    "href": "courses/3501.2.html#p1-generar-un-círculo",
-    "title": "Auxiliar 2",
-    "section": "P1 — Generar un círculo",
-    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
+    "objectID": "courses/4302.8.html#p3-propuesto-1",
+    "href": "courses/4302.8.html#p3-propuesto-1",
+    "title": "Auxiliar 8",
+    "section": "P3 – Propuesto",
+    "text": "P3 – Propuesto\nEl siguiente diagrama muestra una situación con 5 threads:\n\n\n\nSacado del C2 de Otoño 2017"
   },
   {
-    "objectID": "courses/3501.2.html#p2-añadir-color",
-    "href": "courses/3501.2.html#p2-añadir-color",
-    "title": "Auxiliar 2",
-    "section": "P2 — Añadir color",
-    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
   },
   {
-    "objectID": "courses/3501.2.html#p3-agregar-indices",
-    "href": "courses/3501.2.html#p3-agregar-indices",
-    "title": "Auxiliar 2",
-    "section": "P3 — Agregar indices",
-    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
-    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "title": "Auxiliar 2",
-    "section": "P4 — Un poquito de movimiento",
-    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
+    "objectID": "courses/3501.10.html#colisiones",
+    "href": "courses/3501.10.html#colisiones",
+    "title": "Auxiliar 10",
+    "section": "Colisiones",
+    "text": "Colisiones\n\n\nToda simulación física o interactiva necesita una forma de interacción entre los cuerpos en escena.\nPara simular correctamente la interacción entre dos cuerpos se necesita detectar y resolver la colisión.\nLas colisiones pueden llegar a ser muy costosas si se busca realismos.\nExisten un montón de casos bordes que se tienen que tener en cuenta.\nNo sólo sirven para colisiones o juegos, también tienen aplicaciones a interfaces gráficas"
+  },
+  {
+    "objectID": "courses/3501.10.html#detección",
+    "href": "courses/3501.10.html#detección",
+    "title": "Auxiliar 10",
+    "section": "Detección",
+    "text": "Detección\n\nExisten 2 tipos a priori y a posteriori.\n\n\n\n\n\nPriori\n\nSe busca predecir las colisiones antes de que ocurran.\nSe toman en cuenta todas las dinámicas involucradas.\nComplejo de calcular para cuerpos que se deforman.\n\n\n\n\n\nPosteriori\n\nSe buscar detectar la colisión después de que ocurra.\nUna vez que ocurre, se corrigen las posiciones de ser necesario.\nEs (relativamente) simple de calcular, pero genera muchos casos bordes.\n\n\n\n\nEn el curso nos centraremos en calcularlo a posteriori."
+  },
+  {
+    "objectID": "courses/3501.10.html#detección-1",
+    "href": "courses/3501.10.html#detección-1",
+    "title": "Auxiliar 10",
+    "section": "Detección",
+    "text": "Detección\n\nTambién existen distintas formas de identificar la colisión basándonos en las primitivas que forman la escena, por ejemplo:\n\nCajas\nEsferas\nTriángulos\nPoliedros"
+  },
+  {
+    "objectID": "courses/3501.10.html#axis-aligned-bounding-boxes",
+    "href": "courses/3501.10.html#axis-aligned-bounding-boxes",
+    "title": "Auxiliar 10",
+    "section": "Axis aligned bounding boxes",
+    "text": "Axis aligned bounding boxes\n\n\n\n\nConsiste en una caja alineada a los ejes \\(XYZ\\)\nSe puede definir por dos puntos: el \\(min\\) y el \\(max\\)\nColisión fácil de computar y manejar\nSe usa los intervalos definidos por \\(min\\) y \\(max\\) en cada eje para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#sphere",
+    "href": "courses/3501.10.html#sphere",
+    "title": "Auxiliar 10",
+    "section": "Sphere",
+    "text": "Sphere\n\n\n\n\nConsiste en una esfera definida por el centro y su radio\nTambién es fácil de computar y manejar\nNo suele adaptarse bien a todos los casos\nSe usa la distancia al centro y el radio para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#convex-hull",
+    "href": "courses/3501.10.html#convex-hull",
+    "title": "Auxiliar 10",
+    "section": "Convex Hull",
+    "text": "Convex Hull\n\n\n\n\nConsiste en una malla que define la envoltura convexa de un objeto\nCara de computar\nSe adapta bien a casi todos los casos\nSe usa el mismo cálculo de colisión que el de entre triángulos"
+  },
+  {
+    "objectID": "courses/3501.10.html#triángulos",
+    "href": "courses/3501.10.html#triángulos",
+    "title": "Auxiliar 10",
+    "section": "Triángulos",
+    "text": "Triángulos\n\n\n\n\nEs la forma más usada en las simulaciones realistas.\nSe usa para conseguir una interacción precisa.\nSe suele combinar con otras técnicas (AABB y CH) para hacerlo eficiente\nSe usa el Separating Axis Theorem para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#p1-chunks",
+    "href": "courses/3501.10.html#p1-chunks",
+    "title": "Auxiliar 10",
+    "section": "P1 — Chunks!",
+    "text": "P1 — Chunks!\nSu auxiliar que esta obsesionado con Minecraft, necesita de su ayuda para hacer generar el mundo de bloques.\nDe manera similar al juego, la idea es separa cada zona del mapa en grupos de \\(16\\times 16\\times 16\\), para ello tiene una clase MyChunk que extiende de Model. Pero esta incompleta.\nCompletela creando la clase MyBlock que almacene el tipo de bloque, y dentro de la función init_gpu_data complete la información apropiadamente.\nCree una escena con 4 chunks con 10 bloques cada uno."
+  },
+  {
+    "objectID": "courses/3501.10.html#p2-colisiones",
+    "href": "courses/3501.10.html#p2-colisiones",
+    "title": "Auxiliar 10",
+    "section": "P2 — Colisiones",
+    "text": "P2 — Colisiones\nUsando la librería colliders cree un CollisionManager y añada los bloques usando el tipo de collider AABB, haga lo mismo con el jugador.\nHaga un chequeo de colisiones para cada update de la simulación, donde imprima todas las colisiones ocurridas."
+  },
+  {
+    "objectID": "courses/3501.10.html#p3-resolución",
+    "href": "courses/3501.10.html#p3-resolución",
+    "title": "Auxiliar 10",
+    "section": "P3 — Resolución",
+    "text": "P3 — Resolución\nAhora que obtuvo las colisiones, resuelva las colisiones, de manera posteriori. Para ello analice el caso 2D para la colisión entre dos AABB y determine que es lo que debería ocurrir."
+  },
+  {
+    "objectID": "courses/3501.10.html#p4-optimización",
+    "href": "courses/3501.10.html#p4-optimización",
+    "title": "Auxiliar 10",
+    "section": "P4 — Optimización",
+    "text": "P4 — Optimización\nAumente los bloques a 100 por chunk (o incluso 1000). Esto hace que la simulación corra muy mal, para arreglar esto puede optimizar su código de muchas maneras.\nUna de ellas es dividir su chequeo de colisión en 2 fases: la broad phase y la narrow phase, en la primera encuentre los bloques que pueden colisionar con el jugador y en la segunda busque los que realmente lo hagan.\n\n\nHint: Puede usar los chunks a su favor para ir descartando bloques."
+  },
+  {
+    "objectID": "courses/3501.8.html#modelo-de-phong",
+    "href": "courses/3501.8.html#modelo-de-phong",
+    "title": "Auxiliar 8",
+    "section": "Modelo de Phong",
+    "text": "Modelo de Phong\n\n\nEs un modelo de iluminación local.\nNo es costoso y es muy paralelizable.\nUsa los conceptos de Materiales y Luces."
+  },
+  {
+    "objectID": "courses/3501.8.html#materiales",
+    "href": "courses/3501.8.html#materiales",
+    "title": "Auxiliar 8",
+    "section": "Materiales",
+    "text": "Materiales\n\nDefinimos un material como:\n\\[(\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\]\n\n\n\n\\(\\mathcal{K}_a\\) - color ambiental del modelo (sin luz).\n\\(\\mathcal{K}_d\\) - color difuso del modelo (con luz).\n\\(\\mathcal{K}_s\\) - color especular del modelo (con reflejos).\n\\(\\alpha\\) - brillo o shininess del modelo (forma de los reflejos)."
+  },
+  {
+    "objectID": "courses/3501.8.html#materiales-1",
+    "href": "courses/3501.8.html#materiales-1",
+    "title": "Auxiliar 8",
+    "section": "Materiales",
+    "text": "Materiales\n\n\nTexturas\n\n\nCon texturas se suele tener texturas adicionales que guardan los valores difusos y especulares\n\n\n\n\n\n\n\n\n\n\n\nDifuso\n\n\n\n\n\n\n\nEspecular"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces",
+    "href": "courses/3501.8.html#luces",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\n\n\\[\n\\mathcal{I} = \\frac{\\mathcal{K}_a \\mathcal{L}_a + \\mathcal{K}_d \\mathcal{L}_d (l \\cdot n) + \\mathcal{K}_s \\mathcal{L}_s (v \\cdot r)^{\\alpha} }{k_c + k_l d + k_q d^2}\n\\]\n\n\n\n\\((\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\) — parámetros del material\n\\((\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s)\\) — parámetros del color de la luz\n\\((k_c, k_l, k_q)\\) — parámetros del atenuación de la luz\n\\(n\\) — normal de la superficie\n\\(l\\) — dirección hacia la fuente de luz\n\\(v\\) — dirección hacia la cámara\n\\(r\\) — reflexión sobre la superficie\n\\(d\\) — distancia a la fuente de luz"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-1",
+    "href": "courses/3501.8.html#luces-1",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nDireccional\n\n\n\n\nRepresenta una luz lejana\nMantiene la misma dirección\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, l)\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-2",
+    "href": "courses/3501.8.html#luces-2",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nLuz puntual\n\n\n\n\nLa luz básica\nSe atenúa con la distancia\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q)\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-3",
+    "href": "courses/3501.8.html#luces-3",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nSpotlight\n\n\n\n\nEs como una linterna\nTiene un foco principal\nDeterminado por un \\(\\theta\\) y \\(\\theta_{outer}\\)\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q, l, \\theta, \\theta_{outer})\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#p2-shading",
+    "href": "courses/3501.8.html#p2-shading",
+    "title": "Auxiliar 8",
+    "section": "P2 – Shading",
+    "text": "P2 – Shading\n\n\nParte A\nCree un nuevo shader donde incluya luces y materiales, para ello puede utilizar\n\n\n\nParte B\nCree 3 funciones para calcular el color según cada tipo de fuente de luz.\n\n\n\nParte C\nAñada al shader una función que calcule el color final del pixel según la iluminación de la escena."
+  },
+  {
+    "objectID": "courses/3501.8.html#p1-en-escena",
+    "href": "courses/3501.8.html#p1-en-escena",
+    "title": "Auxiliar 8",
+    "section": "P1 — En escena",
+    "text": "P1 — En escena\nUsando la escena de clase pasada y sus nuevos shaders\n\n\nParte A\nCree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).\n\n\n\nParte B\nCree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.\n\n\n\nParte C\nHaga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz spotlight para la noche.\nUtilice diversos pipelines para corregir los errores de iluminación."
+  },
+  {
+    "objectID": "courses/3501.6.html#texturas",
+    "href": "courses/3501.6.html#texturas",
+    "title": "Auxiliar 6",
+    "section": "Texturas",
+    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
+  },
+  {
+    "objectID": "courses/3501.6.html#mapping",
+    "href": "courses/3501.6.html#mapping",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
+  },
+  {
+    "objectID": "courses/3501.6.html#mapping-1",
+    "href": "courses/3501.6.html#mapping-1",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-opengl",
+    "href": "courses/3501.6.html#en-opengl",
+    "title": "Auxiliar 6",
+    "section": "En OpenGL",
+    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-el-curso",
+    "href": "courses/3501.6.html#en-el-curso",
+    "title": "Auxiliar 6",
+    "section": "En el curso",
+    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
+  },
+  {
+    "objectID": "courses/3501.6.html#otros-usos",
+    "href": "courses/3501.6.html#otros-usos",
+    "title": "Auxiliar 6",
+    "section": "Otros usos",
+    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
+  },
+  {
+    "objectID": "courses/3501.6.html#iluminación",
+    "href": "courses/3501.6.html#iluminación",
+    "title": "Auxiliar 6",
+    "section": "Iluminación",
+    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading",
+    "href": "courses/3501.6.html#shading",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading-1",
+    "href": "courses/3501.6.html#shading-1",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas",
+    "href": "courses/3501.6.html#p1-texturas",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas-1",
+    "href": "courses/3501.6.html#p1-texturas-1",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
+  },
+  {
+    "objectID": "courses/3501.6.html#p2-iluminación",
+    "href": "courses/3501.6.html#p2-iluminación",
+    "title": "Auxiliar 6",
+    "section": "P2 — Iluminación",
+    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d",
+    "href": "courses/3501.4.html#espacios-3d",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\nPara trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:\n\n\n\nLocal space\nSe corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.\nWorld space\nCorresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.\nView space\nEs el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena\nClip space\nEs espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta"
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d-1",
+    "href": "courses/3501.4.html#espacios-3d-1",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\n\n\n\n\n\n\nFuente: LearnOpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d-2",
+    "href": "courses/3501.4.html#espacios-3d-2",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\nMatriz MVP\n\n\\[\nM_{projection} \\cdot M_{view} \\cdot M_{model} \\cdot v_{local} = v_{clipped}\n\\]\n\n\nSirve para moverse desde el espacio local al espacio homogéneo de OpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#modelo",
+    "href": "courses/3501.4.html#modelo",
+    "title": "Auxiliar 4",
+    "section": "Modelo",
+    "text": "Modelo\n\nPara pasar de coordenadas locales a las de mundo usamos la matriz de modelo.\n\n\n\\[\nM_{model}  = M_{translation} \\cdot M_{rotation} \\cdot M_{scale}\n\\]\n\n\nEs la que usamos la clase pasada para mover los modelos!"
+  },
+  {
+    "objectID": "courses/3501.4.html#vista",
+    "href": "courses/3501.4.html#vista",
+    "title": "Auxiliar 4",
+    "section": "Vista",
+    "text": "Vista\n\nPara pasar de coordenadas de mundo a las de vista o de cámara, usamos la matriz de vista. Con un poco de magia de álgebra lineal tenemos que:\n\n\n\\[\nM_{view} = M_{lookat} =\n\\begin{pmatrix}\nr_x & r_y & r_z & 0\\\\\nu_x & u_y & u_z & 0\\\\\nd_x & d_y & d_z & 0\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\cdot\n\\begin{pmatrix}\n1 & 0 & 0 & -p_x\\\\\n0 & 1 & 0 & -p_y\\\\\n0 & 0 & 1 & -p_z\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\]\n\n\nDonde\n\n\\(R\\) es el vector que apunta a la derecha de la cámara\n\\(U\\) es el vector que apunta hacia arriba de la cámara\n\\(D\\) es el vector a donde apunta a la cámara\n\\(P\\) es la posición de la cámara"
+  },
+  {
+    "objectID": "courses/3501.4.html#proyección",
+    "href": "courses/3501.4.html#proyección",
+    "title": "Auxiliar 4",
+    "section": "Proyección",
+    "text": "Proyección\n\nFinalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la matriz de proyección, que viene en dos sabores:\n\n\n\n\nOrtográfica\n\n\n\n\n\ndef ortho(left, right, bottom, top, near, far)\n\n\nPerspectiva\n\n\n\n\n\ndef perspective(fovy, aspect, near, far):\n\n\n\nFuente: LearnOpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#manejo-de-input",
+    "href": "courses/3501.4.html#manejo-de-input",
+    "title": "Auxiliar 4",
+    "section": "Manejo de input",
+    "text": "Manejo de input\n\nPara manejar input podemos utilizar Pyglet la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a on_draw:\n\n\n\non_key_press(symbol, modifiers): función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en symbol.\non_key_release(symbol, modifiers): función que se llama cuando se libera una tecla y se guarda el valor de la tecla en symbol.\non_mouse_motion(x, y, dx, dy): función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (x e y), así como el cambio de este (dx y dy).\n\n\n\nExisten más que pueden ver en la documentación de la librería"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase",
+    "title": "Auxiliar 4",
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\n\nEl auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una clase.\n\n\nUna clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.\n\n\nCree la clase GameModel, que contenga lo siguiente:\n\nInformación de posición, rotación y escalado\nColor del objeto y buffer de la GPU\nUna función que sea capaz de entregar la matriz de modelo del objeto correspondiente\nUna función que sea capaz de dibujar el objeto en pantalla"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "title": "Auxiliar 4",
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\nUse esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte A\nMuy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.\n\n\nCree la clase Camara que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando on_key_press y on_key_release"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte B\nAñada los valores de pitch y yaw que permitan mover la cámara, use la función on_mouse_motion para vincular el ángulo de vista con el movimiento del mouse"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
   },
   {
     "objectID": "courses/4302.0.html",
