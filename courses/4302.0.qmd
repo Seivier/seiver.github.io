@@ -9,3 +9,4 @@ title: Sistemas operativos
 4. [Semáforos](4302.4.qmd)
 7. [Timeouts y Prioridades](4302.7.qmd)
 8. [Spinlock](4302.8.qmd)
+10. [Administración de memoria](4302.10.qmd)
