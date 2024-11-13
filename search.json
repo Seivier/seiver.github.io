@@ -1,122 +1,972 @@
 [
   {
-    "objectID": "courses/4302.1.html#su-auxiliar",
-    "href": "courses/4302.1.html#su-auxiliar",
+    "objectID": "courses/3501.1.html#su-auxiliar",
+    "href": "courses/3501.1.html#su-auxiliar",
     "title": "Auxiliar 1",
     "section": "Su auxiliar",
-    "text": "Su auxiliar"
+    "text": "Su auxiliar\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
   },
   {
-    "objectID": "courses/4302.1.html#su-auxiliar-1",
-    "href": "courses/4302.1.html#su-auxiliar-1",
+    "objectID": "courses/3501.1.html#terminal",
+    "href": "courses/3501.1.html#terminal",
     "title": "Auxiliar 1",
-    "section": "Su auxiliar",
-    "text": "Su auxiliar\n\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
+    "section": "Terminal",
+    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
   },
   {
-    "objectID": "courses/4302.1.html#section",
-    "href": "courses/4302.1.html#section",
+    "objectID": "courses/3501.1.html#python",
+    "href": "courses/3501.1.html#python",
     "title": "Auxiliar 1",
+    "section": "Python",
+    "text": "Python"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip",
+    "href": "courses/3501.1.html#pip",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#pip-1",
+    "href": "courses/3501.1.html#pip-1",
+    "title": "Auxiliar 1",
+    "section": "PIP",
+    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv venv\nPara activarlo\nsource ./venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda",
+    "href": "courses/3501.1.html#conda",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#conda-1",
+    "href": "courses/3501.1.html#conda-1",
+    "title": "Auxiliar 1",
+    "section": "Conda",
+    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\n\n\n\n\nDudas con la instalación por correo"
+  },
+  {
+    "objectID": "courses/3501.1.html#editor",
+    "href": "courses/3501.1.html#editor",
+    "title": "Auxiliar 1",
+    "section": "Editor",
+    "text": "Editor"
+  },
+  {
+    "objectID": "courses/3501.1.html#vscode",
+    "href": "courses/3501.1.html#vscode",
+    "title": "Auxiliar 1",
+    "section": "VSCode",
+    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#pycharm",
+    "href": "courses/3501.1.html#pycharm",
+    "title": "Auxiliar 1",
+    "section": "PyCharm",
+    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
+  },
+  {
+    "objectID": "courses/3501.1.html#vim",
+    "href": "courses/3501.1.html#vim",
+    "title": "Auxiliar 1",
+    "section": "Vim",
+    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
+  },
+  {
+    "objectID": "courses/3501.1.html#git",
+    "href": "courses/3501.1.html#git",
+    "title": "Auxiliar 1",
+    "section": "Git",
+    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
+  },
+  {
+    "objectID": "courses/3501.1.html#hello-world",
+    "href": "courses/3501.1.html#hello-world",
+    "title": "Auxiliar 1",
+    "section": "Hello world!",
+    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
+  },
+  {
+    "objectID": "courses/index.html",
+    "href": "courses/index.html",
+    "title": "Cursos",
     "section": "",
-    "text": "Procesos Pesados\n\n\n\nFork\nNo comparten memoria\nCostosos de instanciar\nSeguros\n\n\n\n\nProcesos livianos\n\n\n\nPthreads\nComparten memoria\nBaratos de instanciar\nDatarraces"
+    "text": "Aquí esta el material de cursos que he dictado",
+    "crumbs": [
+      "Cursos",
+      "2024"
+    ]
   },
   {
-    "objectID": "courses/4302.1.html#creación-de-threads",
-    "href": "courses/4302.1.html#creación-de-threads",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\nCompuesto por:"
+    "objectID": "courses/4302.2.html#creación-de-un-thread",
+    "href": "courses/4302.2.html#creación-de-un-thread",
+    "title": "Auxiliar 2",
+    "section": "Creación de un thread",
+    "text": "Creación de un thread\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nLanza un nuevo thread que ejecuta start_routine.\nstart_routine recibe arg como argumento.\nEl thread se puede crear con atributos attr especiales (NULL).\nEl “ID” del proceso se guarda en thread\nRetorna 0 si la creación del proceso fue exitosa"
   },
   {
-    "objectID": "courses/4302.1.html#creación-de-threads-1",
-    "href": "courses/4302.1.html#creación-de-threads-1",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso"
+    "objectID": "courses/4302.2.html#término-de-un-thread",
+    "href": "courses/4302.2.html#término-de-un-thread",
+    "title": "Auxiliar 2",
+    "section": "Término de un thread",
+    "text": "Término de un thread\n\nUn thread termina si:\n\n\n\nRetorna start_routine.\nLlamando a pthread_exit (no recomendado).\nint pthread_exit(void *return_value);\n\n\n\nTodo thread cread debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\n\n\n\npthread_join espera a que el thread termine.\n\n\n\nLos thread no enterrados se convierte en zombies y no devuelven los recursos"
   },
   {
-    "objectID": "courses/4302.1.html#creación-de-threads-2",
-    "href": "courses/4302.1.html#creación-de-threads-2",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)"
-  },
-  {
-    "objectID": "courses/4302.1.html#creación-de-threads-3",
-    "href": "courses/4302.1.html#creación-de-threads-3",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso"
-  },
-  {
-    "objectID": "courses/4302.1.html#creación-de-threads-4",
-    "href": "courses/4302.1.html#creación-de-threads-4",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso\nLos argumentos a pasar a la rutina"
-  },
-  {
-    "objectID": "courses/4302.1.html#creación-de-threads-5",
-    "href": "courses/4302.1.html#creación-de-threads-5",
-    "title": "Auxiliar 1",
-    "section": "Creación de threads",
-    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nRetorna 0 si la creación fue exitosa\nEl thread termina cuando start_routine termina\nTodo thread creado debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\nLos thread no enterrados se convierte en zombies y no devuelven los recursos\nLa función pthread_join espera a que el thread termine"
-  },
-  {
-    "objectID": "courses/4302.1.html#ejemplo",
-    "href": "courses/4302.1.html#ejemplo",
-    "title": "Auxiliar 1",
+    "objectID": "courses/4302.2.html#ejemplo",
+    "href": "courses/4302.2.html#ejemplo",
+    "title": "Auxiliar 2",
     "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}\n\n¿Cómo puedo usar más argumentos?\n\n\nUsamos una estructura!"
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
   },
   {
-    "objectID": "courses/4302.1.html#ejemplo-1",
-    "href": "courses/4302.1.html#ejemplo-1",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+    "objectID": "courses/4302.2.html#ejemplo-múltiples-args",
+    "href": "courses/4302.2.html#ejemplo-múltiples-args",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo (múltiples args)",
+    "text": "Ejemplo (múltiples args)\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
   },
   {
-    "objectID": "courses/4302.1.html#ejemplo-2",
-    "href": "courses/4302.1.html#ejemplo-2",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/4302.1.html#ejemplo-3",
-    "href": "courses/4302.1.html#ejemplo-3",
-    "title": "Auxiliar 1",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/4302.1.html#how-to",
-    "href": "courses/4302.1.html#how-to",
-    "title": "Auxiliar 1",
+    "objectID": "courses/4302.2.html#how-to",
+    "href": "courses/4302.2.html#how-to",
+    "title": "Auxiliar 2",
     "section": "How to?",
-    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
   },
   {
-    "objectID": "courses/4302.1.html#how-to-1",
-    "href": "courses/4302.1.html#how-to-1",
-    "title": "Auxiliar 1",
+    "objectID": "courses/4302.2.html#how-to-1",
+    "href": "courses/4302.2.html#how-to-1",
+    "title": "Auxiliar 2",
     "section": "How to?",
-    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
   },
   {
-    "objectID": "courses/4302.1.html#p1-buscar-factor",
-    "href": "courses/4302.1.html#p1-buscar-factor",
-    "title": "Auxiliar 1",
-    "section": "P1 — Buscar Factor",
-    "text": "P1 — Buscar Factor\n\nParalelicemos esta función que busca cualquier factor de un número para acelerarla utilizando \\(P\\) cores\n\n\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\n\nDesafío: Lanzar \\(P-1\\) procesos y utilizar el principal en la búsqueda"
+    "objectID": "courses/4302.2.html#p1-quicksort-paralelo",
+    "href": "courses/4302.2.html#p1-quicksort-paralelo",
+    "title": "Auxiliar 2",
+    "section": "P1 — Quicksort paralelo",
+    "text": "P1 — Quicksort paralelo\nLa siguiente función es una implementación simple de quicksort:\n#include &lt;pthread.h&gt;\n\nvoid quicksort_seq(int a[], int i, int j) {\n    if (i &lt; j) {\n        int h = particionar(a, i, j);\n        quicksort_seq(a, i, h - 1);\n        quicksort_seq(a. h + 1, j);\n    }\n}\n\n\nConsidere particionar como la función que selecciona el pivote y reordena el arreglo.\nLos valores menores al pivote quedan a la izquierda y los mayores a la derecha.\nSe le pide paralelizar la función tal que haga uso de \\(N\\) cores:\nvoid quicksort(int a[], int i, int j, int n);\n\n\n\nIdea\nInvocaciones secuenciales independientes son directamente paralelizables"
   },
   {
-    "objectID": "courses/4302.1.html#p1-buscar-factor-1",
-    "href": "courses/4302.1.html#p1-buscar-factor-1",
-    "title": "Auxiliar 1",
-    "section": "P1 — Buscar Factor",
-    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
+    "objectID": "courses/4302.2.html#la-nueva-pesadilla",
+    "href": "courses/4302.2.html#la-nueva-pesadilla",
+    "title": "Auxiliar 2",
+    "section": "La nueva pesadilla",
+    "text": "La nueva pesadilla\n\nCuando se trabaja en paralelo, nacen nuevos enemigos.\n\n\nAl acceder a recursos compartidos desde varios procesos se pueden generar problemas como:\n\n\n\nDataraces\nVariables se sobreescriben\nRace conditions\nOrden incorrecto de ejecución\nHambruna y Deadlocks\nUn proceso no obtiene tiempo de ejecución"
+  },
+  {
+    "objectID": "courses/4302.2.html#la-solución",
+    "href": "courses/4302.2.html#la-solución",
+    "title": "Auxiliar 2",
+    "section": "La solución",
+    "text": "La solución\n\n\nMutex\n\n\n\nMUTual EXclusión\n\n\nGarantiza la exclusión mutua, bloqueando el acceso a “zonas críticas”, las cuales son zonas del código donde se manipulan los recursos compartidos.\n\n\n\n\nCondiciones\n\n\nHacen esperar a los procesos de manera eficiente hasta que se cumpla la condición para continuar la ejecución."
+  },
+  {
+    "objectID": "courses/4302.2.html#manejo",
+    "href": "courses/4302.2.html#manejo",
+    "title": "Auxiliar 2",
+    "section": "Manejo",
+    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\n\nDentro de una función\npthread_mutex_t mutex;\n// ...\npthread_mutex_init(&mutex, NULL);\n\n\n\n\nUso\n\n\nPara solicitar el mutex:\nint pthread_mutex_lock(pthread_mutex_t *mutex); \nLa función retorna solo para el primer proceso que pida el mutex, el resto queda esperando\n\n\nPara liberar el mutex:\nint pthread_mutex_unlock(pthread_mutex_t *mutex); \nAl liberar el mutex, todos los procesos se despiertan a la vez, no esta garantizado el orden de adquisición"
+  },
+  {
+    "objectID": "courses/4302.2.html#comportamiento",
+    "href": "courses/4302.2.html#comportamiento",
+    "title": "Auxiliar 2",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\n\nUn mutex garantiza que sólo un proceso pueda entrar a una su “zona crítica” de código.\nDebe ser solicitado para ingresar y liberado al salir.\nDos estados posibles:\n\n\n\nAbierto\nNingún proceso ha solicitado el mutex\n\nCerrado\nAlgún proceso ha solicitado el mutex y no ha sido liberado\n\n\nSi un proceso intenta solicitar un mutex cerrado, este será suspendido hasta que el mutex sea liberado."
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-1",
+    "href": "courses/4302.2.html#ejemplo-1",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\nint contador = 0;\nvoid aumentar_cont() {\n  contador++;\n}\n\nMala implementación 🤢\n\n\n\n¿Dónde esta el error?\n\n\nHagamos un diagrama"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-2",
+    "href": "courses/4302.2.html#ejemplo-2",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nvoid aumentar_cont() {\n  pthread_mutex_lock(&m);\n  contador++;\n  pthread_mutex_unlock(&m);\n}\n\nBuena implementación 🤠\n\n\n\nRepitamos el diagrama"
+  },
+  {
+    "objectID": "courses/4302.2.html#motivación",
+    "href": "courses/4302.2.html#motivación",
+    "title": "Auxiliar 2",
+    "section": "Motivación",
+    "text": "Motivación\n\nUna forma de esperar podría ser:\nwhile (ocupado) {\n    ; // wait\n}\n\n\nEsto es mala idea porque mantiene ocupado al core\n\n\nEs mejor “dormir” el proceso para desocupar el core"
+  },
+  {
+    "objectID": "courses/4302.2.html#manejo-1",
+    "href": "courses/4302.2.html#manejo-1",
+    "title": "Auxiliar 2",
+    "section": "Manejo",
+    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_cond_t mutex = PTHREAD_COND_INITIALIZER;\n\nDentro de una función\npthread_cond_t cond;\n// ...\npthread_cond_init(&cond, NULL);\n\n\n\n\nUso\n\n\nPara hacer esperar a un proceso:\nint pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); \nAl entrar en espera, el proceso liberará el mutex\nAl salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga\n\n\nPara despertar procesos:\nint pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos\nint pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)"
+  },
+  {
+    "objectID": "courses/4302.2.html#comportamiento-1",
+    "href": "courses/4302.2.html#comportamiento-1",
+    "title": "Auxiliar 2",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\n\nLa espera es eficiente, dejando disponible el core.\nLa función wait se hace cargo de liberar y pedir el mutex asociado.\nLa función broadcast despierta a todos los procesos en espera.\nLa función signal despierta a un solo proceso sin orden garantizado.\nUn proceso que esperaba por una condición puede quedar en espera por un mutex."
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-3",
+    "href": "courses/4302.2.html#ejemplo-3",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\n\nMala implementación 🤢"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-4",
+    "href": "courses/4302.2.html#ejemplo-4",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nBusy waiting"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-5",
+    "href": "courses/4302.2.html#ejemplo-5",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nHambruna\n\n\nToma el mutex y no lo libera antes de esperar\nNo es Deadlock porque el primer proceso está despierto"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-6",
+    "href": "courses/4302.2.html#ejemplo-6",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-7",
+    "href": "courses/4302.2.html#ejemplo-7",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nCondiciones añadidas"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-8",
+    "href": "courses/4302.2.html#ejemplo-8",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nEspera eficiente"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-9",
+    "href": "courses/4302.2.html#ejemplo-9",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nZona crítica respetada"
+  },
+  {
+    "objectID": "courses/4302.2.html#ejemplo-10",
+    "href": "courses/4302.2.html#ejemplo-10",
+    "title": "Auxiliar 2",
+    "section": "Ejemplo",
+    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nBuena implementación 🤠"
+  },
+  {
+    "objectID": "courses/4302.2.html#p2-colecta",
+    "href": "courses/4302.2.html#p2-colecta",
+    "title": "Auxiliar 2",
+    "section": "P2 — Colecta",
+    "text": "P2 — Colecta\nSe necesita crear un sistemas para juntar exactamente una cantidad \\(X\\) de dinero:\n\n\nDefinir el tipo de datos Colecta.\nProgramar la función\nColecta *nuevaColecta(double meta);\nQue crea y retorna una colecta para juntar meta pesos.\nProgramar la función\ndouble aportar(Colecta *c, double monto);\nQue es invocada desde múltiples procesos para contribuir monto pesos. El valor de retorno de la función es el mínimo entre monto y lo que falta para llegar a la meta.\nLa función retornar una vez que la meta se cumpla"
+  },
+  {
+    "objectID": "courses/4302.0.html",
+    "href": "courses/4302.0.html",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/4302.0.html#auxiliares",
+    "href": "courses/4302.0.html#auxiliares",
+    "title": "Sistemas operativos",
+    "section": "",
+    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Sistemas operativos"
+    ]
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d",
+    "href": "courses/3501.4.html#espacios-3d",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\nPara trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:\n\n\n\nLocal space\nSe corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.\nWorld space\nCorresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.\nView space\nEs el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena\nClip space\nEs espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta"
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d-1",
+    "href": "courses/3501.4.html#espacios-3d-1",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\n\n\n\n\n\n\n\nFuente: LearnOpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#espacios-3d-2",
+    "href": "courses/3501.4.html#espacios-3d-2",
+    "title": "Auxiliar 4",
+    "section": "Espacios 3D",
+    "text": "Espacios 3D\nMatriz MVP\n\n\\[\nM_{projection} \\cdot M_{view} \\cdot M_{model} \\cdot v_{local} = v_{clipped}\n\\]\n\n\nSirve para moverse desde el espacio local al espacio homogéneo de OpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#modelo",
+    "href": "courses/3501.4.html#modelo",
+    "title": "Auxiliar 4",
+    "section": "Modelo",
+    "text": "Modelo\n\nPara pasar de coordenadas locales a las de mundo usamos la matriz de modelo.\n\n\n\\[\nM_{model}  = M_{translation} \\cdot M_{rotation} \\cdot M_{scale}\n\\]\n\n\nEs la que usamos la clase pasada para mover los modelos!"
+  },
+  {
+    "objectID": "courses/3501.4.html#vista",
+    "href": "courses/3501.4.html#vista",
+    "title": "Auxiliar 4",
+    "section": "Vista",
+    "text": "Vista\n\nPara pasar de coordenadas de mundo a las de vista o de cámara, usamos la matriz de vista. Con un poco de magia de álgebra lineal tenemos que:\n\n\n\\[\nM_{view} = M_{lookat} =\n\\begin{pmatrix}\nr_x & r_y & r_z & 0\\\\\nu_x & u_y & u_z & 0\\\\\nd_x & d_y & d_z & 0\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\cdot\n\\begin{pmatrix}\n1 & 0 & 0 & -p_x\\\\\n0 & 1 & 0 & -p_y\\\\\n0 & 0 & 1 & -p_z\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\]\n\n\nDonde\n\n\\(R\\) es el vector que apunta a la derecha de la cámara\n\\(U\\) es el vector que apunta hacia arriba de la cámara\n\\(D\\) es el vector a donde apunta a la cámara\n\\(P\\) es la posición de la cámara"
+  },
+  {
+    "objectID": "courses/3501.4.html#proyección",
+    "href": "courses/3501.4.html#proyección",
+    "title": "Auxiliar 4",
+    "section": "Proyección",
+    "text": "Proyección\n\nFinalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la matriz de proyección, que viene en dos sabores:\n\n\n\n\nOrtográfica\n\n\n\n\n\ndef ortho(left, right, bottom, top, near, far)\n\n\nPerspectiva\n\n\n\n\n\ndef perspective(fovy, aspect, near, far):\n\n\n\nFuente: LearnOpenGL"
+  },
+  {
+    "objectID": "courses/3501.4.html#manejo-de-input",
+    "href": "courses/3501.4.html#manejo-de-input",
+    "title": "Auxiliar 4",
+    "section": "Manejo de input",
+    "text": "Manejo de input\n\nPara manejar input podemos utilizar Pyglet la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a on_draw:\n\n\n\non_key_press(symbol, modifiers): función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en symbol.\non_key_release(symbol, modifiers): función que se llama cuando se libera una tecla y se guarda el valor de la tecla en symbol.\non_mouse_motion(x, y, dx, dy): función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (x e y), así como el cambio de este (dx y dy).\n\n\n\nExisten más que pueden ver en la documentación de la librería"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase",
+    "title": "Auxiliar 4",
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\n\nEl auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una clase.\n\n\nUna clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.\n\n\nCree la clase GameModel, que contenga lo siguiente:\n\nInformación de posición, rotación y escalado\nColor del objeto y buffer de la GPU\nUna función que sea capaz de entregar la matriz de modelo del objeto correspondiente\nUna función que sea capaz de dibujar el objeto en pantalla"
+  },
+  {
+    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "href": "courses/3501.4.html#p1-hacerlo-con-clase-1",
+    "title": "Auxiliar 4",
+    "section": "P1 — Hacerlo con clase",
+    "text": "P1 — Hacerlo con clase\nUse esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte A\nMuy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.\n\n\nCree la clase Camara que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando on_key_press y on_key_release"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-1",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte B\nAñada los valores de pitch y yaw que permitan mover la cámara, use la función on_mouse_motion para vincular el ángulo de vista con el movimiento del mouse"
+  },
+  {
+    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "href": "courses/3501.4.html#p2-hagámoslo-fps-2",
+    "title": "Auxiliar 4",
+    "section": "P2 – Hagámoslo FPS",
+    "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
+  },
+  {
+    "objectID": "courses/3501.6.html#texturas",
+    "href": "courses/3501.6.html#texturas",
+    "title": "Auxiliar 6",
+    "section": "Texturas",
+    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
+  },
+  {
+    "objectID": "courses/3501.6.html#mapping",
+    "href": "courses/3501.6.html#mapping",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
+  },
+  {
+    "objectID": "courses/3501.6.html#mapping-1",
+    "href": "courses/3501.6.html#mapping-1",
+    "title": "Auxiliar 6",
+    "section": "Mapping",
+    "text": "Mapping"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-opengl",
+    "href": "courses/3501.6.html#en-opengl",
+    "title": "Auxiliar 6",
+    "section": "En OpenGL",
+    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
+  },
+  {
+    "objectID": "courses/3501.6.html#en-el-curso",
+    "href": "courses/3501.6.html#en-el-curso",
+    "title": "Auxiliar 6",
+    "section": "En el curso",
+    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
+  },
+  {
+    "objectID": "courses/3501.6.html#otros-usos",
+    "href": "courses/3501.6.html#otros-usos",
+    "title": "Auxiliar 6",
+    "section": "Otros usos",
+    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
+  },
+  {
+    "objectID": "courses/3501.6.html#iluminación",
+    "href": "courses/3501.6.html#iluminación",
+    "title": "Auxiliar 6",
+    "section": "Iluminación",
+    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading",
+    "href": "courses/3501.6.html#shading",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
+  },
+  {
+    "objectID": "courses/3501.6.html#shading-1",
+    "href": "courses/3501.6.html#shading-1",
+    "title": "Auxiliar 6",
+    "section": "Shading",
+    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas",
+    "href": "courses/3501.6.html#p1-texturas",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
+  },
+  {
+    "objectID": "courses/3501.6.html#p1-texturas-1",
+    "href": "courses/3501.6.html#p1-texturas-1",
+    "title": "Auxiliar 6",
+    "section": "P1 — Texturas",
+    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
+  },
+  {
+    "objectID": "courses/3501.6.html#p2-iluminación",
+    "href": "courses/3501.6.html#p2-iluminación",
+    "title": "Auxiliar 6",
+    "section": "P2 — Iluminación",
+    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
+  },
+  {
+    "objectID": "courses/3501.8.html#modelo-de-phong",
+    "href": "courses/3501.8.html#modelo-de-phong",
+    "title": "Auxiliar 8",
+    "section": "Modelo de Phong",
+    "text": "Modelo de Phong\n\n\nEs un modelo de iluminación local.\nNo es costoso y es muy paralelizable.\nUsa los conceptos de Materiales y Luces."
+  },
+  {
+    "objectID": "courses/3501.8.html#materiales",
+    "href": "courses/3501.8.html#materiales",
+    "title": "Auxiliar 8",
+    "section": "Materiales",
+    "text": "Materiales\n\nDefinimos un material como:\n\\[(\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\]\n\n\n\n\\(\\mathcal{K}_a\\) - color ambiental del modelo (sin luz).\n\\(\\mathcal{K}_d\\) - color difuso del modelo (con luz).\n\\(\\mathcal{K}_s\\) - color especular del modelo (con reflejos).\n\\(\\alpha\\) - brillo o shininess del modelo (forma de los reflejos)."
+  },
+  {
+    "objectID": "courses/3501.8.html#materiales-1",
+    "href": "courses/3501.8.html#materiales-1",
+    "title": "Auxiliar 8",
+    "section": "Materiales",
+    "text": "Materiales\n\n\nTexturas\n\n\nCon texturas se suele tener texturas adicionales que guardan los valores difusos y especulares\n\n\n\n\n\n\n\n\n\n\n\nDifuso\n\n\n\n\n\n\n\nEspecular"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces",
+    "href": "courses/3501.8.html#luces",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\n\n\\[\n\\mathcal{I} = \\frac{\\mathcal{K}_a \\mathcal{L}_a + \\mathcal{K}_d \\mathcal{L}_d (l \\cdot n) + \\mathcal{K}_s \\mathcal{L}_s (v \\cdot r)^{\\alpha} }{k_c + k_l d + k_q d^2}\n\\]\n\n\n\n\\((\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\) — parámetros del material\n\\((\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s)\\) — parámetros del color de la luz\n\\((k_c, k_l, k_q)\\) — parámetros del atenuación de la luz\n\\(n\\) — normal de la superficie\n\\(l\\) — dirección hacia la fuente de luz\n\\(v\\) — dirección hacia la cámara\n\\(r\\) — reflexión sobre la superficie\n\\(d\\) — distancia a la fuente de luz"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-1",
+    "href": "courses/3501.8.html#luces-1",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nDireccional\n\n\n\n\nRepresenta una luz lejana\nMantiene la misma dirección\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, l)\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-2",
+    "href": "courses/3501.8.html#luces-2",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nLuz puntual\n\n\n\n\nLa luz básica\nSe atenúa con la distancia\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q)\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#luces-3",
+    "href": "courses/3501.8.html#luces-3",
+    "title": "Auxiliar 8",
+    "section": "Luces",
+    "text": "Luces\nSpotlight\n\n\n\n\nEs como una linterna\nTiene un foco principal\nDeterminado por un \\(\\theta\\) y \\(\\theta_{outer}\\)\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q, l, \\theta, \\theta_{outer})\\]"
+  },
+  {
+    "objectID": "courses/3501.8.html#p2-shading",
+    "href": "courses/3501.8.html#p2-shading",
+    "title": "Auxiliar 8",
+    "section": "P2 – Shading",
+    "text": "P2 – Shading\n\n\nParte A\nCree un nuevo shader donde incluya luces y materiales, para ello puede utilizar\n\n\n\nParte B\nCree 3 funciones para calcular el color según cada tipo de fuente de luz.\n\n\n\nParte C\nAñada al shader una función que calcule el color final del pixel según la iluminación de la escena."
+  },
+  {
+    "objectID": "courses/3501.8.html#p1-en-escena",
+    "href": "courses/3501.8.html#p1-en-escena",
+    "title": "Auxiliar 8",
+    "section": "P1 — En escena",
+    "text": "P1 — En escena\nUsando la escena de clase pasada y sus nuevos shaders\n\n\nParte A\nCree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).\n\n\n\nParte B\nCree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.\n\n\n\nParte C\nHaga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz spotlight para la noche.\nUtilice diversos pipelines para corregir los errores de iluminación."
+  },
+  {
+    "objectID": "courses/3501.10.html#colisiones",
+    "href": "courses/3501.10.html#colisiones",
+    "title": "Auxiliar 10",
+    "section": "Colisiones",
+    "text": "Colisiones\n\n\nToda simulación física o interactiva necesita una forma de interacción entre los cuerpos en escena.\nPara simular correctamente la interacción entre dos cuerpos se necesita detectar y resolver la colisión.\nLas colisiones pueden llegar a ser muy costosas si se busca realismos.\nExisten un montón de casos bordes que se tienen que tener en cuenta.\nNo sólo sirven para colisiones o juegos, también tienen aplicaciones a interfaces gráficas"
+  },
+  {
+    "objectID": "courses/3501.10.html#detección",
+    "href": "courses/3501.10.html#detección",
+    "title": "Auxiliar 10",
+    "section": "Detección",
+    "text": "Detección\n\nExisten 2 tipos a priori y a posteriori.\n\n\n\n\n\nPriori\n\nSe busca predecir las colisiones antes de que ocurran.\nSe toman en cuenta todas las dinámicas involucradas.\nComplejo de calcular para cuerpos que se deforman.\n\n\n\n\n\nPosteriori\n\nSe buscar detectar la colisión después de que ocurra.\nUna vez que ocurre, se corrigen las posiciones de ser necesario.\nEs (relativamente) simple de calcular, pero genera muchos casos bordes.\n\n\n\n\nEn el curso nos centraremos en calcularlo a posteriori."
+  },
+  {
+    "objectID": "courses/3501.10.html#detección-1",
+    "href": "courses/3501.10.html#detección-1",
+    "title": "Auxiliar 10",
+    "section": "Detección",
+    "text": "Detección\n\nTambién existen distintas formas de identificar la colisión basándonos en las primitivas que forman la escena, por ejemplo:\n\nCajas\nEsferas\nTriángulos\nPoliedros"
+  },
+  {
+    "objectID": "courses/3501.10.html#axis-aligned-bounding-boxes",
+    "href": "courses/3501.10.html#axis-aligned-bounding-boxes",
+    "title": "Auxiliar 10",
+    "section": "Axis aligned bounding boxes",
+    "text": "Axis aligned bounding boxes\n\n\n\n\nConsiste en una caja alineada a los ejes \\(XYZ\\)\nSe puede definir por dos puntos: el \\(min\\) y el \\(max\\)\nColisión fácil de computar y manejar\nSe usa los intervalos definidos por \\(min\\) y \\(max\\) en cada eje para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#sphere",
+    "href": "courses/3501.10.html#sphere",
+    "title": "Auxiliar 10",
+    "section": "Sphere",
+    "text": "Sphere\n\n\n\n\nConsiste en una esfera definida por el centro y su radio\nTambién es fácil de computar y manejar\nNo suele adaptarse bien a todos los casos\nSe usa la distancia al centro y el radio para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#convex-hull",
+    "href": "courses/3501.10.html#convex-hull",
+    "title": "Auxiliar 10",
+    "section": "Convex Hull",
+    "text": "Convex Hull\n\n\n\n\nConsiste en una malla que define la envoltura convexa de un objeto\nCara de computar\nSe adapta bien a casi todos los casos\nSe usa el mismo cálculo de colisión que el de entre triángulos"
+  },
+  {
+    "objectID": "courses/3501.10.html#triángulos",
+    "href": "courses/3501.10.html#triángulos",
+    "title": "Auxiliar 10",
+    "section": "Triángulos",
+    "text": "Triángulos\n\n\n\n\nEs la forma más usada en las simulaciones realistas.\nSe usa para conseguir una interacción precisa.\nSe suele combinar con otras técnicas (AABB y CH) para hacerlo eficiente\nSe usa el Separating Axis Theorem para calcular la colisión"
+  },
+  {
+    "objectID": "courses/3501.10.html#p1-chunks",
+    "href": "courses/3501.10.html#p1-chunks",
+    "title": "Auxiliar 10",
+    "section": "P1 — Chunks!",
+    "text": "P1 — Chunks!\nSu auxiliar que esta obsesionado con Minecraft, necesita de su ayuda para hacer generar el mundo de bloques.\nDe manera similar al juego, la idea es separa cada zona del mapa en grupos de \\(16\\times 16\\times 16\\), para ello tiene una clase MyChunk que extiende de Model. Pero esta incompleta.\nCompletela creando la clase MyBlock que almacene el tipo de bloque, y dentro de la función init_gpu_data complete la información apropiadamente.\nCree una escena con 4 chunks con 10 bloques cada uno."
+  },
+  {
+    "objectID": "courses/3501.10.html#p2-colisiones",
+    "href": "courses/3501.10.html#p2-colisiones",
+    "title": "Auxiliar 10",
+    "section": "P2 — Colisiones",
+    "text": "P2 — Colisiones\nUsando la librería colliders cree un CollisionManager y añada los bloques usando el tipo de collider AABB, haga lo mismo con el jugador.\nHaga un chequeo de colisiones para cada update de la simulación, donde imprima todas las colisiones ocurridas."
+  },
+  {
+    "objectID": "courses/3501.10.html#p3-resolución",
+    "href": "courses/3501.10.html#p3-resolución",
+    "title": "Auxiliar 10",
+    "section": "P3 — Resolución",
+    "text": "P3 — Resolución\nAhora que obtuvo las colisiones, resuelva las colisiones, de manera posteriori. Para ello analice el caso 2D para la colisión entre dos AABB y determine que es lo que debería ocurrir."
+  },
+  {
+    "objectID": "courses/3501.10.html#p4-optimización",
+    "href": "courses/3501.10.html#p4-optimización",
+    "title": "Auxiliar 10",
+    "section": "P4 — Optimización",
+    "text": "P4 — Optimización\nAumente los bloques a 100 por chunk (o incluso 1000). Esto hace que la simulación corra muy mal, para arreglar esto puede optimizar su código de muchas maneras.\nUna de ellas es dividir su chequeo de colisión en 2 fases: la broad phase y la narrow phase, en la primera encuentre los bloques que pueden colisionar con el jugador y en la segunda busque los que realmente lo hagan.\n\n\nHint: Puede usar los chunks a su favor para ir descartando bloques."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Inicio",
+    "section": "",
+    "text": "Bienvenido 😃"
+  },
+  {
+    "objectID": "courses/4302.8.html#spinlocks",
+    "href": "courses/4302.8.html#spinlocks",
+    "title": "Auxiliar 8",
+    "section": "Spinlocks",
+    "text": "Spinlocks\n\n\nHerramienta de sincronización primitiva\nNo depende de un sistema operativo\nIgual de potente que el resto!\n\n\n\n\nCreación\nint sl = OPEN; // o CLOSED\n\n\n\nBloqueo\nspinLock(&sl); \n\n\n\nDesbloqueo\nspinUnlock(&sl);"
+  },
+  {
+    "objectID": "courses/4302.8.html#how-to",
+    "href": "courses/4302.8.html#how-to",
+    "title": "Auxiliar 8",
+    "section": "How to?",
+    "text": "How to?\n\n\n\n\nMutex\nint sl = OPEN; // global\n\n// ...\n\nvoid fun() {\n  spinLock(&sl);\n\n  // sección crítica\n\n  spinUnlock(&sl);\n}\n\n\n\n\nCondición\nint *psl; // global\n\n// ...\n\nvoid f() {\n  // thread que espera\n  int sl = CLOSED;\n  psl = &sl;\n\n  spinLock(&sl); // espera\n  // ...\n}\n\nvoid g() {\n  // thread que despierta\n  spinUnlock(psl); // despierta\n}"
+  },
+  {
+    "objectID": "courses/4302.8.html#implementación",
+    "href": "courses/4302.8.html#implementación",
+    "title": "Auxiliar 8",
+    "section": "Implementación",
+    "text": "Implementación\nvoid spinLock(volatile int *psl) {\n  do {\n    while (*psl == CLOSED)\n      ;\n  } while (swap(psl, CLOSED) != OPEN);\n}"
+  },
+  {
+    "objectID": "courses/4302.8.html#p1-lectorescritor",
+    "href": "courses/4302.8.html#p1-lectorescritor",
+    "title": "Auxiliar 8",
+    "section": "P1 — Lector/escritor",
+    "text": "P1 — Lector/escritor\n\n\nParte A\nLa siguiente implementación es incorrecta. Haga un diagrama de threads que muestre que un lector puede entrar junto con un escritor.\n\n\nvoid enterRead() {\n  if (readers == 0)\n    spinLock(&write_lck);\n  spinLock(&mutex_lck);\n  readers++;\n  spinUnlock(&mutex_lck);\n}\n\nvoid enterWrite() {\n  spinLock(&write_lck);\n}\n\nvoid exitRead() {\n  spinLock(&mutex_lck);\n  readers--;\n  spinUnlock(&mutex_lck);\n\n  if (readers == 0)\n    spinUnlock(&write_lck);\n}\n\nvoid exitWrite() {\n  spinUnlock(&write_lck);\n}\n\n\n\n\nParte B\nModifique la solución anterior para que funcione correctamente."
+  },
+  {
+    "objectID": "courses/4302.8.html#p2-función-team",
+    "href": "courses/4302.8.html#p2-función-team",
+    "title": "Auxiliar 8",
+    "section": "P2 — Función team",
+    "text": "P2 — Función team\nConsidere una máquina multicore en la que no existe un núcleo de sistema operativo y por lo tanto no hay un scheduler de procesos.\nSe necesita formar múltiple equipos de 5 cores cada uno. Para ello, los cores invocan la función team indicando su nombre como argumento. Esta función espera hasta que 5 cores hayan invocado team, retornando un arreglo de 5 strings con los nombres del equipo completo.\nEste es un ejemplo del uso de la función team:\nint player(char *name) {\n  for (;;) {\n    char **mTeam = team(name);\n    play(mTeam);\n    sleep();\n  }\n}"
+  },
+  {
+    "objectID": "courses/4302.8.html#p2-función-team-1",
+    "href": "courses/4302.8.html#p2-función-team-1",
+    "title": "Auxiliar 8",
+    "section": "P2 — Función team",
+    "text": "P2 — Función team\nSe debe programar la función team con el siguiente encabezado:\nchar **team(char *name);\nSe dispone de spin-locks y la función coreId(). Necesitará usar variables globales y malloc.\nRestricción: Dado que no hay un núcleo de sistema operativo, la única forma válida de esperar a que se forme el equipo es utilizando un spin-lock. Otras formas de busy-waiting no están permitidas. No hay Queues FIFO."
+  },
+  {
+    "objectID": "courses/4302.8.html#p3-propuesto",
+    "href": "courses/4302.8.html#p3-propuesto",
+    "title": "Auxiliar 8",
+    "section": "P3 – Propuesto",
+    "text": "P3 – Propuesto\n\nConsidere una máquina con 8 cores físicos que comparten la memoria, sin un núcleo de sistema operativo y por lo tanto no hay scheduler de procesos. A cada core se le asignan inicialmente 100 euros.\nUn core puede robar cantidad euros del core número desde invocando la función:\nvoid robar(int desde, int cantidad);\nEn tal caso se le resta cantidad euros a la tarea desde y se le suman al core que invocó robar. El parámetro cantidad es siempre mayor que cero.\nUn primer invariante es que un core no puede almacenar una cantidad negativa de euros. Si el core desde no posee suficiente dinero para robarle cantidad entonces robar debe esperar hasta que el core desde sí posea al menos la cantidad requerida.\nEl segundo invariante es que en un instante dado el core \\(T\\) no puede estar esperando robarle \\(c\\) euros al core \\(U\\) si \\(U\\) tiene al menos \\(c\\) euros. Observe que cuando el core \\(T\\) lograr robar dinero, varios otros cores pueden estar esperando poder robarle dinero a \\(T\\). No está especificado en qué orden deben robarle el dinero a \\(T\\).\nAyuda\nUse una matriz m de 8 por 8 punteros a spin-locks. Si m[i][j] no es nulo quiere decir que m[i][j] es la dirección de un spin-lock en el que el core i espera para robarle al core j.\n\n\n\nSacado del C2 de Otoño 2017"
+  },
+  {
+    "objectID": "courses/4302.8.html#p3-propuesto-1",
+    "href": "courses/4302.8.html#p3-propuesto-1",
+    "title": "Auxiliar 8",
+    "section": "P3 – Propuesto",
+    "text": "P3 – Propuesto\nEl siguiente diagrama muestra una situación con 5 threads:\n\n\n\nSacado del C2 de Otoño 2017"
+  },
+  {
+    "objectID": "courses/4302.4.html#semáforos",
+    "href": "courses/4302.4.html#semáforos",
+    "title": "Auxiliar 4",
+    "section": "Semáforos",
+    "text": "Semáforos\n\n\nOtra herramienta de sincronización\nMás simple que mutex con condiciones\nIgual de potente\nFunciona como un sistema de tickets o fichas\nLos procesos puede solicitar fichas o depositarlas\n\n\n\nSi no hay fichas, los procesos que soliciten deben esperar a que se deposite"
+  },
+  {
+    "objectID": "courses/4302.4.html#manejo",
+    "href": "courses/4302.4.html#manejo",
+    "title": "Auxiliar 4",
+    "section": "Manejo",
+    "text": "Manejo\nInicialización\n\nPara crear\nvoid sem_init(sem_t *sem, int pshared, unsigned int val);\n\n\nsem: Puntero al semáforo a inicializar.\npshared: Flag para indicar si el semáforo será compartido entre threads (0) o entre procesos (1).\nval: Cantidad de fichas iniciales\n\n\n\n\nPara destruir\nvoid sem_destroy(sem_t *sem);\n\n\nsem: Puntero al semáforo a destruir."
+  },
+  {
+    "objectID": "courses/4302.4.html#manejo-1",
+    "href": "courses/4302.4.html#manejo-1",
+    "title": "Auxiliar 4",
+    "section": "Manejo",
+    "text": "Manejo\nUso\n\nPara extraer una ficha:\nvoid sem_wait(sem_t *sem); \n\n\nPara depositar una ficha:\nvoid sem_post(sem_t *sem); \nAl igual que con los mutex, no esta garantizado el orden de adquisición"
+  },
+  {
+    "objectID": "courses/4302.4.html#comportamiento",
+    "href": "courses/4302.4.html#comportamiento",
+    "title": "Auxiliar 4",
+    "section": "Comportamiento",
+    "text": "Comportamiento\n\nLos semáforos se pueden usar como mutex o condiciones.\n\n\n\n\nMutex\nCon una única ficha\nsem_t sem;\nsem_init(&sem, 0, 1);\nPara entrar a la zona crítica un thread solicita la ficha y al salir lo deposita\n\n\nCondiciones\nSin fichas\nsem_t sem;\nsem_init(&sem, 0, 0);\nAl llamar sem_wait el proceso debe esperar a un sem_post"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo",
+    "href": "courses/4302.4.html#ejemplo",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\n\n\nsem actúa como mutex\nwait actúa como condición"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-1",
+    "href": "courses/4302.4.html#ejemplo-1",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nPedir el mutex al entrar y salir de la zona crítica"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-2",
+    "href": "courses/4302.4.html#ejemplo-2",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nEsperar a que la condición se cumpla (sin while)"
+  },
+  {
+    "objectID": "courses/4302.4.html#ejemplo-3",
+    "href": "courses/4302.4.html#ejemplo-3",
+    "title": "Auxiliar 4",
+    "section": "Ejemplo",
+    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nOJO\nHay que liberar el mutex antes de esperar y pedirlo después"
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido",
+    "href": "courses/4302.4.html#p1-baño-compartido",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\n\nUn estadio posee un único baño que debe ser compartido por hinchas rojos y azules. El baño es amplio y admite un número ilimitado de personas. El problema consiste en evitar que los hinchas rojos se encuentren con los hinchas azules dentro del baño.\n\n\nLos hinchas rojos solicitan entrar al baño invocando entrar(ROJO) y notifican su salida con salir(ROJO), mientras que los hinchas azules invocan entrar(AZUL) y salir(AZUL)."
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido-1",
+    "href": "courses/4302.4.html#p1-baño-compartido-1",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\nParte A\nSe plantea la siguiente solución incorrecta para el problema:\n\n\nenum { ROJO = 0, AZUL =  1};\n\nint cantidad[2] = {0, 0};\n\n// Este mutex representa \n// el acceso al baño, el\n// equipo que lo tiene \n// es el que está adentro\nint mutex = 0; \n\nvoid entrar(int color) {\n  if (cantidad[color] == 0) {\n    while(mutex)\n      ;\n    mutex = 1;\n  }\n  cantidad[color]++;\n}\n\nvoid salir(int color) {\n  cantidad[color]--;\n  if (cantidad[color] == 0) {\n    mutex = 0;\n  }\n}\n\nMuestre mediante un diagrama de threads que un hincha rojo puede entrar al baño cuando hay hinchas azules presentes"
+  },
+  {
+    "objectID": "courses/4302.4.html#p1-baño-compartido-2",
+    "href": "courses/4302.4.html#p1-baño-compartido-2",
+    "title": "Auxiliar 4",
+    "section": "P1 – Baño compartido",
+    "text": "P1 – Baño compartido\nParte B\nEscriba una solución correcta y eficiente para este problema utilizando 3 semáforos. No importa si en su solución algunos procesos sufren “hambruna”\n\n\nCorrecta\n\nNo hay datarraces\n\nEficiente\n\nNo hay busy waiting\n\n\n\n\n\nHint: Utilice la estructura de la solución incorrecta"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\n\nConsidere ahora una solución en la que no se produzca hambruna. Para lograr esto es necesario que ningún hincha entre al baño mientras haya hinchas del otro equipo esperando. Luego, cuando sale el último hincha del baño, entran todos los hinchas del equipo contrario que estaban esperando. Por ejemplo, si hay dos hinchas del equipo rojo en el baño y un hincha azul en espera, el siguiente hincha rojo en llegar no podrá entrar hasta que haya entrado (y salido) el azul.\n\n\n\nParte A\nSe incluye una implementación incorrecta de esta solución. Demuestra que esta solución es incorrecta confeccionando un diagrama de threads donde la exclusión mutua no se cumple.\n\n\n\nEsta parte fue adaptada de la tarea 1 del semestre 2021-1"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-1",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-1",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte A\n\n\n// Un semáforo controla el acceso\n// a la zona crítica.\nsem_t mutex; \n// Un semáforo para la \n// espera cada tipo de hincha. \nsem_t sem[2]; \nint esperan[2] = {0, 0}; \nint adentro[2] = {0, 0};\n\nvoid entrar(int color){\n  // el oponente del equipo AZUL \n  // es el equipo ROJO y viceversa.\n  int oponente = !color ;\n  sem_wait(&mutex);\n    // Si hay hinchas del otro equipo \n    // en el baño o en la cola \n    // se debe esperar.\n    if (adentro[oponente] &gt; 0 ||\n        esperan[oponente] &gt; 0){ \n      esperan[color]++;\n      sem_post(&mutex);\n      // se pone el thread en espera \n      sem_wait(&sem[color]); \n      sem_wait(&mutex);\n    }\n    adentro[color]++; // entramos al baño\n    sem_post(&mutex); \n}\n\nvoid salir(int color) {\n  int oponente = !color; \n  sem_wait(&mutex);\n  adentro[color]--; // salimos del baño\n\n  if (adentro[color] == 0) {\n    // Despertar a los oponentes poniendo \n    // tantos tickets como son \n    // threads hay en espera\n    for (int i = 0; i &lt; esperan[oponente]; i++) {\n      sem_post(&sem[oponente ]); \n    }\n    esperan[oponente] = 0;\n  }\n  sem_wait(&mutex );\n}"
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-2",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-2",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte A\n\n\nLa mayoría de estos dataraces ocurren en el momento de despertar los threads en espera, en ese instante un thread extra se puede escabullir en la zona crítica (si se cumplen las condiciones para que entre y se roba el mutex). Este thread puede cambiar las variables compartidas y alterar la correctitud del programa.\nDebemos garantizar la correctitud del programa sin importar que un thread extra se robe el mutex, o debemos garantizar que nunca un thread extra pueda escabullirse.\nEn general esto se soluciona cambiando todas las variables compartidas en el thread que despierta a los demás, los thread en espera se despiertan y solo deben retornar."
+  },
+  {
+    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-3",
+    "href": "courses/4302.4.html#p2-baño-sin-hambruna-3",
+    "title": "Auxiliar 4",
+    "section": "P2 – Baño sin hambruna",
+    "text": "P2 – Baño sin hambruna\nParte B\nReprograme la solución anterior de modo que siempre funcione correctamente. Utilice la siguiente metodología:\n\nUtilice 2 colas FIFO globales, una para cada equipo.\nCuando un hincha deba esperar para entrar al baño, cree un semáforo con 0 tickets y póngalo en la cola correspondiente. Luego, suspenda el thread solicitando un ticket a este semáforo.\nCuando salga el ultimo hincha de un equipo y haya hinchas del otro en espera, extraiga todos los semáforos de esa cola y deposite en cada uno de ellos un ticket para permitirle a los hinchas en espera entrar al baño.\nUtilice un semáforo para garantizar exclusión mutua en el acceso a las variables globales."
+  },
+  {
+    "objectID": "courses/3501.2.html#la-escena",
+    "href": "courses/3501.2.html#la-escena",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
+  },
+  {
+    "objectID": "courses/3501.2.html#la-escena-1",
+    "href": "courses/3501.2.html#la-escena-1",
+    "title": "Auxiliar 2",
+    "section": "La escena",
+    "text": "La escena"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline",
+    "href": "courses/3501.2.html#pipeline",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline-1",
+    "href": "courses/3501.2.html#pipeline-1",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
+  },
+  {
+    "objectID": "courses/3501.2.html#pipeline-2",
+    "href": "courses/3501.2.html#pipeline-2",
+    "title": "Auxiliar 2",
+    "section": "Pipeline",
+    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
+  },
+  {
+    "objectID": "courses/3501.2.html#shaders",
+    "href": "courses/3501.2.html#shaders",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
+  },
+  {
+    "objectID": "courses/3501.2.html#shaders-1",
+    "href": "courses/3501.2.html#shaders-1",
+    "title": "Auxiliar 2",
+    "section": "Shaders",
+    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
+  },
+  {
+    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
+    "href": "courses/3501.2.html#p1-generar-un-círculo",
+    "title": "Auxiliar 2",
+    "section": "P1 — Generar un círculo",
+    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
+  },
+  {
+    "objectID": "courses/3501.2.html#p2-añadir-color",
+    "href": "courses/3501.2.html#p2-añadir-color",
+    "title": "Auxiliar 2",
+    "section": "P2 — Añadir color",
+    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
+  },
+  {
+    "objectID": "courses/3501.2.html#p3-agregar-indices",
+    "href": "courses/3501.2.html#p3-agregar-indices",
+    "title": "Auxiliar 2",
+    "section": "P3 — Agregar indices",
+    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
+  },
+  {
+    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
+    "title": "Auxiliar 2",
+    "section": "P4 — Un poquito de movimiento",
+    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
+  },
+  {
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento",
+    "title": "Auxiliar 10",
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\nEl siguiente diagrama muestra la asignación de páginas en un sistema Unix que ejecuta los procesos \\(A\\) y \\(B\\). Las páginas son de 4 KB. El núcleo utiliza la estrategia copy-on-write para implementar fork.\nEn cada caso indique la página virtual, real y atributos de validez y escritura."
+  },
+  {
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
+    "title": "Auxiliar 10",
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\n\n\nParte A\nConstruya la tabla de páginas del proceso \\(A\\) después de que invoca sbrk pidiendo 10 KB adicionales."
+  },
+  {
+    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
+    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
+    "title": "Auxiliar 10",
+    "section": "P1 – Tablas de paginamiento",
+    "text": "P1 – Tablas de paginamiento\n\n\nParte B\nConsidere que \\(B\\) invocó fork. Construya la tabla del proceso hijo justo después de que este modifique la página 11. No construya la tabla del padre."
+  },
+  {
+    "objectID": "courses/4302.10.html#p2-estrategia-del-reloj",
+    "href": "courses/4302.10.html#p2-estrategia-del-reloj",
+    "title": "Auxiliar 10",
+    "section": "P2 – Estrategia del Reloj",
+    "text": "P2 – Estrategia del Reloj\nAcá pueden apreciar una serie de estados para una estrategia del reloj tras realizar 2 accesos en un sistema de memoria para reemplazar páginas.\nContinue el diagrama pasando por la siguiente secuencia de acceso a páginas de memoria:\n\n4, 7, 5, 3, 4, 1, 5"
+  },
+  {
+    "objectID": "courses/4302.10.html#p3-working-set",
+    "href": "courses/4302.10.html#p3-working-set",
+    "title": "Auxiliar 10",
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nEl siguiente es un diagrama de accesos a páginas de un proceso ejecutado en un sistema Unix utilizando la estrategia del Working Set. Donde:\n\n\\(r\\) es un acceso de lectura y \\(w\\) es de escritura.\nLas letras \\(A, B, \\dots, G\\) representan intervalos de tiempo en los cuales se calcularon los working sets.\nLos números \\(0, 1, \\dots, 6\\) representan las páginas del proceso"
+  },
+  {
+    "objectID": "courses/4302.10.html#p3-working-set-1",
+    "href": "courses/4302.10.html#p3-working-set-1",
+    "title": "Auxiliar 10",
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte A\nAsumiendo que el bit \\(D\\) de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F podrían producir page-faults. Utilice coordenadas (\\(A\\), 1, 1er. acceso)\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+  },
+  {
+    "objectID": "courses/4302.10.html#p3-working-set-2",
+    "href": "courses/4302.10.html#p3-working-set-2",
+    "title": "Auxiliar 10",
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte B\nIndique el valor del atributo Referenced para todas las páginas al inicio y al final del intervalo \\(E\\).\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+  },
+  {
+    "objectID": "courses/4302.10.html#p3-working-set-3",
+    "href": "courses/4302.10.html#p3-working-set-3",
+    "title": "Auxiliar 10",
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte C\nSuponga que al inicio del intervalo \\(E\\) tiene el atributo Dirty de la página 5 es 0. Explique si el acceso (D, 5, 1er acceso) produjo o no un page fault.\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+  },
+  {
+    "objectID": "courses/4302.10.html#p3-working-set-4",
+    "href": "courses/4302.10.html#p3-working-set-4",
+    "title": "Auxiliar 10",
+    "section": "P3 – Working Set",
+    "text": "P3 – Working Set\nParte D\nCompare las dos estrategias de paginamiento en demanda vistas en el curso según la tabla:\n\n\n\n\n\n\n\n\n\n Reloj\nWorking Set\n\n\n\n\nSobrecosto en tiempo de ejecución cuando sobra la memoria física\n\n\n\n\nPage-faults cuando hay penuria de memoria pero hay solo 1 procesos en ejecución\n\n\n\n\nPage-faults cuando hay penuria de memoria y hay muchos procesos en ejecución"
+  },
+  {
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer",
+    "title": "Auxiliar 10",
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\nConsidere las siguientes implementaciones de un diccionario:\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nEn la primera implementación toda la información se encuentra contigua en la memoria. Mientras que para la segunda las entradas pueden estar muy dispersas en la memoria puesto que el heap que maneja malloc está fragmentado. Considere que este diccionario funciona con búsqueda secuencial, y páginas de 4kB"
+  },
+  {
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
+    "title": "Auxiliar 10",
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte A\nEstime para ambas implementaciones el peor caso del número de fallas en la TLB en una búsqueda."
+  },
+  {
+    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
+    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
+    "title": "Auxiliar 10",
+    "section": "P4 – Translation Lookaside Buffer",
+    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte B\n¿Cuántos accesos adicionales a la memoria significa cada falla en la TLB considerando un microprocesador Intel x86?"
+  },
+  {
+    "objectID": "courses/3501.0.html",
+    "href": "courses/3501.0.html",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "section": "",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación\nMateriales y Luces\nColisiones",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
+    ]
+  },
+  {
+    "objectID": "courses/3501.0.html#auxiliares",
+    "href": "courses/3501.0.html#auxiliares",
+    "title": "Modelación y Computación Gráfica para Ingeniero",
+    "section": "",
+    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación\nMateriales y Luces\nColisiones",
+    "crumbs": [
+      "Cursos",
+      "2024",
+      "Modelación y Computación Gráfica para Ingeniero"
+    ]
   },
   {
     "objectID": "courses/4302.7.html#mensajes",
@@ -392,972 +1242,136 @@
     "text": "P2 – Scheduler de prioridades\n\n\nstatic void nth_pri1Stop(void) {\n  CHECK_CRITICAL(\"nth_fcfsStop\")\n  \n  for (int i= 0; i&lt;MAXPRI; i++)\n    nth_destroyQueue(nth_pri1ReadyQueue[i]);\n}\n\nScheduler nth_pri1Scheduler= { .schedule = nth_pri1Schedule,\n                               .setReady = nth_pri1SetReady,\n                               .suspend = nth_pri1Suspend,\n                               .stop = nth_pri1Stop };\n\nvoid setPri1Scheduling() {\n  START_CRITICAL\n\n  if (nth_verbose)\n    printf(\"Info: setting single-core priority scheduling\\n\");\n  \n  if (nth_totalCores!=1)\n    nFatalError(\"setPri1Scheduling\",\n                \"This priority scheduler only accepts a single core\\n\");\n  for (int i= 0; i&lt;MAXPRI; i++)\n    nth_pri1ReadyQueue[i]= nth_makeQueue();\n  nth_setScheduler(nth_pri1Scheduler);\n  MapIterator *iter= getMapIterator(nth_threadSet);\n  void *ptr;\n  while (mapNext(iter, &ptr, &ptr)) {\n    nThread th= ptr;\n    if (th-&gt;status==READY)\n      nth_putBack(nth_pri1ReadyQueue[th-&gt;pri], th);\n  }\n  destroyMapIterator(iter);\n  \n  END_CRITICAL\n}\n\nint isPri1Scheduling(void) {\n  return nth_scheduler.schedule==nth_pri1Scheduler.schedule;\n}\n\n\n\nEl scheduler se maneja como una estructura con punteros a las funciones adecuadas.\nPara inicializar el scheduler:\n\nHay que crear las colas de prioridad\nIterar por los threads y colocarlos en la cola adecuada\n\nPara terminar el scheduler:\n\nHay que destruir las colas de prioridad"
   },
   {
-    "objectID": "courses/3501.0.html",
-    "href": "courses/3501.0.html",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
-    "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación\nMateriales y Luces\nColisiones",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
-    ]
-  },
-  {
-    "objectID": "courses/3501.0.html#auxiliares",
-    "href": "courses/3501.0.html#auxiliares",
-    "title": "Modelación y Computación Gráfica para Ingeniero",
-    "section": "",
-    "text": "Instalación de Herramientas\nIntroducción a OpenGL\nCámara e Input\nTexturas e Iluminación\nMateriales y Luces\nColisiones",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Modelación y Computación Gráfica para Ingeniero"
-    ]
-  },
-  {
-    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento",
-    "href": "courses/4302.10.html#p1-tablas-de-paginamiento",
-    "title": "Auxiliar 10",
-    "section": "P1 – Tablas de paginamiento",
-    "text": "P1 – Tablas de paginamiento\nEl siguiente diagrama muestra la asignación de páginas en un sistema Unix que ejecuta los procesos \\(A\\) y \\(B\\). Las páginas son de 4 KB. El núcleo utiliza la estrategia copy-on-write para implementar fork.\nEn cada caso indique la página virtual, real y atributos de validez y escritura."
-  },
-  {
-    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
-    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-1",
-    "title": "Auxiliar 10",
-    "section": "P1 – Tablas de paginamiento",
-    "text": "P1 – Tablas de paginamiento\n\n\nParte A\nConstruya la tabla de páginas del proceso \\(A\\) después de que invoca sbrk pidiendo 10 KB adicionales."
-  },
-  {
-    "objectID": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
-    "href": "courses/4302.10.html#p1-tablas-de-paginamiento-2",
-    "title": "Auxiliar 10",
-    "section": "P1 – Tablas de paginamiento",
-    "text": "P1 – Tablas de paginamiento\n\n\nParte B\nConsidere que \\(B\\) invocó fork. Construya la tabla del proceso hijo justo después de que este modifique la página 11. No construya la tabla del padre."
-  },
-  {
-    "objectID": "courses/4302.10.html#p2-estrategia-del-reloj",
-    "href": "courses/4302.10.html#p2-estrategia-del-reloj",
-    "title": "Auxiliar 10",
-    "section": "P2 – Estrategia del Reloj",
-    "text": "P2 – Estrategia del Reloj\nAcá pueden apreciar una serie de estados para una estrategia del reloj tras realizar 2 accesos en un sistema de memoria para reemplazar páginas.\nContinue el diagrama pasando por la siguiente secuencia de acceso a páginas de memoria:\n\n4, 7, 5, 3, 4, 1, 5"
-  },
-  {
-    "objectID": "courses/4302.10.html#p3-working-set",
-    "href": "courses/4302.10.html#p3-working-set",
-    "title": "Auxiliar 10",
-    "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nEl siguiente es un diagrama de accesos a páginas de un proceso ejecutado en un sistema Unix utilizando la estrategia del Working Set. Donde:\n\n\\(r\\) es un acceso de lectura y \\(w\\) es de escritura.\nLas letras \\(A, B, \\dots, G\\) representan intervalos de tiempo en los cuales se calcularon los working sets.\nLos números \\(0, 1, \\dots, 6\\) representan las páginas del proceso"
-  },
-  {
-    "objectID": "courses/4302.10.html#p3-working-set-1",
-    "href": "courses/4302.10.html#p3-working-set-1",
-    "title": "Auxiliar 10",
-    "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte A\nAsumiendo que el bit \\(D\\) de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F podrían producir page-faults. Utilice coordenadas (\\(A\\), 1, 1er. acceso)\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
-  },
-  {
-    "objectID": "courses/4302.10.html#p3-working-set-2",
-    "href": "courses/4302.10.html#p3-working-set-2",
-    "title": "Auxiliar 10",
-    "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte B\nIndique el valor del atributo Referenced para todas las páginas al inicio y al final del intervalo \\(E\\).\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
-  },
-  {
-    "objectID": "courses/4302.10.html#p3-working-set-3",
-    "href": "courses/4302.10.html#p3-working-set-3",
-    "title": "Auxiliar 10",
-    "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte C\nSuponga que al inicio del intervalo \\(E\\) tiene el atributo Dirty de la página 5 es 0. Explique si el acceso (D, 5, 1er acceso) produjo o no un page fault.\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
-  },
-  {
-    "objectID": "courses/4302.10.html#p3-working-set-4",
-    "href": "courses/4302.10.html#p3-working-set-4",
-    "title": "Auxiliar 10",
-    "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte D\nCompare las dos estrategias de paginamiento en demanda vistas en el curso según la tabla:\n\n\n\n\n\n\n\n\n\n Reloj\nWorking Set\n\n\n\n\nSobrecosto en tiempo de ejecución cuando sobra la memoria física\n\n\n\n\nPage-faults cuando hay penuria de memoria pero hay solo 1 procesos en ejecución\n\n\n\n\nPage-faults cuando hay penuria de memoria y hay muchos procesos en ejecución"
-  },
-  {
-    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer",
-    "href": "courses/4302.10.html#p4-translation-lookaside-buffer",
-    "title": "Auxiliar 10",
-    "section": "P4 – Translation Lookaside Buffer",
-    "text": "P4 – Translation Lookaside Buffer\nConsidere las siguientes implementaciones de un diccionario:\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nEn la primera implementación toda la información se encuentra contigua en la memoria. Mientras que para la segunda las entradas pueden estar muy dispersas en la memoria puesto que el heap que maneja malloc está fragmentado. Considere que este diccionario funciona con búsqueda secuencial, y páginas de 4kB"
-  },
-  {
-    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
-    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-1",
-    "title": "Auxiliar 10",
-    "section": "P4 – Translation Lookaside Buffer",
-    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte A\nEstime para ambas implementaciones el peor caso del número de fallas en la TLB en una búsqueda."
-  },
-  {
-    "objectID": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
-    "href": "courses/4302.10.html#p4-translation-lookaside-buffer-2",
-    "title": "Auxiliar 10",
-    "section": "P4 – Translation Lookaside Buffer",
-    "text": "P4 – Translation Lookaside Buffer\ntypedef struct {\n  char key[8];\n  char data[24];\n} Entry;\n\nEntry dict[1000];\n\nEntry *dict[1000];\nParte B\n¿Cuántos accesos adicionales a la memoria significa cada falla en la TLB considerando un microprocesador Intel x86?"
-  },
-  {
-    "objectID": "courses/3501.2.html#la-escena",
-    "href": "courses/3501.2.html#la-escena",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena\n\n\nObjetos\n\nSon los actores de la escena\nManejar geometría, transformaciones, texturas, material y física\n\nCámara\n\nSon los ojos por los que se ve la escena\nManejar posición y perspectiva\n\nLuces\n\nSon lo que le da color a la escena\nManejar posición, tipo de fuente, intensidad, sombras"
-  },
-  {
-    "objectID": "courses/3501.2.html#la-escena-1",
-    "href": "courses/3501.2.html#la-escena-1",
-    "title": "Auxiliar 2",
-    "section": "La escena",
-    "text": "La escena"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline",
-    "href": "courses/3501.2.html#pipeline",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline-1",
-    "href": "courses/3501.2.html#pipeline-1",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\n\n\n\nUna serie de pasos para obtener la imagen\nProceso complejo que involucra muchos cálculos\nSe puede alterar en ciertas etapas\n\nVertex Shader\nTesellation\nGeometry Shader\nFragment Shader"
-  },
-  {
-    "objectID": "courses/3501.2.html#pipeline-2",
-    "href": "courses/3501.2.html#pipeline-2",
-    "title": "Auxiliar 2",
-    "section": "Pipeline",
-    "text": "Pipeline\nSe resume a lo siguiente:\n\n\nVertex shading: Colorear cada vértice\nProjection: Proyectar los vértices en la escena\nClipping: Ajustar la geometría según lo que se ve en realidad\nScreen Mapping: Pasar de coordenadas uniformes a las coordenadas de la pantalla\nRasterization: Discretizar la imagen\nPixel processing: Colorear / procesar cada píxel"
-  },
-  {
-    "objectID": "courses/3501.2.html#shaders",
-    "href": "courses/3501.2.html#shaders",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nVertex Shader\n\n\nSe encarga de definir los vértices desde la memoria\nActúa simultáneamente en cada vértice\nRecibe como input los datos a utilizar\nDebe definir la posición del vértice\nPuede pasarle información a los siguientes pasos"
-  },
-  {
-    "objectID": "courses/3501.2.html#shaders-1",
-    "href": "courses/3501.2.html#shaders-1",
-    "title": "Auxiliar 2",
-    "section": "Shaders",
-    "text": "Shaders\nFragment Shader\n\n\nSe encarga de definir el color de los píxeles\nActúa simultáneamente en cada píxel\nDebe definir el color final del píxel\nPuede recibir información a desde los pasos anteriores"
-  },
-  {
-    "objectID": "courses/3501.2.html#p1-generar-un-círculo",
-    "href": "courses/3501.2.html#p1-generar-un-círculo",
-    "title": "Auxiliar 2",
-    "section": "P1 — Generar un círculo",
-    "text": "P1 — Generar un círculo\nCree la siguiente función:\ndef create_circle(x, y, radius) \nLa cual toma:\n\nLa posición del centro del círculo\nEl radio del círculo\n\nY retorna un arreglo con las posiciones de cada vértice para formar el círculo"
-  },
-  {
-    "objectID": "courses/3501.2.html#p2-añadir-color",
-    "href": "courses/3501.2.html#p2-añadir-color",
-    "title": "Auxiliar 2",
-    "section": "P2 — Añadir color",
-    "text": "P2 — Añadir color\nAhora que tiene su círculo cambie la función anterior para incluir color:\ndef create_circle(x, y, r, g, b, radius) \nDonde \\((r, g, b)\\) son las componentes de color del círculo y tienen un valor de 0 a 1.\nAhora la función debe incluir el color de cada vértice para formar el círculo\n\n\nPropuesto: Trate de variar un poco el color para cada punto o incluso usar 2 colores"
-  },
-  {
-    "objectID": "courses/3501.2.html#p3-agregar-indices",
-    "href": "courses/3501.2.html#p3-agregar-indices",
-    "title": "Auxiliar 2",
-    "section": "P3 — Agregar indices",
-    "text": "P3 — Agregar indices\nSu función actual hace uso de mucha memoria de manera innecesaria, usé la función de Pyglet shader.vertex_list_indexed la cual recibe adicionalmente una lista de índices los cuales indican que vértices forman un triángulo.\nPara crear esa lista programe la función:\ndef create_circle_indices()"
-  },
-  {
-    "objectID": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "href": "courses/3501.2.html#p4-un-poquito-de-movimiento",
-    "title": "Auxiliar 2",
-    "section": "P4 — Un poquito de movimiento",
-    "text": "P4 — Un poquito de movimiento\nAhora que tiene todo listo y bonito, pruebe añadir las siguientes animaciones:\n\nUna en la cual el círculo crece y luego se empequeñece\nUna en la cual el se mueve de izquierda a derecha\nUna en la cual hay 2 círculos bailando (use su imaginación)"
-  },
-  {
-    "objectID": "courses/4302.4.html#semáforos",
-    "href": "courses/4302.4.html#semáforos",
-    "title": "Auxiliar 4",
-    "section": "Semáforos",
-    "text": "Semáforos\n\n\nOtra herramienta de sincronización\nMás simple que mutex con condiciones\nIgual de potente\nFunciona como un sistema de tickets o fichas\nLos procesos puede solicitar fichas o depositarlas\n\n\n\nSi no hay fichas, los procesos que soliciten deben esperar a que se deposite"
-  },
-  {
-    "objectID": "courses/4302.4.html#manejo",
-    "href": "courses/4302.4.html#manejo",
-    "title": "Auxiliar 4",
-    "section": "Manejo",
-    "text": "Manejo\nInicialización\n\nPara crear\nvoid sem_init(sem_t *sem, int pshared, unsigned int val);\n\n\nsem: Puntero al semáforo a inicializar.\npshared: Flag para indicar si el semáforo será compartido entre threads (0) o entre procesos (1).\nval: Cantidad de fichas iniciales\n\n\n\n\nPara destruir\nvoid sem_destroy(sem_t *sem);\n\n\nsem: Puntero al semáforo a destruir."
-  },
-  {
-    "objectID": "courses/4302.4.html#manejo-1",
-    "href": "courses/4302.4.html#manejo-1",
-    "title": "Auxiliar 4",
-    "section": "Manejo",
-    "text": "Manejo\nUso\n\nPara extraer una ficha:\nvoid sem_wait(sem_t *sem); \n\n\nPara depositar una ficha:\nvoid sem_post(sem_t *sem); \nAl igual que con los mutex, no esta garantizado el orden de adquisición"
-  },
-  {
-    "objectID": "courses/4302.4.html#comportamiento",
-    "href": "courses/4302.4.html#comportamiento",
-    "title": "Auxiliar 4",
-    "section": "Comportamiento",
-    "text": "Comportamiento\n\nLos semáforos se pueden usar como mutex o condiciones.\n\n\n\n\nMutex\nCon una única ficha\nsem_t sem;\nsem_init(&sem, 0, 1);\nPara entrar a la zona crítica un thread solicita la ficha y al salir lo deposita\n\n\nCondiciones\nSin fichas\nsem_t sem;\nsem_init(&sem, 0, 0);\nAl llamar sem_wait el proceso debe esperar a un sem_post"
-  },
-  {
-    "objectID": "courses/4302.4.html#ejemplo",
-    "href": "courses/4302.4.html#ejemplo",
-    "title": "Auxiliar 4",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\n\n\nsem actúa como mutex\nwait actúa como condición"
-  },
-  {
-    "objectID": "courses/4302.4.html#ejemplo-1",
-    "href": "courses/4302.4.html#ejemplo-1",
-    "title": "Auxiliar 4",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nPedir el mutex al entrar y salir de la zona crítica"
-  },
-  {
-    "objectID": "courses/4302.4.html#ejemplo-2",
-    "href": "courses/4302.4.html#ejemplo-2",
-    "title": "Auxiliar 4",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nEsperar a que la condición se cumpla (sin while)"
-  },
-  {
-    "objectID": "courses/4302.4.html#ejemplo-3",
-    "href": "courses/4302.4.html#ejemplo-3",
-    "title": "Auxiliar 4",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n...\nsem_wait(&sem); \nif (se_debe_esperar) {\n    sem_post(&sem); \n    sem_wait(&wait); \n    sem_wait(&sem); \n}\nsem_post(&sem); \n...\nOJO\nHay que liberar el mutex antes de esperar y pedirlo después"
-  },
-  {
-    "objectID": "courses/4302.4.html#p1-baño-compartido",
-    "href": "courses/4302.4.html#p1-baño-compartido",
-    "title": "Auxiliar 4",
-    "section": "P1 – Baño compartido",
-    "text": "P1 – Baño compartido\n\nUn estadio posee un único baño que debe ser compartido por hinchas rojos y azules. El baño es amplio y admite un número ilimitado de personas. El problema consiste en evitar que los hinchas rojos se encuentren con los hinchas azules dentro del baño.\n\n\nLos hinchas rojos solicitan entrar al baño invocando entrar(ROJO) y notifican su salida con salir(ROJO), mientras que los hinchas azules invocan entrar(AZUL) y salir(AZUL)."
-  },
-  {
-    "objectID": "courses/4302.4.html#p1-baño-compartido-1",
-    "href": "courses/4302.4.html#p1-baño-compartido-1",
-    "title": "Auxiliar 4",
-    "section": "P1 – Baño compartido",
-    "text": "P1 – Baño compartido\nParte A\nSe plantea la siguiente solución incorrecta para el problema:\n\n\nenum { ROJO = 0, AZUL =  1};\n\nint cantidad[2] = {0, 0};\n\n// Este mutex representa \n// el acceso al baño, el\n// equipo que lo tiene \n// es el que está adentro\nint mutex = 0; \n\nvoid entrar(int color) {\n  if (cantidad[color] == 0) {\n    while(mutex)\n      ;\n    mutex = 1;\n  }\n  cantidad[color]++;\n}\n\nvoid salir(int color) {\n  cantidad[color]--;\n  if (cantidad[color] == 0) {\n    mutex = 0;\n  }\n}\n\nMuestre mediante un diagrama de threads que un hincha rojo puede entrar al baño cuando hay hinchas azules presentes"
-  },
-  {
-    "objectID": "courses/4302.4.html#p1-baño-compartido-2",
-    "href": "courses/4302.4.html#p1-baño-compartido-2",
-    "title": "Auxiliar 4",
-    "section": "P1 – Baño compartido",
-    "text": "P1 – Baño compartido\nParte B\nEscriba una solución correcta y eficiente para este problema utilizando 3 semáforos. No importa si en su solución algunos procesos sufren “hambruna”\n\n\nCorrecta\n\nNo hay datarraces\n\nEficiente\n\nNo hay busy waiting\n\n\n\n\n\nHint: Utilice la estructura de la solución incorrecta"
-  },
-  {
-    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna",
-    "href": "courses/4302.4.html#p2-baño-sin-hambruna",
-    "title": "Auxiliar 4",
-    "section": "P2 – Baño sin hambruna",
-    "text": "P2 – Baño sin hambruna\n\nConsidere ahora una solución en la que no se produzca hambruna. Para lograr esto es necesario que ningún hincha entre al baño mientras haya hinchas del otro equipo esperando. Luego, cuando sale el último hincha del baño, entran todos los hinchas del equipo contrario que estaban esperando. Por ejemplo, si hay dos hinchas del equipo rojo en el baño y un hincha azul en espera, el siguiente hincha rojo en llegar no podrá entrar hasta que haya entrado (y salido) el azul.\n\n\n\nParte A\nSe incluye una implementación incorrecta de esta solución. Demuestra que esta solución es incorrecta confeccionando un diagrama de threads donde la exclusión mutua no se cumple.\n\n\n\nEsta parte fue adaptada de la tarea 1 del semestre 2021-1"
-  },
-  {
-    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-1",
-    "href": "courses/4302.4.html#p2-baño-sin-hambruna-1",
-    "title": "Auxiliar 4",
-    "section": "P2 – Baño sin hambruna",
-    "text": "P2 – Baño sin hambruna\nParte A\n\n\n// Un semáforo controla el acceso\n// a la zona crítica.\nsem_t mutex; \n// Un semáforo para la \n// espera cada tipo de hincha. \nsem_t sem[2]; \nint esperan[2] = {0, 0}; \nint adentro[2] = {0, 0};\n\nvoid entrar(int color){\n  // el oponente del equipo AZUL \n  // es el equipo ROJO y viceversa.\n  int oponente = !color ;\n  sem_wait(&mutex);\n    // Si hay hinchas del otro equipo \n    // en el baño o en la cola \n    // se debe esperar.\n    if (adentro[oponente] &gt; 0 ||\n        esperan[oponente] &gt; 0){ \n      esperan[color]++;\n      sem_post(&mutex);\n      // se pone el thread en espera \n      sem_wait(&sem[color]); \n      sem_wait(&mutex);\n    }\n    adentro[color]++; // entramos al baño\n    sem_post(&mutex); \n}\n\nvoid salir(int color) {\n  int oponente = !color; \n  sem_wait(&mutex);\n  adentro[color]--; // salimos del baño\n\n  if (adentro[color] == 0) {\n    // Despertar a los oponentes poniendo \n    // tantos tickets como son \n    // threads hay en espera\n    for (int i = 0; i &lt; esperan[oponente]; i++) {\n      sem_post(&sem[oponente ]); \n    }\n    esperan[oponente] = 0;\n  }\n  sem_wait(&mutex );\n}"
-  },
-  {
-    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-2",
-    "href": "courses/4302.4.html#p2-baño-sin-hambruna-2",
-    "title": "Auxiliar 4",
-    "section": "P2 – Baño sin hambruna",
-    "text": "P2 – Baño sin hambruna\nParte A\n\n\nLa mayoría de estos dataraces ocurren en el momento de despertar los threads en espera, en ese instante un thread extra se puede escabullir en la zona crítica (si se cumplen las condiciones para que entre y se roba el mutex). Este thread puede cambiar las variables compartidas y alterar la correctitud del programa.\nDebemos garantizar la correctitud del programa sin importar que un thread extra se robe el mutex, o debemos garantizar que nunca un thread extra pueda escabullirse.\nEn general esto se soluciona cambiando todas las variables compartidas en el thread que despierta a los demás, los thread en espera se despiertan y solo deben retornar."
-  },
-  {
-    "objectID": "courses/4302.4.html#p2-baño-sin-hambruna-3",
-    "href": "courses/4302.4.html#p2-baño-sin-hambruna-3",
-    "title": "Auxiliar 4",
-    "section": "P2 – Baño sin hambruna",
-    "text": "P2 – Baño sin hambruna\nParte B\nReprograme la solución anterior de modo que siempre funcione correctamente. Utilice la siguiente metodología:\n\nUtilice 2 colas FIFO globales, una para cada equipo.\nCuando un hincha deba esperar para entrar al baño, cree un semáforo con 0 tickets y póngalo en la cola correspondiente. Luego, suspenda el thread solicitando un ticket a este semáforo.\nCuando salga el ultimo hincha de un equipo y haya hinchas del otro en espera, extraiga todos los semáforos de esa cola y deposite en cada uno de ellos un ticket para permitirle a los hinchas en espera entrar al baño.\nUtilice un semáforo para garantizar exclusión mutua en el acceso a las variables globales."
-  },
-  {
-    "objectID": "courses/4302.8.html#spinlocks",
-    "href": "courses/4302.8.html#spinlocks",
-    "title": "Auxiliar 8",
-    "section": "Spinlocks",
-    "text": "Spinlocks\n\n\nHerramienta de sincronización primitiva\nNo depende de un sistema operativo\nIgual de potente que el resto!\n\n\n\n\nCreación\nint sl = OPEN; // o CLOSED\n\n\n\nBloqueo\nspinLock(&sl); \n\n\n\nDesbloqueo\nspinUnlock(&sl);"
-  },
-  {
-    "objectID": "courses/4302.8.html#how-to",
-    "href": "courses/4302.8.html#how-to",
-    "title": "Auxiliar 8",
-    "section": "How to?",
-    "text": "How to?\n\n\n\n\nMutex\nint sl = OPEN; // global\n\n// ...\n\nvoid fun() {\n  spinLock(&sl);\n\n  // sección crítica\n\n  spinUnlock(&sl);\n}\n\n\n\n\nCondición\nint *psl; // global\n\n// ...\n\nvoid f() {\n  // thread que espera\n  int sl = CLOSED;\n  psl = &sl;\n\n  spinLock(&sl); // espera\n  // ...\n}\n\nvoid g() {\n  // thread que despierta\n  spinUnlock(psl); // despierta\n}"
-  },
-  {
-    "objectID": "courses/4302.8.html#implementación",
-    "href": "courses/4302.8.html#implementación",
-    "title": "Auxiliar 8",
-    "section": "Implementación",
-    "text": "Implementación\nvoid spinLock(volatile int *psl) {\n  do {\n    while (*psl == CLOSED)\n      ;\n  } while (swap(psl, CLOSED) != OPEN);\n}"
-  },
-  {
-    "objectID": "courses/4302.8.html#p1-lectorescritor",
-    "href": "courses/4302.8.html#p1-lectorescritor",
-    "title": "Auxiliar 8",
-    "section": "P1 — Lector/escritor",
-    "text": "P1 — Lector/escritor\n\n\nParte A\nLa siguiente implementación es incorrecta. Haga un diagrama de threads que muestre que un lector puede entrar junto con un escritor.\n\n\nvoid enterRead() {\n  if (readers == 0)\n    spinLock(&write_lck);\n  spinLock(&mutex_lck);\n  readers++;\n  spinUnlock(&mutex_lck);\n}\n\nvoid enterWrite() {\n  spinLock(&write_lck);\n}\n\nvoid exitRead() {\n  spinLock(&mutex_lck);\n  readers--;\n  spinUnlock(&mutex_lck);\n\n  if (readers == 0)\n    spinUnlock(&write_lck);\n}\n\nvoid exitWrite() {\n  spinUnlock(&write_lck);\n}\n\n\n\n\nParte B\nModifique la solución anterior para que funcione correctamente."
-  },
-  {
-    "objectID": "courses/4302.8.html#p2-función-team",
-    "href": "courses/4302.8.html#p2-función-team",
-    "title": "Auxiliar 8",
-    "section": "P2 — Función team",
-    "text": "P2 — Función team\nConsidere una máquina multicore en la que no existe un núcleo de sistema operativo y por lo tanto no hay un scheduler de procesos.\nSe necesita formar múltiple equipos de 5 cores cada uno. Para ello, los cores invocan la función team indicando su nombre como argumento. Esta función espera hasta que 5 cores hayan invocado team, retornando un arreglo de 5 strings con los nombres del equipo completo.\nEste es un ejemplo del uso de la función team:\nint player(char *name) {\n  for (;;) {\n    char **mTeam = team(name);\n    play(mTeam);\n    sleep();\n  }\n}"
-  },
-  {
-    "objectID": "courses/4302.8.html#p2-función-team-1",
-    "href": "courses/4302.8.html#p2-función-team-1",
-    "title": "Auxiliar 8",
-    "section": "P2 — Función team",
-    "text": "P2 — Función team\nSe debe programar la función team con el siguiente encabezado:\nchar **team(char *name);\nSe dispone de spin-locks y la función coreId(). Necesitará usar variables globales y malloc.\nRestricción: Dado que no hay un núcleo de sistema operativo, la única forma válida de esperar a que se forme el equipo es utilizando un spin-lock. Otras formas de busy-waiting no están permitidas. No hay Queues FIFO."
-  },
-  {
-    "objectID": "courses/4302.8.html#p3-propuesto",
-    "href": "courses/4302.8.html#p3-propuesto",
-    "title": "Auxiliar 8",
-    "section": "P3 – Propuesto",
-    "text": "P3 – Propuesto\n\nConsidere una máquina con 8 cores físicos que comparten la memoria, sin un núcleo de sistema operativo y por lo tanto no hay scheduler de procesos. A cada core se le asignan inicialmente 100 euros.\nUn core puede robar cantidad euros del core número desde invocando la función:\nvoid robar(int desde, int cantidad);\nEn tal caso se le resta cantidad euros a la tarea desde y se le suman al core que invocó robar. El parámetro cantidad es siempre mayor que cero.\nUn primer invariante es que un core no puede almacenar una cantidad negativa de euros. Si el core desde no posee suficiente dinero para robarle cantidad entonces robar debe esperar hasta que el core desde sí posea al menos la cantidad requerida.\nEl segundo invariante es que en un instante dado el core \\(T\\) no puede estar esperando robarle \\(c\\) euros al core \\(U\\) si \\(U\\) tiene al menos \\(c\\) euros. Observe que cuando el core \\(T\\) lograr robar dinero, varios otros cores pueden estar esperando poder robarle dinero a \\(T\\). No está especificado en qué orden deben robarle el dinero a \\(T\\).\nAyuda\nUse una matriz m de 8 por 8 punteros a spin-locks. Si m[i][j] no es nulo quiere decir que m[i][j] es la dirección de un spin-lock en el que el core i espera para robarle al core j.\n\n\n\nSacado del C2 de Otoño 2017"
-  },
-  {
-    "objectID": "courses/4302.8.html#p3-propuesto-1",
-    "href": "courses/4302.8.html#p3-propuesto-1",
-    "title": "Auxiliar 8",
-    "section": "P3 – Propuesto",
-    "text": "P3 – Propuesto\nEl siguiente diagrama muestra una situación con 5 threads:\n\n\n\nSacado del C2 de Otoño 2017"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Inicio",
-    "section": "",
-    "text": "Bienvenido 😃"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "courses/3501.10.html#colisiones",
-    "href": "courses/3501.10.html#colisiones",
-    "title": "Auxiliar 10",
-    "section": "Colisiones",
-    "text": "Colisiones\n\n\nToda simulación física o interactiva necesita una forma de interacción entre los cuerpos en escena.\nPara simular correctamente la interacción entre dos cuerpos se necesita detectar y resolver la colisión.\nLas colisiones pueden llegar a ser muy costosas si se busca realismos.\nExisten un montón de casos bordes que se tienen que tener en cuenta.\nNo sólo sirven para colisiones o juegos, también tienen aplicaciones a interfaces gráficas"
-  },
-  {
-    "objectID": "courses/3501.10.html#detección",
-    "href": "courses/3501.10.html#detección",
-    "title": "Auxiliar 10",
-    "section": "Detección",
-    "text": "Detección\n\nExisten 2 tipos a priori y a posteriori.\n\n\n\n\n\nPriori\n\nSe busca predecir las colisiones antes de que ocurran.\nSe toman en cuenta todas las dinámicas involucradas.\nComplejo de calcular para cuerpos que se deforman.\n\n\n\n\n\nPosteriori\n\nSe buscar detectar la colisión después de que ocurra.\nUna vez que ocurre, se corrigen las posiciones de ser necesario.\nEs (relativamente) simple de calcular, pero genera muchos casos bordes.\n\n\n\n\nEn el curso nos centraremos en calcularlo a posteriori."
-  },
-  {
-    "objectID": "courses/3501.10.html#detección-1",
-    "href": "courses/3501.10.html#detección-1",
-    "title": "Auxiliar 10",
-    "section": "Detección",
-    "text": "Detección\n\nTambién existen distintas formas de identificar la colisión basándonos en las primitivas que forman la escena, por ejemplo:\n\nCajas\nEsferas\nTriángulos\nPoliedros"
-  },
-  {
-    "objectID": "courses/3501.10.html#axis-aligned-bounding-boxes",
-    "href": "courses/3501.10.html#axis-aligned-bounding-boxes",
-    "title": "Auxiliar 10",
-    "section": "Axis aligned bounding boxes",
-    "text": "Axis aligned bounding boxes\n\n\n\n\nConsiste en una caja alineada a los ejes \\(XYZ\\)\nSe puede definir por dos puntos: el \\(min\\) y el \\(max\\)\nColisión fácil de computar y manejar\nSe usa los intervalos definidos por \\(min\\) y \\(max\\) en cada eje para calcular la colisión"
-  },
-  {
-    "objectID": "courses/3501.10.html#sphere",
-    "href": "courses/3501.10.html#sphere",
-    "title": "Auxiliar 10",
-    "section": "Sphere",
-    "text": "Sphere\n\n\n\n\nConsiste en una esfera definida por el centro y su radio\nTambién es fácil de computar y manejar\nNo suele adaptarse bien a todos los casos\nSe usa la distancia al centro y el radio para calcular la colisión"
-  },
-  {
-    "objectID": "courses/3501.10.html#convex-hull",
-    "href": "courses/3501.10.html#convex-hull",
-    "title": "Auxiliar 10",
-    "section": "Convex Hull",
-    "text": "Convex Hull\n\n\n\n\nConsiste en una malla que define la envoltura convexa de un objeto\nCara de computar\nSe adapta bien a casi todos los casos\nSe usa el mismo cálculo de colisión que el de entre triángulos"
-  },
-  {
-    "objectID": "courses/3501.10.html#triángulos",
-    "href": "courses/3501.10.html#triángulos",
-    "title": "Auxiliar 10",
-    "section": "Triángulos",
-    "text": "Triángulos\n\n\n\n\nEs la forma más usada en las simulaciones realistas.\nSe usa para conseguir una interacción precisa.\nSe suele combinar con otras técnicas (AABB y CH) para hacerlo eficiente\nSe usa el Separating Axis Theorem para calcular la colisión"
-  },
-  {
-    "objectID": "courses/3501.10.html#p1-chunks",
-    "href": "courses/3501.10.html#p1-chunks",
-    "title": "Auxiliar 10",
-    "section": "P1 — Chunks!",
-    "text": "P1 — Chunks!\nSu auxiliar que esta obsesionado con Minecraft, necesita de su ayuda para hacer generar el mundo de bloques.\nDe manera similar al juego, la idea es separa cada zona del mapa en grupos de \\(16\\times 16\\times 16\\), para ello tiene una clase MyChunk que extiende de Model. Pero esta incompleta.\nCompletela creando la clase MyBlock que almacene el tipo de bloque, y dentro de la función init_gpu_data complete la información apropiadamente.\nCree una escena con 4 chunks con 10 bloques cada uno."
-  },
-  {
-    "objectID": "courses/3501.10.html#p2-colisiones",
-    "href": "courses/3501.10.html#p2-colisiones",
-    "title": "Auxiliar 10",
-    "section": "P2 — Colisiones",
-    "text": "P2 — Colisiones\nUsando la librería colliders cree un CollisionManager y añada los bloques usando el tipo de collider AABB, haga lo mismo con el jugador.\nHaga un chequeo de colisiones para cada update de la simulación, donde imprima todas las colisiones ocurridas."
-  },
-  {
-    "objectID": "courses/3501.10.html#p3-resolución",
-    "href": "courses/3501.10.html#p3-resolución",
-    "title": "Auxiliar 10",
-    "section": "P3 — Resolución",
-    "text": "P3 — Resolución\nAhora que obtuvo las colisiones, resuelva las colisiones, de manera posteriori. Para ello analice el caso 2D para la colisión entre dos AABB y determine que es lo que debería ocurrir."
-  },
-  {
-    "objectID": "courses/3501.10.html#p4-optimización",
-    "href": "courses/3501.10.html#p4-optimización",
-    "title": "Auxiliar 10",
-    "section": "P4 — Optimización",
-    "text": "P4 — Optimización\nAumente los bloques a 100 por chunk (o incluso 1000). Esto hace que la simulación corra muy mal, para arreglar esto puede optimizar su código de muchas maneras.\nUna de ellas es dividir su chequeo de colisión en 2 fases: la broad phase y la narrow phase, en la primera encuentre los bloques que pueden colisionar con el jugador y en la segunda busque los que realmente lo hagan.\n\n\nHint: Puede usar los chunks a su favor para ir descartando bloques."
-  },
-  {
-    "objectID": "courses/3501.8.html#modelo-de-phong",
-    "href": "courses/3501.8.html#modelo-de-phong",
-    "title": "Auxiliar 8",
-    "section": "Modelo de Phong",
-    "text": "Modelo de Phong\n\n\nEs un modelo de iluminación local.\nNo es costoso y es muy paralelizable.\nUsa los conceptos de Materiales y Luces."
-  },
-  {
-    "objectID": "courses/3501.8.html#materiales",
-    "href": "courses/3501.8.html#materiales",
-    "title": "Auxiliar 8",
-    "section": "Materiales",
-    "text": "Materiales\n\nDefinimos un material como:\n\\[(\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\]\n\n\n\n\\(\\mathcal{K}_a\\) - color ambiental del modelo (sin luz).\n\\(\\mathcal{K}_d\\) - color difuso del modelo (con luz).\n\\(\\mathcal{K}_s\\) - color especular del modelo (con reflejos).\n\\(\\alpha\\) - brillo o shininess del modelo (forma de los reflejos)."
-  },
-  {
-    "objectID": "courses/3501.8.html#materiales-1",
-    "href": "courses/3501.8.html#materiales-1",
-    "title": "Auxiliar 8",
-    "section": "Materiales",
-    "text": "Materiales\n\n\nTexturas\n\n\nCon texturas se suele tener texturas adicionales que guardan los valores difusos y especulares\n\n\n\n\n\n\n\n\n\n\n\nDifuso\n\n\n\n\n\n\n\nEspecular"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces",
-    "href": "courses/3501.8.html#luces",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\n\n\\[\n\\mathcal{I} = \\frac{\\mathcal{K}_a \\mathcal{L}_a + \\mathcal{K}_d \\mathcal{L}_d (l \\cdot n) + \\mathcal{K}_s \\mathcal{L}_s (v \\cdot r)^{\\alpha} }{k_c + k_l d + k_q d^2}\n\\]\n\n\n\n\\((\\mathcal{K}_a, \\mathcal{K}_d, \\mathcal{K}_s, \\alpha)\\) — parámetros del material\n\\((\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s)\\) — parámetros del color de la luz\n\\((k_c, k_l, k_q)\\) — parámetros del atenuación de la luz\n\\(n\\) — normal de la superficie\n\\(l\\) — dirección hacia la fuente de luz\n\\(v\\) — dirección hacia la cámara\n\\(r\\) — reflexión sobre la superficie\n\\(d\\) — distancia a la fuente de luz"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-1",
-    "href": "courses/3501.8.html#luces-1",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nDireccional\n\n\n\n\nRepresenta una luz lejana\nMantiene la misma dirección\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, l)\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-2",
-    "href": "courses/3501.8.html#luces-2",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nLuz puntual\n\n\n\n\nLa luz básica\nSe atenúa con la distancia\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q)\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#luces-3",
-    "href": "courses/3501.8.html#luces-3",
-    "title": "Auxiliar 8",
-    "section": "Luces",
-    "text": "Luces\nSpotlight\n\n\n\n\nEs como una linterna\nTiene un foco principal\nDeterminado por un \\(\\theta\\) y \\(\\theta_{outer}\\)\n\n\n\n\n\\[(\\mathcal{L}_a, \\mathcal{L}_d, \\mathcal{L}_s, k_c, k_l, k_q, l, \\theta, \\theta_{outer})\\]"
-  },
-  {
-    "objectID": "courses/3501.8.html#p2-shading",
-    "href": "courses/3501.8.html#p2-shading",
-    "title": "Auxiliar 8",
-    "section": "P2 – Shading",
-    "text": "P2 – Shading\n\n\nParte A\nCree un nuevo shader donde incluya luces y materiales, para ello puede utilizar\n\n\n\nParte B\nCree 3 funciones para calcular el color según cada tipo de fuente de luz.\n\n\n\nParte C\nAñada al shader una función que calcule el color final del pixel según la iluminación de la escena."
-  },
-  {
-    "objectID": "courses/3501.8.html#p1-en-escena",
-    "href": "courses/3501.8.html#p1-en-escena",
-    "title": "Auxiliar 8",
-    "section": "P1 — En escena",
-    "text": "P1 — En escena\nUsando la escena de clase pasada y sus nuevos shaders\n\n\nParte A\nCree 3 bloques nuevos que estén hechos de distintos materiales. Añada también un piso de material simple (sin textura).\n\n\n\nParte B\nCree 2 luces puntuales que roten alrededor de la escena, añada un modelo para representar la ubicación de estas luces.\n\n\n\nParte C\nHaga un ciclo de dia y noche, para ello cree una luz direccional que se mueva con el tiempo. Además, cree una linterna para la cámara usando una luz spotlight para la noche.\nUtilice diversos pipelines para corregir los errores de iluminación."
-  },
-  {
-    "objectID": "courses/3501.6.html#texturas",
-    "href": "courses/3501.6.html#texturas",
-    "title": "Auxiliar 6",
-    "section": "Texturas",
-    "text": "Texturas\n\nUsualmente un model necesita más de un color, para manejar cómodamente esto se usan texturas. Eso nos permite manipular con precisión el color de cada parte de nuestro modelo."
-  },
-  {
-    "objectID": "courses/3501.6.html#mapping",
-    "href": "courses/3501.6.html#mapping",
-    "title": "Auxiliar 6",
-    "section": "Mapping",
-    "text": "Mapping\n\nAl trabajar con texturas se debe considerar el mapping de estas al modelo. Para ello se hace uso de una la función:\n\n\n\\[ f(x,y,z) \\rightarrow (u,v) \\]\n\n\n\nNo suele ser sencillo tener un \\(f\\) definido.\nEs más conveniente escribir las coordenadas de texturas \\((u,v)\\) en cada vértice.\nLuego el valor se interpola antes de llegar al fragment shader."
-  },
-  {
-    "objectID": "courses/3501.6.html#mapping-1",
-    "href": "courses/3501.6.html#mapping-1",
-    "title": "Auxiliar 6",
-    "section": "Mapping",
-    "text": "Mapping"
-  },
-  {
-    "objectID": "courses/3501.6.html#en-opengl",
-    "href": "courses/3501.6.html#en-opengl",
-    "title": "Auxiliar 6",
-    "section": "En OpenGL",
-    "text": "En OpenGL\nPara crear texturas hacemos lo siguiente:\n\nglGenTextures(1, &texture);\nglBindTexture(GL_TEXTURE_2D, texture); \n// que pasa si las coordenadas son mayores a 1\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);   \nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);\n// como colorear o samplear si la imagen es más grande o más pequeña que la original\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);\nglTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);\n// cargar la imagen a la textura\nunsigned char *data = image_load(...);\nif (data) {\n    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);\n    glGenerateMipmap(GL_TEXTURE_2D);\n}\nimage_free(data);\n\n\nCada vez que queramos usarla debemos vincularla:\n// indice de la textura (se pueden usar más de una a la vez)\nglActiveTexture(GL_TEXTURE0);\nglBindTexture(GL_TEXTURE_2D, texture);"
-  },
-  {
-    "objectID": "courses/3501.6.html#en-el-curso",
-    "href": "courses/3501.6.html#en-el-curso",
-    "title": "Auxiliar 6",
-    "section": "En el curso",
-    "text": "En el curso\nPara el curso tenemos la librería grafica o utils que contiene la clase Texture dentro de drawables.py:\n\nclass Texture():\n    def __init__(self, path=None, image=None, sWrapMode=GL_CLAMP_TO_EDGE, \n                 tWrapMode=GL_CLAMP_TO_EDGE, minFilterMode=GL_LINEAR, \n                 maxFilterMode=GL_LINEAR, flip_top_bottom=True):\n        ...\n\n        texture = glGenTextures(1)\n        glBindTexture(GL_TEXTURE_2D, texture)\n\n        # texture wrapping params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, sWrapMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, tWrapMode)\n\n        # texture filtering params\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minFilterMode)\n        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, maxFilterMode)\n\n        # loading image\n        ...\n\n        glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, image.size[0],\n                     image.size[1], 0, format, GL_UNSIGNED_BYTE, img_data)\n\n\nEsta clase funciona automáticamente con el grafo de escena de la librería, no es necesario vincularla."
-  },
-  {
-    "objectID": "courses/3501.6.html#otros-usos",
-    "href": "courses/3501.6.html#otros-usos",
-    "title": "Auxiliar 6",
-    "section": "Otros usos",
-    "text": "Otros usos\n\nNo es necesario guardar solamente los colores en las texturas, se pueden guardar:\n\n\n\nNormales\nDesplazamiento\nAltura\nLiteralmente cualquier cosa\n\n\n\nTambién se puede escribir a una textura, esto permite hacerle post-procesado a cada frame, las sombras se crean de esta forma."
-  },
-  {
-    "objectID": "courses/3501.6.html#iluminación",
-    "href": "courses/3501.6.html#iluminación",
-    "title": "Auxiliar 6",
-    "section": "Iluminación",
-    "text": "Iluminación\n\nLa clave de una escena realista reside en la iluminación. Para modelarla existe la ecuación de rendering:\n\n\n\\[ L_{\\text{o}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = L_{\\text{e}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) + L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t)\\]\n\n\n\\[L_{\\text{r}}(\\mathbf x, \\omega_{\\text{o}}, \\lambda, t) = \\int_\\Omega f_{\\text{r}}(\\mathbf x, \\omega_{\\text{i}}, \\omega_{\\text{o}}, \\lambda, t) L_{\\text{i}}(\\mathbf x, \\omega_{\\text{i}}, \\lambda, t) (\\omega_{\\text{i}}\\cdot\\mathbf n) \\operatorname d \\omega_{\\text{i}}\\]"
-  },
-  {
-    "objectID": "courses/3501.6.html#shading",
-    "href": "courses/3501.6.html#shading",
-    "title": "Auxiliar 6",
-    "section": "Shading",
-    "text": "Shading\n\nComo es muy complejo resolver la ecuación, se usan aproximaciones:\n\n\n\nFlat shading\nGourat shading\nPhong shading\nDeferred shading"
-  },
-  {
-    "objectID": "courses/3501.6.html#shading-1",
-    "href": "courses/3501.6.html#shading-1",
-    "title": "Auxiliar 6",
-    "section": "Shading",
-    "text": "Shading\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEn otra ocasión veremos en detalle el modelo de Phong"
-  },
-  {
-    "objectID": "courses/3501.6.html#p1-texturas",
-    "href": "courses/3501.6.html#p1-texturas",
-    "title": "Auxiliar 6",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\n\n\nParte A\nCargue a su escena un modelo externo que contenga multiples partes y texturas\n\n\n\nParte B\nAñadamos un Billboard, para ello agregue a la escena un quad que le permita cargar cualquier textura. Luego aplique adecuadamente transformaciones para que el quad quede siempre mirando a la cámara."
-  },
-  {
-    "objectID": "courses/3501.6.html#p1-texturas-1",
-    "href": "courses/3501.6.html#p1-texturas-1",
-    "title": "Auxiliar 6",
-    "section": "P1 — Texturas",
-    "text": "P1 — Texturas\nParte C\n\nSubamos el nivel con el uso de texturas, revise el archivo atlas.png, encuentre una forma de añadir a su escena un cubo capaz de cargar cualquier textura disponible en el atlas.\n\n\n\n\n\n\n\n\n\nPara ello cree la función get_atalas_uv(x,y), que le retorne las coordenadas de texturas correspondiente al quad con coordenadas \\((x,y)\\) en el atlas."
-  },
-  {
-    "objectID": "courses/3501.6.html#p2-iluminación",
-    "href": "courses/3501.6.html#p2-iluminación",
-    "title": "Auxiliar 6",
-    "section": "P2 — Iluminación",
-    "text": "P2 — Iluminación\n\n\nParte A\nAñada iluminación realista a su escena, para ello modifique su shader para que soporte luces. Para un efecto adecuado, debe incluir las normales de sus modelos.\n\n\n\nParte B\nCree un nuevo pipeline para poder vincular su luz con un modelo en la escena. Esto se puede conseguir manteniendo un shader que no procesa iluminación y usándolo en el nuevo pipeline.\n\n\n\nParte C\nVincule la posición de la luz con la cámara y añada uniforms a su shader de iluminación para que pueda mover la iluminación en tiempo real. Puede agregar controles extras para mejorar la manipulación de la luz."
-  },
-  {
-    "objectID": "courses/3501.4.html#espacios-3d",
-    "href": "courses/3501.4.html#espacios-3d",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\n\nPara trabajar en tres dimensiones tenemos que tener en cuenta los espacios de nuestros objetos:\n\n\n\nLocal space\nSe corresponden con las coordenadas originales o locales del objeto, se suelen dejar homogéneas para después manipularlas con facilidad.\nWorld space\nCorresponde al mundo donde se ubica los objetos, cada objeto tiene una posición, orientación y tamaño en este.\nView space\nEs el mundo que se esta viendo, por lo tanto, es solo una porción del mundo y esta vinculado a la cámara de la escena\nClip space\nEs espacio hómogeneo de OpenGL, desde -1 a 1 en todas las coordenadas, lo que queda fuera se elimina o recorta"
-  },
-  {
-    "objectID": "courses/3501.4.html#espacios-3d-1",
-    "href": "courses/3501.4.html#espacios-3d-1",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\n\n\n\n\n\n\n\nFuente: LearnOpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#espacios-3d-2",
-    "href": "courses/3501.4.html#espacios-3d-2",
-    "title": "Auxiliar 4",
-    "section": "Espacios 3D",
-    "text": "Espacios 3D\nMatriz MVP\n\n\\[\nM_{projection} \\cdot M_{view} \\cdot M_{model} \\cdot v_{local} = v_{clipped}\n\\]\n\n\nSirve para moverse desde el espacio local al espacio homogéneo de OpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#modelo",
-    "href": "courses/3501.4.html#modelo",
-    "title": "Auxiliar 4",
-    "section": "Modelo",
-    "text": "Modelo\n\nPara pasar de coordenadas locales a las de mundo usamos la matriz de modelo.\n\n\n\\[\nM_{model}  = M_{translation} \\cdot M_{rotation} \\cdot M_{scale}\n\\]\n\n\nEs la que usamos la clase pasada para mover los modelos!"
-  },
-  {
-    "objectID": "courses/3501.4.html#vista",
-    "href": "courses/3501.4.html#vista",
-    "title": "Auxiliar 4",
-    "section": "Vista",
-    "text": "Vista\n\nPara pasar de coordenadas de mundo a las de vista o de cámara, usamos la matriz de vista. Con un poco de magia de álgebra lineal tenemos que:\n\n\n\\[\nM_{view} = M_{lookat} =\n\\begin{pmatrix}\nr_x & r_y & r_z & 0\\\\\nu_x & u_y & u_z & 0\\\\\nd_x & d_y & d_z & 0\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\cdot\n\\begin{pmatrix}\n1 & 0 & 0 & -p_x\\\\\n0 & 1 & 0 & -p_y\\\\\n0 & 0 & 1 & -p_z\\\\\n0 & 0 & 0 & 1\\\\\n\\end{pmatrix}\n\\]\n\n\nDonde\n\n\\(R\\) es el vector que apunta a la derecha de la cámara\n\\(U\\) es el vector que apunta hacia arriba de la cámara\n\\(D\\) es el vector a donde apunta a la cámara\n\\(P\\) es la posición de la cámara"
-  },
-  {
-    "objectID": "courses/3501.4.html#proyección",
-    "href": "courses/3501.4.html#proyección",
-    "title": "Auxiliar 4",
-    "section": "Proyección",
-    "text": "Proyección\n\nFinalmente, para pasar de las coordenadas de vista a las homogéneas de OpenGL se usa la matriz de proyección, que viene en dos sabores:\n\n\n\n\nOrtográfica\n\n\n\n\n\ndef ortho(left, right, bottom, top, near, far)\n\n\nPerspectiva\n\n\n\n\n\ndef perspective(fovy, aspect, near, far):\n\n\n\nFuente: LearnOpenGL"
-  },
-  {
-    "objectID": "courses/3501.4.html#manejo-de-input",
-    "href": "courses/3501.4.html#manejo-de-input",
-    "title": "Auxiliar 4",
-    "section": "Manejo de input",
-    "text": "Manejo de input\n\nPara manejar input podemos utilizar Pyglet la cual nos provee funciones que son llamadas durante el ciclo del juego, similar a on_draw:\n\n\n\non_key_press(symbol, modifiers): función que se llama cuando se presiona una tecla y se guarda el valor de la tecla en symbol.\non_key_release(symbol, modifiers): función que se llama cuando se libera una tecla y se guarda el valor de la tecla en symbol.\non_mouse_motion(x, y, dx, dy): función que se llama cuando el mouse se mueve y guarda la posición del mouse en la ventana (x e y), así como el cambio de este (dx y dy).\n\n\n\nExisten más que pueden ver en la documentación de la librería"
-  },
-  {
-    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase",
-    "href": "courses/3501.4.html#p1-hacerlo-con-clase",
-    "title": "Auxiliar 4",
-    "section": "P1 — Hacerlo con clase",
-    "text": "P1 — Hacerlo con clase\n\nEl auxiliar pasado vieron realizar un montón de transformaciones para alterar los modelos, ahora veremos como abstraer el concepto de modelo en una clase.\n\n\nUna clase es una forma que se tiene para empaquetar código, la idea es que cada clase represente algo.\n\n\nCree la clase GameModel, que contenga lo siguiente:\n\nInformación de posición, rotación y escalado\nColor del objeto y buffer de la GPU\nUna función que sea capaz de entregar la matriz de modelo del objeto correspondiente\nUna función que sea capaz de dibujar el objeto en pantalla"
-  },
-  {
-    "objectID": "courses/3501.4.html#p1-hacerlo-con-clase-1",
-    "href": "courses/3501.4.html#p1-hacerlo-con-clase-1",
-    "title": "Auxiliar 4",
-    "section": "P1 — Hacerlo con clase",
-    "text": "P1 — Hacerlo con clase\nUse esta clase junto a sus nuevos conocimientos para recrear la siguiente escena:"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte A\nMuy bonita su escena pero hay elementos que no se ven completamente, como usted conoce ahora la potente matriz MVP, le gustaría poder moverse en su escena.\n\n\nCree la clase Camara que contenga información de la posición de la cámara y su velocidad y use el teclado para moverse en la escena usando on_key_press y on_key_release"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-1",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps-1",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte B\nAñada los valores de pitch y yaw que permitan mover la cámara, use la función on_mouse_motion para vincular el ángulo de vista con el movimiento del mouse"
-  },
-  {
-    "objectID": "courses/3501.4.html#p2-hagámoslo-fps-2",
-    "href": "courses/3501.4.html#p2-hagámoslo-fps-2",
-    "title": "Auxiliar 4",
-    "section": "P2 – Hagámoslo FPS",
-    "text": "P2 – Hagámoslo FPS\n\n\nParte C\nCorrija el movimiento de la parte A para que este sincronizado con la dirección de la cámara\n\n\n\n\n\n\n\n\n\nFelicidades! Ahora puedes hacer un 360 no scope 🤠"
-  },
-  {
-    "objectID": "courses/4302.0.html",
-    "href": "courses/4302.0.html",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/4302.0.html#auxiliares",
-    "href": "courses/4302.0.html#auxiliares",
-    "title": "Sistemas operativos",
-    "section": "",
-    "text": "Introducción a Pthreads\nSincronización de Threads\nSemáforos\nTimeouts y Prioridades\nSpinlock\nAdministración de memoria",
-    "crumbs": [
-      "Cursos",
-      "2024",
-      "Sistemas operativos"
-    ]
-  },
-  {
-    "objectID": "courses/4302.2.html#creación-de-un-thread",
-    "href": "courses/4302.2.html#creación-de-un-thread",
-    "title": "Auxiliar 2",
-    "section": "Creación de un thread",
-    "text": "Creación de un thread\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nLanza un nuevo thread que ejecuta start_routine.\nstart_routine recibe arg como argumento.\nEl thread se puede crear con atributos attr especiales (NULL).\nEl “ID” del proceso se guarda en thread\nRetorna 0 si la creación del proceso fue exitosa"
-  },
-  {
-    "objectID": "courses/4302.2.html#término-de-un-thread",
-    "href": "courses/4302.2.html#término-de-un-thread",
-    "title": "Auxiliar 2",
-    "section": "Término de un thread",
-    "text": "Término de un thread\n\nUn thread termina si:\n\n\n\nRetorna start_routine.\nLlamando a pthread_exit (no recomendado).\nint pthread_exit(void *return_value);\n\n\n\nTodo thread cread debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\n\n\n\npthread_join espera a que el thread termine.\n\n\n\nLos thread no enterrados se convierte en zombies y no devuelven los recursos"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo",
-    "href": "courses/4302.2.html#ejemplo",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-múltiples-args",
-    "href": "courses/4302.2.html#ejemplo-múltiples-args",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo (múltiples args)",
-    "text": "Ejemplo (múltiples args)\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
-  },
-  {
-    "objectID": "courses/4302.2.html#how-to",
-    "href": "courses/4302.2.html#how-to",
-    "title": "Auxiliar 2",
-    "section": "How to?",
-    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
-  },
-  {
-    "objectID": "courses/4302.2.html#how-to-1",
-    "href": "courses/4302.2.html#how-to-1",
-    "title": "Auxiliar 2",
-    "section": "How to?",
-    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\n\n\nEsto es no pretende ser una receta, sino que una guía general"
-  },
-  {
-    "objectID": "courses/4302.2.html#p1-quicksort-paralelo",
-    "href": "courses/4302.2.html#p1-quicksort-paralelo",
-    "title": "Auxiliar 2",
-    "section": "P1 — Quicksort paralelo",
-    "text": "P1 — Quicksort paralelo\nLa siguiente función es una implementación simple de quicksort:\n#include &lt;pthread.h&gt;\n\nvoid quicksort_seq(int a[], int i, int j) {\n    if (i &lt; j) {\n        int h = particionar(a, i, j);\n        quicksort_seq(a, i, h - 1);\n        quicksort_seq(a. h + 1, j);\n    }\n}\n\n\nConsidere particionar como la función que selecciona el pivote y reordena el arreglo.\nLos valores menores al pivote quedan a la izquierda y los mayores a la derecha.\nSe le pide paralelizar la función tal que haga uso de \\(N\\) cores:\nvoid quicksort(int a[], int i, int j, int n);\n\n\n\nIdea\nInvocaciones secuenciales independientes son directamente paralelizables"
-  },
-  {
-    "objectID": "courses/4302.2.html#la-nueva-pesadilla",
-    "href": "courses/4302.2.html#la-nueva-pesadilla",
-    "title": "Auxiliar 2",
-    "section": "La nueva pesadilla",
-    "text": "La nueva pesadilla\n\nCuando se trabaja en paralelo, nacen nuevos enemigos.\n\n\nAl acceder a recursos compartidos desde varios procesos se pueden generar problemas como:\n\n\n\nDataraces\nVariables se sobreescriben\nRace conditions\nOrden incorrecto de ejecución\nHambruna y Deadlocks\nUn proceso no obtiene tiempo de ejecución"
-  },
-  {
-    "objectID": "courses/4302.2.html#la-solución",
-    "href": "courses/4302.2.html#la-solución",
-    "title": "Auxiliar 2",
-    "section": "La solución",
-    "text": "La solución\n\n\nMutex\n\n\n\nMUTual EXclusión\n\n\nGarantiza la exclusión mutua, bloqueando el acceso a “zonas críticas”, las cuales son zonas del código donde se manipulan los recursos compartidos.\n\n\n\n\nCondiciones\n\n\nHacen esperar a los procesos de manera eficiente hasta que se cumpla la condición para continuar la ejecución."
-  },
-  {
-    "objectID": "courses/4302.2.html#manejo",
-    "href": "courses/4302.2.html#manejo",
-    "title": "Auxiliar 2",
-    "section": "Manejo",
-    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\n\nDentro de una función\npthread_mutex_t mutex;\n// ...\npthread_mutex_init(&mutex, NULL);\n\n\n\n\nUso\n\n\nPara solicitar el mutex:\nint pthread_mutex_lock(pthread_mutex_t *mutex); \nLa función retorna solo para el primer proceso que pida el mutex, el resto queda esperando\n\n\nPara liberar el mutex:\nint pthread_mutex_unlock(pthread_mutex_t *mutex); \nAl liberar el mutex, todos los procesos se despiertan a la vez, no esta garantizado el orden de adquisición"
-  },
-  {
-    "objectID": "courses/4302.2.html#comportamiento",
-    "href": "courses/4302.2.html#comportamiento",
-    "title": "Auxiliar 2",
-    "section": "Comportamiento",
-    "text": "Comportamiento\n\n\nUn mutex garantiza que sólo un proceso pueda entrar a una su “zona crítica” de código.\nDebe ser solicitado para ingresar y liberado al salir.\nDos estados posibles:\n\n\n\nAbierto\nNingún proceso ha solicitado el mutex\n\nCerrado\nAlgún proceso ha solicitado el mutex y no ha sido liberado\n\n\nSi un proceso intenta solicitar un mutex cerrado, este será suspendido hasta que el mutex sea liberado."
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-1",
-    "href": "courses/4302.2.html#ejemplo-1",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\nint contador = 0;\nvoid aumentar_cont() {\n  contador++;\n}\n\nMala implementación 🤢\n\n\n\n¿Dónde esta el error?\n\n\nHagamos un diagrama"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-2",
-    "href": "courses/4302.2.html#ejemplo-2",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nvoid aumentar_cont() {\n  pthread_mutex_lock(&m);\n  contador++;\n  pthread_mutex_unlock(&m);\n}\n\nBuena implementación 🤠\n\n\n\nRepitamos el diagrama"
-  },
-  {
-    "objectID": "courses/4302.2.html#motivación",
-    "href": "courses/4302.2.html#motivación",
-    "title": "Auxiliar 2",
-    "section": "Motivación",
-    "text": "Motivación\n\nUna forma de esperar podría ser:\nwhile (ocupado) {\n    ; // wait\n}\n\n\nEsto es mala idea porque mantiene ocupado al core\n\n\nEs mejor “dormir” el proceso para desocupar el core"
-  },
-  {
-    "objectID": "courses/4302.2.html#manejo-1",
-    "href": "courses/4302.2.html#manejo-1",
-    "title": "Auxiliar 2",
-    "section": "Manejo",
-    "text": "Manejo\n\n\nInicialización\n\n\n\n\nUsando macros\npthread_cond_t mutex = PTHREAD_COND_INITIALIZER;\n\nDentro de una función\npthread_cond_t cond;\n// ...\npthread_cond_init(&cond, NULL);\n\n\n\n\nUso\n\n\nPara hacer esperar a un proceso:\nint pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex); \nAl entrar en espera, el proceso liberará el mutex\nAl salir de espera, el proceso esperará el mutex y la función retornará cuando lo obtenga\n\n\nPara despertar procesos:\nint pthread_cond_broadcast(pthread_cond_t *cond); // despertar a todos\nint pthread_cond_signal(pthread_cond_t *cond); // despertar uno (cualquiera)"
-  },
-  {
-    "objectID": "courses/4302.2.html#comportamiento-1",
-    "href": "courses/4302.2.html#comportamiento-1",
-    "title": "Auxiliar 2",
-    "section": "Comportamiento",
-    "text": "Comportamiento\n\n\nLa espera es eficiente, dejando disponible el core.\nLa función wait se hace cargo de liberar y pedir el mutex asociado.\nLa función broadcast despierta a todos los procesos en espera.\nLa función signal despierta a un solo proceso sin orden garantizado.\nUn proceso que esperaba por una condición puede quedar en espera por un mutex."
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-3",
-    "href": "courses/4302.2.html#ejemplo-3",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\n\nMala implementación 🤢"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-4",
-    "href": "courses/4302.2.html#ejemplo-4",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nBusy waiting"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-5",
-    "href": "courses/4302.2.html#ejemplo-5",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    while(contador &lt; 10) {;}\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0;\n}\nHambruna\n\n\nToma el mutex y no lo libera antes de esperar\nNo es Deadlock porque el primer proceso está despierto"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-6",
-    "href": "courses/4302.2.html#ejemplo-6",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-7",
-    "href": "courses/4302.2.html#ejemplo-7",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nCondiciones añadidas"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-8",
-    "href": "courses/4302.2.html#ejemplo-8",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nEspera eficiente"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-9",
-    "href": "courses/4302.2.html#ejemplo-9",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nZona crítica respetada"
-  },
-  {
-    "objectID": "courses/4302.2.html#ejemplo-10",
-    "href": "courses/4302.2.html#ejemplo-10",
-    "title": "Auxiliar 2",
-    "section": "Ejemplo",
-    "text": "Ejemplo\npthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;\npthread_cond_t cond = PTHREAD_COND_INITIALIZER;\nint contador = 0;\nint aumentar_contador_y_esperar_10(){\n    pthread_mutex_lock(&mutex);\n    contador++;\n    if(contador == 10){\n        pthread_cond_broadcast(&cond);\n    }\n    while(contador &lt; 10){\n        pthread_cond_wait(&cond, &mutex);\n    }\n    pthread_mutex_unlock(&mutex);\n    printf(\"Contador llegó a 10\");\n    return 0; \n}\nBuena implementación 🤠"
-  },
-  {
-    "objectID": "courses/4302.2.html#p2-colecta",
-    "href": "courses/4302.2.html#p2-colecta",
-    "title": "Auxiliar 2",
-    "section": "P2 — Colecta",
-    "text": "P2 — Colecta\nSe necesita crear un sistemas para juntar exactamente una cantidad \\(X\\) de dinero:\n\n\nDefinir el tipo de datos Colecta.\nProgramar la función\nColecta *nuevaColecta(double meta);\nQue crea y retorna una colecta para juntar meta pesos.\nProgramar la función\ndouble aportar(Colecta *c, double monto);\nQue es invocada desde múltiples procesos para contribuir monto pesos. El valor de retorno de la función es el mínimo entre monto y lo que falta para llegar a la meta.\nLa función retornar una vez que la meta se cumpla"
-  },
-  {
-    "objectID": "courses/index.html",
-    "href": "courses/index.html",
-    "title": "Cursos",
-    "section": "",
-    "text": "Aquí esta el material de cursos que he dictado",
-    "crumbs": [
-      "Cursos",
-      "2024"
-    ]
-  },
-  {
-    "objectID": "courses/3501.1.html#su-auxiliar",
-    "href": "courses/3501.1.html#su-auxiliar",
+    "objectID": "courses/4302.1.html#su-auxiliar",
+    "href": "courses/4302.1.html#su-auxiliar",
     "title": "Auxiliar 1",
     "section": "Su auxiliar",
-    "text": "Su auxiliar\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
+    "text": "Su auxiliar"
   },
   {
-    "objectID": "courses/3501.1.html#terminal",
-    "href": "courses/3501.1.html#terminal",
+    "objectID": "courses/4302.1.html#su-auxiliar-1",
+    "href": "courses/4302.1.html#su-auxiliar-1",
     "title": "Auxiliar 1",
-    "section": "Terminal",
-    "text": "Terminal\nAlgunas cosas para manejarse mejor\n\n\n\n\n\n\n\nComando\nDescripción\n\n\n\n\ncd &lt;ruta&gt;\n Cambia al directorio &lt;ruta&gt;\n\n\nls/dir\n Lista los archivos y directorios en el directorio actual\n\n\nmdkir &lt;nombre&gt;\n Crea un directorio nuevo llamado &lt;nombre&gt;\n\n\nmv &lt;desde&gt; &lt;hacia&gt;\n Mueve un archivo/directorio &lt;desde&gt; a una ruta &lt;hacia&gt;\n\n\nrm &lt;nombre&gt;1\n Elimina/borra el archivo &lt;nombre&gt;\n\n\n\n\n\nPueden abusar del Tab para que les autocomplete y agregar --help para que les explique\nPueden agregar la flag -rf para borrar carpetas enteras"
+    "section": "Su auxiliar",
+    "text": "Su auxiliar\n\n\n\n\n\nVicente González\nAuxiliar de\n\nPSS\nComputación en GPU\nSistemas Operativos\nMetodologías de Diseño y Programación\n\nSiempre disponible en persona 😃\nLento para responder correos 😟\nDoble titulación\nNo duden en preguntar"
   },
   {
-    "objectID": "courses/3501.1.html#python",
-    "href": "courses/3501.1.html#python",
+    "objectID": "courses/4302.1.html#section",
+    "href": "courses/4302.1.html#section",
     "title": "Auxiliar 1",
-    "section": "Python",
-    "text": "Python"
+    "section": "",
+    "text": "Procesos Pesados\n\n\n\nFork\nNo comparten memoria\nCostosos de instanciar\nSeguros\n\n\n\n\nProcesos livianos\n\n\n\nPthreads\nComparten memoria\nBaratos de instanciar\nDatarraces"
   },
   {
-    "objectID": "courses/3501.1.html#pip",
-    "href": "courses/3501.1.html#pip",
+    "objectID": "courses/4302.1.html#creación-de-threads",
+    "href": "courses/4302.1.html#creación-de-threads",
     "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nGestor de paquetes de Python\nViene instalado con su versión de Python\nPaquetes como venv permiten gestionar ambientes\n\n\n\n\nDetalles de la instalación aqui"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\nCompuesto por:"
   },
   {
-    "objectID": "courses/3501.1.html#pip-1",
-    "href": "courses/3501.1.html#pip-1",
+    "objectID": "courses/4302.1.html#creación-de-threads-1",
+    "href": "courses/4302.1.html#creación-de-threads-1",
     "title": "Auxiliar 1",
-    "section": "PIP",
-    "text": "PIP\n\n\nPara crear ambientes (se crea en la carpeta .venv)\npython -m venv venv\nPara activarlo\nsource ./venv/bin/activate\nInstalar paquetes\npip install &lt;paquete&gt;\npip install -r &lt;archivo&gt;\n\n\n\n\nDetalles de la instalación aqui"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso"
   },
   {
-    "objectID": "courses/3501.1.html#conda",
-    "href": "courses/3501.1.html#conda",
+    "objectID": "courses/4302.1.html#creación-de-threads-2",
+    "href": "courses/4302.1.html#creación-de-threads-2",
     "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nAlternativa a PIP\nGestor de paquetes del sistemas\nIncorpora ambientes\nRecomiendo Miniconda\n\n\n\n\nDudas con la instalación por correo"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)"
   },
   {
-    "objectID": "courses/3501.1.html#conda-1",
-    "href": "courses/3501.1.html#conda-1",
+    "objectID": "courses/4302.1.html#creación-de-threads-3",
+    "href": "courses/4302.1.html#creación-de-threads-3",
     "title": "Auxiliar 1",
-    "section": "Conda",
-    "text": "Conda\n\n\nPara crear ambientes\nconda env create -n &lt;nombre&gt; \nPara activarlo\nconda activate &lt;nombre&gt;\nInstalar paquetes\nconda install &lt;paquete&gt;\n\n\n\n\nDudas con la instalación por correo"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso"
   },
   {
-    "objectID": "courses/3501.1.html#editor",
-    "href": "courses/3501.1.html#editor",
+    "objectID": "courses/4302.1.html#creación-de-threads-4",
+    "href": "courses/4302.1.html#creación-de-threads-4",
     "title": "Auxiliar 1",
-    "section": "Editor",
-    "text": "Editor"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\nCompuesto por:\n\nLa referencia al proceso\nAtributos especiales del proceso (NULL)\nLa rutina a ejecutar por el proceso\nLos argumentos a pasar a la rutina"
   },
   {
-    "objectID": "courses/3501.1.html#vscode",
-    "href": "courses/3501.1.html#vscode",
+    "objectID": "courses/4302.1.html#creación-de-threads-5",
+    "href": "courses/4302.1.html#creación-de-threads-5",
     "title": "Auxiliar 1",
-    "section": "VSCode",
-    "text": "VSCode\n\n\nSencillo y liviano\nUsa extensiones\nMicrosoft 🤢\nGratis 🤑\n\n\n\nDescargar"
+    "section": "Creación de threads",
+    "text": "Creación de threads\nint pthread_create(pthread_t *thread, \n                   const pthread_attr_t *attr, \n                   void *(*start_routine)(void *), \n                   void *arg);\n\n\nRetorna 0 si la creación fue exitosa\nEl thread termina cuando start_routine termina\nTodo thread creado debe ser enterrado con\nint pthread_join(pthread_t thread, void **return_value);\nLos thread no enterrados se convierte en zombies y no devuelven los recursos\nLa función pthread_join espera a que el thread termine"
   },
   {
-    "objectID": "courses/3501.1.html#pycharm",
-    "href": "courses/3501.1.html#pycharm",
+    "objectID": "courses/4302.1.html#ejemplo",
+    "href": "courses/4302.1.html#ejemplo",
     "title": "Auxiliar 1",
-    "section": "PyCharm",
-    "text": "PyCharm\n\n\nCompleto\nUsa plugins\nJetBrains 🤢\nGratis (Community) y de Pago1 (Professional)\n\n\n\nDescargar\n\nSe puede obtener gratis con una licencia educacional"
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}\n\n¿Cómo puedo usar más argumentos?\n\n\nUsamos una estructura!"
   },
   {
-    "objectID": "courses/3501.1.html#vim",
-    "href": "courses/3501.1.html#vim",
+    "objectID": "courses/4302.1.html#ejemplo-1",
+    "href": "courses/4302.1.html#ejemplo-1",
     "title": "Auxiliar 1",
-    "section": "Vim",
-    "text": "Vim\n\n\nUltra liviano pero ultra extensible\nOpen Source\nLo usa el admin (yo 😎)\nMuy difícil, no recomendado\n\n\n\nDescargar"
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  char* nombre_1 = \"primero\";\n  char* nombre_2 = \"segundo\";\n  pthread_create(&pid_1, NULL, thread, nombre_1); // lanzar thread1\n  pthread_create(&pid_2, NULL, thread, nombre_2); // lanzar thread2\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
   },
   {
-    "objectID": "courses/3501.1.html#git",
-    "href": "courses/3501.1.html#git",
+    "objectID": "courses/4302.1.html#ejemplo-2",
+    "href": "courses/4302.1.html#ejemplo-2",
     "title": "Auxiliar 1",
-    "section": "Git",
-    "text": "Git\n\n\n\n\nPara clonar repositorios\ngit clone &lt;url&gt; &lt;nombre_carpeta&gt;\nNO es necesario para el curso\nTutorial\n\n\n\n\n\n\n\n\n\n\n\nDetalles de la instalación aqui"
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  char* nombre = (char*) ptr; // Castear argumento\n  printf(\"Thread - %s\\n\", nombre); // Trabajo en paralelo\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
   },
   {
-    "objectID": "courses/3501.1.html#hello-world",
-    "href": "courses/3501.1.html#hello-world",
+    "objectID": "courses/4302.1.html#ejemplo-3",
+    "href": "courses/4302.1.html#ejemplo-3",
     "title": "Auxiliar 1",
-    "section": "Hello world!",
-    "text": "Hello world!\n\n\n\n\n\n\n¿Cambiemos el color?"
+    "section": "Ejemplo",
+    "text": "Ejemplo\n#include &lt;stdio.h&gt;\n#include &lt;pthread.h&gt;\n\ntypedef struct {\n  char* name;\n  int age;\n} Args;\n\nvoid *thread(void *ptr) {\n  Args* a = (Args*) ptr; // Castear a la estructura\n  printf(\"Thread - %s (%d)\\n\", a-&gt;name, a-&gt;age); // Accedemos a los miembros con -&gt;\n  return NULL; // Retorno\n}\n\nint main() {\n  pthread_t pid_1, pid_2; // Guardar PID de los threads lanzados\n  Args a1 = {\"primero\", 10} // inicializamos los args de t1\n  Args a2 = {\"segundo\", 20} // inicializamos los args de t2\n  pthread_create(&pid_1, NULL, thread, &a1); // la pasamos por referencia\n  pthread_create(&pid_2, NULL, thread, &a2); // la pasamos por referencia\n  pthread_join(pid_1, NULL); // esperar thread 1\n  pthread_join(pid_2, NULL); // esperar thread 2\n  return 0;\n}"
+  },
+  {
+    "objectID": "courses/4302.1.html#how-to",
+    "href": "courses/4302.1.html#how-to",
+    "title": "Auxiliar 1",
+    "section": "How to?",
+    "text": "How to?\nDiseño\n\n\nEncontrar las partes paralelizables\nCrear la estructura que permita ingresar los argumentos necesarios\nProgramar la rutina\n\n\n\n\nA veces la rutina sólo ajusta los argumentos para llamar a otra función\nEn la estructura de los argumentos podemos guardar cualquier cosa\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.1.html#how-to-1",
+    "href": "courses/4302.1.html#how-to-1",
+    "title": "Auxiliar 1",
+    "section": "How to?",
+    "text": "How to?\nLógica\n\n\nLanzar los threads con sus argumentos correspondientes\nSi aplica, realizar trabajo en el thread principal\nEsperar a que el trabajo paralelizado termine\nEnterrar los resultados y recolectar los resultados\n\n\n\n\nAntes del join no existe garantía de que el trabajo se haya terminado\nAsegúrese de que exista paralelismo entre el create y el join\n\n\nEsto es no pretende ser una receta, sino que una guía general"
+  },
+  {
+    "objectID": "courses/4302.1.html#p1-buscar-factor",
+    "href": "courses/4302.1.html#p1-buscar-factor",
+    "title": "Auxiliar 1",
+    "section": "P1 — Buscar Factor",
+    "text": "P1 — Buscar Factor\n\nParalelicemos esta función que busca cualquier factor de un número para acelerarla utilizando \\(P\\) cores\n\n\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\n\nDesafío: Lanzar \\(P-1\\) procesos y utilizar el principal en la búsqueda"
+  },
+  {
+    "objectID": "courses/4302.1.html#p1-buscar-factor-1",
+    "href": "courses/4302.1.html#p1-buscar-factor-1",
+    "title": "Auxiliar 1",
+    "section": "P1 — Buscar Factor",
+    "text": "P1 — Buscar Factor\nPropuesto\n¿Cómo harías para que todos los procesos terminen cuando se encuentre el primer factor?\n#include &lt;pthread.h&gt;\n\ntypedef unsigned long long ulonglong;\ntypedef unsigned int uint;\n\n// busca un factor del número entero x en el rango [i, j]\nuint buscarFactor(ulonglong x, uint i, uint j){\n    for (uint k = i; k &lt;= j; k++){\n        if (x % k == 0)\n            return k;\n    }\n    return 0;\n}\n\nHint: Quizás una variable global ayudaría"
+  },
+  {
+    "objectID": "courses/4302.11.html#tarea-3-otoño-2013",
+    "href": "courses/4302.11.html#tarea-3-otoño-2013",
+    "title": "Auxiliar 11",
+    "section": "Tarea 3 Otoño 2013",
+    "text": "Tarea 3 Otoño 2013\nLo siguiente es el enunciado simplificado:\nEn esta tarea Ud. deberá implementar un driver para Linux que permita lecturas bloqueantes en el dispositivo /dev/syncread con número major 61. Considere un primer proceso que está escribiendo un archivo, es decir todavía no lo cierra, y un segundo proceso que lee ese mismo archivo. El comportamiento estándar de Unix consiste en que si no hay nada más para leer, read retorna 0 bytes leídos, lo que es interpretado como fin del archivo en el proceso lector. Esto se hace aún cuando el proceso escritor eventualmente va a agregar más datos al archivo, puesto que aún no lo cierra. Una lectura bloqueante haría que read se bloquee hasta que el proceso escritor agregue con write más datos o bien cierre el archivo con close. Es decir funciona de manera similar a un pipe."
+  },
+  {
+    "objectID": "courses/4302.11.html#tarea-3-otoño-2013-1",
+    "href": "courses/4302.11.html#tarea-3-otoño-2013-1",
+    "title": "Auxiliar 11",
+    "section": "Tarea 3 Otoño 2013",
+    "text": "Tarea 3 Otoño 2013\n\n\n\n\n\n\n\n\n\n\nShell \\(A\\)\nShell \\(B\\)\nShell \\(C\\)\n Shell \\(D\\)\n\n\n\n\n% cat &gt; /dev/syncread\n\n\n\n\n\n\n% cat &lt; /dev/syncread\n\n\n\n\n los 4 puntos\nlos 4 puntos\n\n\n\n\n\n\n% echo hola &gt; /dev/syncread\n\n\n\n\n\n\n% cat &lt; /dev/syncread\nlos 4 puntos\n\n\ncardinales son 3: el norte y el sur\ncardinales son 3: el norte y el sur\n\ncardinales son 3: el norte y el sur\n\n\n&lt;control-D&gt;\n\n\n\n\n\ncat &lt; /dev/syncread \nhola"
   }
 ]
