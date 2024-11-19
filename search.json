@@ -900,21 +900,21 @@
     "href": "courses/4302.10.html#p3-working-set-1",
     "title": "Auxiliar 10",
     "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte A\nAsumiendo que el bit \\(D\\) de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F podrían producir page-faults. Utilice coordenadas (\\(A\\), 1, 1er. acceso)\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+    "text": "P3 – Working Set\nParte A\nAsumiendo que el bit \\(D\\) de todas las páginas comienza en 0. Indique cuales accesos entre los períodos C a F podrían producir page-faults. Utilice coordenadas (\\(A\\), 1, 1er. acceso)\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,5,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
     "objectID": "courses/4302.10.html#p3-working-set-2",
     "href": "courses/4302.10.html#p3-working-set-2",
     "title": "Auxiliar 10",
     "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte B\nIndique el valor del atributo Referenced para todas las páginas al inicio y al final del intervalo \\(E\\).\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+    "text": "P3 – Working Set\nParte B\nIndique el valor del atributo Referenced para todas las páginas al inicio y al final del intervalo \\(E\\).\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,5,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
     "objectID": "courses/4302.10.html#p3-working-set-3",
     "href": "courses/4302.10.html#p3-working-set-3",
     "title": "Auxiliar 10",
     "section": "P3 – Working Set",
-    "text": "P3 – Working Set\nParte C\nSuponga que al inicio del intervalo \\(E\\) tiene el atributo Dirty de la página 5 es 0. Explique si el acceso (D, 5, 1er acceso) produjo o no un page fault.\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,4,6\\)\n\\(G\\): \\(2,4,5\\)"
+    "text": "P3 – Working Set\nParte C\nSuponga que al inicio del intervalo \\(E\\) tiene el atributo Dirty de la página 5 es 0. Explique si el acceso (D, 5, 1er acceso) produjo o no un page fault.\n\n\n\n\n\n6\n\nr\nrr\nww\nr\nw\n\n\n\n\n\n5\nrw\nr\n\nrrr\n\nr\nr\n\n\n\n\n4\n\nr\n\n\n\n\nr\n\n\n\n\n3\nr\n\nrrr\n\nwww\nww\n\n\n\n\n\n2\nrrr\nr\nr\nrr\nwr\nww\nr\n\n\n\n\n1\nrr\nrr\nr\nrw\n\n\n\n\n\n\n\n0\n\nww\nr\n\nr\nw\n\n\n\n\n\n\nA\nB\nC\nD\nE\nF\nG\n\n\n\n\n\n\n\nWorking sets\n\n\\(A\\): \\(1,2,3,5\\)\n\\(B\\): \\(0,1,2,4,5,6\\)\n\\(C\\): \\(0,1,2,3,6\\)\n\\(D\\): \\(1,2,5,6\\)\n\\(E\\): \\(0,2,3,6\\)\n\\(F\\): \\(0,2,3,5,6\\)\n\\(G\\): \\(2,4,5\\)"
   },
   {
     "objectID": "courses/4302.10.html#p3-working-set-4",
